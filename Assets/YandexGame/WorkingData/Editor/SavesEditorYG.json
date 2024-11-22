@@ -1,0 +1,30 @@
+{
+  "idSave": 1,
+  "isFirstSession": false,
+  "language": "ru",
+  "promptDone": false,
+  "defaultLoaded": false,
+  "walletSave": {
+    "crystals": 5.0,
+    "secondCurrency": 0.0
+  },
+  "abilitiesSave": {
+    "abilities": []
+  },
+  "stats": {
+    "experience": 0.0,
+    "level": 1,
+    "upgradePoints": 0,
+    "healthPoints": 0,
+    "attackPoints": 0,
+    "speedPoints": 0,
+    "critPoints": 0,
+    "rebirthCounts": 0,
+    "skillPoints": 0
+  },
+  "SwordsSave": {
+    "current": null,
+    "unlocked": []
+  },
+  "rebornCount": 0
+}

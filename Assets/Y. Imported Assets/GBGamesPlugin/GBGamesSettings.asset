@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4656eed17b844192ba2af57aeb665a94, type: 3}
+  m_Name: GBGamesSettings
+  m_EditorClassIdentifier: 
+  debug: 1
+  minimumDelayBetweenInterstitial: 60
+  enableBannerAutomatically: 1
+  useCloudSaves: 1
+  useCloudSaveInterval: 1
+  cloudSaveInterval: 2
+  autoSaveByInterval: 1
+  saveInterval: 1
+  saveOnChangeVisibilityState: 1
+  authPlayerAutomatically: 0
+  yandexScopes: 1
+  autoGameReadyAPI: 0
+  gameLoadingCallbacksOnSceneLoading: 0

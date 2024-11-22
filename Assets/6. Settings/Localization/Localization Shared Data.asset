@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Localization Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Localization
+  m_TableCollectionNameGuidString: 0756e557c271c0845b906afbadbbd927
+  m_Entries:
+  - m_Id: 15791693824
+    m_Key: characters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7181340647424
+    m_Key: select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9772627795968
+    m_Key: selected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321743813685248
+    m_Key: sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321810494730240
+    m_Key: upgrades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 321915545268224
+    m_Key: pets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 518618991435776
+    m_Key: 'sound
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11413083427840000
+    m_Key: teleport_price
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11414710553550848
+    m_Key: teleport_return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11419718841933824
+    m_Key: starter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15207861625954304
+    m_Key: ad_in
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15782451230154752
+    m_Key: leaderboadr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21600309956714496
+    m_Key: telegram_chanel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41156988440289280
+    m_Key: rarity_rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41157148402655232
+    m_Key: rarity_mythical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41157232255180800
+    m_Key: rarity_legendary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65066855567523840
+    m_Key: level_number
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65090464356827136
+    m_Key: modification_scores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65388164730126336
+    m_Key: level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65486589823877120
+    m_Key: reset_stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65486744291704832
+    m_Key: modification_score_to_use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65487060215070720
+    m_Key: health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65487147917967360
+    m_Key: attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65487364889313280
+    m_Key: speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65487400335376384
+    m_Key: crit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65487493318901760
+    m_Key: health_desctiption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65487627809259520
+    m_Key: attack_desctiption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65487803512848384
+    m_Key: speed_desctiption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65487893849767936
+    m_Key: crit_desctiption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68747918756085760
+    m_Key: rebirth_count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68748187711635456
+    m_Key: rebirth_skillpoint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68750361392906240
+    m_Key: rebirth_damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68751064840601600
+    m_Key: rebirth_exp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69031271585611776
+    m_Key: rarity_common
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69031322185695232
+    m_Key: rarity_rar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69031329819328512
+    m_Key: rarity_legendaty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69031333975883776
+    m_Key: rarity_immortal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69031337511682048
+    m_Key: rarity_ancient
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5461703413394571349
+  references:
+    version: 2
+    RefIds:
+    - rid: 5461703413394571349
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1715808995937

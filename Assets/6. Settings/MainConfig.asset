@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3139360e65a64853a67b6f0e1a0d78c2, type: 3}
+  m_Name: MainConfig
+  m_EditorClassIdentifier: 
+  worlds:
+  - {fileID: 11400000, guid: 83f2d3994f397b24bb316c251c623c5a, type: 2}
+  currencyData:
+  - {fileID: 11400000, guid: 283ebc26f035478489d2b7dba6ddca0a, type: 2}
+  - {fileID: 11400000, guid: 260de3df721b6dc44a53dd142a568481, type: 2}
+  rarityTables:
+  - rarity: 1
+    mainColor: {r: 0.6901961, g: 0.7647059, b: 0.8509804, a: 1}
+    titleId: rarity_common
+  - rarity: 2
+    mainColor: {r: 0.29411766, g: 0.4117647, b: 1, a: 1}
+    titleId: rarity_rare
+  - rarity: 3
+    mainColor: {r: 0.827451, g: 0.17254902, b: 0.9019608, a: 1}
+    titleId: rarity_legendary
+  - rarity: 4
+    mainColor: {r: 0.99300003, g: 0.76468825, b: 0.26810998, a: 1}
+    titleId: rarity_immortal
+  - rarity: 5
+    mainColor: {r: 0.92156863, g: 0.29411766, b: 0.29411766, a: 1}
+    titleId: rarity_ancient
+  playerConfig: {fileID: 11400000, guid: 071cf3b6b1c0e1843a27b4b67c7349f7, type: 2}
+  swordCollectionConfig: {fileID: 11400000, guid: 0400797554daa6641bb6f99d757595be, type: 2}
+  uiConfig: {fileID: 11400000, guid: 7f0b37cec6afd0a4bbe02413ca9a40f3, type: 2}
