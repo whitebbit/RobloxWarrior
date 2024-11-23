@@ -169,6 +169,10 @@ MonoBehaviour:
     m_Key: rarity_ancient
     m_Metadata:
       m_Items: []
+  - m_Id: 69442183777812480
+    m_Key: tap_tutorial
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

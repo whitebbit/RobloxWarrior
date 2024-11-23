@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace _3._Scripts.UI.Extensions
@@ -29,6 +30,13 @@ namespace _3._Scripts.UI.Extensions
             var color = image.color;
             color.a = value;
             image.color = color;
+        }
+        
+        public static void Fade(this TMP_Text text, float value)
+        {
+            var color = text.color;
+            color.a = value;
+            text.color = color;
         }
     }
 }

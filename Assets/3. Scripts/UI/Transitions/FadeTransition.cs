@@ -20,7 +20,7 @@ namespace _3._Scripts.UI.Transitions
         {
             canvasGroup.blocksRaycasts = true;
             canvasGroup.alpha = 0;
-            LinkTransition.ForceIn();
+            LinkTransition?.ForceIn();
             return canvasGroup.DOFade(1, duration).SetLink(canvasGroup.gameObject);
         }
 

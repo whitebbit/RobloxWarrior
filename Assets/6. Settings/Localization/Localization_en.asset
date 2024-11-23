@@ -179,6 +179,10 @@ MonoBehaviour:
     m_Localized: Ancient
     m_Metadata:
       m_Items: []
+  - m_Id: 69442183777812480
+    m_Localized: Tap Tap Tap
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

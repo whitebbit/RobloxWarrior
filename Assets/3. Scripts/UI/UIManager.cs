@@ -29,7 +29,7 @@ namespace _3._Scripts.UI
 
         private void Start()
         {
-            currentScreen.Open();
+            currentScreen.Open(0.25f);
         }
 
         public void SetScreen(string id, TweenCallback onCloseComplete = null, TweenCallback onOpenComplete = null)
@@ -100,7 +100,7 @@ namespace _3._Scripts.UI
             {
                 currentScreen = screen;
                 MoveWidgetsToScreen(screen);
-                currentScreen.Open(onComplete: () =>
+                currentScreen.Open(0.25f, onComplete: () =>
                 {
                     _onTransition = false;
                     onOpenComplete?.Invoke();
