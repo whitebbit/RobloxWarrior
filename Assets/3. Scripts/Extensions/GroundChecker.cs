@@ -19,7 +19,7 @@ namespace _3._Scripts
             color.a = 0.5f;
             
             UnityEngine.Gizmos.color = color;
-            UnityEngine.Gizmos.DrawSphere(transform.position, .25f);
+            UnityEngine.Gizmos.DrawSphere(transform.position, groundDistance);
         }
     }
 }

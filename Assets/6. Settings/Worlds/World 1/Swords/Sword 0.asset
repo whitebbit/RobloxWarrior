@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed948462f8c74cb5a66220a07f26f844, type: 3}
   m_Name: Sword 0
   m_EditorClassIdentifier: 
-  id: 
+  id: sword_1
   titleID: 
   descriptionID: 
   prefab: {fileID: 8556951519723268008, guid: e16f97b1f42ae9b4ea3f19321744b02b, type: 3}
-  rarity: 3
+  rarity: 1
   damage: 100
-  dropChance: 50
+  dropChance: 65

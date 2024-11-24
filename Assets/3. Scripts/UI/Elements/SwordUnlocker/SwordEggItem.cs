@@ -18,6 +18,7 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         
         private Button _button;
         public bool DestroyOnGet {get; private set;}
+        public string SwordId {get; private set;}
         private void Awake()
         {
             _button = GetComponent<Button>();
@@ -27,6 +28,7 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         private void Start()
         {
             _button.onClick.AddListener(OnClick);
+            blockItem.gameObject.SetActive(DestroyOnGet);
         }
 
         private void OnClick()
@@ -42,6 +44,8 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
             table.color = rarity.MainColor;
             chanceText.text = $"{config.Chance}%";
             icon.texture = config.Icon;
+
+            SwordId = config.ID;
         }
     }
 }
