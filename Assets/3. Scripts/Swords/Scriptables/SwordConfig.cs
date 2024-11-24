@@ -13,11 +13,10 @@ namespace _3._Scripts.Swords.Scriptables
         [Tab("Sword")] [SerializeField] private Sword prefab;
         [Space] [SerializeField] private Rarity rarity;
         [SerializeField] private float damage;
-        [Space] 
-        [SerializeField] private float dropChance;
+        [Space] [SerializeField] private float dropChance;
 
         public float Damage => damage;
-        public override Texture2D Icon => null;
+        public override Texture2D Icon => RuntimeSwordIconRenderer.Instance.GetTexture2D(ID);
         public Sword Prefab => prefab;
         public float Chance => dropChance;
 

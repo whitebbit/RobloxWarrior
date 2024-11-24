@@ -1,33 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using _3._Scripts.Config;
+using _3._Scripts.Extensions;
 using _3._Scripts.Singleton;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _3._Scripts
 {
-    public class RuntimeSkinIconRenderer : Singleton<RuntimeSkinIconRenderer>
+    public class RuntimeSwordIconRenderer : Singleton<RuntimeSwordIconRenderer>
     {
         [SerializeField] private float greenThreshold = 25;
+        [SerializeField] private LayerMask layerMask;
         
         public Camera renderCamera;
         public RenderTexture renderTexture;
-        public List<SkinnedMeshRenderer> skinnedMeshRenderers = new();
+        public Transform swordTransform;
  
         private readonly Dictionary<string, Texture2D> _textureCache = new();
 
         public Texture2D GetTexture2D(string id, Material material = null)
         {
-            return /*_textureCache.ContainsKey(id) ? _textureCache[id] : */CreateTexture2D(id, material);
+            return _textureCache.TryGetValue(id, out var value) ? value : CreateTexture2D(id, material);
         }
         
         private Texture2D CreateTexture2D(string id, Material material)
         {
-            foreach (var meshRenderer in skinnedMeshRenderers)
-            {
-                meshRenderer.material = material;
-            }
+            var config = Configuration.Instance.Config.SwordCollectionConfig.GetSword(id);
+            var item = Instantiate(config.Prefab, swordTransform);
             
+            item.Disable();
+            item.gameObject.SetLayer(layerMask);
+            
+            renderCamera.cullingMask = layerMask;
             renderCamera.clearFlags = CameraClearFlags.SolidColor;
             renderCamera.backgroundColor = new Color(0, 1, 0, 1); // Полностью прозрачный фон
             
@@ -60,6 +63,7 @@ namespace _3._Scripts
             
             _textureCache.TryAdd(id, renderedTexture);
             
+            Destroy(item.gameObject);
             return renderedTexture;
         }
     }

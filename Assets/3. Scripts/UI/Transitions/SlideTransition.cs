@@ -25,14 +25,14 @@ namespace _3._Scripts.UI.Transitions
         
         public Tween AnimateIn()
         {
-            transform.anchoredPosition = _startPosition - direction;
+            ForceOut();
             LinkTransition?.ForceIn();
             return transform.DOAnchorPos(_startPosition, duration).SetLink(transform.gameObject).SetEase(inEase);
         }
 
         public Tween AnimateOut()
         {
-            transform.anchoredPosition = _startPosition;
+            ForceIn();
             return transform.DOAnchorPos(_startPosition - direction, duration).SetLink(transform.gameObject)
                 .SetEase(outEase);
         }

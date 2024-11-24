@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Extensions;
+using _3._Scripts.Extensions.Interfaces;
 using _3._Scripts.Saves;
 using _3._Scripts.Swords.Scriptables;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements.SwordUnlocker;
 using _3._Scripts.UI.Panels;
+using _3._Scripts.UI.Transitions;
+using DG.Tweening;
 using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,12 +17,17 @@ using VInspector;
 
 namespace _3._Scripts.Swords
 {
-    public class SwordUnlocker : MonoBehaviour
+    public class SwordUnlocker : MonoBehaviour, IInteractive
     {
-        [Tab("Main")] [SerializeField] private Transform container;
+        [Tab("Main")]
+        [SerializeField] private Transform eggModel;
+        [SerializeField] private ScaleTransition uiTransition;
+        [Tab("UI")]
+        [SerializeField] private Transform container;
         [SerializeField] private SwordEggItem prefab;
-
-        [Tab("Buttons")] [SerializeField] private Button openButton;
+        
+        [Tab("Buttons")]
+        [SerializeField] private Button openButton;
         [SerializeField] private Button autoOpenButton;
         [SerializeField] private Button x3OpenButton;
 
@@ -33,6 +41,7 @@ namespace _3._Scripts.Swords
         private void Start()
         {
             Initialize(_configs);
+            uiTransition.ForceOut();
             openButton.onClick.AddListener(() => Open(1));
             x3OpenButton.onClick.AddListener(() => Open(3));
             autoOpenButton.onClick.AddListener(AutoOpen);
@@ -100,6 +109,18 @@ namespace _3._Scripts.Swords
                     });
                 });
             });
+        }
+
+        public void Interact()
+        {
+            eggModel.DOScale(0, 0.25f);
+            uiTransition.AnimateIn();
+        }
+
+        public void StopInteracting()
+        {
+            uiTransition.AnimateOut();
+            eggModel.DOScale(1, 0.25f).SetEase(Ease.OutBack).SetDelay(0.15f);
         }
     }
 }

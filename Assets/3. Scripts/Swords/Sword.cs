@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Config;
+﻿using System.Collections.Generic;
+using _3._Scripts.Config;
 using _3._Scripts.Saves;
 using _3._Scripts.Swords.Scriptables;
 using _3._Scripts.Weapons.Base;
@@ -9,12 +10,21 @@ namespace _3._Scripts.Swords
     public class Sword : Weapon<SwordConfig>
     {
         private SwordSave _save;
+        [SerializeField] private MeleeWeaponTrail trail;
+
         protected override void OnStart()
         {
             base.OnStart();
             Detector.SetStartPoint(Player.Player.Instance.transform);
         }
 
+        public void Disable()
+        {
+            enabled = false;
+            Detector.enabled = false;
+            trail.enabled = false;
+        }
+        
         public void SetSave(SwordSave save)
         {
             _save = save;

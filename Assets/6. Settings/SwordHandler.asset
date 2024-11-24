@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swords:
   - {fileID: 11400000, guid: fdaf6b00d42f88a498a53b40f3dbc8c8, type: 2}
+  - {fileID: 11400000, guid: 7aec8c5c770580b4e9a0b18744922ec5, type: 2}
+  - {fileID: 11400000, guid: c96c12304df57ab468f9b1dd5fafe857, type: 2}
   starDamageIncrease: 25
