@@ -15,7 +15,8 @@ namespace _3._Scripts.Swords
 {
     public class SwordUnlocker : MonoBehaviour
     {
-        [Tab("Main")] [SerializeField] private Transform container;
+        [Tab("Main")] 
+        [SerializeField] private Transform container;
         [SerializeField] private SwordEggItem prefab;
 
         [Tab("Buttons")] [SerializeField] private Button openButton;
@@ -24,10 +25,13 @@ namespace _3._Scripts.Swords
 
         [SerializeField] private List<SwordConfig> _configs = new();
 
+        private List<SwordEggItem> _items = new();
+        
         private void Start()
         {
             Initialize(_configs);
             openButton.onClick.AddListener(OpenX1);
+            x3OpenButton.onClick.AddListener(OpenX3);
         }
 
         public void Initialize(List<SwordConfig> configs)
@@ -38,27 +42,45 @@ namespace _3._Scripts.Swords
             {
                 var item = Instantiate(prefab, container);
                 item.Initialize(config);
+                
+                _items.Add(item);
             }
         }
 
         private void OpenX1()
         {
-            var item = _configs.GetRandomElement();
-            GBGames.saves.SwordsSave.Unlock(new SwordSave(item.ID));
+            Open(1);
+        }
+        private void OpenX3()
+        {
+            Open(3);
+        }
+        
+        private void Open(int count)
+        {
+            var items = new List<SwordConfig>();
+            
+            for (var i = 0; i < count; i++)
+            {
+                items.Add(_configs.GetRandomElement());
+            }
 
+            foreach (var item in items)
+            {
+                GBGames.saves.SwordsSave.Unlock(new SwordSave(item.ID));
+            }
+            
             UIManager.Instance.SetScreen("3d", onOpenComplete: () =>
             {
                 var panel = UIManager.Instance.GetPanel<SwordUnlockerPanel>();
-            
+
                 panel.Enabled = true;
-                panel.StartUnlocking(1,null, item, () =>
+                panel.StartUnlocking(null, items, () =>
                 {
                     panel.Enabled = false;
                     UIManager.Instance.SetScreen("main");
                 });
-                
             });
-            
         }
     }
 }

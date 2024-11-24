@@ -14,11 +14,11 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
 {
     public class SwordEgg : MonoBehaviour
     {
-        [Tab("Main")]
-        [SerializeField] private MeshRenderer egg;
+        [Tab("Main")] [SerializeField] private MeshRenderer egg;
         [SerializeField] private Transform swordTransform;
         [SerializeField] private ParticleSystem particle;
         [Space] [SerializeField] private TMP_Text swordRarityText;
+
         [Tab("Egg Animation")] [SerializeField]
         private float eggScaleDuration = 1f;
 
@@ -36,9 +36,10 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         private LocalizeStringEvent _swordRarityLocalizeString;
         private Transform _currentSword;
         private int _eggHealth = 3;
-        
+
         private Vector3 _eggStartPosition;
-        public event Action OnFinished;
+        private event Action OnFinished;
+        private event Action OnDestroyed;
 
         private void Awake()
         {
@@ -54,48 +55,51 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
 
             swordRarityText.color = rarity.MainColor;
             _swordRarityLocalizeString.SetReference(rarity.TitleID);
-            
+
             _currentSword = sword.transform;
             _currentSword.localScale = Vector3.zero;
-            
+            _eggHealth = 3;
+
             egg.material = eggMaterial;
 
             EggAnimation();
-            
+
             main.startColor = rarity.MainColor;
             sword.gameObject.SetLayer("UI");
         }
-        
+
         public void GetDamage()
         {
             egg.transform.DOShakePosition(.5f, 50, 15)
                 .OnComplete(() => egg.transform.DOLocalMove(_eggStartPosition, 0.1f));
             egg.transform.DOShakeRotation(.75f, 25, 15);
-            
+
             _eggHealth--;
 
-            if (_eggHealth <= 0)
-            {
-                egg.transform.DOScale(0, eggShrinkDuration)
-                    .OnComplete(() => SwordAnimation(_currentSword))
-                    .SetDelay(1)
-                    .SetEase(Ease.InBack);
-            }
+            if (_eggHealth > 0) return;
+
+            egg.transform.DOScale(0, eggShrinkDuration)
+                .OnComplete(() => SwordAnimation(_currentSword))
+                .SetDelay(1)
+                .SetEase(Ease.InBack);
+
+            OnDestroyed?.Invoke();
         }
-        
+
+        public void SetOnFinished(Action action) => OnFinished = action;
+        public void SetOnDestroyed(Action action) => OnDestroyed = action;
+
         private void EggAnimation()
         {
             var eggTransform = egg.transform;
-            
+
             eggTransform.localEulerAngles = Vector3.zero;
             eggTransform.localScale = Vector3.zero;
             eggTransform.DOScale(eggScaleFactor, eggScaleDuration).SetEase(Ease.OutBack).SetDelay(.5f);
 
             swordRarityText.Fade(0);
-
-            _eggHealth = 3;
         }
-        
+
         private void SwordAnimation(Transform sword)
         {
             sword.localScale = Vector3.zero;
@@ -123,7 +127,7 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
 
             // Запускаем анимацию
             sequence.Play();
-            
+
             particle.Play();
         }
     }

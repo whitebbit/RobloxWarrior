@@ -1,5 +1,7 @@
-﻿using _3._Scripts.Config;
+﻿using System;
+using _3._Scripts.Config;
 using _3._Scripts.Config.Interfaces;
+using _3._Scripts.Extensions;
 using _3._Scripts.Swords.Scriptables;
 using TMPro;
 using UnityEngine;
@@ -12,6 +14,26 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         [SerializeField] private RawImage icon;
         [SerializeField] private TMP_Text chanceText;
         [SerializeField] private Image table;
+        [SerializeField] private Transform blockItem;
+        
+        private Button _button;
+        public bool DestroyOnGet {get; private set;}
+        private void Awake()
+        {
+            _button = GetComponent<Button>();
+            Debug.Log(_button);
+        }
+
+        private void Start()
+        {
+            _button.onClick.AddListener(OnClick);
+        }
+
+        private void OnClick()
+        {
+            DestroyOnGet = !DestroyOnGet;
+            blockItem.gameObject.SetActive(DestroyOnGet);
+        }
         
         public void Initialize(SwordConfig config)
         {

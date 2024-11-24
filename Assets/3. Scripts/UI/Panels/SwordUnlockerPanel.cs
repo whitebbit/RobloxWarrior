@@ -20,27 +20,53 @@ namespace _3._Scripts.UI.Panels
     {
         [SerializeField] private List<SwordEgg> swordEggs = new();
         [SerializeField] private TMP_Text tutorialText;
-        
+
         private bool _started;
 
         private int _eggsCount;
         private Sequence _sequenceTutorial;
-
-        public void StartUnlocking(int eggsCount, Material eggMaterial, SwordConfig swordConfig, Action onFinished)
+        protected override void OnOpen()
         {
-            _eggsCount = eggsCount;
-            
+            base.OnOpen();
+            foreach (var swordEgg in swordEggs)
+            {
+                swordEgg.gameObject.SetActive(false);
+            }
+        }
+
+        public void StartUnlocking(Material eggMaterial, List<SwordConfig> swordConfigs, Action onFinished)
+        {
+            _eggsCount = swordConfigs.Count;
+            swordEggs[0].SetOnFinished(onFinished);
+            swordEggs[0].SetOnDestroyed(() =>
+            {
+                _started = false;
+                _sequenceTutorial.Kill();
+            });
+
+            for (var i = 0; i < _eggsCount; i++)
+            {
+                swordEggs[i].SetSword(eggMaterial, swordConfigs[i]);
+                swordEggs[i].gameObject.SetActive(true);
+            }
+
             TutorialAnimation();
+
+            _started = true;
         }
 
         private void Update()
         {
             if (!_started) return;
-            
-            _started = false;
-            _sequenceTutorial.Kill();
+
+            if (!Input.GetMouseButtonDown(0)) return;
+
+            for (var i = 0; i < _eggsCount; i++)
+            {
+                swordEggs[i].GetDamage();
+            }
         }
-        
+
         private void TutorialAnimation()
         {
             _sequenceTutorial = DOTween.Sequence();
