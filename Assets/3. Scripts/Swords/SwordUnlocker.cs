@@ -4,6 +4,7 @@ using _3._Scripts.Extensions;
 using _3._Scripts.Saves;
 using _3._Scripts.Swords.Scriptables;
 using _3._Scripts.UI;
+using _3._Scripts.UI.Elements.SwordUnlocker;
 using _3._Scripts.UI.Panels;
 using GBGamesPlugin;
 using UnityEngine;
@@ -50,7 +51,7 @@ namespace _3._Scripts.Swords
                 var panel = UIManager.Instance.GetPanel<SwordUnlockerPanel>();
             
                 panel.Enabled = true;
-                panel.StartUnlocking(null, item, () =>
+                panel.StartUnlocking(1,null, item, () =>
                 {
                     panel.Enabled = false;
                     UIManager.Instance.SetScreen("main");

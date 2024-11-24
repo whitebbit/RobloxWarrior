@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _3._Scripts.Swords
+namespace _3._Scripts.UI.Elements.SwordUnlocker
 {
     public class SwordEggItem : MonoBehaviour, IInitializable<SwordConfig>
     {
