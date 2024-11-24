@@ -16,7 +16,7 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 0756e557c271c0845b906afbadbbd927
   m_Entries:
   - m_Id: 15791693824
-    m_Key: characters
+    m_Key: auto_x1
     m_Metadata:
       m_Items: []
   - m_Id: 7181340647424
@@ -170,7 +170,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69442183777812480
+    m_Key: disable_autoopen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69827698393939968
     m_Key: tap_tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69832639003033600
+    m_Key: spin_x1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69832935552909312
+    m_Key: spin_x3
     m_Metadata:
       m_Items: []
   m_Metadata:

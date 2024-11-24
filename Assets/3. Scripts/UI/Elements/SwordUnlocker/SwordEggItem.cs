@@ -22,7 +22,6 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         private void Awake()
         {
             _button = GetComponent<Button>();
-            Debug.Log(_button);
         }
 
         private void Start()

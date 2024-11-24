@@ -366,7 +366,7 @@ MonoBehaviour:
   titleText: {fileID: 5069522881226690252}
   descriptionText: {fileID: 4585513632838383762}
   statsText: {fileID: 6950495445401282388}
-  upgradeButton: {fileID: 7213282435399119829}
+  upgradeButton: {fileID: 8060768621882379055}
   levelText: {fileID: 919640768814008850}
 --- !u!1 &5883247375845076620
 GameObject:
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 1963522009127544681}
   - component: {fileID: 4908334277999146504}
   - component: {fileID: 5980662699546918416}
-  - component: {fileID: 7213282435399119829}
+  - component: {fileID: 8060768621882379055}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1.54
---- !u!114 &7213282435399119829
+--- !u!114 &8060768621882379055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6486621529394385717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: fedf832542294538ac57cecce2449d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -639,7 +639,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -660,10 +660,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 5980662699546918416}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  scaleFactor: 1.05
 --- !u!1 &7241489482796256880
 GameObject:
   m_ObjectHideFlags: 0

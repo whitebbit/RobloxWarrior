@@ -20,7 +20,9 @@ MonoBehaviour:
     - rid: 3203987063427825692
   m_TableData:
   - m_Id: 15791693824
-    m_Localized: Characters
+    m_Localized: 'Auto
+
+      X1'
     m_Metadata:
       m_Items: []
   - m_Id: 7181340647424
@@ -180,7 +182,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69442183777812480
+    m_Localized: "Cancel \nauto-opening"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69827698393939968
     m_Localized: Tap Tap Tap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69832639003033600
+    m_Localized: 'Spin
+
+      X1'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69832935552909312
+    m_Localized: 'Spin
+
+      X3'
     m_Metadata:
       m_Items: []
   references:

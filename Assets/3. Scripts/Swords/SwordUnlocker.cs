@@ -25,15 +25,17 @@ namespace _3._Scripts.Swords
 
         [SerializeField] private List<SwordConfig> _configs = new();
 
-        private List<SwordEggItem> _items = new();
+        private readonly List<SwordEggItem> _items = new();
 
         private bool _inProgress;
+        private bool _autoOpen;
 
         private void Start()
         {
             Initialize(_configs);
-            openButton.onClick.AddListener(OpenX1);
-            x3OpenButton.onClick.AddListener(OpenX3);
+            openButton.onClick.AddListener(() => Open(1));
+            x3OpenButton.onClick.AddListener(() => Open(3));
+            autoOpenButton.onClick.AddListener(AutoOpen);
         }
 
         public void Initialize(List<SwordConfig> configs)
@@ -50,14 +52,10 @@ namespace _3._Scripts.Swords
             }
         }
 
-        private void OpenX1()
+        private void AutoOpen()
         {
+            _autoOpen = true;
             Open(1);
-        }
-
-        private void OpenX3()
-        {
-            Open(3);
         }
 
         private void Open(int count)
@@ -73,25 +71,33 @@ namespace _3._Scripts.Swords
                 items.Add(_configs.GetRandomElement());
             }
 
-            foreach (var item in items)
+            foreach (var item in from item in items
+                     let uiItem = _items.FirstOrDefault(i => i.SwordId == item.ID)
+                     where uiItem != null && !uiItem.DestroyOnGet
+                     select item)
             {
-                var uiItem = _items.FirstOrDefault(i => i.SwordId == item.ID);
-
-                if (uiItem == null || uiItem.DestroyOnGet) continue;
-
                 GBGames.saves.SwordsSave.Unlock(new SwordSave(item.ID));
-                Debug.Log($"Unlocked Sword: {item.ID}");
             }
+
 
             UIManager.Instance.SetScreen("3d", onOpenComplete: () =>
             {
                 var panel = UIManager.Instance.GetPanel<SwordUnlockerPanel>();
-
+                
                 panel.Enabled = true;
+                
+                if (_autoOpen)
+                    panel.EnableAutoOpen(() => _autoOpen = false);
+                
                 panel.StartUnlocking(null, items, () =>
                 {
                     panel.Enabled = false;
-                    UIManager.Instance.SetScreen("main", onCloseComplete: () => _inProgress = false);
+                    UIManager.Instance.SetScreen("main", onOpenComplete: () =>
+                    {
+                        _inProgress = false;
+                        if (_autoOpen)
+                            Open(1);
+                    });
                 });
             });
         }

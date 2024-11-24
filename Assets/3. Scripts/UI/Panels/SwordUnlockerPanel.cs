@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using _3._Scripts.Config;
 using _3._Scripts.Extensions;
@@ -11,6 +12,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
+using UnityEngine.UI;
 using VInspector;
 using Random = UnityEngine.Random;
 
@@ -20,11 +22,13 @@ namespace _3._Scripts.UI.Panels
     {
         [SerializeField] private List<SwordEgg> swordEggs = new();
         [SerializeField] private TMP_Text tutorialText;
+        [SerializeField] private Button disableAutoOpen;
 
         private bool _started;
 
         private int _eggsCount;
         private Sequence _sequenceTutorial;
+        private bool _autoOpen;
         protected override void OnOpen()
         {
             base.OnOpen();
@@ -42,6 +46,7 @@ namespace _3._Scripts.UI.Panels
             {
                 _started = false;
                 _sequenceTutorial.Kill();
+                StopAllCoroutines();
             });
 
             for (var i = 0; i < _eggsCount; i++)
@@ -51,8 +56,27 @@ namespace _3._Scripts.UI.Panels
             }
 
             TutorialAnimation();
+            StartCoroutine(AutoOpen());
+            
+            if(!_autoOpen)
+                disableAutoOpen.gameObject.SetActive(false);
 
             _started = true;
+        }
+
+        public void EnableAutoOpen(Action onDisable)
+        {
+            _autoOpen = true;
+            
+            disableAutoOpen.gameObject.SetActive(true);
+            
+            disableAutoOpen.onClick.RemoveAllListeners();
+            disableAutoOpen.onClick.AddListener(() =>
+            {
+                onDisable?.Invoke();
+                _autoOpen = false;
+                disableAutoOpen.gameObject.SetActive(false);
+            });
         }
 
         private void Update()
@@ -61,6 +85,11 @@ namespace _3._Scripts.UI.Panels
 
             if (!Input.GetMouseButtonDown(0)) return;
 
+            DamageEgg();
+        }
+
+        private void DamageEgg()
+        {
             for (var i = 0; i < _eggsCount; i++)
             {
                 swordEggs[i].GetDamage();
@@ -80,6 +109,17 @@ namespace _3._Scripts.UI.Panels
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.InOutQuad).OnKill(() => tutorialText.DOFade(0, 0.1f))
                 .OnStart(() => tutorialText.DOFade(1, 0.1f));
+        }
+
+        private IEnumerator AutoOpen()
+        {
+            if(!_autoOpen) yield break;
+
+            while (true)
+            {
+                yield return new WaitForSeconds(0.5f);
+                DamageEgg();
+            }
         }
     }
 }
