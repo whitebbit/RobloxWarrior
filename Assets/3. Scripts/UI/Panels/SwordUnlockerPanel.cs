@@ -29,7 +29,7 @@ namespace _3._Scripts.UI.Panels
         public void StartUnlocking(int eggsCount, Material eggMaterial, SwordConfig swordConfig, Action onFinished)
         {
             _eggsCount = eggsCount;
-
+            
             TutorialAnimation();
         }
 
