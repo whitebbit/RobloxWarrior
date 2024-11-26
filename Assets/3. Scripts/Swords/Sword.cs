@@ -47,10 +47,7 @@ namespace _3._Scripts.Swords
 
         public override float GetTrueDamage()
         {
-            var improveDamage = Config.Damage * (Configuration.Instance.Config.SwordCollectionConfig.StarDamageIncrease / 100) *
-                                _save.starCount;
-
-            return Config.Damage + improveDamage;
+            return _save.GetDamage(Config.Damage);
         }
     }
 }

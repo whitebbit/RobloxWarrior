@@ -19,6 +19,7 @@ namespace _3._Scripts.Weapons.Base
         public float AttackRange => Detector.DetectAreaSize;
         protected abstract float CritChance { get; }
         public virtual float DamageIncrease { get; set; }
+        private Transform _owner;
 
         protected void Awake()
         {
@@ -45,6 +46,7 @@ namespace _3._Scripts.Weapons.Base
             return 0;
         }
 
+        public void SetOwner(Transform owner) => _owner = owner;
 
         protected bool CanCrit()
         {
@@ -66,22 +68,26 @@ namespace _3._Scripts.Weapons.Base
             var crit = CanCrit();
             var damageWithCrit = crit ? damage * 2 : damage;
 
-            if (useFloatingText && obj != null)
-            {
-                var floatingText = ObjectsPoolManager.Instance.Get<FloatingText>();
-                var objTransform = obj is MonoBehaviour behaviour ? behaviour.transform : null;
-                var textPosition = Vector3.zero;
-                
-                if (objTransform != null)
-                {
-                    textPosition = objTransform.position + new Vector3(Random.Range(-3, 3), 2, 0) + objTransform.forward;
-                }
-                
-                floatingText.Initialize($"{damageWithCrit}", textPosition);
-                floatingText.SetColor(crit ? Color.red : Color.white);
-            }
+            UseFloatingText(obj, damageWithCrit, crit);
 
             obj?.Visit(damageWithCrit);
+        }
+
+        private void UseFloatingText(IWeaponVisitor obj, float damageWithCrit, bool crit)
+        {
+            if (!useFloatingText || obj == null) return;
+
+            var floatingText = ObjectsPoolManager.Instance.Get<FloatingText>();
+            var textPosition = Vector3.zero;
+
+            if (_owner != null)
+            {
+                textPosition = _owner.position + new Vector3(Random.Range(-3f, 3f), Random.Range(2f, 3f), 0) -
+                               transform.forward * Random.Range(0.5f, 1f);
+            }
+
+            floatingText.Initialize($"{damageWithCrit}", textPosition);
+            floatingText.SetColor(crit ? Color.red : Color.white);
         }
     }
 }

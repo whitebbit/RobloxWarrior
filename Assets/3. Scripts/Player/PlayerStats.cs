@@ -54,7 +54,7 @@ namespace _3._Scripts.Player
                 OnUpgradePointsChanged?.Invoke(Save.upgradePoints);
             }
         }
-
+        
         public float ExperienceToLevelUp()
         {
             return Config.InitialExperienceCoefficient * Mathf.Pow(Level, Config.DifficultyFactor);

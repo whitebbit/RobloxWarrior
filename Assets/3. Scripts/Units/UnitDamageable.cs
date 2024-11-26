@@ -22,7 +22,6 @@ namespace _3._Scripts.Units
             if (totalDamage < 0)
                 throw new ArgumentOutOfRangeException(nameof(totalDamage), "Damage cannot be negative.");
 
-            Debug.Log($"{_health.Health} took {totalDamage} damage, {_health.Health - totalDamage}");
             _health.Health -= totalDamage;
         }
 

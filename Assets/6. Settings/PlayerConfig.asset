@@ -24,7 +24,7 @@ MonoBehaviour:
     critImprovement: 0.4
     rebirthRate: 5
     attackPercentIncrease: 1
-    baseExperiencePercentIncrease: 2
+    baseExperiencePercentIncrease: 10
     rebirthStartLevelRequired: 5
     rebirthIncreaseAmount: 5
     rebirthIncreaseInterval: 10
