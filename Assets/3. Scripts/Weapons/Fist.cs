@@ -6,6 +6,8 @@ namespace _3._Scripts.Weapons
 {
     public class Fist: Weapon<BaseWeaponConfig>
     {
+        protected override float CritChance => 0;
+
         public override void Attack()
         {
             Detector.FindTargets();
@@ -13,7 +15,7 @@ namespace _3._Scripts.Weapons
 
         protected override float GetDamage()
         {
-            return Config.Damage;
+            return Config.Damage * DamageIncrease;
         }
     }
 }

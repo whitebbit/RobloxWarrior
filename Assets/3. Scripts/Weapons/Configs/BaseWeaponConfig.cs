@@ -9,6 +9,6 @@ namespace _3._Scripts.Weapons.Configs
             Damage = damage;
         }
 
-        public float Damage { get; }
+        public float Damage { get; set; }
     }
 }

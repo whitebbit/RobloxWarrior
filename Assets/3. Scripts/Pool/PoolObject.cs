@@ -38,6 +38,7 @@ namespace _3._Scripts.Pool
             obj.gameObject.name = _prefab.name;
 
             obj.OnDespawn();
+            obj.gameObject.SetActive(false);
             _poolQueue.Enqueue(obj);
             return obj;
         }
@@ -50,6 +51,7 @@ namespace _3._Scripts.Pool
                 {
                     var obj = _poolQueue.Dequeue();
                     obj.transform.SetParent(null);
+                    obj.gameObject.SetActive(true);
                     obj.OnSpawn();
                     return obj;
                 }
@@ -62,6 +64,7 @@ namespace _3._Scripts.Pool
         {
             obj.transform.SetParent(_parent);
             obj.OnDespawn();
+            obj.gameObject.SetActive(false);
 
             _poolQueue.Enqueue(obj);
         }

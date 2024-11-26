@@ -20,7 +20,8 @@ namespace _3._Scripts.Swords
     public class SwordUnlocker : MonoBehaviour, IInteractive
     {
         [Tab("Main")]
-        [SerializeField] private Transform eggModel;
+        [SerializeField] private MeshRenderer eggModel;
+        [SerializeField] private Transform eggTransform;
         [SerializeField] private ScaleTransition uiTransition;
         [Tab("UI")]
         [SerializeField] private Transform container;
@@ -30,26 +31,29 @@ namespace _3._Scripts.Swords
         [SerializeField] private Button openButton;
         [SerializeField] private Button autoOpenButton;
         [SerializeField] private Button x3OpenButton;
-
+        [Tab("Test")] [SerializeField]
+        private Material eggMaterial;
         [SerializeField] private List<SwordConfig> _configs = new();
 
         private readonly List<SwordEggItem> _items = new();
 
+        private Material _eggMaterial;
         private bool _inProgress;
         private bool _autoOpen;
 
         private void Start()
         {
-            Initialize(_configs);
+            Initialize(_configs, eggMaterial);
             uiTransition.ForceOut();
             openButton.onClick.AddListener(() => Open(1));
             x3OpenButton.onClick.AddListener(() => Open(3));
             autoOpenButton.onClick.AddListener(AutoOpen);
         }
 
-        public void Initialize(List<SwordConfig> configs)
+        public void Initialize(List<SwordConfig> configs, Material eggMaterial)
         {
             _configs = configs;
+            _eggMaterial = eggMaterial;
             var orderByDescending = _configs.OrderByDescending(i => i.Chance);
 
             foreach (var config in orderByDescending)
@@ -59,6 +63,8 @@ namespace _3._Scripts.Swords
 
                 _items.Add(item);
             }
+
+            eggModel.material = eggMaterial;
         }
 
         private void AutoOpen()
@@ -98,7 +104,7 @@ namespace _3._Scripts.Swords
                 if (_autoOpen)
                     panel.EnableAutoOpen(() => _autoOpen = false);
                 
-                panel.StartUnlocking(null, items, () =>
+                panel.StartUnlocking(_eggMaterial, items, () =>
                 {
                     panel.Enabled = false;
                     UIManager.Instance.SetScreen("main", onOpenComplete: () =>
@@ -113,14 +119,14 @@ namespace _3._Scripts.Swords
 
         public void Interact()
         {
-            eggModel.DOScale(0, 0.25f);
+            eggTransform.DOScale(0, 0.25f);
             uiTransition.AnimateIn();
         }
 
         public void StopInteracting()
         {
             uiTransition.AnimateOut();
-            eggModel.DOScale(1, 0.25f).SetEase(Ease.OutBack).SetDelay(0.15f);
+            eggTransform.DOScale(1, 0.25f).SetEase(Ease.OutBack).SetDelay(0.15f);
         }
     }
 }

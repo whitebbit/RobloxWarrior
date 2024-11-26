@@ -30,7 +30,7 @@ namespace _3._Scripts.Worlds
         {
             if (!other.TryGetComponent(out Player.Player _)) return;
 
-            timer.StartCountdown(_battleArena.StartBattle, 10);
+            timer.StartCountdown(_battleArena.StartBattle, 5);
         }
 
         private void OnTriggerExit(Collider other)

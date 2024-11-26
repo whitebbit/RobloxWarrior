@@ -19,7 +19,7 @@ MonoBehaviour:
     - config: {fileID: 11400000, guid: b839835a2f9d3d64bb61c399eaa09eaa, type: 2}
       count: 2
     damageIncrease: 1
-    healthIncrease: 1
+    healthIncrease: 2
   - bots:
     - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
       count: 4

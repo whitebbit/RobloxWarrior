@@ -13,5 +13,8 @@ namespace _3._Scripts.Worlds
         [SerializeField] private float healthIncrease;
         
         public List<BotSpawnData> Bots => bots;
+
+        public float DamageIncrease => damageIncrease;
+        public float HealthIncrease => healthIncrease;
     }
 }

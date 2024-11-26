@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f35827ae2d4a838991852165fb5491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useFloatingText: 1
   trail: {fileID: 2757497876293413259}
 --- !u!114 &2757497876293413259
 MonoBehaviour:

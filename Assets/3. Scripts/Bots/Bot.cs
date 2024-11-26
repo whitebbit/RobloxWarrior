@@ -78,24 +78,26 @@ namespace _3._Scripts.Bots
             _combat.Initialize(_config);
             _movement.Initialize(_config);
             _view.Initialize(_config);
+        }
 
-            Health.IncreaseMaxHealth(_config.Health);
+        public void Upgrade(float damageIncrease, float healthIncrease)
+        {
+            var healthAmount = _config.Health * healthIncrease - _config.Health;
+
+            Health.IncreaseMaxHealth(healthAmount);
+            _combat.Weapon.DamageIncrease = damageIncrease;
         }
 
         public void OnSpawn()
         {
-            gameObject.SetActive(true);
         }
 
         public void OnDespawn()
         {
-            if (_config != null)
-            {
-                Health.Health = _config.Health;
-                Dying.IsDead = false;
-            }
+            if (_config == null) return;
 
-            gameObject.SetActive(false);
+            Health.Health = _config.Health;
+            Dying.IsDead = false;
         }
     }
 }

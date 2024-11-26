@@ -11,6 +11,9 @@ namespace _3._Scripts.Units
     public abstract class UnitCombat<TWeapon, TConfig> : MonoBehaviour
         where TWeapon : Weapon<TConfig> where TConfig : IWeaponConfig
     {
+        [SerializeField] private bool useFloatingText;
+        [SerializeField] private Transform floatingText;
+        
         public abstract TWeapon Weapon { get; }
         protected abstract List<AttackAnimation> AttackAnimations { get; }
         protected abstract UnitAnimator Animator { get; set; }
@@ -32,6 +35,15 @@ namespace _3._Scripts.Units
             StartCoroutine(PerformAttack());
         }
 
+        private void OnAttack()
+        {
+            Weapon.Attack();
+            if (useFloatingText)
+            {
+                
+            }
+        }
+        
         protected virtual IEnumerator PerformAttack()
         {
             var attackAnimation = AttackAnimations[Mathf.Clamp(_comboIndex, 0, AttackAnimations.Count - 1)];
@@ -39,7 +51,7 @@ namespace _3._Scripts.Units
 
             _isAttacking = true;
 
-            Animator.DoAttack(attackAnimation, AttackSpeed, Weapon.Attack);
+            Animator.DoAttack(attackAnimation, AttackSpeed, OnAttack);
 
             yield return new WaitForSeconds(length - length * 0.3f);
 

@@ -336,6 +336,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2779586899003169999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2812846975376253324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2087837021017685510}
+  m_Layer: 7
+  m_Name: DamagePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2087837021017685510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812846975376253324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.737, y: 2.721, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4793125362634866367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3124603825513105225
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a5c8aedc294f8a90112f146d40a1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useFloatingText: 0
 --- !u!114 &7162131873753655907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,9 +1123,9 @@ GameObject:
   - component: {fileID: 7125109270727664851}
   - component: {fileID: 948126192852172886}
   - component: {fileID: 6265578969284431569}
-  - component: {fileID: 495574039863734604}
   - component: {fileID: 7329589555668453756}
   - component: {fileID: 8387085116339734379}
+  - component: {fileID: 6377861416951712057}
   m_Layer: 7
   m_Name: Bot
   m_TagString: Untagged
@@ -1117,6 +1149,7 @@ Transform:
   - {fileID: 4248629564202708030}
   - {fileID: 2580167577644146590}
   - {fileID: 3690739108173513308}
+  - {fileID: 2087837021017685510}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1230359045762481908
@@ -1230,19 +1263,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.5, z: -0.1}
---- !u!114 &495574039863734604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7905760633911335917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f22d3792528841be9b36fd09080dee9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 1230359045762481908}
 --- !u!114 &7329589555668453756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,6 +1304,19 @@ MonoBehaviour:
   skinnedMeshRenderers:
   - {fileID: 1152525978299518971}
   - {fileID: 3721553382528174661}
+--- !u!114 &6377861416951712057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7905760633911335917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22d3792528841be9b36fd09080dee9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 1230359045762481908}
 --- !u!1 &8359050905875475309
 GameObject:
   m_ObjectHideFlags: 0
