@@ -10,6 +10,9 @@ public class WorldConfigEditor : Editor
 
     // Переменная для хранения состояния сворачивания/раскрытия всего списка waves
     private bool wavesFoldout = false;
+    private bool swordEggsFoldout = false;
+
+    private SerializedProperty swordEggs;
 
     // Переменные для пагинации
     private int currentPage = 0;
@@ -22,6 +25,7 @@ public class WorldConfigEditor : Editor
     private void OnEnable()
     {
         waves = serializedObject.FindProperty("waves");
+        swordEggs = serializedObject.FindProperty("swordEggs");
         totalPages = Mathf.CeilToInt((float)waves.arraySize / itemsPerPage); // Рассчитываем количество страниц
     }
 
@@ -30,6 +34,7 @@ public class WorldConfigEditor : Editor
         serializedObject.Update();
 
         Waves();
+        SwordEggs();
         var worldPrefab = serializedObject.FindProperty("worldPrefab");
         GUILayout.Space(10);
         EditorGUILayout.PropertyField(worldPrefab, new GUIContent("World Prefab"));
@@ -37,19 +42,26 @@ public class WorldConfigEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
+    private Vector2 _scrollPositionWave; // Переменная для сохранения позиции скролла
+
     private void Waves()
     {
         // Кнопка для добавления новой волны
         wavesFoldout = EditorGUILayout.Foldout(wavesFoldout, "Waves");
-        if (!wavesFoldout) return; // Если список раскрыт
-        // Поиск по номеру волны
+        if (!wavesFoldout) return; // Если список свернут, выходим
+        EditorGUILayout.BeginVertical("box");
+
         GUILayout.BeginVertical("box");
+
+        // Поле для поиска
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Search");
         searchWaveNumber = EditorGUILayout.TextField(searchWaveNumber);
         EditorGUILayout.EndHorizontal();
+
         GUILayout.Space(10);
 
+        // Кнопки для добавления новой волны и очистки всех волн
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Add Wave", GUILayout.Height(30)))
         {
@@ -57,21 +69,18 @@ public class WorldConfigEditor : Editor
             var newWave = waves.GetArrayElementAtIndex(waves.arraySize - 1);
             var bots = newWave.FindPropertyRelative("bots");
             bots.arraySize = 0; // Новый список ботов для этой волны будет пустым
-            totalPages = Mathf.CeilToInt((float)waves.arraySize / itemsPerPage); // Пересчитываем количество страниц
         }
 
-        // Кнопка для очистки всего списка
         if (GUILayout.Button("Clear Waves", GUILayout.Height(30)))
         {
             waves.ClearArray(); // Очистить весь список волн
-            totalPages = 0; // Сбрасываем количество страниц
-            currentPage = 0;
         }
 
         GUILayout.EndHorizontal();
+
         GUILayout.EndVertical();
 
-        // Фильтруем волны по поисковому запросу
+        // Создаем список волн с учетом фильтрации
         var filteredWaves = new List<SerializedProperty>();
         for (var i = 0; i < waves.arraySize; i++)
         {
@@ -81,42 +90,44 @@ public class WorldConfigEditor : Editor
             }
         }
 
-        // Отображаем список волн с учетом пагинации
-        GUILayout.BeginVertical("box");
-
-        // Вычисляем, какие элементы отображать на текущей странице из отфильтрованного списка
-        var startIndex = currentPage * itemsPerPage;
-        var endIndex = Mathf.Min((currentPage + 1) * itemsPerPage, filteredWaves.Count);
-
-        for (var i = startIndex; i < endIndex; i++)
+        // Добавляем скроллбар
+        // Создаем область с прокруткой, если объекты есть
+        if (waves.arraySize > 0)
         {
-            // Получаем отфильтрованную волну
+            _scrollPositionWave =
+                EditorGUILayout.BeginScrollView(_scrollPositionWave, GUILayout.Height(300));
+        }
+
+        // Отображаем волны
+
+        for (var i = 0; i < filteredWaves.Count; i++)
+        {
             var wave = filteredWaves[i];
             var bots = wave.FindPropertyRelative("bots");
             var damageIncrease = wave.FindPropertyRelative("damageIncrease");
             var healthIncrease = wave.FindPropertyRelative("healthIncrease");
 
-            // Если мы ищем по номеру волны, отображаем это число в названии
-            var waveLabel = $"Wave {i + 1}";
-            if (!string.IsNullOrEmpty(searchWaveNumber))
+            // Отображаем информацию о волне
+            EditorGUILayout.BeginHorizontal();
+            var waveNumber = string.IsNullOrEmpty(searchWaveNumber) ? $"Wave {i + 1}" : $"Wave {searchWaveNumber}";
+            EditorGUILayout.LabelField(waveNumber, EditorStyles.boldLabel);
+            if (GUILayout.Button("X", GUILayout.Height(20), GUILayout.Width(20)))
             {
-                waveLabel = $"Wave {searchWaveNumber}";
+                waves.DeleteArrayElementAtIndex(i);
+                serializedObject.ApplyModifiedProperties();
+                return; // Обновляем интерфейс
             }
 
-            // Отображаем кнопку для удаления текущей волны
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField(waveLabel, EditorStyles.boldLabel); // Отображаем правильный номер волны
             EditorGUILayout.EndHorizontal();
 
-            GUILayout.BeginVertical();
+            GUILayout.BeginVertical("box");
             EditorGUILayout.PropertyField(damageIncrease, new GUIContent("Damage Increase"));
             EditorGUILayout.PropertyField(healthIncrease, new GUIContent("Health Increase"));
             GUILayout.EndVertical();
 
-            // Отображаем список ботов для этой волны
-            GUILayout.BeginVertical();
+            // Список ботов
+            GUILayout.BeginVertical("box");
 
-            // Ensure scroll position is initialized for each wave
             if (!_scrollPosition.ContainsKey(i))
             {
                 _scrollPosition.Add(i, Vector2.zero);
@@ -132,14 +143,12 @@ public class WorldConfigEditor : Editor
                     var config = botSpawnData.FindPropertyRelative("config");
                     var count = botSpawnData.FindPropertyRelative("count");
 
-                    // Разделитель для каждого BotSpawnData
                     GUILayout.BeginHorizontal("box");
                     EditorGUILayout.BeginVertical();
                     EditorGUILayout.PropertyField(config, new GUIContent("Config"));
                     EditorGUILayout.PropertyField(count, new GUIContent("Count"));
-
-                    // Кнопка для удаления конкретного бота
                     EditorGUILayout.EndVertical();
+
                     if (GUILayout.Button("Delete", GUILayout.Height(39)))
                     {
                         bots.DeleteArrayElementAtIndex(j);
@@ -154,26 +163,16 @@ public class WorldConfigEditor : Editor
 
             GUILayout.EndVertical();
 
+            // Кнопки для управления ботами
             GUILayout.BeginHorizontal();
-
-            // Кнопка для добавления нового бота в текущую волну
             if (GUILayout.Button("Add", GUILayout.Height(30)))
             {
-                bots.arraySize++; // Увеличиваем количество ботов
+                bots.arraySize++;
             }
 
             if (GUILayout.Button("Clear", GUILayout.Height(30)))
             {
-                bots.arraySize = 0; // Увеличиваем количество ботов
-            }
-
-            if (GUILayout.Button("Delete", GUILayout.Height(30)))
-            {
-                // Удаление волны из списка
-                waves.DeleteArrayElementAtIndex(i);
-                serializedObject.ApplyModifiedProperties();
-                totalPages =
-                    Mathf.CeilToInt((float)waves.arraySize / itemsPerPage); // Пересчитываем количество страниц
+                bots.arraySize = 0;
             }
 
             GUILayout.EndHorizontal();
@@ -181,29 +180,125 @@ public class WorldConfigEditor : Editor
             if (i < filteredWaves.Count - 1)
             {
                 EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-                    
             }
         }
 
-        // Пагинация
-        GUILayout.EndVertical();
-        if (!string.IsNullOrEmpty(searchWaveNumber)) return;
-        GUILayout.BeginHorizontal("box");
 
-        EditorGUILayout.LabelField($"Page {currentPage + 1} of {totalPages}");
-
-        if (GUILayout.Button("<", GUILayout.Width(100)) && currentPage > 0)
+        if (waves.arraySize > 0)
         {
-            currentPage--;
+            EditorGUILayout.EndScrollView(); // Закрываем основной скролл
         }
-
-        if (GUILayout.Button(">", GUILayout.Width(100)) && currentPage < totalPages - 1)
-        {
-            currentPage++;
-        }
-
-        GUILayout.EndHorizontal();
+        EditorGUILayout.EndVertical();
     }
-    
+
+
+    private Vector2 _scrollPositionSwordEggs; // Переменная для сохранения позиции скролла
+
+    private void SwordEggs()
+    {
+        swordEggsFoldout = EditorGUILayout.Foldout(swordEggsFoldout, "Sword Eggs");
+        if (!swordEggsFoldout) return;
+
+        GUILayout.BeginVertical("box");
+
+        // Кнопки добавления и очистки
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Add Egg", GUILayout.Height(30)))
+        {
+            swordEggs.arraySize++;
+        }
+
+        if (GUILayout.Button("Clear Eggs", GUILayout.Height(30)))
+        {
+            swordEggs.ClearArray();
+        }
+
+        EditorGUILayout.EndHorizontal();
+
+        // Вычисляем высоту области прокрутки
+
+        // Создаем область с прокруткой, если объекты есть
+        if (swordEggs.arraySize > 0)
+        {
+            _scrollPositionSwordEggs =
+                EditorGUILayout.BeginScrollView(_scrollPositionSwordEggs, GUILayout.Height(300));
+        }
+
+        // Отображение всех элементов списка SwordEggs
+        for (int i = 0; i < swordEggs.arraySize; i++)
+        {
+            var swordEgg = swordEggs.GetArrayElementAtIndex(i);
+            var price = swordEgg.FindPropertyRelative("price");
+            var eggMaterial = swordEgg.FindPropertyRelative("eggMaterial");
+            var swords = swordEgg.FindPropertyRelative("swords");
+
+            EditorGUILayout.BeginVertical("box");
+            EditorGUILayout.LabelField($"Egg {i + 1}", EditorStyles.boldLabel);
+
+            // Поля для price и eggMaterial
+            EditorGUILayout.PropertyField(price, new GUIContent("Price"));
+            EditorGUILayout.PropertyField(eggMaterial, new GUIContent("Egg Material"));
+
+            // Управление списком Swords
+            GUILayout.BeginVertical("box");
+            EditorGUILayout.LabelField("Swords", EditorStyles.boldLabel);
+
+            // Отображение списка мечей
+            for (int j = 0; j < swords.arraySize; j++)
+            {
+                var sword = swords.GetArrayElementAtIndex(j);
+
+                EditorGUILayout.BeginHorizontal();
+
+                // Поле Sword Config
+                EditorGUILayout.PropertyField(sword, new GUIContent($"Sword {j + 1}"), GUILayout.ExpandWidth(true));
+
+                // Кнопка удаления справа от Sword Config
+                if (GUILayout.Button("X", GUILayout.Width(25), GUILayout.Height(25)))
+                {
+                    swords.DeleteArrayElementAtIndex(j);
+                    serializedObject.ApplyModifiedProperties();
+                    break; // Прерываем вложенный цикл
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
+
+            GUILayout.BeginHorizontal();
+
+            // Кнопка добавления нового меча
+            if (GUILayout.Button("Add Sword", GUILayout.Height(25)))
+            {
+                swords.arraySize++;
+            }
+
+            // Кнопка удаления текущего Sword Egg
+            if (GUILayout.Button("Delete Egg", GUILayout.Height(25)))
+            {
+                swordEggs.DeleteArrayElementAtIndex(i);
+                serializedObject.ApplyModifiedProperties();
+                break; // Прерываем цикл после удаления
+            }
+
+            GUILayout.EndHorizontal();
+            GUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
+
+            if (i < swordEggs.arraySize - 1)
+            {
+                EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            }
+        }
+
+        // Закрываем область с прокруткой, если она была создана
+        if (swordEggs.arraySize > 0)
+        {
+            EditorGUILayout.EndScrollView();
+        }
+
+        GUILayout.EndVertical();
+    }
+
+
     private readonly Dictionary<int, Vector2> _scrollPosition = new();
 }

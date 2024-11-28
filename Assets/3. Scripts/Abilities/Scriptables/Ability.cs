@@ -89,10 +89,10 @@ namespace _3._Scripts.Abilities.Scriptables
             if (abilitiesToUnlock.Count > 0)
             {
                 return abilitiesToUnlock.All(a => a.Level >= abilityLevelToUnlock) &&
-                       GBGames.saves.rebornCount >= rebornCountToUnlock;
+                       GBGames.saves.stats.rebirthCounts >= rebornCountToUnlock;
             }
 
-            return GBGames.saves.rebornCount >= rebornCountToUnlock;
+            return GBGames.saves.stats.rebirthCounts >= rebornCountToUnlock;
         }
 
 

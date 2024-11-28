@@ -56,10 +56,8 @@ namespace _3._Scripts.UI.Panels
             }
 
             TutorialAnimation();
-            StartCoroutine(AutoOpen());
-            
-            if(!_autoOpen)
-                disableAutoOpen.gameObject.SetActive(false);
+
+            DisableAutoOpen();
 
             _started = true;
         }
@@ -74,11 +72,18 @@ namespace _3._Scripts.UI.Panels
             disableAutoOpen.onClick.AddListener(() =>
             {
                 onDisable?.Invoke();
-                _autoOpen = false;
-                disableAutoOpen.gameObject.SetActive(false);
+                DisableAutoOpen();
             });
+            
+            StartCoroutine(AutoOpen());
         }
 
+        private void DisableAutoOpen()
+        {
+            _autoOpen = false;
+            disableAutoOpen.gameObject.SetActive(false);
+        }
+        
         private void Update()
         {
             if (!_started) return;

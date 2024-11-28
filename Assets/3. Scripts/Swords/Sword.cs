@@ -27,7 +27,15 @@ namespace _3._Scripts.Swords
             Detector.enabled = false;
             trail.enabled = false;
         }
-        
+
+        public override void Initialize(SwordConfig config)
+        {
+            base.Initialize(config);
+
+            var rarity = Configuration.Instance.GetRarityTable(config.Rarity);
+            trail.SetColor(rarity.MainColor);
+        }
+
         public void SetSave(SwordSave save)
         {
             _save = save;

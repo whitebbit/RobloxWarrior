@@ -337,6 +337,16 @@ public class MeleeWeaponTrail : MonoBehaviour
 		}
 	}
 
+	public void SetColor(Color color)
+	{
+		for (int i = 0; i < _colors.Length; i++)
+		{
+			var c = _colors[i];
+			var newColor = new Color(color.r, color.g, color.b, c.a);
+			_colors[i] = newColor;
+		}
+	}
+	
 	void RemoveOldPoints(List<Point> pointList)
 	{
 		List<Point> remove = new List<Point>();

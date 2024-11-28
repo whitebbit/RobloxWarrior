@@ -17,5 +17,5 @@ MonoBehaviour:
   descriptionID: 
   prefab: {fileID: 8556951519723268008, guid: e16f97b1f42ae9b4ea3f19321744b02b, type: 3}
   rarity: 2
-  damage: 100
+  damage: 125
   dropChance: 50

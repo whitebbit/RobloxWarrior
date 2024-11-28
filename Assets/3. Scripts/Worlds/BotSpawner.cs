@@ -36,7 +36,7 @@ namespace _3._Scripts.Worlds
                     // Стартовая позиция (transform.position) будет центром, а позиции ботов будут от нее отступать.
                     var spawnPosition = transform.position + new Vector3(
                         (col - maxBotsPerRow / 2f) * distance, // Сдвиг по оси X
-                        transform.position.y + botConfig.Size * 1.5f, // Высота остаётся постоянной
+                        transform.position.y + botConfig.Size * 1.1f, // Высота остаётся постоянной
                         (row - totalRows / 2f) * distance // Сдвиг по оси Z
                     );
 
@@ -46,9 +46,10 @@ namespace _3._Scripts.Worlds
                     // Инициализируем бота
                     bot.Initialize(botConfig);
                     bot.Upgrade(waveData.DamageIncrease, waveData.HealthIncrease);
-                
+                    
                     // Перемещаем его на нужную позицию
                     bot.transform.position = spawnPosition;
+                    bot.transform.eulerAngles = new Vector3(0, 180, 0);
                     list.Add(bot);
                     
                     // Увеличиваем индексы столбца и строки

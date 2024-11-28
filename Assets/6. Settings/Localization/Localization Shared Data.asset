@@ -185,6 +185,14 @@ MonoBehaviour:
     m_Key: spin_x3
     m_Metadata:
       m_Items: []
+  - m_Id: 70830347356536832
+    m_Key: sword_cout_max
+    m_Metadata:
+      m_Items: []
+  - m_Id: 70941223300431872
+    m_Key: "\u0441ombine_sword"
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -9,6 +9,7 @@ using _3._Scripts.UI;
 using _3._Scripts.UI.Elements.SwordUnlocker;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.UI.Transitions;
+using _3._Scripts.UI.Widgets;
 using DG.Tweening;
 using GBGamesPlugin;
 using UnityEngine;
@@ -19,20 +20,16 @@ namespace _3._Scripts.Swords
 {
     public class SwordUnlocker : MonoBehaviour, IInteractive
     {
-        [Tab("Main")]
-        [SerializeField] private MeshRenderer eggModel;
+        [Tab("Main")] [SerializeField] private MeshRenderer eggModel;
         [SerializeField] private Transform eggTransform;
         [SerializeField] private ScaleTransition uiTransition;
-        [Tab("UI")]
-        [SerializeField] private Transform container;
+        [Tab("UI")] [SerializeField] private Transform container;
         [SerializeField] private SwordEggItem prefab;
-        
-        [Tab("Buttons")]
-        [SerializeField] private Button openButton;
+
+        [Tab("Buttons")] [SerializeField] private Button openButton;
         [SerializeField] private Button autoOpenButton;
         [SerializeField] private Button x3OpenButton;
-        [Tab("Test")] [SerializeField]
-        private Material eggMaterial;
+        [Tab("Test")] [SerializeField] private Material eggMaterial;
         [SerializeField] private List<SwordConfig> _configs = new();
 
         private readonly List<SwordEggItem> _items = new();
@@ -44,6 +41,7 @@ namespace _3._Scripts.Swords
         private void Start()
         {
             Initialize(_configs, eggMaterial);
+
             uiTransition.ForceOut();
             openButton.onClick.AddListener(() => Open(1));
             x3OpenButton.onClick.AddListener(() => Open(3));
@@ -75,10 +73,24 @@ namespace _3._Scripts.Swords
 
         private void Open(int count)
         {
-            if (_inProgress) return;
+            if (GBGames.saves.swordsSave.unlocked.Count + count > GBGames.saves.swordsSave.maxSwordsCount)
+            {
+                ShowNotification();
+                return;
+            }
+
+            if (_inProgress)
+                return;
 
             _inProgress = true;
 
+            var items = UnlockSwords(count);
+
+            ShowPanel(items);
+        }
+
+        private List<SwordConfig> UnlockSwords(int count)
+        {
             var items = new List<SwordConfig>();
 
             for (var i = 0; i < count; i++)
@@ -91,19 +103,20 @@ namespace _3._Scripts.Swords
                      where uiItem != null && !uiItem.DestroyOnGet
                      select item)
             {
-                GBGames.saves.SwordsSave.Unlock(new SwordSave(item.ID));
+                GBGames.saves.swordsSave.Unlock(new SwordSave(item.ID));
             }
+            
+            return items;
+        }
 
-
+        private void ShowPanel(List<SwordConfig> items)
+        {
             UIManager.Instance.SetScreen("3d", onOpenComplete: () =>
             {
                 var panel = UIManager.Instance.GetPanel<SwordUnlockerPanel>();
-                
+
                 panel.Enabled = true;
-                
-                if (_autoOpen)
-                    panel.EnableAutoOpen(() => _autoOpen = false);
-                
+
                 panel.StartUnlocking(_eggMaterial, items, () =>
                 {
                     panel.Enabled = false;
@@ -114,7 +127,20 @@ namespace _3._Scripts.Swords
                             Open(1);
                     });
                 });
+                
+                if (_autoOpen)
+                    panel.EnableAutoOpen(() => _autoOpen = false);
             });
+        }
+
+        private void ShowNotification()
+        {
+            var widget = UIManager.Instance.GetWidget<NotificationWidget>();
+            
+            widget.Enabled = true;
+            widget.SetText("sword_cout_max");
+            
+            _autoOpen = false;
         }
 
         public void Interact()
