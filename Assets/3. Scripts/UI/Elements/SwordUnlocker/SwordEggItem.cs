@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using _3._Scripts.Config;
 using _3._Scripts.Config.Interfaces;
 using _3._Scripts.Extensions;
@@ -42,9 +43,18 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
             
             table.color = rarity.MainColor;
             chanceText.text = $"{config.Chance}%";
-            icon.texture = config.Icon;
-
             SwordId = config.ID;
+            
+            StartCoroutine(WaitIconTexture(config));
+        }
+
+        private IEnumerator WaitIconTexture(SwordConfig config)
+        {
+            while (config.Icon == null)
+            {
+                yield return null;
+            }
+            icon.texture = config.Icon;
         }
     }
 }

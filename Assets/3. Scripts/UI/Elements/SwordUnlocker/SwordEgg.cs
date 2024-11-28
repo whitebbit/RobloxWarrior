@@ -66,6 +66,7 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
 
             main.startColor = rarity.MainColor;
             sword.gameObject.SetLayer("UI");
+            sword.transform.localPosition = Vector3.zero;
         }
 
         public void GetDamage()

@@ -12,18 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95b1745c29c4f4d885211329c55ffbc, type: 3}
   m_Name: World 0
   m_EditorClassIdentifier: 
-  waves: []
+  waves:
+  - bots: []
+    damageIncrease: 0
+    healthIncrease: 0
   worldPrefab: {fileID: 2633462022766494348, guid: 6b4fb8ced8bbce946821569fb031ab97, type: 3}
   swordEggs:
-  - price: 0
-    eggMaterial: {fileID: 0}
-    swords: []
-  - price: 0
-    eggMaterial: {fileID: 0}
-    swords: []
-  - price: 0
-    eggMaterial: {fileID: 0}
-    swords: []
-  - price: 0
-    eggMaterial: {fileID: 0}
-    swords: []
+  - price: 1000
+    eggMaterial: {fileID: 2100000, guid: 987041c2b08857146829bf8b6762868c, type: 2}
+    swords:
+    - {fileID: 11400000, guid: fdaf6b00d42f88a498a53b40f3dbc8c8, type: 2}
+    - {fileID: 11400000, guid: 7aec8c5c770580b4e9a0b18744922ec5, type: 2}
+    - {fileID: 11400000, guid: c96c12304df57ab468f9b1dd5fafe857, type: 2}

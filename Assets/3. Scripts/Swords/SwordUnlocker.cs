@@ -29,8 +29,7 @@ namespace _3._Scripts.Swords
         [Tab("Buttons")] [SerializeField] private Button openButton;
         [SerializeField] private Button autoOpenButton;
         [SerializeField] private Button x3OpenButton;
-        [Tab("Test")] [SerializeField] private Material eggMaterial;
-        [SerializeField] private List<SwordConfig> _configs = new();
+        private List<SwordConfig> _configs = new();
 
         private readonly List<SwordEggItem> _items = new();
 
@@ -38,20 +37,21 @@ namespace _3._Scripts.Swords
         private bool _inProgress;
         private bool _autoOpen;
 
+        private float _price;
         private void Start()
         {
-            Initialize(_configs, eggMaterial);
-
             uiTransition.ForceOut();
             openButton.onClick.AddListener(() => Open(1));
             x3OpenButton.onClick.AddListener(() => Open(3));
             autoOpenButton.onClick.AddListener(AutoOpen);
         }
 
-        public void Initialize(List<SwordConfig> configs, Material eggMaterial)
+        public void Initialize(SwordUnlockerData data)
         {
-            _configs = configs;
-            _eggMaterial = eggMaterial;
+            _configs = data.Swords;
+            _eggMaterial = data.EggMaterial;
+            _price = data.Price;
+            
             var orderByDescending = _configs.OrderByDescending(i => i.Chance);
 
             foreach (var config in orderByDescending)
@@ -62,7 +62,7 @@ namespace _3._Scripts.Swords
                 _items.Add(item);
             }
 
-            eggModel.material = eggMaterial;
+            eggModel.material = _eggMaterial;
         }
 
         private void AutoOpen()
@@ -105,7 +105,7 @@ namespace _3._Scripts.Swords
             {
                 GBGames.saves.swordsSave.Unlock(new SwordSave(item.ID));
             }
-            
+
             return items;
         }
 
@@ -127,7 +127,7 @@ namespace _3._Scripts.Swords
                             Open(1);
                     });
                 });
-                
+
                 if (_autoOpen)
                     panel.EnableAutoOpen(() => _autoOpen = false);
             });
@@ -136,10 +136,10 @@ namespace _3._Scripts.Swords
         private void ShowNotification()
         {
             var widget = UIManager.Instance.GetWidget<NotificationWidget>();
-            
+
             widget.Enabled = true;
             widget.SetText("sword_cout_max");
-            
+
             _autoOpen = false;
         }
 

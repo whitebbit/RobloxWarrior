@@ -15,7 +15,7 @@ namespace _3._Scripts.Saves
         public SwordSave(string id)
         {
             this.id = id;
-            uid = $"{id}_{Time.time}_{Random.Range(0, 10000000)}".GetHashCode();
+            uid = $"{id}_{Time.time}_{Random.Range(-10000000f, 10000000f)}".GetHashCode();
         }
 
         public float GetDamage(float damage)

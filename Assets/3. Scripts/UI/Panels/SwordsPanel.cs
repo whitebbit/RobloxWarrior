@@ -10,27 +10,29 @@ using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using VInspector;
 
 namespace _3._Scripts.UI.Panels
 {
+    /// <summary>
+    /// Панель управления мечами, позволяющая экипировать, создавать, сортировать и удалять мечи.
+    /// </summary>
     public class SwordsPanel : UIPanel
     {
-        [Tab("Main")] [SerializeField] private ScaleTransition transition;
-        [SerializeField] private SwordItem currentSword;
+        [Header("Main Settings")] [SerializeField]
+        private ScaleTransition transition;
 
+        [SerializeField] private SwordItem currentSword;
         [SerializeField] private Transform container;
         [SerializeField] private TMP_Text capacityText;
 
-        [Tab("Selected Buttons")] [SerializeField]
+        [Header("Selected Sword Actions")] [SerializeField]
         private Button equipSelectedButton;
 
         [SerializeField] private Button craftSelectedButton;
         [SerializeField] private LocalizeStringEvent craftingText;
 
-        [Tab("Control Buttons")] [SerializeField]
+        [Header("Control Buttons")] [SerializeField]
         private Transform deleteControlsButtonContainer;
 
         [SerializeField] private Button deleteButton;
@@ -48,79 +50,104 @@ namespace _3._Scripts.UI.Panels
         private bool _deleteMode;
         private SwordItem _selectedItem;
 
+        /// <summary>
+        /// Инициализация панели и настройка кнопок.
+        /// </summary>
         public override void Initialize()
         {
             InTransition = transition;
             OutTransition = transition;
 
-            deleteButton.onClick.AddListener(() => SetDeletingState(true));
-            cancelDeleteButton.onClick.AddListener(() => SetDeletingState(false));
-            acceptDeleteButton.onClick.AddListener(DeleteSelected);
-            equipBestButton.onClick.AddListener(() => EquipItem(_items.OrderByDescending(i => i.SwordDamage).First()));
-            equipSelectedButton.onClick.AddListener(() => EquipItem(_selectedItem));
-            craftSelectedButton.onClick.AddListener(MergeSelected);
-            craftAllButton.onClick.AddListener(MergeAll);
+            ConfigureButtons();
         }
 
         protected override void OnOpen()
         {
+            base.OnOpen();
+
             currentSword.Initialize(Save.current);
 
             SetDeletingState(false);
             UpdateCapacityText();
-            InitializeList();
-            SortObjects();
-            UpdateCombineText();
-
-            base.OnOpen();
+            PopulateSwordList();
+            SortSwords();
+            UpdateCraftingText();
         }
 
-        private void InitializeList()
+        /// <summary>
+        /// Настройка обработчиков событий для кнопок.
+        /// </summary>
+        private void ConfigureButtons()
         {
+            deleteButton.onClick.AddListener(() => SetDeletingState(true));
+            cancelDeleteButton.onClick.AddListener(() => SetDeletingState(false));
+            acceptDeleteButton.onClick.AddListener(DeleteSelectedSwords);
+            equipBestButton.onClick.AddListener(() =>
+                EquipSword(_items.OrderByDescending(i => i.SwordDamage).FirstOrDefault()));
+            equipSelectedButton.onClick.AddListener(() => EquipSword(_selectedItem));
+            craftSelectedButton.onClick.AddListener(MergeSelectedSword);
+            craftAllButton.onClick.AddListener(MergeAllSwords);
+        }
+
+        /// <summary>
+        /// Заполнение списка мечей.
+        /// </summary>
+        private void PopulateSwordList()
+        {
+            ClearSwordList();
 
             foreach (var save in Save.unlocked)
             {
-                var item = ObjectsPoolManager.Instance.Get<SwordItem>();
+                var swordItem = ObjectsPoolManager.Instance.Get<SwordItem>();
+                swordItem.Initialize(save);
+                swordItem.transform.SetParent(container);
+                swordItem.transform.localScale = Vector3.one;
+                swordItem.OnSelect += OnSwordSelected;
 
-                item.Initialize(save);
-                item.transform.SetParent(container);
-                item.transform.localScale = Vector3.one;
-                item.OnSelect += ItemOnClick;
-
-                if (item.Save.uid == Save.current.uid)
+                if (save.uid == Save.current.uid)
                 {
-                    _selectedItem = item;
-                    item.SetCurrentFocus();
+                    _selectedItem = swordItem;
+                    swordItem.SetCurrentFocus();
                 }
 
-                _items.Add(item);
+                _items.Add(swordItem);
             }
         }
 
-        private void ItemOnClick(SwordItem obj)
+        /// <summary>
+        /// Обработчик выбора меча.
+        /// </summary>
+        private void OnSwordSelected(SwordItem sword)
         {
             if (!_deleteMode)
             {
-                currentSword.Initialize(obj.Save);
-                if (_selectedItem != null)
-                {
-                    if (_selectedItem.Save.uid == Save.current.uid)
-                        _selectedItem.SetCurrentFocus();
-                    else
-                        _selectedItem.DisableFocus();
-                }
-
-                _selectedItem = obj;
-                _selectedItem.SetSelectedFocus();
-                UpdateCombineText();
+                SelectSword(sword);
             }
-            else
+            else if (sword.Save.uid != Save.current.uid)
             {
-                if (obj.Save.uid != Save.current.uid)
-                    obj.SetDeleteState(!obj.ItemToDelete);
+                // Используем SetDeleteState для управления состоянием удаления
+                sword.SetDeleteState(!sword.ItemToDelete);
             }
         }
 
+        /// <summary>
+        /// Установка текущего выбранного меча.
+        /// </summary>
+        private void SelectSword(SwordItem sword)
+        {
+            currentSword.Initialize(sword.Save);
+
+            // Обновляем фокус текущего выбранного меча
+            _selectedItem?.DisableFocus();
+            _selectedItem = sword;
+            _selectedItem.SetSelectedFocus();
+
+            UpdateCraftingText();
+        }
+
+        /// <summary>
+        /// Включение или отключение режима удаления мечей.
+        /// </summary>
         private void SetDeletingState(bool state)
         {
             _deleteMode = state;
@@ -133,35 +160,48 @@ namespace _3._Scripts.UI.Panels
                 if (!state)
                     item.SetDeleteState(false);
             }
+
+            var curr = _items.FirstOrDefault(i => i.Save.uid == Save.current.uid);
+            if (curr != null)
+                curr.SetDeleteState(true);
         }
 
-        private void DeleteSelected()
+        /// <summary>
+        /// Удаление выбранных мечей.
+        /// </summary>
+        private void DeleteSelectedSwords()
         {
-            var itemsToDelete = _items.Where(i => i.ItemToDelete).ToList();
+            var swordsToDelete = _items.Where(i => i.ItemToDelete).ToList();
 
-            foreach (var item in itemsToDelete)
+            foreach (var sword in swordsToDelete)
             {
-                Save.Delete(item.Save);
-                _items.Remove(item);
+                Save.Delete(sword.Save);
+                _items.Remove(sword);
             }
 
             SetDeletingState(false);
         }
 
-        private void SortObjects()
+        /// <summary>
+        /// Сортировка списка мечей.
+        /// </summary>
+        private void SortSwords()
         {
-            var sortedObjects = _items
-                .OrderByDescending(obj => obj.SwordDamage)
-                .ThenByDescending(obj => obj.Config.Rarity)
-                .ToArray();
+            var sortedSwords = _items
+                .OrderByDescending(s => s.SwordDamage)
+                .ThenByDescending(s => s.Config.Rarity)
+                .ToList();
 
-            for (int i = 0; i < sortedObjects.Length; i++)
+            for (int i = 0; i < sortedSwords.Count; i++)
             {
-                sortedObjects[i].transform.SetSiblingIndex(i);
+                sortedSwords[i].transform.SetSiblingIndex(i);
             }
         }
 
-        private void EquipItem(SwordItem swordItem)
+        /// <summary>
+        /// Экипировка указанного меча.
+        /// </summary>
+        private void EquipSword(SwordItem swordItem)
         {
             if (swordItem == null) return;
 
@@ -176,34 +216,48 @@ namespace _3._Scripts.UI.Panels
             swordItem.SetCurrentFocus();
         }
 
-        private void MergeSelected()
+        /// <summary>
+        /// Объединение текущего выбранного меча.
+        /// </summary>
+        private void MergeSelectedSword()
         {
+            if (_selectedItem == null) return;
+
             Save.TryMergeObject(_selectedItem.Save);
-            currentSword.UpdateItem();
-            _selectedItem.UpdateItem();
-            UpdateCapacityText();
-            UpdateCombineText();
-            SortObjects();
+            UpdateUIAfterMerge();
         }
 
-        private void MergeAll()
+        /// <summary>
+        /// Объединение всех доступных мечей.
+        /// </summary>
+        private void MergeAllSwords()
         {
             Save.MergeAll();
+            UpdateUIAfterMerge();
+        }
+
+        /// <summary>
+        /// Обновление интерфейса после объединения.
+        /// </summary>
+        private void UpdateUIAfterMerge()
+        {
             currentSword.UpdateItem();
-            ClearItems();
+            PopulateSwordList();
+            SortSwords();
             UpdateCapacityText();
-            InitializeList();
-            SortObjects();
-            UpdateCombineText();
+            UpdateCraftingText();
         }
 
         protected override void OnClose()
         {
             base.OnClose();
-            ClearItems();
+            ClearSwordList();
         }
 
-        private void ClearItems()
+        /// <summary>
+        /// Очистка списка мечей.
+        /// </summary>
+        private void ClearSwordList()
         {
             foreach (var item in _items)
             {
@@ -213,15 +267,21 @@ namespace _3._Scripts.UI.Panels
             _items.Clear();
         }
 
+        /// <summary>
+        /// Обновление текста вместимости.
+        /// </summary>
         private void UpdateCapacityText()
         {
             capacityText.text = $"{Save.unlocked.Count}/{Save.maxSwordsCount}";
         }
 
-        private void UpdateCombineText()
+        /// <summary>
+        /// Обновление текста для объединения.
+        /// </summary>
+        private void UpdateCraftingText()
         {
             craftingText.SetVariable("value",
-                $"({Save.GetMergeableCount(_selectedItem.Save)}/{Save.requiredCountForMerge})");
+                $"({Save.GetMergeableCount(_selectedItem?.Save)}/{Save.requiredCountForMerge})");
         }
     }
 }

@@ -6,15 +6,16 @@ using _3._Scripts.Pool;
 using _3._Scripts.Pool.Interfaces;
 using _3._Scripts.Saves;
 using _3._Scripts.Swords.Scriptables;
-using _3._Scripts.UI.Extensions;
 using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _3._Scripts.UI.Elements.SwordsPanel
 {
+    /// <summary>
+    /// Элемент меча, представляющий информацию о мечах в панели.
+    /// </summary>
     public class SwordItem : MonoBehaviour, IPoolable, IInitializable<SwordSave>
     {
         [SerializeField] private RawImage icon;
@@ -23,7 +24,6 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
         [SerializeField] private Transform deleteItem;
         [SerializeField] private List<Transform> stars;
         [SerializeField] private Image focusImage;
-
 
         private Button _button;
 
@@ -43,11 +43,17 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
             _button.onClick.AddListener(OnClick);
         }
 
+        /// <summary>
+        /// Обработчик клика по мечу.
+        /// </summary>
         private void OnClick()
         {
             OnSelect?.Invoke(this);
         }
 
+        /// <summary>
+        /// Инициализация элемента меча с данными сохранения.
+        /// </summary>
         public void Initialize(SwordSave save)
         {
             var config = Configuration.Instance.Config.SwordCollectionConfig.GetSword(save.id);
@@ -56,49 +62,58 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
             Save = save;
             Config = config;
 
+            // Установка визуальных характеристик
             table.color = rarity.MainColor;
             damageText.text = $"{SwordDamage}";
             icon.texture = config.Icon;
 
-            foreach (var star in stars)
+            // Обновление звезд
+            for (var i = 0; i < stars.Count; i++)
             {
-                star.gameObject.SetActive(false);
-            }
-
-            for (var i = 0; i < save.starCount; i++)
-            {
-                stars[i].gameObject.SetActive(true);
+                stars[i].gameObject.SetActive(i < save.starCount);
             }
         }
 
+        /// <summary>
+        /// Обновление данных меча (например, после объединения).
+        /// </summary>
         public void UpdateItem()
         {
             damageText.text = $"{SwordDamage}";
-            foreach (var star in stars)
-            {
-                star.gameObject.SetActive(false);
-            }
 
-            for (var i = 0; i < Save.starCount; i++)
+            // Обновление звезд
+            for (var i = 0; i < stars.Count; i++)
             {
-                stars[i].gameObject.SetActive(true);
+                stars[i].gameObject.SetActive(i < Save.starCount);
             }
         }
 
+        /// <summary>
+        /// Установка состояния для удаления элемента.
+        /// </summary>
         public void SetDeleteState(bool state)
         {
             ItemToDelete = state;
             deleteItem.gameObject.SetActive(state);
         }
 
+        /// <summary>
+        /// Отключить фокус.
+        /// </summary>
         public void DisableFocus() => focusImage.gameObject.SetActive(false);
 
+        /// <summary>
+        /// Установить фокус как текущий (желтый цвет).
+        /// </summary>
         public void SetCurrentFocus()
         {
             focusImage.gameObject.SetActive(true);
             focusImage.color = Color.yellow;
         }
 
+        /// <summary>
+        /// Установить фокус как выбранный (зеленый цвет).
+        /// </summary>
         public void SetSelectedFocus()
         {
             focusImage.gameObject.SetActive(true);
@@ -112,6 +127,7 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
 
         private void SwordsSaveOnDelete(SwordSave obj)
         {
+            // Проверка, удаляем ли текущий меч
             if (obj.uid != Save.uid) return;
             ObjectsPoolManager.Instance.Return(this);
         }

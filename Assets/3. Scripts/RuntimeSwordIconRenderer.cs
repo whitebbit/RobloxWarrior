@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using _3._Scripts.Config;
 using _3._Scripts.Extensions;
 using _3._Scripts.Singleton;
@@ -10,60 +11,117 @@ namespace _3._Scripts
     {
         [SerializeField] private float greenThreshold = 25;
         [SerializeField] private LayerMask layerMask;
-        
+
         public Camera renderCamera;
         public RenderTexture renderTexture;
         public Transform swordTransform;
- 
-        private readonly Dictionary<string, Texture2D> _textureCache = new();
 
-        public Texture2D GetTexture2D(string id, Material material = null)
+        private readonly Dictionary<string, Texture2D> _textureCache = new();
+        private readonly Queue<string> _creationQueue = new();
+        private bool _isProcessingQueue;
+
+        public Texture2D GetTexture2D(string id)
         {
-            return _textureCache.TryGetValue(id, out var value) ? value : CreateTexture2D(id, material);
+            // Проверяем, есть ли текстура в кэше
+            if (_textureCache.TryGetValue(id, out var cachedTexture))
+            {
+                return cachedTexture;
+            }
+
+            // Если текстуры нет, добавляем её в очередь
+            if (!_creationQueue.Contains(id))
+            {
+                _creationQueue.Enqueue(id);
+            }
+
+            // Если очередь не обрабатывается, запускаем обработку
+            if (!_isProcessingQueue)
+            {
+                StartCoroutine(ProcessCreationQueue());
+            }
+
+            // Возвращаем временное значение (null или заглушка)
+            return null;
         }
-        
-        private Texture2D CreateTexture2D(string id, Material material)
+
+        private IEnumerator ProcessCreationQueue()
+        {
+            _isProcessingQueue = true;
+
+            while (_creationQueue.Count > 0)
+            {
+                var id = _creationQueue.Dequeue();
+                if (_textureCache.ContainsKey(id))
+                {
+                    continue;
+                }
+
+                // Создание текстуры
+                var texture = CreateTexture2D(id);
+                _textureCache.TryAdd(id, texture);
+
+                // Ждём один кадр для избежания накладок
+                yield return null;
+            }
+
+            _isProcessingQueue = false;
+        }
+
+        private Texture2D CreateTexture2D(string id)
         {
             var config = Configuration.Instance.Config.SwordCollectionConfig.GetSword(id);
-            var item = Instantiate(config.Prefab, swordTransform);
-            
+
+            // Создаём временный объект для рендеринга
+            var tempSwordTransform = new GameObject($"TempSword_{id}").transform;
+            tempSwordTransform.SetParent(swordTransform, false);
+
+            var item = Instantiate(config.Prefab, tempSwordTransform);
+
+            // Подготавливаем объект для рендеринга
             item.Disable();
             item.gameObject.SetLayer(layerMask);
-            
+            item.transform.localPosition = Vector3.zero;
+
+            // Настраиваем камеру
             renderCamera.cullingMask = layerMask;
             renderCamera.clearFlags = CameraClearFlags.SolidColor;
-            renderCamera.backgroundColor = new Color(0, 1, 0, 1); // Полностью прозрачный фон
-            
+            renderCamera.backgroundColor = new Color(0, 1, 0, 1); // Прозрачный фон
+
+            // Создаём временный RenderTexture
             var tempRT = new RenderTexture(renderTexture.width, renderTexture.height, 24, RenderTextureFormat.ARGB32);
             renderCamera.targetTexture = tempRT;
 
+            // Рендеринг
             renderCamera.Render();
 
+            // Читаем пиксели из временного RenderTexture
             RenderTexture.active = tempRT;
             var renderedTexture = new Texture2D(tempRT.width, tempRT.height, TextureFormat.RGBA32, false);
             renderedTexture.ReadPixels(new Rect(0, 0, tempRT.width, tempRT.height), 0, 0);
             renderedTexture.Apply();
-            
+
+            // Очищаем RenderTexture
             RenderTexture.active = null;
             renderCamera.targetTexture = null;
             tempRT.Release();
-            
+
+            // Удаляем фон (зеленый цвет)
             var pixels = renderedTexture.GetPixels32();
             for (var i = 0; i < pixels.Length; i++)
             {
-               
                 var pixel = pixels[i];
                 if (pixel.g <= pixel.r + greenThreshold || pixel.g <= pixel.b + greenThreshold) continue;
-                pixel.a = 0; 
+                pixel.a = 0;
                 pixels[i] = pixel;
             }
 
             renderedTexture.SetPixels32(pixels);
             renderedTexture.Apply();
-            
-            _textureCache.TryAdd(id, renderedTexture);
-            
+
+            // Удаляем временные объекты
             Destroy(item.gameObject);
+            Destroy(tempSwordTransform.gameObject);
+
             return renderedTexture;
         }
     }
