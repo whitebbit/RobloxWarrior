@@ -44,7 +44,7 @@ public class WorldConfigEditor : Editor
 
     private Vector2 _scrollPositionWave; // Переменная для сохранения позиции скролла
 
-    private Dictionary<int, bool> waveFoldouts = new Dictionary<int, bool>();
+    private readonly Dictionary<int, bool> _waveFoldouts = new();
 
     private void Waves()
     {
@@ -102,25 +102,25 @@ public class WorldConfigEditor : Editor
             var healthIncrease = wave.FindPropertyRelative("healthIncrease");
 
             // Проверяем инициализацию foldout
-            waveFoldouts.TryAdd(i, true);
+            _waveFoldouts.TryAdd(i, true);
 
             // По умолчанию раскрыто
             // Отображаем foldout для волны
             EditorGUILayout.BeginHorizontal();
 
             var waveName = string.IsNullOrEmpty(searchWaveNumber) ? $"Wave {i + 1}" : $"Wave {searchWaveNumber}";
-            waveFoldouts[i] = EditorGUILayout.Foldout(waveFoldouts[i], waveName, true, EditorStyles.foldout);
+            _waveFoldouts[i] = EditorGUILayout.Foldout(_waveFoldouts[i], waveName, true, EditorStyles.foldout);
             if (GUILayout.Button("X", GUILayout.Height(20), GUILayout.Width(20)))
             {
                 waves.DeleteArrayElementAtIndex(i);
                 serializedObject.ApplyModifiedProperties();
-                waveFoldouts.Remove(i); // Удаляем foldout для удалённой волны
+                _waveFoldouts.Remove(i); // Удаляем foldout для удалённой волны
                 return;
             }
 
             EditorGUILayout.EndHorizontal();
 
-            if (waveFoldouts[i])
+            if (_waveFoldouts[i])
             {
                 GUILayout.BeginVertical("box");
                 EditorGUILayout.PropertyField(damageIncrease, new GUIContent("Damage Increase"));
@@ -135,7 +135,7 @@ public class WorldConfigEditor : Editor
 
                 if (bots.arraySize > 0)
                 {
-                    _scrollPosition[i] = EditorGUILayout.BeginScrollView(_scrollPosition[i], GUILayout.Height(112));
+                    _scrollPosition[i] = EditorGUILayout.BeginScrollView(_scrollPosition[i], GUILayout.Height(170));
 
                     for (var j = 0; j < bots.arraySize; j++)
                     {
