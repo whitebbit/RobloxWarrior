@@ -222,6 +222,137 @@ MonoBehaviour:
       count: 3
     damageIncrease: 1
     healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 13bb09d6cbc7c7c4a999080be1cedf90, type: 2}
+      count: 7
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 13bb09d6cbc7c7c4a999080be1cedf90, type: 2}
+      count: 11
+    - config: {fileID: 11400000, guid: 59d1a7bfaecc1494d89dadf413f66817, type: 2}
+      count: 1
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 13bb09d6cbc7c7c4a999080be1cedf90, type: 2}
+      count: 9
+    - config: {fileID: 11400000, guid: 59d1a7bfaecc1494d89dadf413f66817, type: 2}
+      count: 3
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 13bb09d6cbc7c7c4a999080be1cedf90, type: 2}
+      count: 5
+    - config: {fileID: 11400000, guid: 59d1a7bfaecc1494d89dadf413f66817, type: 2}
+      count: 7
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 13bb09d6cbc7c7c4a999080be1cedf90, type: 2}
+      count: 3
+    - config: {fileID: 11400000, guid: 59d1a7bfaecc1494d89dadf413f66817, type: 2}
+      count: 8
+    - config: {fileID: 11400000, guid: 74d6ff1addbf4d24291395ca38039b00, type: 2}
+      count: 1
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 59d1a7bfaecc1494d89dadf413f66817, type: 2}
+      count: 9
+    - config: {fileID: 11400000, guid: 74d6ff1addbf4d24291395ca38039b00, type: 2}
+      count: 3
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 59d1a7bfaecc1494d89dadf413f66817, type: 2}
+      count: 7
+    - config: {fileID: 11400000, guid: 74d6ff1addbf4d24291395ca38039b00, type: 2}
+      count: 5
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 59d1a7bfaecc1494d89dadf413f66817, type: 2}
+      count: 5
+    - config: {fileID: 11400000, guid: 74d6ff1addbf4d24291395ca38039b00, type: 2}
+      count: 7
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 59d1a7bfaecc1494d89dadf413f66817, type: 2}
+      count: 3
+    - config: {fileID: 11400000, guid: 74d6ff1addbf4d24291395ca38039b00, type: 2}
+      count: 9
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: b829614acbf4c5b40aefd6c6fad76401, type: 2}
+      count: 3
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: b829614acbf4c5b40aefd6c6fad76401, type: 2}
+      count: 7
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: b829614acbf4c5b40aefd6c6fad76401, type: 2}
+      count: 11
+    - config: {fileID: 11400000, guid: 24ccf2c3163d6f647ad1d8c03f24ae4a, type: 2}
+      count: 1
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: b829614acbf4c5b40aefd6c6fad76401, type: 2}
+      count: 9
+    - config: {fileID: 11400000, guid: 24ccf2c3163d6f647ad1d8c03f24ae4a, type: 2}
+      count: 3
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: b829614acbf4c5b40aefd6c6fad76401, type: 2}
+      count: 5
+    - config: {fileID: 11400000, guid: 24ccf2c3163d6f647ad1d8c03f24ae4a, type: 2}
+      count: 7
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: b829614acbf4c5b40aefd6c6fad76401, type: 2}
+      count: 3
+    - config: {fileID: 11400000, guid: 24ccf2c3163d6f647ad1d8c03f24ae4a, type: 2}
+      count: 8
+    - config: {fileID: 11400000, guid: 44a808bc22f5c3d4e876560f3c1ea0f8, type: 2}
+      count: 1
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 24ccf2c3163d6f647ad1d8c03f24ae4a, type: 2}
+      count: 9
+    - config: {fileID: 11400000, guid: 44a808bc22f5c3d4e876560f3c1ea0f8, type: 2}
+      count: 3
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 24ccf2c3163d6f647ad1d8c03f24ae4a, type: 2}
+      count: 7
+    - config: {fileID: 11400000, guid: 44a808bc22f5c3d4e876560f3c1ea0f8, type: 2}
+      count: 5
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 24ccf2c3163d6f647ad1d8c03f24ae4a, type: 2}
+      count: 5
+    - config: {fileID: 11400000, guid: 44a808bc22f5c3d4e876560f3c1ea0f8, type: 2}
+      count: 7
+    damageIncrease: 1
+    healthIncrease: 1
+  - bots:
+    - config: {fileID: 11400000, guid: 44a808bc22f5c3d4e876560f3c1ea0f8, type: 2}
+      count: 11
+    - config: {fileID: 11400000, guid: 8014af9d650eb3a42ab72db03624f8ad, type: 2}
+      count: 1
+    damageIncrease: 1
+    healthIncrease: 1
   worldPrefab: {fileID: 2633462022766494348, guid: 6b4fb8ced8bbce946821569fb031ab97, type: 3}
   swordEggs:
   - price: 1000

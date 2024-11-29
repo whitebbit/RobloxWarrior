@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84c2981bded24433801ee210ef893b71, type: 3}
-  m_Name: BotConfig 12
+  m_Name: BotConfig 15
   m_EditorClassIdentifier: 
-  health: 591
-  damage: 45
+  health: 7092
+  damage: 113
   attackSpeed: 2
   movementConfig:
-    baseSpeed: 6
+    baseSpeed: 4
     jumpHeight: 0
-  size: 1
-  skin: {fileID: 2100000, guid: 68bd70e6c14d8134ba5f3d8680c45caa, type: 2}
+  size: 3
+  skin: {fileID: 2100000, guid: 2b361c5d7cfbcf146b2cd377b96d1a0e, type: 2}
   animationConfig:
     attackAnimations:
     - clip: {fileID: 7400000, guid: 14e87e8f1f055cd419847302a41a4275, type: 3}
