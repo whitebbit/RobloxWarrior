@@ -43,9 +43,7 @@ public class WorldConfigEditor : Editor
     }
 
     private Vector2 _scrollPositionWave; // Переменная для сохранения позиции скролла
-
     private readonly Dictionary<int, bool> _waveFoldouts = new();
-
     private void Waves()
     {
         // Кнопка для добавления новой волны
@@ -102,7 +100,7 @@ public class WorldConfigEditor : Editor
             var healthIncrease = wave.FindPropertyRelative("healthIncrease");
 
             // Проверяем инициализацию foldout
-            _waveFoldouts.TryAdd(i, true);
+            _waveFoldouts.TryAdd(i, false);
 
             // По умолчанию раскрыто
             // Отображаем foldout для волны
