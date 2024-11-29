@@ -13,7 +13,53 @@ MonoBehaviour:
   m_Name: World 0
   m_EditorClassIdentifier: 
   waves:
-  - bots: []
+  - bots:
+    - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
+      count: 3
+    damageIncrease: 0
+    healthIncrease: 0
+  - bots:
+    - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
+      count: 7
+    damageIncrease: 0
+    healthIncrease: 0
+  - bots:
+    - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
+      count: 9
+    - config: {fileID: 11400000, guid: b839835a2f9d3d64bb61c399eaa09eaa, type: 2}
+      count: 1
+    damageIncrease: 0
+    healthIncrease: 0
+  - bots:
+    - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
+      count: 9
+    - config: {fileID: 11400000, guid: b839835a2f9d3d64bb61c399eaa09eaa, type: 2}
+      count: 3
+    damageIncrease: 0
+    healthIncrease: 0
+  - bots:
+    - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
+      count: 5
+    - config: {fileID: 11400000, guid: b839835a2f9d3d64bb61c399eaa09eaa, type: 2}
+      count: 7
+    damageIncrease: 0
+    healthIncrease: 0
+  - bots:
+    - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
+      count: 3
+    - config: {fileID: 11400000, guid: b839835a2f9d3d64bb61c399eaa09eaa, type: 2}
+      count: 8
+    - config: {fileID: 11400000, guid: a3beeafce4be26a41b2d9bf3052e7674, type: 2}
+      count: 1
+    damageIncrease: 0
+    healthIncrease: 0
+  - bots:
+    - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
+      count: 0
+    - config: {fileID: 11400000, guid: b839835a2f9d3d64bb61c399eaa09eaa, type: 2}
+      count: 0
+    - config: {fileID: 11400000, guid: a3beeafce4be26a41b2d9bf3052e7674, type: 2}
+      count: 0
     damageIncrease: 0
     healthIncrease: 0
   worldPrefab: {fileID: 2633462022766494348, guid: 6b4fb8ced8bbce946821569fb031ab97, type: 3}
