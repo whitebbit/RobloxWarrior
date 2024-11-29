@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Body_Texture:
-        m_Texture: {fileID: 2800000, guid: aee334cf078c21548b630f5306bc992d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8b3890c022703c8469cf7b14d0625f6e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cloth_Texture:
-        m_Texture: {fileID: 2800000, guid: c802b04514bba144aa55dd72e2b87cba, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1c65a25191985a54682c32d7f81cfbcd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
