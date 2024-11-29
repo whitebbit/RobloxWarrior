@@ -11,6 +11,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
+using VInspector;
 
 namespace _3._Scripts.UI.Panels
 {
@@ -19,20 +20,20 @@ namespace _3._Scripts.UI.Panels
     /// </summary>
     public class SwordsPanel : UIPanel
     {
-        [Header("Main Settings")] [SerializeField]
+        [Tab("Main Settings")] [SerializeField]
         private ScaleTransition transition;
 
         [SerializeField] private SwordItem currentSword;
         [SerializeField] private Transform container;
         [SerializeField] private TMP_Text capacityText;
 
-        [Header("Selected Sword Actions")] [SerializeField]
+        [Tab("Selected Sword Actions")] [SerializeField]
         private Button equipSelectedButton;
 
         [SerializeField] private Button craftSelectedButton;
         [SerializeField] private LocalizeStringEvent craftingText;
 
-        [Header("Control Buttons")] [SerializeField]
+        [Tab("Control Buttons")] [SerializeField]
         private Transform deleteControlsButtonContainer;
 
         [SerializeField] private Button deleteButton;
