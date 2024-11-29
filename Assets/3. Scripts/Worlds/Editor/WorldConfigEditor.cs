@@ -44,14 +44,15 @@ public class WorldConfigEditor : Editor
 
     private Vector2 _scrollPositionWave; // Переменная для сохранения позиции скролла
 
+    private Dictionary<int, bool> waveFoldouts = new Dictionary<int, bool>();
+
     private void Waves()
     {
         // Кнопка для добавления новой волны
         wavesFoldout = EditorGUILayout.Foldout(wavesFoldout, "Waves");
         if (!wavesFoldout) return; // Если список свернут, выходим
-        EditorGUILayout.BeginVertical("box");
 
-        GUILayout.BeginVertical("box");
+        EditorGUILayout.BeginVertical("box");
 
         // Поле для поиска
         EditorGUILayout.BeginHorizontal();
@@ -65,20 +66,18 @@ public class WorldConfigEditor : Editor
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Add Wave", GUILayout.Height(30)))
         {
-            waves.arraySize++; // Увеличиваем размер списка
+            waves.arraySize++;
             var newWave = waves.GetArrayElementAtIndex(waves.arraySize - 1);
             var bots = newWave.FindPropertyRelative("bots");
-            bots.arraySize = 0; // Новый список ботов для этой волны будет пустым
+            bots.arraySize = 0;
         }
 
         if (GUILayout.Button("Clear Waves", GUILayout.Height(30)))
         {
-            waves.ClearArray(); // Очистить весь список волн
+            waves.ClearArray();
         }
 
         GUILayout.EndHorizontal();
-
-        GUILayout.EndVertical();
 
         // Создаем список волн с учетом фильтрации
         var filteredWaves = new List<SerializedProperty>();
@@ -90,15 +89,10 @@ public class WorldConfigEditor : Editor
             }
         }
 
-        // Добавляем скроллбар
-        // Создаем область с прокруткой, если объекты есть
         if (waves.arraySize > 0)
         {
-            _scrollPositionWave =
-                EditorGUILayout.BeginScrollView(_scrollPositionWave, GUILayout.Height(300));
+            _scrollPositionWave = EditorGUILayout.BeginScrollView(_scrollPositionWave);
         }
-
-        // Отображаем волны
 
         for (var i = 0; i < filteredWaves.Count; i++)
         {
@@ -107,75 +101,81 @@ public class WorldConfigEditor : Editor
             var damageIncrease = wave.FindPropertyRelative("damageIncrease");
             var healthIncrease = wave.FindPropertyRelative("healthIncrease");
 
-            // Отображаем информацию о волне
+            // Проверяем инициализацию foldout
+            waveFoldouts.TryAdd(i, true);
+
+            // По умолчанию раскрыто
+            // Отображаем foldout для волны
             EditorGUILayout.BeginHorizontal();
-            var waveNumber = string.IsNullOrEmpty(searchWaveNumber) ? $"Wave {i + 1}" : $"Wave {searchWaveNumber}";
-            EditorGUILayout.LabelField(waveNumber, EditorStyles.boldLabel);
+
+            var waveName = string.IsNullOrEmpty(searchWaveNumber) ? $"Wave {i + 1}" : $"Wave {searchWaveNumber}";
+            waveFoldouts[i] = EditorGUILayout.Foldout(waveFoldouts[i], waveName, true, EditorStyles.foldout);
             if (GUILayout.Button("X", GUILayout.Height(20), GUILayout.Width(20)))
             {
                 waves.DeleteArrayElementAtIndex(i);
                 serializedObject.ApplyModifiedProperties();
-                return; // Обновляем интерфейс
+                waveFoldouts.Remove(i); // Удаляем foldout для удалённой волны
+                return;
             }
 
             EditorGUILayout.EndHorizontal();
 
-            GUILayout.BeginVertical("box");
-            EditorGUILayout.PropertyField(damageIncrease, new GUIContent("Damage Increase"));
-            EditorGUILayout.PropertyField(healthIncrease, new GUIContent("Health Increase"));
-            GUILayout.EndVertical();
-
-            // Список ботов
-            GUILayout.BeginVertical("box");
-
-            if (!_scrollPosition.ContainsKey(i))
+            if (waveFoldouts[i])
             {
-                _scrollPosition.Add(i, Vector2.zero);
-            }
+                GUILayout.BeginVertical("box");
+                EditorGUILayout.PropertyField(damageIncrease, new GUIContent("Damage Increase"));
+                EditorGUILayout.PropertyField(healthIncrease, new GUIContent("Health Increase"));
+                GUILayout.EndVertical();
 
-            if (bots.arraySize > 0)
-            {
-                _scrollPosition[i] = EditorGUILayout.BeginScrollView(_scrollPosition[i], GUILayout.Height(112));
-
-                for (var j = 0; j < bots.arraySize; j++)
+                GUILayout.BeginVertical("box");
+                if (!_scrollPosition.ContainsKey(i))
                 {
-                    var botSpawnData = bots.GetArrayElementAtIndex(j);
-                    var config = botSpawnData.FindPropertyRelative("config");
-                    var count = botSpawnData.FindPropertyRelative("count");
-
-                    GUILayout.BeginHorizontal("box");
-                    EditorGUILayout.BeginVertical();
-                    EditorGUILayout.PropertyField(config, new GUIContent("Config"));
-                    EditorGUILayout.PropertyField(count, new GUIContent("Count"));
-                    EditorGUILayout.EndVertical();
-
-                    if (GUILayout.Button("Delete", GUILayout.Height(39)))
-                    {
-                        bots.DeleteArrayElementAtIndex(j);
-                    }
-
-                    GUILayout.EndHorizontal();
-                    GUILayout.Space(5);
+                    _scrollPosition.Add(i, Vector2.zero);
                 }
 
-                EditorGUILayout.EndScrollView();
+                if (bots.arraySize > 0)
+                {
+                    _scrollPosition[i] = EditorGUILayout.BeginScrollView(_scrollPosition[i], GUILayout.Height(112));
+
+                    for (var j = 0; j < bots.arraySize; j++)
+                    {
+                        var botSpawnData = bots.GetArrayElementAtIndex(j);
+                        var config = botSpawnData.FindPropertyRelative("config");
+                        var count = botSpawnData.FindPropertyRelative("count");
+
+                        GUILayout.BeginHorizontal("box");
+                        EditorGUILayout.BeginVertical();
+                        EditorGUILayout.PropertyField(config, new GUIContent("Config"));
+                        EditorGUILayout.PropertyField(count, new GUIContent("Count"));
+                        EditorGUILayout.EndVertical();
+
+                        if (GUILayout.Button("Delete", GUILayout.Height(39)))
+                        {
+                            bots.DeleteArrayElementAtIndex(j);
+                        }
+
+                        GUILayout.EndHorizontal();
+                        GUILayout.Space(5);
+                    }
+
+                    EditorGUILayout.EndScrollView();
+                }
+
+                GUILayout.EndVertical();
+
+                GUILayout.BeginHorizontal();
+                if (GUILayout.Button("Add", GUILayout.Height(30)))
+                {
+                    bots.arraySize++;
+                }
+
+                if (GUILayout.Button("Clear", GUILayout.Height(30)))
+                {
+                    bots.arraySize = 0;
+                }
+
+                GUILayout.EndHorizontal();
             }
-
-            GUILayout.EndVertical();
-
-            // Кнопки для управления ботами
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Add", GUILayout.Height(30)))
-            {
-                bots.arraySize++;
-            }
-
-            if (GUILayout.Button("Clear", GUILayout.Height(30)))
-            {
-                bots.arraySize = 0;
-            }
-
-            GUILayout.EndHorizontal();
 
             if (i < filteredWaves.Count - 1)
             {
@@ -183,11 +183,11 @@ public class WorldConfigEditor : Editor
             }
         }
 
-
         if (waves.arraySize > 0)
         {
-            EditorGUILayout.EndScrollView(); // Закрываем основной скролл
+            EditorGUILayout.EndScrollView();
         }
+
         EditorGUILayout.EndVertical();
     }
 
@@ -221,7 +221,7 @@ public class WorldConfigEditor : Editor
         if (swordEggs.arraySize > 0)
         {
             _scrollPositionSwordEggs =
-                EditorGUILayout.BeginScrollView(_scrollPositionSwordEggs, GUILayout.Height(300));
+                EditorGUILayout.BeginScrollView(_scrollPositionSwordEggs);
         }
 
         // Отображение всех элементов списка SwordEggs
