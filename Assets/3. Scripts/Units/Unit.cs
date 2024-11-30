@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace _3._Scripts.Units
 {
-    public abstract class Unit: MonoBehaviour
+    public abstract class Unit : MonoBehaviour
     {
         public abstract UnitHealth Health { get; }
-        public UnitDamageable Damageable;
-        
+        public  UnitDamageable Damageable { get; protected set; }
+
         private void Awake()
         {
             OnAwake();
@@ -22,12 +22,10 @@ namespace _3._Scripts.Units
 
         protected virtual void OnStart()
         {
-            
         }
 
         protected virtual void OnAwake()
         {
-            
         }
     }
 }

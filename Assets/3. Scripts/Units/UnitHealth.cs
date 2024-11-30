@@ -6,20 +6,28 @@ namespace _3._Scripts.Units
 {
     public class UnitHealth
     {
-        public float MaxHealth { get; private set; }
+        private float _maxHealth;
+
+        public float MaxHealth
+        {
+            get => _maxHealth;
+            set
+            {
+                var currentHealthPercentage = _currentHealth / _maxHealth;
+
+                _maxHealth = Mathf.Clamp(value, 0, float.MaxValue);
+
+                Health = _maxHealth * currentHealthPercentage;
+
+                if (Health > MaxHealth)
+                {
+                    Health = MaxHealth;
+                }
+            }
+        }
 
         private float _currentHealth;
-        private readonly float _baseHealth;
-
-        private IDying _dying;
-
-        public UnitHealth(float baseHealth, IDying dying)
-        {
-            _baseHealth = baseHealth;
-            MaxHealth = _baseHealth;
-            _currentHealth = _baseHealth;
-            _dying = dying;
-        }
+        public event Action<float, float> OnHealthChanged;
 
         public float Health
         {
@@ -37,19 +45,21 @@ namespace _3._Scripts.Units
             }
         }
 
-        public void IncreaseMaxHealth(float amount)
+        private readonly IDying _dying;
+
+        public UnitHealth(float baseHealth, IDying dying)
         {
-            var currentHealthPercentage = Health / MaxHealth;
-
-            MaxHealth = _baseHealth + amount;
-            Health = MaxHealth * currentHealthPercentage;
-
-            if (Health > MaxHealth)
-            {
-                Health = MaxHealth;
-            }
+            _maxHealth = baseHealth;
+            _currentHealth = baseHealth;
+            _dying = dying;
         }
 
-        public event Action<float, float> OnHealthChanged;
+        public void UpdateValues(float maxHealth)
+        {
+            _maxHealth = maxHealth;
+            _currentHealth = maxHealth;
+
+            MaxHealth = _maxHealth;
+        }
     }
 }

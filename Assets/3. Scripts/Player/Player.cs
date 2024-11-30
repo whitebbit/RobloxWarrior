@@ -37,12 +37,12 @@ namespace _3._Scripts.Player
         #endregion
 
         public PlayerStats Stats { get; private set; }
-        public PlayerAmmunition Ammunition {get; private set;}
+        public PlayerAmmunition Ammunition { get; private set; }
         public override UnitHealth Health => _health;
-        
+
         private PlayerMovement _movement;
         private UnitHealth _health;
-        
+
         protected override void OnAwake()
         {
             base.OnAwake();
@@ -55,13 +55,13 @@ namespace _3._Scripts.Player
         protected override void OnStart()
         {
             base.OnStart();
-            Health.IncreaseMaxHealth(Stats.HealthImprovement);
+            Health.MaxHealth += Stats.HealthImprovement;
             SubscribeToEvents();
         }
 
         private void SubscribeToEvents()
         {
-            Stats.OnHealthImproving += () => Health.IncreaseMaxHealth(Stats.HealthImprovement);
+            Stats.OnHealthImproving += () => Health.MaxHealth += Stats.HealthImprovement;
         }
 
         public float GetTrueDamage(float swordDamage)
@@ -70,7 +70,7 @@ namespace _3._Scripts.Player
             var increaseDamage = swordDamage * increasePercent;
             return swordDamage + increaseDamage;
         }
-        
+
         public float GetDamage(float swordDamage)
         {
             return GetTrueDamage(swordDamage) + Stats.AttackImprovement;
@@ -79,6 +79,8 @@ namespace _3._Scripts.Player
         public void Teleport(Vector3 position)
         {
             _movement.Teleport(position);
+            transform.eulerAngles = Vector3.zero;
+            CameraController.Instance.OnTeleport();
         }
     }
 }

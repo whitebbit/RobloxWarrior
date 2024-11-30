@@ -24,13 +24,25 @@ namespace _3._Scripts.Detectors.OverlapSystem.Base
 
         protected readonly Collider[] OverlapResults = new Collider[32];
         private int _overlapResultsCount;
-        
+
         public abstract float DetectAreaSize { get; }
-        
-        private void Start()
+
+        private IEnumerator _enumerator;
+
+        public void DetectState(bool state)
         {
-            if(constantDetect)
-                StartCoroutine(FindTargetsWithDelay(.2f));
+            if (!constantDetect) return;
+
+            if (state)
+            {
+                _enumerator = FindTargetsWithDelay(.2f);
+                StartCoroutine(_enumerator);
+            }
+            else
+            {
+                if (_enumerator != null)
+                    StopCoroutine(_enumerator);
+            }
         }
 
         private void InteractWithFoundedObjects()
@@ -53,8 +65,9 @@ namespace _3._Scripts.Detectors.OverlapSystem.Base
                 CallOnFound(findable);
             }
         }
-        
+
         public void SetStartPoint(Transform point) => startPoint = point;
+
         public override bool ObjectsDetected()
         {
             var position = startPoint.TransformPoint(offset);
@@ -68,7 +81,7 @@ namespace _3._Scripts.Detectors.OverlapSystem.Base
             if (ObjectsDetected()) InteractWithFoundedObjects();
             else CallOnFound(default);
         }
-        
+
         private IEnumerator FindTargetsWithDelay(float delay)
         {
             while (true)

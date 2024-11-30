@@ -18,8 +18,9 @@ namespace _3._Scripts.Extensions
 
             text.text = value;
             transform.position = position;
+            transform.localScale = Vector3.zero;
 
-            sequence.Append(text.transform.DOScale(0, .15f).From().SetEase(Ease.OutBack))
+            sequence.Append(text.transform.DOScale(1, .15f).SetEase(Ease.OutBack))
                 .Append(text.transform.DOScale(0, .15f).SetDelay(0.25f).SetEase(Ease.InBack));
 
             sequence.Play().OnComplete(() => ObjectsPoolManager.Instance.Return(this));

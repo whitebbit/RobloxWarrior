@@ -33,5 +33,13 @@ namespace _3._Scripts
             mainCamera.Priority = 100;
         }
         
+        public void OnTeleport()
+        {
+            var newTarget = Player.Player.Instance.transform;
+            Vector3 cameraPosition = newTarget.position - newTarget.forward * 5f + Vector3.up * 2f; // Регулируйте расстояние и высоту
+            Quaternion cameraRotation = Quaternion.LookRotation(newTarget.forward);
+
+            mainCamera.ForceCameraPosition(cameraPosition, cameraRotation);
+        }
     }
 }

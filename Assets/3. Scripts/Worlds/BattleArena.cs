@@ -79,7 +79,7 @@ namespace _3._Scripts.Worlds
         private IEnumerator CheckWaveEnd()
         {
             yield return new WaitUntil(() => _bots.All(b => b.Dying.IsDead));
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             WavePassed();
         }
     }
