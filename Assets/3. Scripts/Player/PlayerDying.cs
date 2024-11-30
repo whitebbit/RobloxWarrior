@@ -1,4 +1,6 @@
-﻿using _3._Scripts.Units.Interfaces;
+﻿using _3._Scripts.UI;
+using _3._Scripts.UI.Widgets;
+using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Worlds;
 
 namespace _3._Scripts.Player
@@ -14,10 +16,8 @@ namespace _3._Scripts.Player
         public void Die()
         {
             //TODO: UI
-            
+            UIManager.Instance.GetWidget<LoseWidget>().Enabled = true;
             WorldsManager.Instance.World.StopBattle();
-            _player.Teleport(WorldsManager.Instance.World.SpawnPoint.position);
-            _player.Health.Health = _player.Health.MaxHealth;
         }
 
         public bool IsDead { get; set; }

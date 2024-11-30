@@ -215,10 +215,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3203987063427825691
+  - m_Id: 71902328298471424
+    m_Localized: "\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71905587549503488
+    m_Localized: "\u0412\u044B\u0439\u0442\u0438"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71906652781084672
+    m_Localized: "\u0412\u043E\u043B\u043D\u0430 {value}"
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825691
   references:
     version: 2
     RefIds:
     - rid: 3203987063427825691
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020828f238c28000020027d2c92280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc00
+        m_Entries: 0020828f238c28000020027d2c92280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff00

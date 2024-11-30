@@ -1,6 +1,7 @@
 using _3._Scripts.UI.Interfaces;
 using DG.Tweening;
 using UnityEngine;
+using VInspector;
 
 namespace _3._Scripts.UI
 {
@@ -10,7 +11,11 @@ namespace _3._Scripts.UI
         private bool onTransition;
         public abstract IUITransition InTransition { get; set; }
         public abstract IUITransition OutTransition { get; set; }
-
+        [Button]
+        private void SwitchState()
+        {
+            Enabled = !Enabled;
+        }
         public bool Enabled
         {
             get => _enabled;

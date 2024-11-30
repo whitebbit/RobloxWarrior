@@ -11,7 +11,9 @@ namespace _3._Scripts.UI.Transitions
         [SerializeField] private CanvasGroup canvasGroup;
         [Space]
         [SerializeField] private float duration;
-
+        [Space] [SerializeField] private Ease inEase;
+        [SerializeField] private Ease outEase;
+        
         public IUITransition LinkTransition { get; set; }
 
         public void SetLinkTransition(IUITransition linkTransition) => LinkTransition = linkTransition;
@@ -21,14 +23,14 @@ namespace _3._Scripts.UI.Transitions
             canvasGroup.blocksRaycasts = true;
             canvasGroup.alpha = 0;
             LinkTransition?.ForceIn();
-            return canvasGroup.DOFade(1, duration).SetLink(canvasGroup.gameObject);
+            return canvasGroup.DOFade(1, duration).SetLink(canvasGroup.gameObject).SetEase(inEase);
         }
 
         public Tween AnimateOut()
         {
             canvasGroup.blocksRaycasts = false; 
             canvasGroup.alpha = 1;
-            return canvasGroup.DOFade(0, duration).SetLink(canvasGroup.gameObject);
+            return canvasGroup.DOFade(0, duration).SetLink(canvasGroup.gameObject).SetEase(outEase);
         }
 
         public void ForceIn()

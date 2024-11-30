@@ -12,17 +12,20 @@ namespace _3._Scripts.Swords
     public class Sword : Weapon<SwordConfig>
     {
         [SerializeField] private MeleeWeaponTrail trail;
+        [SerializeField] private List<ParticleSystem> starParticles;
+        
         protected override float CritChance => Player.Player.Instance.Stats.CritImprovement;
         private SwordSave _save;
 
-        protected override void OnStart()
+        protected override void OnAwake()
         {
-            base.OnStart();
-            Detector.SetStartPoint(Player.Player.Instance.transform);
+            base.OnAwake();
+            starParticles.SetState(false);
         }
-
+        
         public void Disable()
         {
+            starParticles.SetState(false);
             enabled = false;
             Detector.enabled = false;
             trail.enabled = false;
@@ -33,6 +36,7 @@ namespace _3._Scripts.Swords
             base.Initialize(config);
 
             var rarity = Configuration.Instance.GetRarityTable(config.Rarity);
+            Detector.SetStartPoint(Player.Player.Instance.transform);
             trail.SetColor(rarity.MainColor);
         }
 
@@ -41,6 +45,17 @@ namespace _3._Scripts.Swords
             _save = save;
         }
 
+        public void SetStars(int starAmount)
+        {
+            if (starAmount <= 0)
+            {
+                starParticles.SetState(false);
+                return;
+            }
+
+            starParticles.SetEmissionRateOverTime(starAmount);
+            starParticles.SetState(true);
+        }
 
         public override void Attack()
         {

@@ -193,6 +193,18 @@ MonoBehaviour:
     m_Key: "\u0441ombine_sword"
     m_Metadata:
       m_Items: []
+  - m_Id: 71902328298471424
+    m_Key: you_dead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71905587549503488
+    m_Key: exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71906652781084672
+    m_Key: ' wave_number'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

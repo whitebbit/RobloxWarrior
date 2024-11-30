@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using _3._Scripts.Config.Interfaces;
 using _3._Scripts.Swords;
+using _3._Scripts.UI;
+using _3._Scripts.UI.Widgets;
 using _3._Scripts.Worlds.Scriptables;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,8 +15,10 @@ namespace _3._Scripts.Worlds
         [SerializeField] private BattleArena battleArena;
         [SerializeField] private BattleStarter battleStarter; 
         [SerializeField] private List<SwordUnlocker> swordUnlocks = new();
-           
-        public Transform SpawnPoint => spawnPoint;
+
+        private Transform SpawnPoint => spawnPoint;
+        private WavesWidget Widget => UIManager.Instance.GetWidget<WavesWidget>();
+
         public void Initialize(WorldConfig config)
         {
             battleArena.Initialize(config);
@@ -30,7 +34,14 @@ namespace _3._Scripts.Worlds
 
         public void StopBattle()
         {
+            var player = Player.Player.Instance;
+
             battleArena.StopBattle();
+            
+            player.Teleport(WorldsManager.Instance.World.SpawnPoint.position);
+            player.Health.Health = player.Health.MaxHealth;
+
+            Widget.Enabled = false;
         }
     }
 }

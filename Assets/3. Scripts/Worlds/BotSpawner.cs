@@ -1,68 +1,98 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _3._Scripts.Bots;
 using _3._Scripts.Pool;
-using _3._Scripts.Worlds.Scriptables;
 using UnityEngine;
-using VInspector;
 
 namespace _3._Scripts.Worlds
 {
+
     public class BotSpawner : MonoBehaviour
     {
-        [SerializeField] private float distance; // Расстояние между ботами
-        [SerializeField] private int maxBotsPerRow = 10; // Максимальное количество ботов в строке
+        [SerializeField] private float distanceX; // Расстояние между ботами
+        [SerializeField] private float distanceZ; // Расстояние между рядами
+        [SerializeField] private List<int> rowSettings; // Настройки для количества ботов в рядах
 
         public List<Bot> SpawnEnemies(WaveData waveData)
         {
-            var row = 0; // Индекс текущей строки
-            var col = 0; // Индекс текущего столбца
             var list = new List<Bot>();
+            int totalBotsSpawned = 0; // Общее количество заспавненных ботов
 
-            // Перебор всех типов ботов в списке
-            foreach (var botData in waveData.Bots)
+            // Перебираем типы ботов
+            foreach (var botData in waveData.Bots.OrderByDescending(b => b.Config.Health))
             {
-                // Получаем тип бота (config) и количество
                 var botConfig = botData.Config;
                 var botCount = botData.Count;
 
-                // Определим, сколько строк и колонок будет для этой группы ботов
-                var totalRows = Mathf.CeilToInt((float)botCount / maxBotsPerRow); // Считаем количество строк
-
-                // Спавним ботов с расчетом их позиции вокруг стартовой точки
-                for (var i = 0; i < botCount; i++)
+                for (int i = 0; i < botCount; i++)
                 {
-                    // Вычисляем позицию для текущего бота относительно стартовой точки
-                    // Стартовая позиция (transform.position) будет центром, а позиции ботов будут от нее отступать.
-                    var spawnPosition = transform.position + new Vector3(
-                        (col - maxBotsPerRow / 2f) * distance, // Сдвиг по оси X
-                        transform.position.y + botConfig.Size * 1.1f, // Высота остаётся постоянной
-                        (row - totalRows / 2f) * distance // Сдвиг по оси Z
-                    );
+                    // Определяем текущий ряд
+                    int currentRow = GetCurrentRow(totalBotsSpawned);
 
-                    // Получаем бота из пула объектов
+                    // Получаем количество ботов в текущем ряду
+                    int botsInRow = GetBotsInRow(currentRow);
+
+                    // Индекс бота в текущем ряду
+                    int indexInRow = totalBotsSpawned % botsInRow;
+
+                    // Центрируем ботов в ряду относительно середины
+                    float offsetX = (indexInRow - (botsInRow - 1) / 2f) * distanceX;
+
+                    // Определяем Z-смещение для текущего ряда
+                    float offsetZ = -currentRow * distanceZ;
+
+                    // Позиция спавна
+                    Vector3 spawnPosition = transform.position + new Vector3(offsetX, transform.position.y + botConfig.Size * 1.1f, offsetZ);
+
+                    // Получаем бота из пула
                     var bot = ObjectsPoolManager.Instance.Get<Bot>();
 
                     // Инициализируем бота
                     bot.Initialize(botConfig);
                     bot.Upgrade(waveData.DamageIncrease, waveData.HealthIncrease);
-                    
-                    // Перемещаем его на нужную позицию
+
+                    // Устанавливаем позицию и ориентацию
                     bot.transform.position = spawnPosition;
                     bot.transform.eulerAngles = new Vector3(0, 180, 0);
-                    list.Add(bot);
-                    
-                    // Увеличиваем индексы столбца и строки
-                    col++;
 
-                    // Если столбцы заполнены, переходим на следующую строку
-                    if (col < maxBotsPerRow) continue;
-                    col = 0;
-                    row++;
+                    // Добавляем бота в список
+                    list.Add(bot);
+
+                    totalBotsSpawned++;
                 }
             }
 
             return list;
+        }
+
+        private int GetCurrentRow(int totalBotsSpawned)
+        {
+            int cumulativeBots = 0;
+
+            for (int i = 0; i < rowSettings.Count; i++)
+            {
+                cumulativeBots += rowSettings[i];
+
+                if (totalBotsSpawned < cumulativeBots)
+                {
+                    return i;
+                }
+            }
+
+            // Если рядов недостаточно, возвращаем последний ряд
+            return rowSettings.Count - 1;
+        }
+
+        private int GetBotsInRow(int row)
+        {
+            if (row < rowSettings.Count)
+            {
+                return rowSettings[row];
+            }
+
+            // Если настройка для ряда отсутствует, используем последний ряд
+            return rowSettings[^1];
         }
     }
 }

@@ -695,7 +695,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "4d8ddcbc99de40988b1f05c1720cbcc9",
     "m_Id": 0,
-    "m_DisplayName": "Cloth Texture",
+    "m_DisplayName": "Head Texture",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1213,10 +1213,10 @@
     "m_Guid": {
         "m_GuidSerialized": "86a83939-8f6f-42e8-8b9f-c7175fc2d0fb"
     },
-    "m_Name": "Cloth Texture",
+    "m_Name": "Head Texture",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Cloth Texture",
-    "m_DefaultReferenceName": "_Cloth_Texture",
+    "m_RefNameGeneratedByDisplayName": "Head Texture",
+    "m_DefaultReferenceName": "_Head_Texture",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,

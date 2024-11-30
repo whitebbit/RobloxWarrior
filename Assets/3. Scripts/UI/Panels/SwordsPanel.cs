@@ -226,6 +226,7 @@ namespace _3._Scripts.UI.Panels
 
             Save.TryMergeObject(_selectedItem.Save);
             UpdateUIAfterMerge();
+            EquipSword(_items.FirstOrDefault(i => i.Save.uid == Save.current.uid));
         }
 
         /// <summary>
@@ -235,6 +236,7 @@ namespace _3._Scripts.UI.Panels
         {
             Save.MergeAll();
             UpdateUIAfterMerge();
+            EquipSword(_items.FirstOrDefault(i => i.Save.uid == Save.current.uid));
         }
 
         /// <summary>

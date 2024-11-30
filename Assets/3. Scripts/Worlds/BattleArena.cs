@@ -4,6 +4,8 @@ using System.Linq;
 using _3._Scripts.Bots;
 using _3._Scripts.Config.Interfaces;
 using _3._Scripts.Pool;
+using _3._Scripts.UI;
+using _3._Scripts.UI.Widgets;
 using _3._Scripts.Worlds.Scriptables;
 using UnityEngine;
 
@@ -19,6 +21,7 @@ namespace _3._Scripts.Worlds
 
         private int _waveIndex;
 
+        private WavesWidget Widget => UIManager.Instance.GetWidget<WavesWidget>();
 
         public void Initialize(WorldConfig config)
         {
@@ -31,6 +34,12 @@ namespace _3._Scripts.Worlds
             _bots = spawner.SpawnEnemies(currentWave);
 
             Player.Player.Instance.Teleport(playerPoint.position);
+
+            if (!Widget.Enabled)
+                Widget.Enabled = true;
+
+            Widget.WaveNumber = _waveIndex + 1;
+
             StartCoroutine(CheckWaveEnd());
         }
 

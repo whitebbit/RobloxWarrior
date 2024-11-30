@@ -45,6 +45,7 @@ namespace _3._Scripts.Player
             Sword.SetSave(save);
             Sword.Initialize(config);
             Sword.SetOwner(Player.Instance.transform);
+            Sword.SetStars(save.starCount);
         }
 
         private void OnEnable()

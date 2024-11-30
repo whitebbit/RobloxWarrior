@@ -72,10 +72,8 @@ namespace _3._Scripts
             var config = Configuration.Instance.Config.SwordCollectionConfig.GetSword(id);
 
             // Создаём временный объект для рендеринга
-            var tempSwordTransform = new GameObject($"TempSword_{id}").transform;
-            tempSwordTransform.SetParent(swordTransform, false);
 
-            var item = Instantiate(config.Prefab, tempSwordTransform);
+            var item = Instantiate(config.Prefab, swordTransform);
 
             // Подготавливаем объект для рендеринга
             item.Disable();
@@ -120,7 +118,6 @@ namespace _3._Scripts
 
             // Удаляем временные объекты
             Destroy(item.gameObject);
-            Destroy(tempSwordTransform.gameObject);
 
             return renderedTexture;
         }
