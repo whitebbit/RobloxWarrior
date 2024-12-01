@@ -15,7 +15,7 @@ MonoBehaviour:
   id: sword_3
   titleID: 
   descriptionID: 
-  prefab: {fileID: 7846924914368531076, guid: 3e616ccceceb02b4998026a861767448, type: 3}
+  prefab: {fileID: 2890483915002272475, guid: 167067e7317d8d14eb1b011f2517533d, type: 3}
   rarity: 3
   damage: 150
   dropChance: 10

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 57
   damage: 10
-  attackSpeed: 2
+  attackSpeed: 1
   movementConfig:
     baseSpeed: 6
     jumpHeight: 0
