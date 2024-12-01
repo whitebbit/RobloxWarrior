@@ -249,12 +249,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 287
   startPoint: {fileID: 3959765659066962165}
-  offset: {x: 0, y: 1.75, z: 1.75}
+  offset: {x: 0, y: 1.75, z: 0}
   considerObstacles: 0
   gizmos:
     type: 1
     color: {r: 1, g: 0, b: 0, a: 0.2509804}
-  radius: 2
+  radius: 2.5
 --- !u!1001 &5517633332212906950
 PrefabInstance:
   m_ObjectHideFlags: 0

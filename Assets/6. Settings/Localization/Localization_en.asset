@@ -223,6 +223,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
+  - m_Id: 72344620327043072
+    m_Localized: Not enough crystals
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

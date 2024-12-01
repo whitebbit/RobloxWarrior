@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useFloatingText: 1
   trail: {fileID: 9204605827362573795}
+  starParticles: []
 --- !u!114 &9204605827362573795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,12 +132,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 287
   startPoint: {fileID: 4707675269887045193}
-  offset: {x: 0, y: 1.75, z: 1.75}
+  offset: {x: 0, y: 1.75, z: 0}
   considerObstacles: 0
   gizmos:
     type: 1
     color: {r: 1, g: 0, b: 0, a: 0.2509804}
-  radius: 2
+  radius: 2.5
 --- !u!1 &2541437639889174863
 GameObject:
   m_ObjectHideFlags: 0

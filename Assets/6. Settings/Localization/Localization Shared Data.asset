@@ -205,6 +205,10 @@ MonoBehaviour:
     m_Key: ' wave_number'
     m_Metadata:
       m_Items: []
+  - m_Id: 72344620327043072
+    m_Key: not_enought_crystals
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

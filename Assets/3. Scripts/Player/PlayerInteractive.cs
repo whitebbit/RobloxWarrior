@@ -13,6 +13,7 @@ namespace _3._Scripts.Player
 
         private void Start()
         {
+            detector.DetectState(true);
             detector.OnFound += OnFound;
         }
 

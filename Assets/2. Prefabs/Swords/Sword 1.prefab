@@ -135,12 +135,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 287
   startPoint: {fileID: 2817502221690305893}
-  offset: {x: 0, y: 1.75, z: 1.75}
+  offset: {x: 0, y: 1.75, z: 0}
   considerObstacles: 0
   gizmos:
     type: 1
     color: {r: 1, g: 0, b: 0, a: 0.2509804}
-  radius: 2
+  radius: 2.5
 --- !u!1 &7822864694082586001
 GameObject:
   m_ObjectHideFlags: 0

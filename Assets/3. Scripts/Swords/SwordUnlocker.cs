@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Currency;
 using _3._Scripts.Extensions;
 using _3._Scripts.Extensions.Interfaces;
 using _3._Scripts.Saves;
@@ -12,6 +13,7 @@ using _3._Scripts.UI.Transitions;
 using _3._Scripts.UI.Widgets;
 using DG.Tweening;
 using GBGamesPlugin;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -22,6 +24,8 @@ namespace _3._Scripts.Swords
     {
         [Tab("Main")] [SerializeField] private MeshRenderer eggModel;
         [SerializeField] private Transform eggTransform;
+        [SerializeField] private TMP_Text priceText;
+        
         [SerializeField] private ScaleTransition uiTransition;
         [Tab("UI")] [SerializeField] private Transform container;
         [SerializeField] private SwordEggItem prefab;
@@ -38,6 +42,7 @@ namespace _3._Scripts.Swords
         private bool _autoOpen;
 
         private float _price;
+
         private void Start()
         {
             uiTransition.ForceOut();
@@ -51,7 +56,7 @@ namespace _3._Scripts.Swords
             _configs = data.Swords;
             _eggMaterial = data.EggMaterial;
             _price = data.Price;
-            
+
             var orderByDescending = _configs.OrderByDescending(i => i.Chance);
 
             foreach (var config in orderByDescending)
@@ -63,6 +68,7 @@ namespace _3._Scripts.Swords
             }
 
             eggModel.material = _eggMaterial;
+            priceText.text = $"${_price}<sprite index=1>";
         }
 
         private void AutoOpen()
@@ -73,6 +79,14 @@ namespace _3._Scripts.Swords
 
         private void Open(int count)
         {
+            if (WalletManager.Crystals < _price * count)
+            {
+                var widget = UIManager.Instance.GetWidget<NotificationWidget>();
+                widget.Enabled = true;
+                widget.SetText("not_enought_crystals");
+                return;
+            }
+
             if (GBGames.saves.swordsSave.unlocked.Count + count > GBGames.saves.swordsSave.maxSwordsCount)
             {
                 ShowNotification();

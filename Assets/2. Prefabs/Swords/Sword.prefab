@@ -83,7 +83,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useFloatingText: 1
   trail: {fileID: 2757497876293413259}
-  starParticles: {fileID: 5893222248265654601}
+  starParticles:
+  - {fileID: 0}
 --- !u!114 &2757497876293413259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,12 +134,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 287
   startPoint: {fileID: 6694119677279207658}
-  offset: {x: 0, y: 1.75, z: 1.75}
+  offset: {x: 0, y: 1.75, z: 0}
   considerObstacles: 0
   gizmos:
     type: 1
     color: {r: 1, g: 0, b: 0, a: 0.2509804}
-  radius: 2
+  radius: 2.5
 --- !u!1 &7104027812597276222
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,11 +427,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdfc2e8cc9f84144793e5547753ada5a, type: 3}
---- !u!198 &5893222248265654601 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19822420, guid: bdfc2e8cc9f84144793e5547753ada5a, type: 3}
-  m_PrefabInstance: {fileID: 5893222248283887133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5893222248283978501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 453912, guid: bdfc2e8cc9f84144793e5547753ada5a, type: 3}
