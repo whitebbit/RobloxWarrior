@@ -27,6 +27,7 @@ namespace _3._Scripts.Localization
         public static void SetVariable<T>(this LocalizeStringEvent @event, string valueName, T value = default)
         {
             var stringReference = @event.StringReference;
+            
             if (typeof(T) == typeof(int))
             {
                 if (stringReference[valueName] is IntVariable variable)

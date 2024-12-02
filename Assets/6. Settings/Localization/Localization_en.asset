@@ -58,11 +58,6 @@ MonoBehaviour:
     m_Localized: Return
     m_Metadata:
       m_Items: []
-  - m_Id: 11419718841933824
-    m_Localized: <color=#3BDA00>Starter</color>
-    m_Metadata:
-      m_Items:
-      - rid: 3203987063427825692
   - m_Id: 15207861625954304
     m_Localized: Ad in {value}
     m_Metadata:
@@ -227,10 +222,31 @@ MonoBehaviour:
     m_Localized: Not enough crystals
     m_Metadata:
       m_Items: []
+  - m_Id: 72728421679038464
+    m_Localized: Complete the {value} of the waves
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 72728572996943872
+    m_Localized: Defeat {value} enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72728698951892992
+    m_Localized: Open the {value} of eggs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72729041521672192
+    m_Localized: Be reborn {value} times
+    m_Metadata:
+      m_Items: []
+  - m_Id: 72732057993805824
+    m_Localized: Complete the wave {value}
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020828f238c28000020027d2c92280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff00
+        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d620201

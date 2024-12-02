@@ -1,27 +1,56 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using _3._Scripts.Quests.Enums;
+using _3._Scripts.Quests.Interfaces;
 using UnityEngine;
 
 namespace _3._Scripts.Quests.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Quest", menuName = "Configs/Quests/Quest", order = 0)]
-    public class Quest : ScriptableObject
+    public abstract class Quest : ScriptableObject, IQuestEvent
     {
-        [SerializeField] private string descriptionID;
-        [SerializeField] private List<QuestGoal> goals;
         [SerializeField] private List<Reward> rewards;
 
-        public bool IsCompleted()
+        public event Action<bool> OnProgressUpdate;
+        public abstract QuestType Type { get; }
+        public abstract string ProgressText {get; }
+        public abstract bool IsCompleted {get; }
+
+        public void Activate()
         {
-            return goals.All(goal => goal.Evaluate());
+            ResetQuest();
+            QuestEventManager.Instance.RegisterListener(Type, this);
+        }
+
+        public void Deactivate()
+        {
+            QuestEventManager.Instance.UnregisterListener(Type, this);
         }
 
         public void GetRewards()
         {
+            if (!IsCompleted) return;
+
             foreach (var reward in rewards)
             {
                 reward.GetReward();
             }
         }
+
+        protected abstract void UpdateProgress(object data);
+
+        public void OnEventRaised(object sender, QuestEventArgs args)
+        {
+            if (args.EventType == Type)
+            {
+                UpdateProgress(args.EventData);
+            }
+        }
+
+        protected void OnUpdateProgress()
+        {
+            OnProgressUpdate?.Invoke(IsCompleted);
+        }
+
+        protected abstract void ResetQuest();
     }
 }

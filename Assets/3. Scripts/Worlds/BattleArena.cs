@@ -56,9 +56,11 @@ namespace _3._Scripts.Worlds
 
         private void WavePassed()
         {
+            GameEvents.WavePassed();
+            
             if (_waveIndex >= _waves.Count - 1)
             {
-                Debug.Log("Finish");
+                
             }
             else
             {
@@ -70,10 +72,6 @@ namespace _3._Scripts.Worlds
         {
             _waveIndex++;
             StartBattle();
-        }
-
-        private void EndBattle()
-        {
         }
 
         private IEnumerator CheckWaveEnd()
