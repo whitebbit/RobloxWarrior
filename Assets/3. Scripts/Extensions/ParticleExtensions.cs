@@ -14,19 +14,26 @@ namespace _3._Scripts.Extensions
                 else
                     particleSystem.Stop();
             }
-            
         }
+
         public static void SetEmissionRateOverTime(this List<ParticleSystem> particleSystems, int emissionRate)
         {
             foreach (var particleSystem in particleSystems)
             {
-                var emission = particleSystem.emission; 
-                var rate = emission.rateOverTime;      
-                rate.constant = emissionRate;          
+                var emission = particleSystem.emission;
+                var rate = emission.rateOverTime;
+                rate.constant = emissionRate;
                 emission.rateOverTime = rate;
             }
-
         }
-        
+
+        public static void SetStartColor(this List<ParticleSystem> particleSystems, Color color)
+        {
+            foreach (var particleSystem in particleSystems)
+            {
+                var main = particleSystem.main;
+                main.startColor = color;
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ using _3._Scripts.Extensions;
 using _3._Scripts.Pool;
 using _3._Scripts.Saves;
 using _3._Scripts.Swords.Scriptables;
+using _3._Scripts.UI.Extensions;
 using _3._Scripts.Weapons.Base;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace _3._Scripts.Swords
     {
         [SerializeField] private MeleeWeaponTrail trail;
         [SerializeField] private List<ParticleSystem> starParticles;
-        
+
         protected override float CritChance => Player.Player.Instance.Stats.CritImprovement;
         private SwordSave _save;
 
@@ -22,7 +23,7 @@ namespace _3._Scripts.Swords
             base.OnAwake();
             starParticles.SetState(false);
         }
-        
+
         public void Disable()
         {
             starParticles.SetState(false);
@@ -53,8 +54,12 @@ namespace _3._Scripts.Swords
                 return;
             }
 
+            var rarity = starAmount.ToRarity();
+            var color = Configuration.Instance.GetRarityTable(rarity).MainColor;
+
             starParticles.SetEmissionRateOverTime(starAmount);
             starParticles.SetState(true);
+            starParticles.SetStartColor(color);
         }
 
         public override void Attack()
