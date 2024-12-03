@@ -18,6 +18,7 @@ MonoBehaviour:
   movementConfig:
     baseSpeed: 4
     jumpHeight: 0
+  experience: 946
   size: 3
   skin: {fileID: 2100000, guid: 2b361c5d7cfbcf146b2cd377b96d1a0e, type: 2}
   animationConfig:
