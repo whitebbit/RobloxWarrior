@@ -16,4 +16,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fdaf6b00d42f88a498a53b40f3dbc8c8, type: 2}
   - {fileID: 11400000, guid: 7aec8c5c770580b4e9a0b18744922ec5, type: 2}
   - {fileID: 11400000, guid: c96c12304df57ab468f9b1dd5fafe857, type: 2}
+  - {fileID: 11400000, guid: d88fd98e033903d44b14bba7738cb5c4, type: 2}
+  - {fileID: 11400000, guid: 37570f99621f1404280dba09be25b8b5, type: 2}
+  - {fileID: 11400000, guid: b233c7c3eb716e94a93208b91c522c6b, type: 2}
+  - {fileID: 11400000, guid: ed9d5105a82d6e8458551ee0fe31b33f, type: 2}
+  - {fileID: 11400000, guid: a2a1a06f0693c3c468481fd1c6ad85ce, type: 2}
+  - {fileID: 11400000, guid: e6344a9a7b458464a9df602bc37a3437, type: 2}
+  - {fileID: 11400000, guid: d31e0558f354e3f44a7acb4f42799f9a, type: 2}
+  - {fileID: 11400000, guid: a06841cbd6c44c544aa711e6757fda12, type: 2}
+  - {fileID: 11400000, guid: 4b2df231bad74b747a472f40bee891a4, type: 2}
+  - {fileID: 11400000, guid: 5d007ea0034d34d498379adaf24ec117, type: 2}
+  - {fileID: 11400000, guid: 6311381392eeee54ea2fef7fc8fa34f4, type: 2}
+  - {fileID: 11400000, guid: a0c8cccbdf46de44c900593a4967a4b9, type: 2}
   starDamageIncrease: 25
