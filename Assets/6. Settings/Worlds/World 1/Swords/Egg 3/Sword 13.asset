@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed948462f8c74cb5a66220a07f26f844, type: 3}
-  m_Name: Sword 0
+  m_Name: Sword 13
   m_EditorClassIdentifier: 
-  id: sword_1
+  id: sword_14
   titleID: 
   descriptionID: 
-  prefab: {fileID: 4686190603982889431, guid: 36e82e771d1ee6f419c9a7f2a3004d4a, type: 3}
-  rarity: 1
-  damage: 100
-  dropChance: 65
+  prefab: {fileID: 4265948592736010875, guid: 52439192e2edf104f846b26fa35ba735, type: 3}
+  rarity: 4
+  damage: 83
+  dropChance: 5

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed948462f8c74cb5a66220a07f26f844, type: 3}
+  m_Name: Sword 11
+  m_EditorClassIdentifier: 
+  id: sword_12
+  titleID: 
+  descriptionID: 
+  prefab: {fileID: 8714625847439824435, guid: 474bd83afcc3c1a408da41bf3e02b8fa, type: 3}
+  rarity: 2
+  damage: 48
+  dropChance: 25
