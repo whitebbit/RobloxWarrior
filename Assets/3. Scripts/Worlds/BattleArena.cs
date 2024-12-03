@@ -61,7 +61,6 @@ namespace _3._Scripts.Worlds
         {
             GameEvents.WavePassed();
             GameEvents.WaveCompleted(_waveIndex + 1);
-            WalletManager.Crystals += _waves[_waveIndex].CrystalAmount;
             UIManager.Instance.GetWidget<EffectsWidget>().Enabled = true;
             UIManager.Instance.GetWidget<EffectsWidget>()
                 .ShowCurrency(CurrencyType.Crystal, _waves[_waveIndex].CrystalAmount);

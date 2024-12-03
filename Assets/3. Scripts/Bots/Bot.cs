@@ -66,6 +66,8 @@ namespace _3._Scripts.Bots
         public void Initialize(BotConfig config)
         {
             Dying.IsDead = false;
+            Dying.SetExperience(config.Experience);
+
             _target = null;
 
             _config = config;
@@ -74,7 +76,7 @@ namespace _3._Scripts.Bots
             _combat.Initialize(_config);
             _movement.Initialize(_config);
             _view.Initialize(_config);
-            
+
             _health.UpdateValues(_config.Health);
         }
 
@@ -87,7 +89,7 @@ namespace _3._Scripts.Bots
         }
 
         public void OnSpawn()
-        {                   
+        {
             _playerDetector.DetectState(true);
             _playerDetector.OnFound += OnFound;
         }

@@ -53,6 +53,8 @@ namespace _3._Scripts.UI.Widgets
                 {
                     widget.transform.DOScale(1.1f, 0.15f)
                         .OnComplete(() => widget.transform.DOScale(1f, 0.15f));
+                    
+                    WalletManager.Crystals += amount;
                     ObjectsPoolManager.Instance.Return(item);
                     Enabled = false;
                 });
