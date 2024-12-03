@@ -38,6 +38,8 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         private int _eggHealth = 3;
 
         private Vector3 _eggStartPosition;
+        private Vector3 _eggStartRotation;
+        private Vector3 _eggStartScale;
         private event Action OnFinished;
         private event Action OnDestroyed;
 
@@ -45,6 +47,8 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         {
             _swordRarityLocalizeString = swordRarityText.GetComponent<LocalizeStringEvent>();
             _eggStartPosition = egg.transform.localPosition;
+            _eggStartRotation = egg.transform.localEulerAngles;
+            _eggStartScale = egg.transform.localScale;
         }
 
         public void SetSword(Material eggMaterial, SwordConfig swordConfig)
@@ -73,7 +77,7 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         {
             egg.transform.DOShakePosition(.5f, 50, 15)
                 .OnComplete(() => egg.transform.DOLocalMove(_eggStartPosition, 0.1f));
-            egg.transform.DOShakeRotation(.75f, 25, 15);
+            egg.transform.DOShakeRotation(.75f, 125, 15);
 
             _eggHealth--;
 
@@ -93,10 +97,12 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
         private void EggAnimation()
         {
             var eggTransform = egg.transform;
-
-            eggTransform.localEulerAngles = Vector3.zero;
+            var scale = new Vector3(_eggStartScale.x * swordScaleFactor,
+                _eggStartScale.y * swordScaleFactor, _eggStartScale.z * swordScaleFactor);
+            
+            eggTransform.localEulerAngles = _eggStartRotation;
             eggTransform.localScale = Vector3.zero;
-            eggTransform.DOScale(eggScaleFactor, eggScaleDuration).SetEase(Ease.OutBack).SetDelay(.5f);
+            eggTransform.DOScale(scale, eggScaleDuration).SetEase(Ease.OutBack).SetDelay(.5f);
 
             swordRarityText.Fade(0);
         }

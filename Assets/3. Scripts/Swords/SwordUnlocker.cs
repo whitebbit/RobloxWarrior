@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Config;
 using _3._Scripts.Currency;
 using _3._Scripts.Extensions;
 using _3._Scripts.Extensions.Interfaces;
@@ -25,7 +26,7 @@ namespace _3._Scripts.Swords
         [Tab("Main")] [SerializeField] private MeshRenderer eggModel;
         [SerializeField] private Transform eggTransform;
         [SerializeField] private TMP_Text priceText;
-        
+
         [SerializeField] private ScaleTransition uiTransition;
         [Tab("UI")] [SerializeField] private Transform container;
         [SerializeField] private SwordEggItem prefab;
@@ -68,7 +69,7 @@ namespace _3._Scripts.Swords
             }
 
             eggModel.material = _eggMaterial;
-            priceText.text = $"${_price}<sprite index=1>";
+            priceText.text = $"${_price.ConvertToWallet()}<sprite index=1>";
         }
 
         private void AutoOpen()
@@ -109,7 +110,8 @@ namespace _3._Scripts.Swords
 
             for (var i = 0; i < count; i++)
             {
-                items.Add(_configs.GetRandomElement());
+                items.Add(_configs.GetRandomElement(
+                    Configuration.Instance.Config.SwordCollectionConfig.UnlockerRandomType));
             }
 
             foreach (var item in from item in items

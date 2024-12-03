@@ -8,14 +8,17 @@ using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Transitions;
 using DG.Tweening;
 using UnityEngine;
+using VInspector;
 
 namespace _3._Scripts.UI.Widgets
 {
     public class EffectsWidget : UIWidget
     {
         [SerializeField] private FadeTransition transition;
-        [Space] [SerializeField] private List<CurrencyWidget> widgets = new();
-        [Space] [SerializeField] private float duration;
+        [Tab("Currency Effect")]
+        [SerializeField] private List<CurrencyWidget> widgets = new();
+        [Space] 
+        [SerializeField] private float duration;
         [SerializeField] private Ease inEase;
         [SerializeField] private Ease outEase;
 

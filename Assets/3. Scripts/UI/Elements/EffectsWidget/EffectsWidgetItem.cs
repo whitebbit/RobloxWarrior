@@ -1,5 +1,6 @@
 ﻿using System;
 using _3._Scripts.Config;
+using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Pool.Interfaces;
 using _3._Scripts.UI.Extensions;
@@ -29,7 +30,7 @@ namespace _3._Scripts.UI.Elements.EffectsWidget
             icon.sprite = sprite;
             icon.ScaleImage();
 
-            text.text = $"+{amount}";
+            text.text = $"+{amount.ConvertToWallet()}";
         }
 
         public void OnSpawn()
