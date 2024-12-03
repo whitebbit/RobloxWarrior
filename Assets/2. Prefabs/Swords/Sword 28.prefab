@@ -106,7 +106,7 @@ MonoBehaviour:
   gizmos:
     type: 1
     color: {r: 1, g: 0, b: 0, a: 0.2509804}
-  radius: 2.5
+  radius: 3
 --- !u!1 &2804515706583945449
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Bots;
 using _3._Scripts.Config.Interfaces;
+using _3._Scripts.Currency;
+using _3._Scripts.Currency.Enums;
 using _3._Scripts.Pool;
 using _3._Scripts.UI;
+using _3._Scripts.UI.Elements.EffectsWidget;
 using _3._Scripts.UI.Widgets;
 using _3._Scripts.Worlds.Scriptables;
 using UnityEngine;
@@ -57,10 +60,14 @@ namespace _3._Scripts.Worlds
         private void WavePassed()
         {
             GameEvents.WavePassed();
+            GameEvents.WaveCompleted(_waveIndex + 1);
+            WalletManager.Crystals += _waves[_waveIndex].CrystalAmount;
+            UIManager.Instance.GetWidget<EffectsWidget>().Enabled = true;
+            UIManager.Instance.GetWidget<EffectsWidget>()
+                .ShowCurrency(CurrencyType.Crystal, _waves[_waveIndex].CrystalAmount);
             
             if (_waveIndex >= _waves.Count - 1)
             {
-                
             }
             else
             {

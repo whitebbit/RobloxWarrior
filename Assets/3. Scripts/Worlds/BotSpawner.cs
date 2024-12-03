@@ -50,7 +50,7 @@ namespace _3._Scripts.Worlds
 
                     // Инициализируем бота
                     bot.Initialize(botConfig);
-                    bot.Upgrade(waveData.DamageIncrease, waveData.HealthIncrease);
+                   // bot.Upgrade(waveData.DamageIncrease, waveData.HealthIncrease);
 
                     // Устанавливаем позицию и ориентацию
                     bot.transform.position = spawnPosition;

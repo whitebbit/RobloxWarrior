@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _3._Scripts.Quests.ScriptableObjects.Quests
 {
-    [CreateAssetMenu(fileName = "Waves Passed Quest", menuName = "Configs/Quests/Waves Passed Quest", order = 0)]
+    [CreateAssetMenu(fileName = "WavesPassedQuest", menuName = "Configs/Quests/Waves Passed Quest", order = 0)]
     public class WavesPassedQuest : Quest
     {
         [SerializeField] private int requiredWavesCount;
@@ -24,7 +24,7 @@ namespace _3._Scripts.Quests.ScriptableObjects.Quests
 
         protected override void ResetQuest()
         {
-            _currentWavesCount = 0;
+            _currentWavesCount = 0; 
         }
     }
 }

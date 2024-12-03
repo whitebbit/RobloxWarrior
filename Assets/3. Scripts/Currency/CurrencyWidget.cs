@@ -5,18 +5,17 @@ using _3._Scripts.UI.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using VInspector;
 
 namespace _3._Scripts.Currency
 {
     public class CurrencyWidget : MonoBehaviour
     {
-        [Tab("Components")] [SerializeField] private CurrencyType type;
+        [SerializeField] private CurrencyType type;
         [SerializeField] private TMP_Text text;
         [SerializeField] private Image icon;
         [SerializeField] private Image table;
 
-
+        public CurrencyType Type => type;
         private void Start()
         {
             Initialize();
@@ -26,8 +25,8 @@ namespace _3._Scripts.Currency
         {
             var currency = Configuration.Instance.GetCurrency(type);
             icon.sprite = currency.Icon;
-            table.color = currency.DarkColor;
-            icon.ScaleImage();
+            //table.color = currency.DarkColor;
+            //icon.ScaleImage();
 
             switch (type)
             {
@@ -76,7 +75,7 @@ namespace _3._Scripts.Currency
 
         private void OnChange(float _, float newValue)
         {
-            text.text = newValue.ConvertToWallet();
+            text.text = newValue.ConvertToWallet(10_000);
         }
     }
 }

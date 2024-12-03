@@ -36,9 +36,7 @@ namespace _3._Scripts.Player
         private static Player _instance;
 
         #endregion
-
-        [SerializeField] private Quest quest;
-
+        
         public PlayerStats Stats { get; private set; }
         public PlayerAmmunition Ammunition { get; private set; }
         public override UnitHealth Health => _health;
@@ -65,12 +63,6 @@ namespace _3._Scripts.Player
         private void SubscribeToEvents()
         {
             Stats.OnHealthImproving += () => Health.MaxHealth += Stats.HealthImprovement;
-            
-            quest.Activate();
-            quest.OnProgressUpdate += b =>
-            {
-                Debug.Log($"{quest.Type} is complete: {b}");
-            };
         }
 
         public float GetTrueDamage(float swordDamage)

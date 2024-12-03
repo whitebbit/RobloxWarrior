@@ -85,8 +85,7 @@ public class WavesEditorWindow : EditorWindow
         {
             SerializedProperty wave = filteredWaves[i];
             SerializedProperty bots = wave.FindPropertyRelative("bots");
-            SerializedProperty damageIncrease = wave.FindPropertyRelative("damageIncrease");
-            SerializedProperty healthIncrease = wave.FindPropertyRelative("healthIncrease");
+            SerializedProperty crystalAmount = wave.FindPropertyRelative("crystalAmount");
 
             // Отображаем информацию о текущей волне
             string waveLabel = $"Wave {i + 1}";
@@ -96,8 +95,7 @@ public class WavesEditorWindow : EditorWindow
             }
 
             EditorGUILayout.LabelField(waveLabel, EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(damageIncrease, new GUIContent("Damage Increase"));
-            EditorGUILayout.PropertyField(healthIncrease, new GUIContent("Health Increase"));
+            EditorGUILayout.PropertyField(crystalAmount, new GUIContent("Crystals Amount"));
 
             // Отображаем список ботов для этой волны
             EditorGUILayout.BeginVertical();

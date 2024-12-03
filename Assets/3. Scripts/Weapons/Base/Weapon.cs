@@ -18,7 +18,7 @@ namespace _3._Scripts.Weapons.Base
 
         public float AttackRange => Detector.DetectAreaSize;
         protected abstract float CritChance { get; }
-        public virtual float DamageIncrease { get; set; }
+        public virtual float DamageIncrease { get; set; } = 1;
         private Transform _owner;
 
         protected void Awake()

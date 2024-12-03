@@ -96,8 +96,7 @@ public class WorldConfigEditor : Editor
         {
             var wave = filteredWaves[i];
             var bots = wave.FindPropertyRelative("bots");
-            var damageIncrease = wave.FindPropertyRelative("damageIncrease");
-            var healthIncrease = wave.FindPropertyRelative("healthIncrease");
+            var crystalAmount = wave.FindPropertyRelative("crystalAmount");
 
             // Проверяем инициализацию foldout
             _waveFoldouts.TryAdd(i, false);
@@ -121,8 +120,7 @@ public class WorldConfigEditor : Editor
             if (_waveFoldouts[i])
             {
                 GUILayout.BeginVertical("box");
-                EditorGUILayout.PropertyField(damageIncrease, new GUIContent("Damage Increase"));
-                EditorGUILayout.PropertyField(healthIncrease, new GUIContent("Health Increase"));
+                EditorGUILayout.PropertyField(crystalAmount, new GUIContent("Сrystal Amount"));
                 GUILayout.EndVertical();
 
                 GUILayout.BeginVertical("box");

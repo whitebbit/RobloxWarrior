@@ -9,12 +9,11 @@ namespace _3._Scripts.Worlds
     public class WaveData
     {
         [SerializeField] private List<BotSpawnData> bots;
-        [SerializeField] private float damageIncrease;
-        [SerializeField] private float healthIncrease;
-        
+        [SerializeField] private float crystalAmount;
+
+
         public List<BotSpawnData> Bots => bots;
 
-        public float DamageIncrease => damageIncrease;
-        public float HealthIncrease => healthIncrease;
+        public float CrystalAmount => crystalAmount;
     }
 }
