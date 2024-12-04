@@ -23,16 +23,15 @@ MonoBehaviour:
   skin: {fileID: 2100000, guid: d936fb0dd6a3fe944b15decbbe5f887f, type: 2}
   animationConfig:
     attackAnimations:
-    - clip: {fileID: 7400000, guid: 14e87e8f1f055cd419847302a41a4275, type: 3}
+    - clip: {fileID: 1827226128182048838, guid: 47aafab7fd8b103428b97d9560e2cb29, type: 3}
       eventTimes:
       - 0.2
-    - clip: {fileID: 7400000, guid: ff13e6551ae28014f8c77a74e1093fd7, type: 3}
+    - clip: {fileID: 1827226128182048838, guid: 1fad2b19b89b15d4e8b2f7f1bc3da64f, type: 3}
       eventTimes:
       - 0.2
-    - clip: {fileID: 7400000, guid: c1d88a16a1d6e504ca8ef2aa65ee0c86, type: 3}
+    - clip: {fileID: 1827226128182048838, guid: 5d102c6e7a213ac459255843705674ac, type: 3}
       eventTimes:
       - 0.2
-      - 0.4
     attackMask: {fileID: 31900000, guid: 91e92872817d67941b2f4b27d408a80e, type: 2}
     movementAnimation:
       _FadeDuration: 0.25
@@ -42,9 +41,9 @@ MonoBehaviour:
         _Names: []
       _Speed: 1
       _Animations:
-      - {fileID: 7400000, guid: e6def7885940f9e4d886792e6ac0bca2, type: 3}
-      - {fileID: 7400000, guid: b0f10ecfe14765647a1528b56c0b1151, type: 3}
-      - {fileID: 7400000, guid: becf4bd5f6f4e2849a95cfa88e946fb1, type: 3}
+      - {fileID: 1827226128182048838, guid: dbe22f63c5e055749ab9ad96d56fb12e, type: 3}
+      - {fileID: 1827226128182048838, guid: 72370450a5108bd4b9e79ead87c44ac4, type: 3}
+      - {fileID: 1827226128182048838, guid: 81618fbfa052c354fa4b50c57d6512ab, type: 3}
       _Speeds: []
       _SynchronizeChildren: 
       _Thresholds:
