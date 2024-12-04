@@ -29,4 +29,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6311381392eeee54ea2fef7fc8fa34f4, type: 2}
   - {fileID: 11400000, guid: a0c8cccbdf46de44c900593a4967a4b9, type: 2}
   starDamageIncrease: 25
-  unlockerRandomType: 3
+  unlockerRandomType: 2

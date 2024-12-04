@@ -20,18 +20,23 @@ MonoBehaviour:
   rarityTables:
   - rarity: 1
     mainColor: {r: 0.6901961, g: 0.7647059, b: 0.8509804, a: 1}
+    secondaryColor: {r: 0.45867845, g: 0.64047694, b: 0.8509804, a: 1}
     titleId: rarity_common
   - rarity: 2
     mainColor: {r: 0.29411766, g: 0.4117647, b: 1, a: 1}
+    secondaryColor: {r: 0, g: 0.16666651, b: 1, a: 1}
     titleId: rarity_rare
   - rarity: 3
     mainColor: {r: 0.827451, g: 0.17254902, b: 0.9019608, a: 1}
+    secondaryColor: {r: 0.84038717, g: 0, b: 0.936, a: 1}
     titleId: rarity_legendary
   - rarity: 4
     mainColor: {r: 0.99300003, g: 0.76468825, b: 0.26810998, a: 1}
+    secondaryColor: {r: 0.99215686, g: 0.6811023, b: 0, a: 1}
     titleId: rarity_immortal
   - rarity: 5
     mainColor: {r: 0.92156863, g: 0.29411766, b: 0.29411766, a: 1}
+    secondaryColor: {r: 0.92156863, g: 0, b: 0, a: 1}
     titleId: rarity_ancient
   playerConfig: {fileID: 11400000, guid: 071cf3b6b1c0e1843a27b4b67c7349f7, type: 2}
   swordCollectionConfig: {fileID: 11400000, guid: 0400797554daa6641bb6f99d757595be, type: 2}

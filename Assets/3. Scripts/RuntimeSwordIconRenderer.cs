@@ -9,8 +9,9 @@ namespace _3._Scripts
 {
     public class RuntimeSwordIconRenderer : Singleton<RuntimeSwordIconRenderer>
     {
-        [SerializeField] private float greenThreshold = 25;
+        [SerializeField] private float threshold = 25;
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] private Color backgroundColor = Color.magenta;
 
         public Camera renderCamera;
         public RenderTexture renderTexture;
@@ -72,7 +73,6 @@ namespace _3._Scripts
             var config = Configuration.Instance.Config.SwordCollectionConfig.GetSword(id);
 
             // Создаём временный объект для рендеринга
-
             var item = Instantiate(config.Prefab, swordTransform);
 
             // Подготавливаем объект для рендеринга
@@ -83,7 +83,7 @@ namespace _3._Scripts
             // Настраиваем камеру
             renderCamera.cullingMask = layerMask;
             renderCamera.clearFlags = CameraClearFlags.SolidColor;
-            renderCamera.backgroundColor = new Color(0, 1, 0, 1); // Прозрачный фон
+            renderCamera.backgroundColor = backgroundColor; // Устанавливаем цвет фона
 
             // Создаём временный RenderTexture
             var tempRT = new RenderTexture(renderTexture.width, renderTexture.height, 24, RenderTextureFormat.ARGB32);
@@ -103,14 +103,19 @@ namespace _3._Scripts
             renderCamera.targetTexture = null;
             tempRT.Release();
 
-            // Удаляем фон (зеленый цвет)
+            // Удаляем указанный фон
             var pixels = renderedTexture.GetPixels32();
             for (var i = 0; i < pixels.Length; i++)
             {
                 var pixel = pixels[i];
-                if (pixel.g <= pixel.r + greenThreshold || pixel.g <= pixel.b + greenThreshold) continue;
-                pixel.a = 0;
-                pixels[i] = pixel;
+                // Проверяем, насколько цвет пикселя близок к фоновому цвету
+                if (Mathf.Abs(pixel.r / 255f - backgroundColor.r) <= threshold &&
+                    Mathf.Abs(pixel.g / 255f - backgroundColor.g) <= threshold &&
+                    Mathf.Abs(pixel.b / 255f - backgroundColor.b) <= threshold)
+                {
+                    pixel.a = 0; // Убираем пиксель
+                    pixels[i] = pixel;
+                }
             }
 
             renderedTexture.SetPixels32(pixels);

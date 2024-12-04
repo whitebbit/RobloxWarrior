@@ -9,10 +9,13 @@ namespace _3._Scripts.UI.Structs
     {
         [SerializeField] private Rarity rarity;
         [SerializeField] private Color mainColor;
+        [SerializeField] private Color secondaryColor;
         [SerializeField] private string titleId;
 
         public Rarity Rarity => rarity;
         public string TitleID => titleId;
         public Color MainColor => mainColor;
+        public Color SecondaryColor => secondaryColor;
+        
     }
 }

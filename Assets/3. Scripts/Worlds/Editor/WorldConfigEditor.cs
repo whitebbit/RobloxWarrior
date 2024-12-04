@@ -13,6 +13,7 @@ public class WorldConfigEditor : Editor
     private bool swordEggsFoldout = false;
 
     private SerializedProperty swordEggs;
+    private SerializedProperty quests;
 
     // Переменные для пагинации
     private int currentPage = 0;
@@ -25,6 +26,7 @@ public class WorldConfigEditor : Editor
     private void OnEnable()
     {
         waves = serializedObject.FindProperty("waves");
+        quests = serializedObject.FindProperty("quests");
         swordEggs = serializedObject.FindProperty("swordEggs");
         totalPages = Mathf.CeilToInt((float)waves.arraySize / itemsPerPage); // Рассчитываем количество страниц
     }
@@ -32,12 +34,13 @@ public class WorldConfigEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-
+        var worldPrefab = serializedObject.FindProperty("worldPrefab");
+        EditorGUILayout.PropertyField(worldPrefab, new GUIContent("World Prefab"));
+        GUILayout.Space(10);
         Waves();
         SwordEggs();
-        var worldPrefab = serializedObject.FindProperty("worldPrefab");
         GUILayout.Space(10);
-        EditorGUILayout.PropertyField(worldPrefab, new GUIContent("World Prefab"));
+        EditorGUILayout.PropertyField(quests, new GUIContent("Quests"));
 
         serializedObject.ApplyModifiedProperties();
     }

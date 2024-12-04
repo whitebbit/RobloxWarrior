@@ -38,7 +38,7 @@ namespace _3._Scripts.Swords
 
             var rarity = Configuration.Instance.GetRarityTable(config.Rarity);
             Detector.SetStartPoint(Player.Player.Instance.transform);
-            trail.SetColor(rarity.MainColor);
+            trail.SetColor(rarity.SecondaryColor);
         }
 
         public void SetSave(SwordSave save)
