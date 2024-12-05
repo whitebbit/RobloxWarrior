@@ -13,17 +13,14 @@ namespace _3._Scripts.Config.Scriptables
     public class MainConfig : ScriptableObject
     {
         [Tab("Game Data")] [SerializeField] private List<WorldConfig> worlds = new();
-        
-        [Space]
-        [SerializeField] private List<CurrencyConfig> currencyData = new();
-        [SerializeField] private List<RarityTable> rarityTables = new();
-        [Tab("Player Data")] 
-        [SerializeField] private PlayerConfig playerConfig;
-        [SerializeField] private SwordCollectionConfig swordCollectionConfig;
-        [Tab("UI Data")] 
-        [SerializeField] private UIConfig uiConfig;
 
-        
+        [Space] [SerializeField] private List<CurrencyConfig> currencyData = new();
+        [SerializeField] private List<RarityTable> rarityTables = new();
+        [Tab("Player Data")] [SerializeField] private PlayerConfig playerConfig;
+        [SerializeField] private SwordCollectionConfig swordCollectionConfig;
+        [Tab("UI Data")] [SerializeField] private UIConfig uiConfig;
+
+
         public PlayerConfig PlayerConfig => playerConfig;
         public SwordCollectionConfig SwordCollectionConfig => swordCollectionConfig;
         public List<CurrencyConfig> CurrencyData => currencyData;

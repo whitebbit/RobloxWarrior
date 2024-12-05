@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _3._Scripts.Quests.Enums;
 using _3._Scripts.Quests.Interfaces;
+using GBGamesPlugin;
 using UnityEngine;
 
 namespace _3._Scripts.Quests.ScriptableObjects
@@ -10,11 +11,12 @@ namespace _3._Scripts.Quests.ScriptableObjects
     {
         [SerializeField] private List<Reward> rewards;
 
-        public event Action<bool> OnProgressUpdate;
+        public event Action<Quest> OnProgressUpdate;
         public abstract QuestType Type { get; }
         public abstract string ProgressText {get; }
+        public abstract string GoalText { get; }
         public abstract bool IsCompleted {get; }
-
+        
         public void Activate()
         {
             ResetQuest();
@@ -48,7 +50,7 @@ namespace _3._Scripts.Quests.ScriptableObjects
 
         protected void OnUpdateProgress()
         {
-            OnProgressUpdate?.Invoke(IsCompleted);
+            OnProgressUpdate?.Invoke(this);
         }
 
         protected abstract void ResetQuest();

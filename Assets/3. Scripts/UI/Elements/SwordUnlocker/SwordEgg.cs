@@ -75,9 +75,9 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
 
         public void GetDamage()
         {
-            egg.transform.DOShakePosition(.5f, 50, 15)
+            egg.transform.DOShakePosition(.5f, 50, 10)
                 .OnComplete(() => egg.transform.DOLocalMove(_eggStartPosition, 0.1f));
-            egg.transform.DOShakeRotation(.75f, 125, 15);
+            egg.transform.DOShakeRotation(.75f, 50, 10);
 
             _eggHealth--;
 

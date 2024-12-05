@@ -229,6 +229,30 @@ MonoBehaviour:
     m_Key: quest_complete_wave
     m_Metadata:
       m_Items: []
+  - m_Id: 73751991494443008
+    m_Key: talk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73766733604782080
+    m_Key: to_accept
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73766871807098880
+    m_Key: "\u0441ancel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73768097709883392
+    m_Key: get_reward
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73779472733634560
+    m_Key: quest_complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 73794073835667456
+    m_Key: complete_current_quest
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

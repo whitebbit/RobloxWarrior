@@ -35,6 +35,7 @@ public class WorldConfigEditor : Editor
     {
         serializedObject.Update();
         var worldPrefab = serializedObject.FindProperty("worldPrefab");
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("worldName"), new GUIContent("Name"));
         EditorGUILayout.PropertyField(worldPrefab, new GUIContent("World Prefab"));
         GUILayout.Space(10);
         Waves();

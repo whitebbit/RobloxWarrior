@@ -26,6 +26,8 @@ namespace _3._Scripts.Config
         
         public CurrencyConfig GetCurrency(CurrencyType type) => config.CurrencyData.FirstOrDefault(c => c.Type == type);
         public RarityTable GetRarityTable(Rarity rarity) => config.RarityTables.FirstOrDefault(r => r.Rarity == rarity);
+        public WorldConfig GetWorldConfig(string worldName) => config.Worlds.FirstOrDefault(w => w.WorldName == worldName);
+        
         
         private void Start()
         {

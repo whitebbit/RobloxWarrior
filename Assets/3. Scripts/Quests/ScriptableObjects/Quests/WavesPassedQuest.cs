@@ -9,6 +9,7 @@ namespace _3._Scripts.Quests.ScriptableObjects.Quests
         [SerializeField] private int requiredWavesCount;
 
         public override QuestType Type => QuestType.WavesPassed;
+        public override string GoalText => $"{requiredWavesCount}";
         public override bool IsCompleted => _currentWavesCount >= requiredWavesCount;
         public override string ProgressText => $"{_currentWavesCount}/{requiredWavesCount}";
 
@@ -24,7 +25,7 @@ namespace _3._Scripts.Quests.ScriptableObjects.Quests
 
         protected override void ResetQuest()
         {
-            _currentWavesCount = 0; 
+            _currentWavesCount = 0;
         }
     }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Waves Passed Quest
   m_EditorClassIdentifier: 
   rewards: []
-  requiredWavesCount: 2
+  requiredWavesCount: 1

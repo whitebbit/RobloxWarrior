@@ -12,6 +12,7 @@ namespace _3._Scripts.Quests.ScriptableObjects.Quests
         private int Progress => _currentWave >= waveNumber ? 1 : 0;
         public override QuestType Type => QuestType.CompleteWave;
         public override string ProgressText => $"{Progress}/{1}";
+        public override string GoalText => $"{waveNumber}";
         public override bool IsCompleted => _currentWave >= waveNumber;
 
         protected override void UpdateProgress(object data)

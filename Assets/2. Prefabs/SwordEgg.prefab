@@ -211,7 +211,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.5
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.5
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1495,15 +1495,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.25
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.25
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6219662
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1511,7 +1511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1523,7 +1523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1535,7 +1535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1549,6 +1549,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: f49356295a1e2be4fb0fe9ef15788fdf, type: 3}
     - target: {fileID: 919132149155446097, guid: 1eb53231bbeff4647b0721da2ef1f057, type: 3}
       propertyPath: m_Name
       value: egg
