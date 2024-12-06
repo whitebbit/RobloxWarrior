@@ -332,4 +332,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a0c8cccbdf46de44c900593a4967a4b9, type: 2}
   quests:
   - {fileID: 11400000, guid: 2bdfe99a2c003f84f94fd509d94ecfc1, type: 2}
-  - {fileID: 11400000, guid: 6d6b702145991e74d8a1a167790e6c90, type: 2}
+  - {fileID: 11400000, guid: 3cacc08e9ffaafd40ba5c5bef3be2a53, type: 2}
+  - {fileID: 11400000, guid: e71705414181dc342a479731465d6e38, type: 2}
+  - {fileID: 11400000, guid: 4376b0127e1bb78429f86f36605b2507, type: 2}
+  - {fileID: 11400000, guid: 21f7feae93ad98f4b826d05a2e8b4655, type: 2}
+  - {fileID: 11400000, guid: f5e9b2370396d5b4b9d796c816caa890, type: 2}
+  - {fileID: 11400000, guid: fc630405431980341b8163a7b5d408dc, type: 2}
+  - {fileID: 11400000, guid: 73746814b8c7f21488343d5cc1e59364, type: 2}
+  - {fileID: 11400000, guid: 72cc41dec225c584890e4b9195bbabc8, type: 2}
+  - {fileID: 11400000, guid: d97b2b70fb52d5543959ff38734d7856, type: 2}
+  - {fileID: 11400000, guid: 111e47bdfb468134db72e9d884613d1d, type: 2}
