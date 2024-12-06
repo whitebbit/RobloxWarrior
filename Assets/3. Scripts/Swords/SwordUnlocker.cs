@@ -97,11 +97,14 @@ namespace _3._Scripts.Swords
             if (_inProgress)
                 return;
 
+
             _inProgress = true;
 
             var items = UnlockSwords(count);
 
             ShowPanel(items);
+
+            GameEvents.OpenEgg(count);
         }
 
         private List<SwordConfig> UnlockSwords(int count)

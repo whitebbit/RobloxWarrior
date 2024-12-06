@@ -48,9 +48,7 @@ namespace _3._Scripts.Worlds
 
             Widget.Enabled = false;
 
-            GameEvents.WaveFailed();
         }
-        
         
     }
 }

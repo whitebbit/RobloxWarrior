@@ -51,7 +51,14 @@ namespace _3._Scripts
         public static void WaveFailed()
         {
             OnWaveFailed?.Invoke();
-            QuestEventManager.Instance.RaiseEvent(QuestType.CompleteWave, "reset");
+        }
+        
+        public static event Action<int> OnOpenEgg;
+        public static void OpenEgg(int count)
+        {
+            OnOpenEgg?.Invoke(count);
+            QuestEventManager.Instance.RaiseEvent(QuestType.OpeningEgg, count);
+
         }
     }
 }

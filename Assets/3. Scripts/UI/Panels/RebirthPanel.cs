@@ -52,6 +52,7 @@ namespace _3._Scripts.UI.Panels
         {
             if(Stats.Level < Stats.LevelForRebirth) return; 
             
+            GameEvents.Rebirth();
             Stats.Rebirth();
             UpdateView();
         }
