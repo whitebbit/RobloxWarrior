@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
+using _3._Scripts.Currency.Enums;
 using _3._Scripts.Extensions;
 using _3._Scripts.Extensions.Interfaces;
 using _3._Scripts.Saves;
@@ -80,7 +81,7 @@ namespace _3._Scripts.Swords
 
         private void Open(int count)
         {
-            if (WalletManager.Crystals < _price * count)
+            if (!WalletManager.TrySpend(CurrencyType.Crystal, _price * count))
             {
                 var widget = UIManager.Instance.GetWidget<NotificationWidget>();
                 widget.Enabled = true;

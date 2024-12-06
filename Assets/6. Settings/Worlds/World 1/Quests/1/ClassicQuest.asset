@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ClassicQuest
   m_EditorClassIdentifier: 
   rewards: []
-  type: 0
-  requiredToComplete: 5
+  type: 3
+  requiredToComplete: 1

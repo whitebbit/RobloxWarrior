@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b8ff93546101f5641a96a645bbc16808
+guid: 13db7a770b2c18c4a973c87b4e2fd65e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -66,9 +66,7 @@ ModelImporter:
     100120: Bip001 Spine1
     100122: Bip001 Spine2
     100124: //RootNode
-    100126: OJB_Swordcase
-    100128: STYLIZED-BASEMESH-BIGMALE-OBJ
-    100130: Sword_R
+    100126: STYLIZED-BASEMESH-BIGMALE-OBJ
     400000: Bip001
     400002: Bip001 Footsteps
     400004: Bip001 Head
@@ -132,19 +130,9 @@ ModelImporter:
     400120: Bip001 Spine1
     400122: Bip001 Spine2
     400124: //RootNode
-    400126: OJB_Swordcase
-    400128: STYLIZED-BASEMESH-BIGMALE-OBJ
-    400130: Sword_R
-    2100000: 'Material #5'
-    2100002: 'Material #17123165'
-    2100004: No Name
-    2300000: OJB_Swordcase
-    2300002: Sword_R
-    3300000: OJB_Swordcase
-    3300002: Sword_R
-    4300000: OJB_Swordcase
-    4300002: Sword_R
-    4300004: STYLIZED-BASEMESH-BIGMALE-OBJ
+    400126: STYLIZED-BASEMESH-BIGMALE-OBJ
+    2100000: No Name
+    4300000: STYLIZED-BASEMESH-BIGMALE-OBJ
     7400000: combo_01_3
     9500000: //RootNode
     13700000: STYLIZED-BASEMESH-BIGMALE-OBJ
