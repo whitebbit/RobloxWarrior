@@ -223,27 +223,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 72728421679038464
-    m_Localized: Complete the {value} of the waves
+    m_Localized: Complete {value:plural:one wave|{} waves}
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 72728572996943872
-    m_Localized: Defeat {value} enemies
+    m_Localized: Defeat {value:plural:one enemy|{} enemies}
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 72728698951892992
-    m_Localized: Open the {value} of eggs
+    m_Localized: Open  {value:plural:one egg|{} eggs}
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 72729041521672192
-    m_Localized: Be reborn {value} times
+    m_Localized: Be reborn {value:plural:ones|{} times}
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 72732057993805824
-    m_Localized: Complete the wave {value}
+    m_Localized: Complete wave number {value}
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
@@ -266,8 +266,7 @@ MonoBehaviour:
   - m_Id: 73779472733634560
     m_Localized: The quest is completed, collect your reward!
     m_Metadata:
-      m_Items:
-      - rid: 3203987063427825692
+      m_Items: []
   - m_Id: 73794073835667456
     m_Localized: Complete the current quest
     m_Metadata:
@@ -278,4 +277,4 @@ MonoBehaviour:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b650201000001200a1e0601
+        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b650201
