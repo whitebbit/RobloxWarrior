@@ -307,7 +307,7 @@ MonoBehaviour:
   worldPrefab: {fileID: 2633462022766494348, guid: 6b4fb8ced8bbce946821569fb031ab97, type: 3}
   swordEggs:
   - price: 50
-    eggMaterial: {fileID: 2100000, guid: e81331417d1e62641ad8ccc9870be60a, type: 2}
+    eggMaterial: {fileID: 2100000, guid: a36113780b71b2c4a8f54e1e6e4f94ad, type: 2}
     swords:
     - {fileID: 11400000, guid: fdaf6b00d42f88a498a53b40f3dbc8c8, type: 2}
     - {fileID: 11400000, guid: 7aec8c5c770580b4e9a0b18744922ec5, type: 2}
@@ -315,7 +315,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d88fd98e033903d44b14bba7738cb5c4, type: 2}
     - {fileID: 11400000, guid: 37570f99621f1404280dba09be25b8b5, type: 2}
   - price: 1000
-    eggMaterial: {fileID: 2100000, guid: a36113780b71b2c4a8f54e1e6e4f94ad, type: 2}
+    eggMaterial: {fileID: 2100000, guid: e81331417d1e62641ad8ccc9870be60a, type: 2}
     swords:
     - {fileID: 11400000, guid: b233c7c3eb716e94a93208b91c522c6b, type: 2}
     - {fileID: 11400000, guid: ed9d5105a82d6e8458551ee0fe31b33f, type: 2}
