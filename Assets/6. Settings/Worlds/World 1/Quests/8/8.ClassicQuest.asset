@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cebdce4d1cb4df89a113f1598f26318, type: 3}
-  m_Name: ClassicQuest
+  m_Name: 8.ClassicQuest
   m_EditorClassIdentifier: 
   rewards: []
   type: 5
-  requiredToComplete: 100
+  requiredToComplete: 1
