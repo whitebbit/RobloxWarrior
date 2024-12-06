@@ -9,5 +9,6 @@ namespace _3._Scripts.Quests.Enums
         Rebirth,
         CompleteWave,
         SkillUpgrade,
+        GetHero,
     }
 }
