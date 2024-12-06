@@ -102,6 +102,11 @@ namespace _3._Scripts.Extensions
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
+        
+        public static bool GetRandom(this float chance)
+        {
+            return UnityEngine.Random.Range(0f, 100f) < chance;
+        }
     }
 
     public enum RandomType

@@ -27,12 +27,12 @@ namespace _3._Scripts.Extensions
         }
 
         public void SetColor(Color color) => text.color = color;
+        public void SetGradient(VertexGradient gradient) => text.colorGradient = gradient;
         
         public void OnSpawn()
         {
             
         }
-
         public void OnDespawn()
         {
             

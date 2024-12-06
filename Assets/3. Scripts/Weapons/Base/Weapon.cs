@@ -4,6 +4,7 @@ using _3._Scripts.Extensions;
 using _3._Scripts.Pool;
 using _3._Scripts.Units.Interfaces;
 using _3._Scripts.Weapons.Interfaces;
+using TMPro;
 using UnityEngine;
 
 namespace _3._Scripts.Weapons.Base
@@ -48,10 +49,9 @@ namespace _3._Scripts.Weapons.Base
 
         public void SetOwner(Transform owner) => _owner = owner;
 
-        protected bool CanCrit()
+        private bool CanCrit()
         {
-            var chance = Mathf.Clamp01(CritChance);
-            return Random.value <= chance;
+            return CritChance.GetRandom();
         }
 
         protected virtual void OnAwake()
@@ -86,8 +86,21 @@ namespace _3._Scripts.Weapons.Base
                                transform.forward * Random.Range(0.5f, 1f);
             }
 
-            floatingText.Initialize($"{damageWithCrit}", textPosition);
-            floatingText.SetColor(crit ? Color.red : Color.white);
+            var critString = crit ? "!" : "";
+            var gradient = crit
+                ? new VertexGradient(
+                    new Color(0.9056604f, 0.1485433f, 0.1409754f),
+                    new Color(0.9056604f, 0.1485433f, 0.1409754f),
+                    new Color(0.9803922f, 0.3882353f, 0.6352941f),
+                    new Color(0.9803922f, 0.3882353f, 0.6352941f))
+                : new VertexGradient(
+                    new Color(0.9056604f, 0.1485433f, 0.1409754f),
+                    new Color(0.9056604f, 0.1485433f, 0.1409754f),
+                    new Color(0.972549f, 0.6722908f, 0.2431373f),
+                    new Color(0.972549f, 0.6722908f, 0.2431373f));
+
+            floatingText.Initialize($"{damageWithCrit}{critString}", textPosition);
+            floatingText.SetGradient(gradient);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using _3._Scripts.Quests.ScriptableObjects;
+using _3._Scripts.UI;
+using _3._Scripts.UI.Elements;
 using _3._Scripts.Units;
 using _3._Scripts.Units.Interfaces;
 using UnityEngine;
@@ -36,7 +38,7 @@ namespace _3._Scripts.Player
         private static Player _instance;
 
         #endregion
-        
+
         public PlayerStats Stats { get; private set; }
         public PlayerAmmunition Ammunition { get; private set; }
         public override UnitHealth Health => _health;
@@ -58,10 +60,12 @@ namespace _3._Scripts.Player
             base.OnStart();
             Health.MaxHealth += Stats.HealthImprovement;
             SubscribeToEvents();
+            UIManager.Instance.GetWidget<UserInfo>().Enabled = true;
         }
 
         private void SubscribeToEvents()
         {
+            Stats.OnLevelChange += _ => VFX.OnLevelUp();
             Stats.OnHealthImproving += () => Health.MaxHealth += Stats.HealthImprovement;
         }
 
