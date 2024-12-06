@@ -37,7 +37,7 @@ namespace _3._Scripts.UI.Widgets
             completedImage.Fade(0);
             
             text.SetReference(quest.Type.GetDescription());
-            text.SetVariable("value", quest.GoalText);
+            text.SetVariable("value", quest.Goal);
 
             progressText.text = quest.ProgressText;
 

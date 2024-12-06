@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df89c1882b694a0f9e8a0af75fc0e2cc, type: 3}
-  m_Name: Waves Passed Quest
+  m_Script: {fileID: 11500000, guid: 7cebdce4d1cb4df89a113f1598f26318, type: 3}
+  m_Name: ClassicQuest
   m_EditorClassIdentifier: 
   rewards: []
-  requiredWavesCount: 1
+  type: 5
+  requiredToComplete: 100

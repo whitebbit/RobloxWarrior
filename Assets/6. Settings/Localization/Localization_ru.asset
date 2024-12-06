@@ -230,7 +230,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 72728421679038464
     m_Localized: "\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0435 {value}
-      \u0432\u043E\u043B\u043D"
+      {value, plural, one {\u0432\u043E\u043B\u043D\u0443} few {\u0432\u043E\u043B\u043D\u044B}
+      many {\u0432\u043E\u043B\u043D}}"
     m_Metadata:
       m_Items:
       - rid: 3203987063427825691

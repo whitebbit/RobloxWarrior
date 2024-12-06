@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WaveCompletedQuest
   m_EditorClassIdentifier: 
   rewards: []
-  waveNumber: 1
+  waveNumber: 0

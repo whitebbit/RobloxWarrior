@@ -62,7 +62,11 @@ namespace _3._Scripts.UI.Panels
             _currentQuest = quest;
 
             text.SetReference(quest.Type.GetDescription());
-            text.SetVariable("value", quest.GoalText);
+            text.StringReference.Arguments = new object[] { 1 };
+        
+            // Принудительно обновить текст
+            text.RefreshString();
+            text.SetVariable("value", quest.Goal);
 
             acceptButton.gameObject.SetActive(true);
             cancelButton.gameObject.SetActive(true);
@@ -91,7 +95,7 @@ namespace _3._Scripts.UI.Panels
         private void GetReward()
         {
             _currentQuest = null;
-            
+
             text.SetReference("quest_complete");
 
             acceptButton.gameObject.SetActive(true);

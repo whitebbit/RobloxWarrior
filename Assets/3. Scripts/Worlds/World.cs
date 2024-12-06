@@ -47,6 +47,8 @@ namespace _3._Scripts.Worlds
             player.Health.Health = player.Health.MaxHealth;
 
             Widget.Enabled = false;
+
+            GameEvents.WaveFailed();
         }
         
         

@@ -8,5 +8,6 @@ namespace _3._Scripts.Quests.Enums
         OpeningEgg,
         Rebirth,
         CompleteWave,
+        SkillUpgrade,
     }
 }
