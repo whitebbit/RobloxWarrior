@@ -27,13 +27,18 @@ namespace _3._Scripts.Bots
         protected override void OnAwake()
         {
             _playerDetector = GetComponent<OverlapDetector<Player.Player>>();
-            Dying = new BotDying(this);
+            Dying = new BotDying(this, VFX);
             _health = new UnitHealth(0, Dying);
 
             _combat = GetComponent<BotCombat>();
             _animator = GetComponent<BotAnimator>();
             _movement = GetComponent<BotMovement>();
             _view = GetComponent<BotView>();
+        }
+
+        protected override void OnStart()
+        {
+            Dying.SetVFX(VFX);
         }
 
         private void OnFound(Player.Player obj)

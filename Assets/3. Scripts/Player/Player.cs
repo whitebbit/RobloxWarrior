@@ -45,11 +45,12 @@ namespace _3._Scripts.Player
 
         private PlayerMovement _movement;
         private UnitHealth _health;
-
+        private PlayerDying _dying;
         protected override void OnAwake()
         {
             base.OnAwake();
-            _health = new UnitHealth(100, new PlayerDying(this));
+            _dying = new PlayerDying();
+            _health = new UnitHealth(100, _dying);
             _movement = GetComponent<PlayerMovement>();
             Stats = new PlayerStats();
             Ammunition = GetComponent<PlayerAmmunition>();
@@ -58,6 +59,7 @@ namespace _3._Scripts.Player
         protected override void OnStart()
         {
             base.OnStart();
+            _dying.SetVFX(VFX);
             Health.MaxHealth += Stats.HealthImprovement;
             SubscribeToEvents();
             UIManager.Instance.GetWidget<UserInfo>().Enabled = true;

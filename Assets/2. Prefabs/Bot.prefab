@@ -1448,6 +1448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitParticle: {fileID: 7186361399488532364}
   levelUpParticle: {fileID: 0}
+  deathParticlePoint: {fileID: 1025950247865736849}
 --- !u!1 &8359050905875475309
 GameObject:
   m_ObjectHideFlags: 0
