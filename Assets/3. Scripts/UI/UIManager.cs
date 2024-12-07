@@ -6,6 +6,7 @@ using _3._Scripts.Config;
 using _3._Scripts.Saves;
 using _3._Scripts.Singleton;
 using _3._Scripts.UI.Panels;
+using _3._Scripts.UI.Widgets;
 using DG.Tweening;
 using GBGamesPlugin;
 using UnityEngine;
@@ -21,6 +22,7 @@ namespace _3._Scripts.UI
 
         public UIScreen CurrentScreen => currentScreen;
         private bool _onTransition;
+
         private void Awake()
         {
             InitializeScreens();
@@ -30,6 +32,9 @@ namespace _3._Scripts.UI
         private void Start()
         {
             currentScreen.Open(0.25f);
+
+            GetWidget<UserInfoWidget>().Enabled = true;
+            GetWidget<WalletWidget>().Enabled = true;
         }
 
         public void SetScreen(string id, TweenCallback onCloseComplete = null, TweenCallback onOpenComplete = null)

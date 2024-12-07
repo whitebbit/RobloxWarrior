@@ -1,17 +1,14 @@
-﻿using System;
-using _3._Scripts.Currency;
-using _3._Scripts.UI.Interfaces;
+﻿using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Transitions;
 using DG.Tweening;
 using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using VInspector;
 
-namespace _3._Scripts.UI.Elements
+namespace _3._Scripts.UI.Widgets
 {
-    public class UserInfo : UIWidget
+    public class UserInfoWidget : UIWidget
     {
         [SerializeField] private SlideTransition transition;
 
@@ -41,12 +38,6 @@ namespace _3._Scripts.UI.Elements
             playerNameText.text = GBGames.playerName;
             OnExperienceChanged(Player.Player.Instance.Stats.Experience);
             OnLevelUp(Player.Player.Instance.Stats.Level);
-        }
-
-        protected override void OnOpen()
-        {
-            base.OnOpen();
-            transform.localScale = Vector3.one;
         }
 
         private void OnEnable()

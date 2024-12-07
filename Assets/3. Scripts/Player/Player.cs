@@ -1,6 +1,7 @@
 ﻿using _3._Scripts.Quests.ScriptableObjects;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements;
+using _3._Scripts.UI.Widgets;
 using _3._Scripts.Units;
 using _3._Scripts.Units.Interfaces;
 using UnityEngine;
@@ -46,6 +47,7 @@ namespace _3._Scripts.Player
         private PlayerMovement _movement;
         private UnitHealth _health;
         private PlayerDying _dying;
+
         protected override void OnAwake()
         {
             base.OnAwake();
@@ -59,10 +61,10 @@ namespace _3._Scripts.Player
         protected override void OnStart()
         {
             base.OnStart();
+
             _dying.SetVFX(VFX);
             Health.MaxHealth += Stats.HealthImprovement;
             SubscribeToEvents();
-            UIManager.Instance.GetWidget<UserInfo>().Enabled = true;
         }
 
         private void SubscribeToEvents()
