@@ -9,6 +9,7 @@ namespace _3._Scripts.Worlds
         [SerializeField] private CountdownTimer timer;
         private BoxCollider _boxCollider;
         private BattleArena _battleArena;
+
         private void OnValidate()
         {
             _boxCollider = GetComponent<BoxCollider>();
@@ -24,13 +25,13 @@ namespace _3._Scripts.Worlds
             timer.StopCountdown();
         }
 
-        public void SetBattleArena(BattleArena battleArena)=> _battleArena = battleArena;
-        
+        public void SetBattleArena(BattleArena battleArena) => _battleArena = battleArena;
+
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent(out Player.Player _)) return;
 
-            timer.StartCountdown(_battleArena.StartBattle, 5);
+            timer.StartCountdown(() => _battleArena.StartBattle(), 5);
         }
 
         private void OnTriggerExit(Collider other)

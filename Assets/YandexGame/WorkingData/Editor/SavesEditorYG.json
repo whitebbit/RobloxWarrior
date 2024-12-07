@@ -1,20 +1,20 @@
 {
-  "idSave": 2,
+  "idSave": 4,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
   "defaultLoaded": false,
   "walletSave": {
-    "crystals": 100000008.0,
+    "crystals": 9.995505E+07,
     "secondCurrency": 0.0
   },
   "abilitiesSave": {
     "abilities": []
   },
   "stats": {
-    "experience": 0.0,
-    "level": 1,
-    "upgradePoints": 0,
+    "experience": 189.0,
+    "level": 3,
+    "upgradePoints": 2,
     "healthPoints": 0,
     "attackPoints": 0,
     "speedPoints": 0,
@@ -27,8 +27,8 @@
     "maxSwordsCount": 50,
     "requiredCountForMerge": 3,
     "current": {
-      "uid": 1101388196,
-      "id": "sword_1",
+      "uid": -301973624,
+      "id": "sword_14",
       "starCount": 0
     },
     "unlocked": [
@@ -36,13 +36,35 @@
         "uid": 1101388196,
         "id": "sword_1",
         "starCount": 0
+      },
+      {
+        "uid": -754036596,
+        "id": "sword_1",
+        "starCount": 0
+      },
+      {
+        "uid": -301973624,
+        "id": "sword_14",
+        "starCount": 0
+      },
+      {
+        "uid": 81872539,
+        "id": "sword_11",
+        "starCount": 0
+      },
+      {
+        "uid": 272503542,
+        "id": "sword_13",
+        "starCount": 0
       }
     ]
   },
   "worldSave": {
     "worldName": "",
     "questSave": {
-      "Quests": {}
+      "Quests": {
+        "": 2
+      }
     }
   }
 }

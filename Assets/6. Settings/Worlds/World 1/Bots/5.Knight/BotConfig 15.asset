@@ -25,7 +25,7 @@ MonoBehaviour:
     attackAnimations:
     - clip: {fileID: -3777536904419633717, guid: dffacf200ce197548952c2645071b40d, type: 3}
       eventTimes:
-      - 0.3
+      - 0.5
     - clip: {fileID: -1482976836913047367, guid: 8263476310f24eb419522f9ab92eae88, type: 3}
       eventTimes:
       - 0.3

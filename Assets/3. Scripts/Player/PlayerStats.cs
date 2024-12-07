@@ -54,7 +54,7 @@ namespace _3._Scripts.Player
                 OnUpgradePointsChanged?.Invoke(Save.upgradePoints);
             }
         }
-        
+
         public float ExperienceToLevelUp()
         {
             return Config.InitialExperienceCoefficient * Mathf.Pow(Level, Config.DifficultyFactor);
@@ -69,6 +69,8 @@ namespace _3._Scripts.Player
         public event Action OnSpeedImproving;
         public event Action OnCritImproving;
 
+        public int AdditionalHealthPoint { get; set; }
+
         public int HealthPoints
         {
             private get => Save.healthPoints;
@@ -78,6 +80,8 @@ namespace _3._Scripts.Player
                 OnHealthImproving?.Invoke();
             }
         }
+
+        public int AdditionalAttackPoints { get; set; }
 
         public int AttackPoints
         {
@@ -89,6 +93,8 @@ namespace _3._Scripts.Player
             }
         }
 
+        public int AdditionalSpeedPoints { get; set; }
+
         public int SpeedPoints
         {
             private get => Save.speedPoints;
@@ -98,6 +104,8 @@ namespace _3._Scripts.Player
                 OnSpeedImproving?.Invoke();
             }
         }
+
+        public int AdditionalCritPoints { get; set; }
 
         public int CritPoints
         {
@@ -109,10 +117,10 @@ namespace _3._Scripts.Player
             }
         }
 
-        public float HealthImprovement => HealthPoints * Config.HealthImprovement;
-        public float AttackImprovement => AttackPoints * Config.AttackImprovement;
-        public float SpeedImprovement => SpeedPoints * Config.SpeedImprovement;
-        public float CritImprovement => CritPoints * Config.CritImprovement;
+        public float HealthImprovement => (HealthPoints + AdditionalHealthPoint) * Config.HealthImprovement;
+        public float AttackImprovement => (AttackPoints + AdditionalAttackPoints) * Config.AttackImprovement;
+        public float SpeedImprovement => (SpeedPoints + AdditionalSpeedPoints) * Config.SpeedImprovement;
+        public float CritImprovement => (CritPoints + AdditionalCritPoints) * Config.CritImprovement;
 
         public void UpgradeStats(ModificationType type, int amount)
         {
@@ -145,10 +153,10 @@ namespace _3._Scripts.Player
         {
             return type switch
             {
-                ModificationType.Health => HealthPoints,
-                ModificationType.Attack => AttackPoints,
-                ModificationType.Speed => SpeedPoints,
-                ModificationType.Crit => CritPoints,
+                ModificationType.Health => HealthPoints + AdditionalHealthPoint,
+                ModificationType.Attack => AttackPoints + AdditionalAttackPoints,
+                ModificationType.Speed => SpeedPoints + AdditionalSpeedPoints,
+                ModificationType.Crit => CritPoints + AdditionalCritPoints,
 
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };

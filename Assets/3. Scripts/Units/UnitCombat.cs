@@ -5,6 +5,7 @@ using _3._Scripts.Animations.Structs;
 using _3._Scripts.Weapons.Base;
 using _3._Scripts.Weapons.Interfaces;
 using UnityEngine;
+using VInspector;
 
 namespace _3._Scripts.Units
 {
@@ -24,7 +25,7 @@ namespace _3._Scripts.Units
         {
             return !_isAttacking;
         }
-
+        
         public void Attack()
         {
             if (!CanAttack()) return;

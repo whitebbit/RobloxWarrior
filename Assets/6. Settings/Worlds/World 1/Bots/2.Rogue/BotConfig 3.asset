@@ -26,9 +26,6 @@ MonoBehaviour:
     - clip: {fileID: 7400034, guid: e1dc717923f59d44483c076fae553460, type: 3}
       eventTimes:
       - 0.2
-    - clip: {fileID: 7400036, guid: e1dc717923f59d44483c076fae553460, type: 3}
-      eventTimes:
-      - 0.2
     attackMask: {fileID: 31900000, guid: 91e92872817d67941b2f4b27d408a80e, type: 2}
     movementAnimation:
       _FadeDuration: 0.25
@@ -38,9 +35,9 @@ MonoBehaviour:
         _Names: []
       _Speed: 1
       _Animations:
-      - {fileID: 7400000, guid: ceac0235dbe0e474bb725db1353fcc06, type: 3}
+      - {fileID: 7400000, guid: f6907c6701296cc4e9b81407304822d3, type: 3}
       - {fileID: 7400000, guid: c432437477c409d4993889e200ce9868, type: 3}
-      - {fileID: 7400000, guid: c7f898bf2fadd9449871038945741208, type: 3}
+      - {fileID: 7400000, guid: 1e93d0f9f7015da4884c1b03c3d1bb29, type: 3}
       _Speeds: []
       _SynchronizeChildren: 
       _Thresholds:

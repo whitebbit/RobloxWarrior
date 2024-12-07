@@ -31,11 +31,12 @@ namespace _3._Scripts.Worlds
             _waves = config.Waves;
         }
 
-        public void StartBattle()
+        public void StartBattle(int waveNumber = -1)
         {
+            _waveIndex = waveNumber > 0 ? waveNumber - 1 : _waveIndex;
             var currentWave = _waves[_waveIndex];
-            _bots = spawner.SpawnEnemies(currentWave);
 
+            _bots = spawner.SpawnEnemies(currentWave);
             Player.Player.Instance.Teleport(playerPoint.position);
 
             if (!Widget.Enabled)
@@ -61,10 +62,8 @@ namespace _3._Scripts.Worlds
         {
             GameEvents.WavePassed();
             GameEvents.WaveCompleted(_waveIndex + 1);
-            UIManager.Instance.GetWidget<EffectsWidget>().Enabled = true;
-            UIManager.Instance.GetWidget<EffectsWidget>()
-                .ShowCurrency(CurrencyType.Crystal, _waves[_waveIndex].CrystalAmount);
-            
+            Reward();
+
             if (_waveIndex >= _waves.Count - 1)
             {
             }
@@ -72,6 +71,13 @@ namespace _3._Scripts.Worlds
             {
                 NextWave();
             }
+        }
+
+        private void Reward()
+        {
+            UIManager.Instance.GetWidget<EffectsWidget>().Enabled = true;
+            UIManager.Instance.GetWidget<EffectsWidget>()
+                .ShowCurrency(CurrencyType.Crystal, _waves[_waveIndex].CrystalAmount);
         }
 
         private void NextWave()
