@@ -20,16 +20,24 @@ namespace _3._Scripts.Bots
         public override Weapon<BaseWeaponConfig> Weapon => weapon;
         protected override List<AttackAnimation> AttackAnimations => _config.AnimationConfig.AttackAnimations;
         protected override UnitAnimator Animator { get; set; }
-protected
-        private void Awake()
+
+        protected
+            private void Awake()
         {
             Animator = GetComponent<BotAnimator>();
         }
+
         public void Initialize(BotConfig config)
         {
             _config = config;
 
             weapon.Initialize(new BaseWeaponConfig(_config.Damage));
+        }
+
+        public void ResetCooldown()
+        {
+            _isAttacking = false;
+            _lastAttackTime = 0;
         }
 
         protected override bool CanAttack()

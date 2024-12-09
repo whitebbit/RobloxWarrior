@@ -5,6 +5,8 @@ using _3._Scripts.Bots.Sciptables;
 using _3._Scripts.Config.Scriptables;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Currency.Scriptable;
+using _3._Scripts.Game;
+using _3._Scripts.Heroes.Scriptables;
 using _3._Scripts.Player.Scriptables;
 using _3._Scripts.Pool;
 using _3._Scripts.Singleton;
@@ -21,17 +23,27 @@ namespace _3._Scripts.Config
     public class Configuration : Singleton<Configuration>
     {
         [SerializeField] private MainConfig config;
-       
+
         public MainConfig Config => config;
-        
+
         public CurrencyConfig GetCurrency(CurrencyType type) => config.CurrencyData.FirstOrDefault(c => c.Type == type);
         public RarityTable GetRarityTable(Rarity rarity) => config.RarityTables.FirstOrDefault(r => r.Rarity == rarity);
-        public WorldConfig GetWorldConfig(string worldName) => config.Worlds.FirstOrDefault(w => w.WorldName == worldName);
-        
-        
+
+        public WorldConfig GetWorldConfig(string worldName) =>
+            config.Worlds.FirstOrDefault(w => w.WorldName == worldName);
+
+        public HeroConfig GetHero(string id) => config.Heroes.FirstOrDefault(h => h.ID == id);
+
         private void Start()
         {
             GBGames.GameReady();
+            ResetContext();
+        }
+
+        private void ResetContext()
+        {
+            GameContext.StartWaveNumber = 1;
+            GameContext.InBattle = false;
         }
     }
 }

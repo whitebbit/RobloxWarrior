@@ -10,13 +10,13 @@ namespace _3._Scripts.Saves
     {
         public List<AbilitySave> abilities = new();
 
-        public void Unlock(Ability ability)
+        public void Unlock(PlayerAbility playerAbility)
         {
-            if (Unlocked(ability.ID)) return;
+            if (Unlocked(playerAbility.ID)) return;
 
             var data = new AbilitySave
             {
-                id = ability.ID,
+                id = playerAbility.ID,
                 level = 0,
                 maxLevel = 1
             };

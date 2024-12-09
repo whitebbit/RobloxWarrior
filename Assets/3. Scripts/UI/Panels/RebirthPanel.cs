@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Player;
+﻿using _3._Scripts.Game;
+using _3._Scripts.Player;
 using _3._Scripts.UI.Elements.RebirthPanel;
 using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Transitions;
@@ -14,7 +15,8 @@ namespace _3._Scripts.UI.Panels
         [Space] 
         [SerializeField] private RebirthItem upgradeItem;
         [SerializeField] private RebirthItem currentItem;
-        [Space] [SerializeField] private Slider progressSlider;
+        [Space] 
+        [SerializeField] private Slider progressSlider;
         [SerializeField] private TMP_Text progressText;
         [SerializeField] private Button rebirthButton;
         
@@ -35,7 +37,6 @@ namespace _3._Scripts.UI.Panels
         protected override void OnOpen()
         {
             base.OnOpen();
-
             UpdateView();
         }
 

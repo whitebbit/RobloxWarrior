@@ -5,6 +5,7 @@ using _3._Scripts.Bots;
 using _3._Scripts.Config.Interfaces;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
+using _3._Scripts.Game;
 using _3._Scripts.Pool;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements.EffectsWidget;
@@ -45,6 +46,8 @@ namespace _3._Scripts.Worlds
             Widget.WaveNumber = _waveIndex + 1;
 
             StartCoroutine(CheckWaveEnd());
+
+            GameEvents.WaveStart();
         }
 
         public void StopBattle()

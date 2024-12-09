@@ -16,51 +16,29 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
     /// <summary>
     /// Элемент меча, представляющий информацию о мечах в панели.
     /// </summary>
-    public class SwordItem : MonoBehaviour, IPoolable, IInitializable<SwordSave>
+    public class SwordItem : CollectionItem<SwordSave, SwordItem>, IPoolable
     {
-        [SerializeField] private RawImage icon;
         [SerializeField] private TMP_Text damageText;
         [SerializeField] private Image table;
         [SerializeField] private Transform deleteItem;
         [SerializeField] private List<Transform> stars;
-        [SerializeField] private Image focusImage;
-
-        private Button _button;
-
+        
         public SwordSave Save { get; private set; }
-        public SwordConfig Config { get; private set; }
-        public float SwordDamage => Save.GetDamage(Config.Damage);
+        public SwordConfig SwordConfig { get; private set; }
+        public float SwordDamage => Save.GetDamage(SwordConfig.Damage);
         public bool ItemToDelete { get; private set; }
-        public event Action<SwordItem> OnSelect;
-
-        private void Awake()
-        {
-            _button = GetComponent<Button>();
-        }
-
-        private void Start()
-        {
-            _button.onClick.AddListener(OnClick);
-        }
-
-        /// <summary>
-        /// Обработчик клика по мечу.
-        /// </summary>
-        private void OnClick()
-        {
-            OnSelect?.Invoke(this);
-        }
+        protected override SwordItem Self => this;
 
         /// <summary>
         /// Инициализация элемента меча с данными сохранения.
         /// </summary>
-        public void Initialize(SwordSave save)
+        public override void Initialize(SwordSave save)
         {
             var config = Configuration.Instance.Config.SwordCollectionConfig.GetSword(save.id);
             var rarity = Configuration.Instance.GetRarityTable(config.Rarity);
 
             Save = save;
-            Config = config;
+            SwordConfig = config;
 
             // Установка визуальных характеристик
             table.color = rarity.MainColor;
@@ -96,30 +74,7 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
             ItemToDelete = state;
             deleteItem.gameObject.SetActive(state);
         }
-
-        /// <summary>
-        /// Отключить фокус.
-        /// </summary>
-        public void DisableFocus() => focusImage.gameObject.SetActive(false);
-
-        /// <summary>
-        /// Установить фокус как текущий (желтый цвет).
-        /// </summary>
-        public void SetCurrentFocus()
-        {
-            focusImage.gameObject.SetActive(true);
-            focusImage.color = Color.yellow;
-        }
-
-        /// <summary>
-        /// Установить фокус как выбранный (зеленый цвет).
-        /// </summary>
-        public void SetSelectedFocus()
-        {
-            focusImage.gameObject.SetActive(true);
-            focusImage.color = Color.green;
-        }
-
+        
         public void OnSpawn()
         {
             GBGames.saves.swordsSave.OnDelete += SwordsSaveOnDelete;

@@ -95,6 +95,7 @@ namespace _3._Scripts.Bots
 
         public void OnSpawn()
         {
+            _combat.ResetCooldown();
             _playerDetector.DetectState(true);
             _playerDetector.OnFound += OnFound;
         }
@@ -102,6 +103,7 @@ namespace _3._Scripts.Bots
         public void OnDespawn()
         {
             _playerDetector.OnFound -= OnFound;
+            _combat.ResetCooldown();
             _playerDetector.DetectState(false);
         }
     }

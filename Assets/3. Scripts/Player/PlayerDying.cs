@@ -1,4 +1,5 @@
-﻿using _3._Scripts.UI;
+﻿using _3._Scripts.Game;
+using _3._Scripts.UI;
 using _3._Scripts.UI.Widgets;
 using _3._Scripts.Units;
 using _3._Scripts.Units.Interfaces;
@@ -22,6 +23,7 @@ namespace _3._Scripts.Player
             _unitVFX?.OnDeath();
             UIManager.Instance.GetWidget<LoseWidget>().Enabled = true;
             WorldsManager.Instance.World.StopBattle();
+            GameEvents.WaveFailed();
         }
 
         public bool IsDead { get; set; }

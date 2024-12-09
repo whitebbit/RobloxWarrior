@@ -15,7 +15,7 @@ namespace _3._Scripts.Units
             {
                 var currentHealthPercentage = _currentHealth / _maxHealth;
 
-                _maxHealth = Mathf.Clamp(value, 0, float.MaxValue);
+                _maxHealth = Mathf.Clamp(value, 1, float.MaxValue);
 
                 Health = _maxHealth * currentHealthPercentage;
 

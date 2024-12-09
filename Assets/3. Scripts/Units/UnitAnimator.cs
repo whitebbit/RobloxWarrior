@@ -20,24 +20,30 @@ namespace _3._Scripts.Units
         protected const float LerpSpeed = 7.5f;
         protected const float FadeDuration = .15f;
 
-        protected abstract UnitAnimationConfig Config { get; }
+        private UnitAnimationConfig _config;
+        protected virtual UnitAnimationConfig Config
+        {
+            get => _config;
+            set
+            {
+                _config = value;
+                AttackLayer.SetMask(_config.AttackMask);
+                AttackLayer.IsAdditive = true;
+            
+                _movementAnimation = _config.MovementAnimation.Clone();
+            }
+        }
+
         protected AnimancerLayer MainLayer => _animancer.Layers[0];
-        protected AnimancerLayer AttackLayer => _animancer.Layers[1];
+        private AnimancerLayer AttackLayer => _animancer.Layers[1];
+        
         private LinearMixerTransition _movementAnimation;
         
         private void Awake()
         {
             _animancer = GetComponent<AnimancerComponent>();
         }
-
-        private void Start()
-        {
-            AttackLayer.SetMask(Config.AttackMask);
-            AttackLayer.IsAdditive = true;
-            
-            _movementAnimation = Config.MovementAnimation.Clone();
-        }
-
+        
         public void DoAttack(AttackAnimation attackAnimation, float attackSpeed, Action action)
         {
             if (!CanPlay()) return;

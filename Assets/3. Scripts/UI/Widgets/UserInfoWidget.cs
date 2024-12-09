@@ -66,7 +66,7 @@ namespace _3._Scripts.UI.Widgets
             var value = obj / toLevelUp;
 
             experienceBar.DOValue(value, 0.15f);
-            expText.text = $"{(int)(value * 100)}%";
+            expText.text = $"{(int)(value * 100)}% - {obj}/{toLevelUp}";
         }
 
         public override IUITransition InTransition { get; set; }

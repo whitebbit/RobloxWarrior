@@ -32,7 +32,6 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
             _config = config;
 
             iconImage.sprite = _config.Icon;
-            //iconImage.color = _config.Color;
             iconImage.ScaleImage();
             
             titleText.SetReference(_config.TitleID);
@@ -41,11 +40,10 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
             UpdateStats();
 
             upgradeButton.onClick.AddListener(OnClick);
-           // upgradeButton.image.color = _config.Color;
 
             Player.Player.Instance.Stats.OnUpgradePointsChanged += _ => UpdateStats();
         }
-
+        
         public void SetInputField(TMP_InputField inputField) => _inputField = inputField;
 
         private string GetStats(ModificationType type)
@@ -75,7 +73,7 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
             return $"{baseStats} {stats}";
         }
 
-        private void UpdateStats()
+        public void UpdateStats()
         {
             statsText.text = GetStats(_config.Type);
             levelText.SetVariable("value", Player.Player.Instance.Stats.GetLevel(_config.Type));

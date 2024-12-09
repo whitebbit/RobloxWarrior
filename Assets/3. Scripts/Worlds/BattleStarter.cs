@@ -1,4 +1,5 @@
 ﻿using System;
+using _3._Scripts.Game;
 using _3._Scripts.UI.Extensions;
 using UnityEngine;
 
@@ -31,7 +32,11 @@ namespace _3._Scripts.Worlds
         {
             if (!other.TryGetComponent(out Player.Player _)) return;
 
-            timer.StartCountdown(() => _battleArena.StartBattle(), 5);
+            timer.StartCountdown(() =>
+            {
+                GameEvents.BeforeBattle();
+                _battleArena.StartBattle(GameContext.StartWaveNumber);
+            }, 5);
         }
 
         private void OnTriggerExit(Collider other)

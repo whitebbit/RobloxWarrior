@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Abilities.Interfaces;
 using _3._Scripts.Abilities.Structs;
 using _3._Scripts.Config.Scriptables;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Saves;
-using _3._Scripts.Saves.Interfaces;
-using _3._Scripts.UI.Interfaces;
 using GBGamesPlugin;
 using UnityEngine;
 using VInspector;
 
 namespace _3._Scripts.Abilities.Scriptables
 {
-    public abstract class Ability : ConfigObject<Sprite>
+    public abstract class PlayerAbility : ConfigObject<Sprite>, IAbility, ICooldownableAbility
     {
         [SerializeField] private Sprite icon;
 
@@ -30,7 +29,7 @@ namespace _3._Scripts.Abilities.Scriptables
         private int rebornCountToUnlock;
 
         [Space] [SerializeField] private int abilityLevelToUnlock;
-        [SerializeField] private List<Ability> abilitiesToUnlock;
+        [SerializeField] private List<PlayerAbility> abilitiesToUnlock;
 
         private AbilitySave Save => GBGames.saves.abilitiesSave.Get(ID);
 
@@ -42,14 +41,14 @@ namespace _3._Scripts.Abilities.Scriptables
         public int Level => Save.level;
 
         public override Sprite Icon => icon;
-        private bool CanUse => Time.time >= _lastUsedTime + cooldown;
+        public bool CanUse => Time.time >= _lastUsedTime + cooldown;
         private float _lastUsedTime;
 
         public void Unlock()
         {
             GBGames.saves.abilitiesSave.Unlock(this);
         }
-        
+
         public void Upgrade()
         {
             Save.level += 1;
@@ -94,7 +93,6 @@ namespace _3._Scripts.Abilities.Scriptables
 
             return GBGames.saves.stats.rebirthCounts >= rebornCountToUnlock;
         }
-
 
         public void UseAbility()
         {

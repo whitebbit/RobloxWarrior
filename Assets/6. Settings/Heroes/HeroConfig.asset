@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b184efe38eb4d9399cd1b6973cd2e95, type: 3}
   m_Name: HeroConfig
   m_EditorClassIdentifier: 
-  passiveEffects: []
+  id: hero_test
+  titleID: 
+  descriptionID: 
+  ability: {fileID: 11400000, guid: db8c5b2a97e939f4995ad4af770be86b, type: 2}
+  passiveEffects:
+  - type: 0
+    points: 10
+  - type: 2
+    points: 10
   movementConfig:
-    baseSpeed: 0
-    jumpHeight: 0
-  size: 1
-  skin: {fileID: -876546973899608171, guid: 93605796a575c0742a275da7fe39cdfa, type: 3}
+    baseSpeed: 5
+    jumpHeight: 2
+  modelPrefab: {fileID: 1543003893633063697, guid: c895b32ddd23b9143b5ca7003ee5dd27, type: 3}
   animationConfig:
     attackAnimations:
     - clip: {fileID: 7400000, guid: 14e87e8f1f055cd419847302a41a4275, type: 3}

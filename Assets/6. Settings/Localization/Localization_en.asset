@@ -271,10 +271,31 @@ MonoBehaviour:
     m_Localized: Complete the current quest
     m_Metadata:
       m_Items: []
+  - m_Id: 75225043868647424
+    m_Localized: Heals {value}% health {cooldown:plural:every second|every {} seconds}
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 75226244794351616
+    m_Localized: Protects against damage during {value:plural:one second|{} seconds}
+      at the beginning of each wave
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 75227489781219328
+    m_Localized: Get {value}% extra experience from each defeated enemy
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 75228529721147392
+    m_Localized: Teleports a command to skip {value:plural:first wave|first {} waves}
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
   references:
     version: 2
     RefIds:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b650201
+        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b01

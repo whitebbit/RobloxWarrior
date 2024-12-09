@@ -16,6 +16,14 @@ namespace _3._Scripts.Extensions
             }
         }
 
+        public static void SetState(this ParticleSystem particleSystem, bool state)
+        {
+            if (state)
+                particleSystem.Play();
+            else
+                particleSystem.Stop();
+        }
+
         public static void SetEmissionRateOverTime(this List<ParticleSystem> particleSystems, int emissionRate)
         {
             foreach (var particleSystem in particleSystems)

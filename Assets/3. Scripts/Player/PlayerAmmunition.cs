@@ -17,9 +17,9 @@ namespace _3._Scripts.Player
         [SerializeField] private Vector3 localEulerAngles;
         public Sword Sword { get; private set; }
         
-        public Ability FirstAbility { get; private set; }
-        public Ability SecondAbility { get; private set; }
-        public Ability ThirdAbility { get; private set; }
+        public PlayerAbility FirstPlayerAbility { get; private set; }
+        public PlayerAbility SecondPlayerAbility { get; private set; }
+        public PlayerAbility ThirdPlayerAbility { get; private set; }
 
         private void Awake()
         {

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using _3._Scripts.Config;
 using _3._Scripts.Player.Scriptables;
 using _3._Scripts.Saves;
@@ -23,17 +25,32 @@ namespace _3._Scripts.Player
             get => Save.experience;
             set
             {
-                Save.experience = value;
-                OnExperienceChanged?.Invoke(Save.experience);
-                while (Save.experience >= ExperienceToLevelUp())
+                if (value > Save.experience)
                 {
-                    Save.experience -= ExperienceToLevelUp();
-                    Level += 1;
-                    UpgradePoints += 1;
-
-                    OnLevelChange?.Invoke(Level);
+                    AddBoostedExperience(value - Save.experience); 
+                }
+                else
+                {
+                    Save.experience = value;
                     OnExperienceChanged?.Invoke(Save.experience);
                 }
+            }
+        }
+        
+        private void AddBoostedExperience(float addedExperience)
+        {
+            var boosted = addedExperience + addedExperience * ExperienceIncrease() / 100f;
+            Save.experience += boosted;
+            OnExperienceChanged?.Invoke(Save.experience);
+
+            while (Save.experience >= ExperienceToLevelUp())
+            {
+                Save.experience -= ExperienceToLevelUp();
+                Level += 1;
+                UpgradePoints += 1;
+
+                OnLevelChange?.Invoke(Level);
+                OnExperienceChanged?.Invoke(Save.experience);
             }
         }
 
@@ -69,7 +86,7 @@ namespace _3._Scripts.Player
         public event Action OnSpeedImproving;
         public event Action OnCritImproving;
 
-        public int AdditionalHealthPoint { get; set; }
+        private int _additionalHealthPoint;
 
         public int HealthPoints
         {
@@ -81,7 +98,7 @@ namespace _3._Scripts.Player
             }
         }
 
-        public int AdditionalAttackPoints { get; set; }
+        private int _additionalAttackPoints;
 
         public int AttackPoints
         {
@@ -93,7 +110,7 @@ namespace _3._Scripts.Player
             }
         }
 
-        public int AdditionalSpeedPoints { get; set; }
+        private int _additionalSpeedPoints;
 
         public int SpeedPoints
         {
@@ -105,7 +122,7 @@ namespace _3._Scripts.Player
             }
         }
 
-        public int AdditionalCritPoints { get; set; }
+        private int _additionalCritPoints;
 
         public int CritPoints
         {
@@ -117,10 +134,10 @@ namespace _3._Scripts.Player
             }
         }
 
-        public float HealthImprovement => (HealthPoints + AdditionalHealthPoint) * Config.HealthImprovement;
-        public float AttackImprovement => (AttackPoints + AdditionalAttackPoints) * Config.AttackImprovement;
-        public float SpeedImprovement => (SpeedPoints + AdditionalSpeedPoints) * Config.SpeedImprovement;
-        public float CritImprovement => (CritPoints + AdditionalCritPoints) * Config.CritImprovement;
+        public float HealthImprovement => (HealthPoints + _additionalHealthPoint) * Config.HealthImprovement;
+        public float AttackImprovement => (AttackPoints + _additionalAttackPoints) * Config.AttackImprovement;
+        public float SpeedImprovement => (SpeedPoints + _additionalSpeedPoints) * Config.SpeedImprovement;
+        public float CritImprovement => (CritPoints + _additionalCritPoints) * Config.CritImprovement;
 
         public void UpgradeStats(ModificationType type, int amount)
         {
@@ -149,14 +166,47 @@ namespace _3._Scripts.Player
             UpgradePoints -= trueAmount;
         }
 
+        public void AddAdditionalPoints(ModificationType type, int amount)
+        {
+            switch (type)
+            {
+                case ModificationType.Health:
+                    _additionalHealthPoint += amount;
+                    OnHealthImproving?.Invoke();
+                    break;
+                case ModificationType.Attack:
+                    _additionalAttackPoints += amount;
+                    OnAttackImproving?.Invoke();
+                    break;
+                case ModificationType.Speed:
+                    _additionalSpeedPoints += amount;
+                    OnSpeedImproving?.Invoke();
+                    break;
+                case ModificationType.Crit:
+                    _additionalCritPoints += amount;
+                    OnCritImproving?.Invoke();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+        }
+
+        public void ResetAdditionalPoints()
+        {
+            _additionalHealthPoint = 0;
+            _additionalAttackPoints = 0;
+            _additionalSpeedPoints = 0;
+            _additionalCritPoints = 0;
+        }
+
         public int GetLevel(ModificationType type)
         {
             return type switch
             {
-                ModificationType.Health => HealthPoints + AdditionalHealthPoint,
-                ModificationType.Attack => AttackPoints + AdditionalAttackPoints,
-                ModificationType.Speed => SpeedPoints + AdditionalSpeedPoints,
-                ModificationType.Crit => CritPoints + AdditionalCritPoints,
+                ModificationType.Health => HealthPoints + _additionalHealthPoint,
+                ModificationType.Attack => AttackPoints + _additionalAttackPoints,
+                ModificationType.Speed => SpeedPoints + _additionalSpeedPoints,
+                ModificationType.Crit => CritPoints + _additionalCritPoints,
 
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
@@ -192,12 +242,27 @@ namespace _3._Scripts.Player
 
         public float AttackPercentIncrease => Save.rebirthCounts * Config.AttackPercentIncrease;
 
+
+        private readonly Dictionary<string, float> _additionalExperienceIncrease = new();
+        private float AdditionalExperienceIncrease => _additionalExperienceIncrease.Values.Sum();
+
+        public void AddAdditionalExperienceIncrease(string placement, float increase)
+        {
+            _additionalExperienceIncrease.TryAdd(placement, increase);
+        }
+
+        public void RemoveAdditionalExperienceIncrease(string placement)
+        {
+            _additionalExperienceIncrease.Remove(placement);
+        }
+
         public float ExperienceIncrease(int rebirthCounts = -1)
         {
             if (rebirthCounts == -1)
                 rebirthCounts = Save.rebirthCounts;
-
-            return Config.BaseExperiencePercentIncrease * Mathf.Pow(2, rebirthCounts - 1);
+            
+            return Config.BaseExperiencePercentIncrease * Mathf.Pow(2, rebirthCounts - 1) +
+                   AdditionalExperienceIncrease;
         }
 
         public int SkillPoints

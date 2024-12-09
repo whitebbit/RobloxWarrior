@@ -8,15 +8,11 @@ namespace _3._Scripts.Heroes
 {
     public class HeroAnimator : UnitAnimator, IInitializable<HeroConfig>
     {
-        private HeroConfig _config;
-        protected override UnitAnimationConfig Config => _config.AnimationConfig;
         protected override bool CanFall => !Grounded;
         
-
         public void Initialize(HeroConfig config)
         {
-            _config = config;
+            Config = config.AnimationConfig;
         }
     }
-    
 }

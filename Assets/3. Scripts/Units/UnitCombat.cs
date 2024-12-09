@@ -19,7 +19,7 @@ namespace _3._Scripts.Units
         protected virtual float AttackSpeed => 1;
 
         private int _comboIndex;
-        private bool _isAttacking;
+        protected bool _isAttacking;
 
         protected virtual bool CanAttack()
         {

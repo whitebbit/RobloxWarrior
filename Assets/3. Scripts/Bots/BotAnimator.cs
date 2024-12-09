@@ -9,14 +9,11 @@ namespace _3._Scripts.Bots
 {
     public class BotAnimator : UnitAnimator, IInitializable<BotConfig>
     {
-
-        private BotConfig _config;
-        protected override UnitAnimationConfig Config => _config.AnimationConfig;
         protected override bool CanFall => !Grounded;
 
         public void Initialize(BotConfig config)
         {
-            _config = config;
+            Config = config.AnimationConfig;
         }
     }
 }

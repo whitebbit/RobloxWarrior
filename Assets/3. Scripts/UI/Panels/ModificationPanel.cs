@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
@@ -26,7 +27,8 @@ namespace _3._Scripts.UI.Panels
 
         public override IUITransition InTransition { get; set; }
         public override IUITransition OutTransition { get; set; }
-
+        
+        private List<ModificationItem> _modificationItems = new();
         private float ResetPrice()
         {
             return Player.Player.Instance.Stats.GetPointsSpent() * 50;
@@ -46,6 +48,15 @@ namespace _3._Scripts.UI.Panels
 
             StatsOnUpgradePointsChanged(Player.Player.Instance.Stats.UpgradePoints);
             InitializeItems();
+        }
+
+        protected override void OnOpen()
+        {
+            base.OnOpen();
+            foreach (var item in _modificationItems)
+            {
+                item.UpdateStats();
+            }
         }
 
         private void StatsOnUpgradePointsChanged(int obj)
@@ -86,6 +97,7 @@ namespace _3._Scripts.UI.Panels
                 var obj = Instantiate(prefab, container);
                 obj.Initialize(item);
                 obj.SetInputField(inputField);
+                _modificationItems.Add(obj);
             }
         }
 

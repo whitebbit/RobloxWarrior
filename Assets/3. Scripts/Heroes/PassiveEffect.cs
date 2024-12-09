@@ -12,46 +12,17 @@ namespace _3._Scripts.Heroes
         [SerializeField] private ModificationType type;
         [SerializeField] private int points;
 
+        public ModificationType Type => type;
+
+        public int Points => points;
         public void ApplyEffect(PlayerStats stats)
         {
-            switch (type)
-            {
-                case ModificationType.Health:
-                    stats.AdditionalHealthPoint += points;
-                    break;
-                case ModificationType.Attack:
-                    stats.AdditionalAttackPoints += points;
-                    break;
-                case ModificationType.Speed:
-                    stats.AdditionalSpeedPoints += points;
-                    break;
-                case ModificationType.Crit:
-                    stats.AdditionalCritPoints += points;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            stats.AddAdditionalPoints(type, points);
         }
 
         public void RemoveEffect(PlayerStats stats)
         {
-            switch (type)
-            {
-                case ModificationType.Health:
-                    stats.AdditionalHealthPoint -= points;
-                    break;
-                case ModificationType.Attack:
-                    stats.AdditionalAttackPoints -= points;
-                    break;
-                case ModificationType.Speed:
-                    stats.AdditionalSpeedPoints -= points;
-                    break;
-                case ModificationType.Crit:
-                    stats.AdditionalCritPoints -= points;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            stats.ResetAdditionalPoints();
         }
     }
 }

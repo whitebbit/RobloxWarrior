@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _3._Scripts.Currency.Scriptable;
+using _3._Scripts.Heroes.Scriptables;
 using _3._Scripts.Player.Scriptables;
 using _3._Scripts.UI.Scriptables;
 using _3._Scripts.UI.Structs;
@@ -12,9 +13,12 @@ namespace _3._Scripts.Config.Scriptables
     [CreateAssetMenu(fileName = "MainConfig", menuName = "Configs/Main Config", order = 0)]
     public class MainConfig : ScriptableObject
     {
-        [Tab("Game Data")] [SerializeField] private List<WorldConfig> worlds = new();
-
-        [Space] [SerializeField] private List<CurrencyConfig> currencyData = new();
+        [Tab("Game Data")] 
+        [SerializeField] private List<WorldConfig> worlds = new();
+        [SerializeField] private List<HeroConfig> heroes = new();
+        
+        [Space]
+        [SerializeField] private List<CurrencyConfig> currencyData = new();
         [SerializeField] private List<RarityTable> rarityTables = new();
         [Tab("Player Data")] [SerializeField] private PlayerConfig playerConfig;
         [SerializeField] private SwordCollectionConfig swordCollectionConfig;
@@ -26,7 +30,7 @@ namespace _3._Scripts.Config.Scriptables
         public List<CurrencyConfig> CurrencyData => currencyData;
         public List<RarityTable> RarityTables => rarityTables;
         public UIConfig UIConfig => uiConfig;
-
         public List<WorldConfig> Worlds => worlds;
+        public List<HeroConfig> Heroes => heroes;
     }
 }
