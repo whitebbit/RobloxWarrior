@@ -292,6 +292,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
+  - m_Id: 75606487010967552
+    m_Localized: Equip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75606653365452800
+    m_Localized: Take off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75607099773616128
+    m_Localized: unlock
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -269,6 +269,18 @@ MonoBehaviour:
     m_Key: hero_ability_waveskip
     m_Metadata:
       m_Items: []
+  - m_Id: 75606487010967552
+    m_Key: equip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75606653365452800
+    m_Key: take_off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75607099773616128
+    m_Key: unlock
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

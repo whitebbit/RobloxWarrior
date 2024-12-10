@@ -27,6 +27,7 @@ namespace _3._Scripts.Units
         }
 
         private float _currentHealth;
+        public float BaseHealth { get; private set; }
         public event Action<float, float> OnHealthChanged;
 
         public float Health
@@ -49,6 +50,7 @@ namespace _3._Scripts.Units
 
         public UnitHealth(float baseHealth, IDying dying)
         {
+            BaseHealth = baseHealth;
             _maxHealth = baseHealth;
             _currentHealth = baseHealth;
             _dying = dying;

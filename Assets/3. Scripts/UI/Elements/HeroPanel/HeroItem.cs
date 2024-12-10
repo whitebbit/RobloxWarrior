@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using _3._Scripts.Heroes.Scriptables;
 using _3._Scripts.Localization;
 using _3._Scripts.Swords.Scriptables;
+using GBGamesPlugin;
 using UnityEngine;
+using UnityEngine.Experimental.XR.Interaction;
 using UnityEngine.Localization.Components;
 using UnityEngine.Serialization;
 
@@ -13,7 +15,10 @@ namespace _3._Scripts.UI.Elements.HeroPanel
     {
         [SerializeField] private LocalizeStringEvent description;
         [SerializeField] private List<PassiveEffectItem> passiveEffects = new();
+        [SerializeField] private Transform lockedTransform;
+
         protected override HeroItem Self => this;
+        public bool Unlocked => GBGames.saves.heroesSave.Unlocked(Config.ID);
 
         public override void Initialize(HeroConfig config)
         {
@@ -40,11 +45,19 @@ namespace _3._Scripts.UI.Elements.HeroPanel
                 i += 1;
             }
 
+            UpdateLockedState();
+
             if (!description) return;
             description.SetReference(Config.Ability.DescriptionID);
 
             description.SetVariable("value", Config.Ability.GetDescriptionParameters<float>("value"));
             description.SetVariable("cooldown", Config.Ability.GetDescriptionParameters<float>("cooldown"));
+        }
+
+        public void UpdateLockedState()
+        {
+            if (lockedTransform)
+                lockedTransform.gameObject.SetActive(!Unlocked);
         }
 
         private void SetItemState(bool state)

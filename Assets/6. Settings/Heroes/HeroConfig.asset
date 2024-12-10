@@ -22,7 +22,7 @@ MonoBehaviour:
   - type: 2
     points: 10
   movementConfig:
-    baseSpeed: 5
+    baseSpeed: 7
     jumpHeight: 2
   modelPrefab: {fileID: 1543003893633063697, guid: c895b32ddd23b9143b5ca7003ee5dd27, type: 3}
   animationConfig:

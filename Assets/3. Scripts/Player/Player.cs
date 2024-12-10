@@ -70,7 +70,7 @@ namespace _3._Scripts.Player
         private void SubscribeToEvents()
         {
             Stats.OnLevelChange += _ => VFX.OnLevelUp();
-            Stats.OnHealthImproving += () => Health.MaxHealth += Stats.HealthImprovement;
+            Stats.OnHealthImproving += () => Health.MaxHealth = Health.BaseHealth + Stats.HealthImprovement;
         }
 
         public float GetTrueDamage(float swordDamage)

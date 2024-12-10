@@ -1,21 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using _3._Scripts.Config.Interfaces;
 using _3._Scripts.Heroes.Scriptables;
+using _3._Scripts.Pool.Interfaces;
 using _3._Scripts.Units;
 using UnityEngine;
 
 namespace _3._Scripts.Heroes
 {
-    public class Hero : Unit, IInitializable<HeroConfig>
+    public class Hero : Unit, IInitializable<HeroConfig>, IPoolable
     {
-        [SerializeField] private HeroConfig config;
-
         public override UnitHealth Health => _health;
         private UnitHealth _health;
         private HeroMovement _movement;
         private HeroAnimator _animator;
         private HeroAbilityManager _abilityManager;
 
+        private Transform _target;
+        private List<PassiveEffect> _passiveEffects = new();
+        private HeroModel _model;
 
         protected override void OnAwake()
         {
@@ -25,21 +28,28 @@ namespace _3._Scripts.Heroes
             _animator = GetComponent<HeroAnimator>();
         }
 
-        protected override void OnStart()
-        {
-            base.OnStart();
-            Initialize(config);
-        }
-
         private void Update()
         {
-            _movement.Move(Vector2.zero);
+            if (_target == null)
+            {
+                _movement.Move(Vector2.zero);
+                return;
+            }
+
+            if (Vector3.Distance(_target.position, transform.position) >= 10f)
+                _movement.Teleport(_target.position);
+
+            var direction = _target.transform.position - transform.position;
+            var trueDirection = new Vector2(direction.x, direction.z);
+            _movement.Move(trueDirection);
         }
+
+        public void SetTarget(Transform target) => _target = target;
 
         public void Initialize(HeroConfig config)
         {
-            var model = Instantiate(config.ModelPrefab, transform);
-            model.transform.localPosition = Vector3.zero;
+            _model = Instantiate(config.ModelPrefab, transform);
+            _model.transform.localPosition = Vector3.zero;
 
             _animator.Initialize(config);
             _movement.Initialize(config);
@@ -47,8 +57,28 @@ namespace _3._Scripts.Heroes
 
             foreach (var effect in config.PassiveEffects)
             {
+                effect.Reset();
                 effect.ApplyEffect(Player.Player.Instance.Stats);
+                _passiveEffects.Add(effect);
             }
+        }
+
+        public void OnSpawn()
+        {
+            _abilityManager.ClearAbilities();
+            _target = null;
+        }
+
+        public void OnDespawn()
+        {
+            foreach (var effect in _passiveEffects)
+            {
+                effect.RemoveEffect(Player.Player.Instance.Stats);
+            }
+
+            _abilityManager.ClearAbilities();
+            if (_model)
+                Destroy(_model.gameObject);
         }
     }
 }

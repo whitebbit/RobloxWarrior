@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0594589563524306bd455000574fd13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 8e226b75ed71d8946ac15955d1a5599a, type: 2}
 --- !u!114 &2781127856355894457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Animator: {fileID: 317936380788280059}
-  _ActionOnDisable: 0
+  _ActionOnDisable: 3
 --- !u!114 &8507704594212738311
 MonoBehaviour:
   m_ObjectHideFlags: 0

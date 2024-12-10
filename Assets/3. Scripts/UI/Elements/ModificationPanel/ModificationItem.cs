@@ -33,7 +33,7 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
 
             iconImage.sprite = _config.Icon;
             iconImage.ScaleImage();
-            
+
             titleText.SetReference(_config.TitleID);
             descriptionText.SetReference(_config.DescriptionID);
 
@@ -41,9 +41,9 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
 
             upgradeButton.onClick.AddListener(OnClick);
 
-            Player.Player.Instance.Stats.OnUpgradePointsChanged += _ => UpdateStats();
+            Player.Player.Instance.Stats.OnStatsChanged += UpdateStats;
         }
-        
+
         public void SetInputField(TMP_InputField inputField) => _inputField = inputField;
 
         private string GetStats(ModificationType type)

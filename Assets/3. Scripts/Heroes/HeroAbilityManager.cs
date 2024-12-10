@@ -13,6 +13,15 @@ namespace _3._Scripts.Heroes
     {
         private readonly List<HeroAbility> _abilities = new();
 
+        public void ClearAbilities()
+        {
+            foreach (var ability in _abilities)
+            {
+                ability.ResetAbility();
+            }
+            _abilities.Clear();
+        }
+        
         public void RegisterAbility(HeroAbility ability)
         {
             ability.ResetAbility();

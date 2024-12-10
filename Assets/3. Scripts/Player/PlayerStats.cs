@@ -75,12 +75,15 @@ namespace _3._Scripts.Player
         public float ExperienceToLevelUp()
         {
             var additionalOffset = Level / Config.OffsetIncrementFrequency * Config.OffsetIncrementValue;
-            return Mathf.RoundToInt(Config.BaseExperience * (Config.ExperienceMultiplier + (Config.LevelOffset + additionalOffset) * Level));
+            return Mathf.RoundToInt(Config.BaseExperience *
+                                    (Config.ExperienceMultiplier + (Config.LevelOffset + additionalOffset) * Level));
         }
 
         #endregion
 
         #region Improvement
+
+        public event Action OnStatsChanged;
 
         public event Action OnHealthImproving;
         public event Action OnAttackImproving;
@@ -88,12 +91,13 @@ namespace _3._Scripts.Player
         public event Action OnCritImproving;
 
         private int _additionalHealthPoint;
-
         public int HealthPoints
         {
             private get => Save.healthPoints;
             set
             {
+                if (Save.healthPoints == value) return;
+
                 Save.healthPoints = value;
                 OnHealthImproving?.Invoke();
             }
@@ -165,6 +169,7 @@ namespace _3._Scripts.Player
             }
 
             UpgradePoints -= trueAmount;
+            OnStatsChanged?.Invoke();
         }
 
         public void AddAdditionalPoints(ModificationType type, int amount)
@@ -190,14 +195,35 @@ namespace _3._Scripts.Player
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
+
+            OnStatsChanged?.Invoke();
         }
 
-        public void ResetAdditionalPoints()
+        public void RemoveAdditionalPoints(ModificationType type, int amount)
         {
-            _additionalHealthPoint = 0;
-            _additionalAttackPoints = 0;
-            _additionalSpeedPoints = 0;
-            _additionalCritPoints = 0;
+            switch (type)
+            {
+                case ModificationType.Health:
+                    _additionalHealthPoint -= amount;
+                    OnHealthImproving?.Invoke();
+                    break;
+                case ModificationType.Attack:
+                    _additionalAttackPoints -= amount;
+                    OnAttackImproving?.Invoke();
+                    break;
+                case ModificationType.Speed:
+                    _additionalSpeedPoints -= amount;
+                    OnSpeedImproving?.Invoke();
+                    break;
+                case ModificationType.Crit:
+                    _additionalCritPoints -= amount;
+                    OnCritImproving?.Invoke();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+
+            OnStatsChanged?.Invoke();
         }
 
         public int GetLevel(ModificationType type)
@@ -261,6 +287,11 @@ namespace _3._Scripts.Player
         {
             if (rebirthCounts == -1)
                 rebirthCounts = Save.rebirthCounts;
+
+            if (rebirthCounts == 0)
+            {
+                return 0;
+            }
 
             return Config.BaseExperiencePercentIncrease * Mathf.Pow(2, rebirthCounts - 1) +
                    AdditionalExperienceIncrease;

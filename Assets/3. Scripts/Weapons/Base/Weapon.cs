@@ -99,7 +99,7 @@ namespace _3._Scripts.Weapons.Base
                     new Color(0.972549f, 0.6722908f, 0.2431373f),
                     new Color(0.972549f, 0.6722908f, 0.2431373f));
 
-            floatingText.Initialize($"{damageWithCrit}{critString}", textPosition);
+            floatingText.Initialize($"{(int)damageWithCrit}{critString}", textPosition);
             floatingText.SetGradient(gradient);
         }
     }

@@ -17,7 +17,7 @@ namespace _3._Scripts.UI.Panels.Base
         protected TItem currentItem;
 
         [SerializeField] protected Transform container;
-        [SerializeField] private Button equipSelectedButton;
+        [SerializeField] protected Button equipSelectedButton;
         [SerializeField] protected TMP_Text capacityText;
 
         public override IUITransition InTransition { get; set; }
