@@ -50,10 +50,20 @@ namespace _3._Scripts.Player.Scriptables
     [Serializable]
     public class PlayerStatsConfig
     {
-        [Header("Experience")] 
-        [SerializeField] private float baseXp = 20f;       
-        [SerializeField] private float growthFactor = 1.25f; 
-        [SerializeField] private float offsetMultiplier  = 15f;
+        [Header("Experience")] [SerializeField, Tooltip("Базовое количество опыта, необходимое для следующего уровня.")]
+        private float baseExperience = 25f;
+
+        [SerializeField, Tooltip("Множитель, который увеличивает базовый опыт.")]
+        private float experienceMultiplier;
+
+        [SerializeField, Tooltip("Начальное смещение опыта, добавляемое в зависимости от уровня.")]
+        private float levelOffset;
+
+        [SerializeField, Tooltip("Количество уровней, после которых увеличивается смещение.\n\n")]
+        private float offsetIncrementFrequency;
+
+        [SerializeField, Tooltip("Увеличение значения смещения через каждые offsetIncrementFrequency уровней.\n\n")]
+        private float offsetIncrementValue;
 
         [Header("Stats Increase")] [SerializeField]
         private float healthImprovement;
@@ -73,11 +83,12 @@ namespace _3._Scripts.Player.Scriptables
         [SerializeField, Tooltip("Каждое M-е перерождение увеличивает величину увеличения.")]
         private int rebirthIncreaseInterval = 3;
 
-        public float BaseXp => baseXp;
+        public float BaseExperience => baseExperience;
 
-        public float GrowthFactor => growthFactor;
-
-        public float OffsetMultiplier => offsetMultiplier ;
+        public float ExperienceMultiplier => experienceMultiplier;
+        public float LevelOffset => levelOffset;
+        public float OffsetIncrementValue => offsetIncrementValue;
+        public float OffsetIncrementFrequency => offsetIncrementFrequency;
 
         public float HealthImprovement => healthImprovement;
         public float AttackImprovement => attackImprovement;

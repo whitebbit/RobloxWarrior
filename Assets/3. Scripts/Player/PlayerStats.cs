@@ -74,9 +74,9 @@ namespace _3._Scripts.Player
 
         public float ExperienceToLevelUp()
         {
-            var offset = Config.OffsetMultiplier * Mathf.Sqrt(Level);
-            var experience = Config.BaseXp * Mathf.Pow(Level, Config.GrowthFactor) + offset;
-            return Mathf.CeilToInt(experience);         }
+            var additionalOffset = Level / Config.OffsetIncrementFrequency * Config.OffsetIncrementValue;
+            return Mathf.RoundToInt(Config.BaseExperience * (Config.ExperienceMultiplier + (Config.LevelOffset + additionalOffset) * Level));
+        }
 
         #endregion
 

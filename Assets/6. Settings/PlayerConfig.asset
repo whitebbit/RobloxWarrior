@@ -16,8 +16,11 @@ MonoBehaviour:
     baseSpeed: 7
     jumpHeight: 3
   statsConfig:
-    initialExperienceCoefficient: 100
-    difficultyFactor: 2
+    baseExperience: 25
+    experienceMultiplier: 1.15
+    levelOffset: 0.05
+    offsetIncrementFrequency: 5
+    offsetIncrementValue: 0.05
     healthImprovement: 30
     attackImprovement: 3
     speedImprovement: 0.2
