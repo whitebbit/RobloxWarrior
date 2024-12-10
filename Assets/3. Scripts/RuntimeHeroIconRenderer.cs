@@ -47,7 +47,7 @@ namespace _3._Scripts
 
         protected override void OnRenderComplete(HeroModel item)
         {
-            Destroy(item.gameObject);
+           // Destroy(item.gameObject);
         }
     }
 }

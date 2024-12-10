@@ -27,7 +27,7 @@ namespace _3._Scripts.Player
             {
                 if (value > Save.experience)
                 {
-                    AddBoostedExperience(value - Save.experience); 
+                    AddBoostedExperience(value - Save.experience);
                 }
                 else
                 {
@@ -36,7 +36,7 @@ namespace _3._Scripts.Player
                 }
             }
         }
-        
+
         private void AddBoostedExperience(float addedExperience)
         {
             var boosted = addedExperience + addedExperience * ExperienceIncrease() / 100f;
@@ -74,7 +74,8 @@ namespace _3._Scripts.Player
 
         public float ExperienceToLevelUp()
         {
-            return Config.InitialExperienceCoefficient * Mathf.Pow(Level, Config.DifficultyFactor);
+            var experience = Config.BaseXp * Mathf.Pow(Level, Config.GrowthFactor) + Config.Offset;
+            return Mathf.CeilToInt(experience); // Округляем до целого значения
         }
 
         #endregion
@@ -260,7 +261,7 @@ namespace _3._Scripts.Player
         {
             if (rebirthCounts == -1)
                 rebirthCounts = Save.rebirthCounts;
-            
+
             return Config.BaseExperiencePercentIncrease * Mathf.Pow(2, rebirthCounts - 1) +
                    AdditionalExperienceIncrease;
         }

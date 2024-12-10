@@ -50,12 +50,10 @@ namespace _3._Scripts.Player.Scriptables
     [Serializable]
     public class PlayerStatsConfig
     {
-        [Header("Experience")] [SerializeField, Tooltip("Начальный коэффициент опыта")]
-        private float initialExperienceCoefficient;
-
-        [SerializeField,
-         Tooltip("Коэффициент сложности (показывает, как быстро растет требуемый опыт с каждым уровнем).")]
-        private float difficultyFactor;
+        [Header("Experience")] 
+        [SerializeField] private float baseXp = 20f;       
+        [SerializeField] private float growthFactor = 1.25f; 
+        [SerializeField] private float offset = 15f;
 
         [Header("Stats Increase")] [SerializeField]
         private float healthImprovement;
@@ -75,8 +73,11 @@ namespace _3._Scripts.Player.Scriptables
         [SerializeField, Tooltip("Каждое M-е перерождение увеличивает величину увеличения.")]
         private int rebirthIncreaseInterval = 3;
 
-        public float InitialExperienceCoefficient => initialExperienceCoefficient;
-        public float DifficultyFactor => difficultyFactor;
+        public float BaseXp => baseXp;
+
+        public float GrowthFactor => growthFactor;
+
+        public float Offset => offset;
 
         public float HealthImprovement => healthImprovement;
         public float AttackImprovement => attackImprovement;
