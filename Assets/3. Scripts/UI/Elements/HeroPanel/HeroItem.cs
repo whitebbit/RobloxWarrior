@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using _3._Scripts.Heroes.Scriptables;
 using _3._Scripts.Localization;
+using _3._Scripts.Swords.Scriptables;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.Serialization;

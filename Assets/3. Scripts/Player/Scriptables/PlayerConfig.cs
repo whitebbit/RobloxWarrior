@@ -53,7 +53,7 @@ namespace _3._Scripts.Player.Scriptables
         [Header("Experience")] 
         [SerializeField] private float baseXp = 20f;       
         [SerializeField] private float growthFactor = 1.25f; 
-        [SerializeField] private float offset = 15f;
+        [SerializeField] private float offsetMultiplier  = 15f;
 
         [Header("Stats Increase")] [SerializeField]
         private float healthImprovement;
@@ -77,7 +77,7 @@ namespace _3._Scripts.Player.Scriptables
 
         public float GrowthFactor => growthFactor;
 
-        public float Offset => offset;
+        public float OffsetMultiplier => offsetMultiplier ;
 
         public float HealthImprovement => healthImprovement;
         public float AttackImprovement => attackImprovement;

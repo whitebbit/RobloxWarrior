@@ -50,9 +50,10 @@ namespace _3._Scripts
             return item;
         }
 
-        protected override void OnRenderComplete(Sword item)
+        protected override void CleanupItem(Sword item)
         {
             Destroy(item.gameObject);
         }
+        
     }
 }

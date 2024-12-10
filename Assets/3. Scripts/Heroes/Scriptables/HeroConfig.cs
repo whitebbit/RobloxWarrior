@@ -25,6 +25,6 @@ namespace _3._Scripts.Heroes.Scriptables
         public UnitAnimationConfig AnimationConfig => animationConfig;
 
         public HeroAbility Ability => ability;
-        public override Texture2D Icon => RuntimeHeroIconRenderer.Instance.GetTexture2D(ID);
+        public override Texture2D Icon => RuntimeHeroIconRenderer.Instance.GetTexture(ID);
     }
 }

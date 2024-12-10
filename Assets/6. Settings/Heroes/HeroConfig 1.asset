@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b184efe38eb4d9399cd1b6973cd2e95, type: 3}
+  m_Name: HeroConfig 1
+  m_EditorClassIdentifier: 
+  id: hero_test
+  titleID: 
+  descriptionID: 
+  ability: {fileID: 11400000, guid: 338c63af8a110d04cb7f2afbcad76b9a, type: 2}
+  passiveEffects:
+  - type: 0
+    points: 10
+  - type: 2
+    points: 10
+  movementConfig:
+    baseSpeed: 5
+    jumpHeight: 2
+  modelPrefab: {fileID: 1543003893633063697, guid: c895b32ddd23b9143b5ca7003ee5dd27, type: 3}
+  animationConfig:
+    attackAnimations:
+    - clip: {fileID: 7400000, guid: 14e87e8f1f055cd419847302a41a4275, type: 3}
+      eventTimes:
+      - 0.2
+    - clip: {fileID: 7400000, guid: ff13e6551ae28014f8c77a74e1093fd7, type: 3}
+      eventTimes:
+      - 0.2
+    - clip: {fileID: 7400000, guid: c1d88a16a1d6e504ca8ef2aa65ee0c86, type: 3}
+      eventTimes:
+      - 0.2
+      - 0.4
+    attackMask: {fileID: 31900000, guid: 91e92872817d67941b2f4b27d408a80e, type: 2}
+    movementAnimation:
+      _FadeDuration: 0.25
+      _Events:
+        _NormalizedTimes: []
+        _Callbacks: []
+        _Names: []
+      _Speed: 1
+      _Animations:
+      - {fileID: 7400000, guid: e6def7885940f9e4d886792e6ac0bca2, type: 3}
+      - {fileID: 7400000, guid: b0f10ecfe14765647a1528b56c0b1151, type: 3}
+      - {fileID: 7400000, guid: becf4bd5f6f4e2849a95cfa88e946fb1, type: 3}
+      _Speeds: []
+      _SynchronizeChildren: 
+      _Thresholds:
+      - 0
+      - 0.5
+      - 1
+      _DefaultParameter: 0
+      _ExtrapolateSpeed: 1
+    jumpAnimation: {fileID: 7400000, guid: 27c5d17d5f35b64439e9d2ca77eb9309, type: 3}
+    fallAnimation: {fileID: 7400000, guid: ba612a0752d2ea04a891e20f7b992a57, type: 3}

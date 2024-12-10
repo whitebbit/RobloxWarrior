@@ -16,7 +16,7 @@ namespace _3._Scripts.Swords.Scriptables
         [Space] [SerializeField] private float dropChance;
 
         public float Damage => damage;
-        public override Texture2D Icon => RuntimeSwordIconRenderer.Instance.GetTexture2D(ID);
+        public override Texture2D Icon => RuntimeSwordIconRenderer.Instance.GetTexture(ID);
         public Sword Prefab => prefab;
         public float Chance => dropChance;
 

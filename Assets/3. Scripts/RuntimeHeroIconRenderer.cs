@@ -43,11 +43,11 @@ namespace _3._Scripts
             var item = Instantiate(config.ModelPrefab, itemTransform);
             return item;
         }
-        
 
-        protected override void OnRenderComplete(HeroModel item)
+        protected override void CleanupItem(HeroModel item)
         {
-           // Destroy(item.gameObject);
+            Destroy(item.gameObject);
         }
+        
     }
 }
