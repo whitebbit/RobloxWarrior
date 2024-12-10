@@ -15,8 +15,9 @@ namespace _3._Scripts.UI.Elements
         private Button _button;
 
         public event Action<TSelf> OnSelect;
-        public T Config { get; private set; }
+        public T Config { get; protected set; }
         protected abstract TSelf Self { get; }
+
         private void Awake()
         {
             _button = GetComponent<Button>();
@@ -26,11 +27,15 @@ namespace _3._Scripts.UI.Elements
         {
             _button.onClick.AddListener(OnClick);
         }
-        
+
         private void OnClick()
         {
             OnSelect?.Invoke(Self);
+        }
 
+        protected void ResetOnSelect()
+        {
+            OnSelect = null;
         }
 
         /// <summary>
@@ -58,6 +63,13 @@ namespace _3._Scripts.UI.Elements
 
         public virtual void Initialize(T config)
         {
+            if (config == null)
+            {
+                icon.gameObject.SetActive(false);
+                return;
+            }
+
+            icon.gameObject.SetActive(true);
             Config = config;
         }
     }

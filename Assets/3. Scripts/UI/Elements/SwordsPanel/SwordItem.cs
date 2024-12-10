@@ -22,10 +22,9 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
         [SerializeField] private Image table;
         [SerializeField] private Transform deleteItem;
         [SerializeField] private List<Transform> stars;
-        
-        public SwordSave Save { get; private set; }
+
         public SwordConfig SwordConfig { get; private set; }
-        public float SwordDamage => Save.GetDamage(SwordConfig.Damage);
+        public float SwordDamage => Config.GetDamage(SwordConfig.Damage);
         public bool ItemToDelete { get; private set; }
         protected override SwordItem Self => this;
 
@@ -37,7 +36,7 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
             var config = Configuration.Instance.Config.SwordCollectionConfig.GetSword(save.id);
             var rarity = Configuration.Instance.GetRarityTable(config.Rarity);
 
-            Save = save;
+            Config = save;
             SwordConfig = config;
 
             // Установка визуальных характеристик
@@ -62,7 +61,7 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
             // Обновление звезд
             for (var i = 0; i < stars.Count; i++)
             {
-                stars[i].gameObject.SetActive(i < Save.starCount);
+                stars[i].gameObject.SetActive(i < Config.starCount);
             }
         }
 
@@ -74,16 +73,17 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
             ItemToDelete = state;
             deleteItem.gameObject.SetActive(state);
         }
-        
+
         public void OnSpawn()
         {
+            ResetOnSelect();
             GBGames.saves.swordsSave.OnDelete += SwordsSaveOnDelete;
         }
 
         private void SwordsSaveOnDelete(SwordSave obj)
         {
             // Проверка, удаляем ли текущий меч
-            if (obj.uid != Save.uid) return;
+            if (obj.uid != Config.uid) return;
             ObjectsPoolManager.Instance.Return(this);
         }
 

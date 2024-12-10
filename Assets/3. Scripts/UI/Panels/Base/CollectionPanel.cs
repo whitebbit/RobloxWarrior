@@ -12,8 +12,10 @@ namespace _3._Scripts.UI.Panels.Base
     public abstract class CollectionPanel<TItem, TConfig> : UIPanel where TItem : CollectionItem<TConfig, TItem>
     {
         [SerializeField] private ScaleTransition transition;
-        [Tab("Main Settings")] 
-        [SerializeField] protected TItem currentItem;
+
+        [Tab("Main Settings")] [SerializeField]
+        protected TItem currentItem;
+
         [SerializeField] protected Transform container;
         [SerializeField] private Button equipSelectedButton;
         [SerializeField] protected TMP_Text capacityText;
@@ -41,6 +43,7 @@ namespace _3._Scripts.UI.Panels.Base
             PopulateList();
             UpdateCapacityText();
         }
+
         /// <summary>
         /// Настройка обработчиков событий для кнопок.
         /// </summary>
@@ -48,7 +51,7 @@ namespace _3._Scripts.UI.Panels.Base
         {
             equipSelectedButton.onClick.AddListener(() => EquipItem(SelectedItem));
         }
-        
+
         /// <summary>
         /// Заполнение списка.
         /// </summary>
@@ -69,12 +72,21 @@ namespace _3._Scripts.UI.Panels.Base
         {
             currentItem.Initialize(item.Config);
 
-            SelectedItem?.DisableFocus();
+            if (SelectedItem != null)
+            {
+                if (!ItsCurrentItem(SelectedItem))
+                    SelectedItem.DisableFocus();
+                else
+                    SelectedItem.SetCurrentFocus();
+            }
+
             SelectedItem = item;
             SelectedItem.SetSelectedFocus();
 
             OnSelectItem(item);
         }
+
+        protected abstract bool ItsCurrentItem(TItem item);
 
         protected virtual void OnSelectItem(TItem item)
         {

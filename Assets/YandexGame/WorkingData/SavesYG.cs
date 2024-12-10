@@ -23,6 +23,7 @@ namespace YG
         public PlayerStatsSave stats = new();
         public SwordsSave swordsSave = new();
         public WorldSave worldSave = new();
+        public HeroesSave heroesSave = new();
         
         // Вы можете выполнить какие-то действия при загрузке сохранений
         public SavesYG()

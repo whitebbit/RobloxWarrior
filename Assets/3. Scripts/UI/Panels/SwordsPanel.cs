@@ -85,24 +85,29 @@ namespace _3._Scripts.UI.Panels
                 Items.Add(swordItem);
             }
         }
-        
+
         protected override void OnItemSelected(SwordItem item)
         {
             if (!_deleteMode)
             {
                 SelectItem(item);
             }
-            else if (item.Save.uid != Save.current.uid)
+            else if (item.Config.uid != CurrentConfig.uid)
             {
                 item.SetDeleteState(!item.ItemToDelete);
             }
         }
-        
+
+        protected override bool ItsCurrentItem(SwordItem item)
+        {
+            return CurrentConfig == item.Config;
+        }
+
         protected override void OnSelectItem(SwordItem sword)
         {
             UpdateCraftingText();
         }
-        
+
         /// <summary>
         /// Включение или отключение режима удаления мечей.
         /// </summary>
@@ -112,16 +117,16 @@ namespace _3._Scripts.UI.Panels
             deleteButton.gameObject.SetActive(!state);
             deleteControlsButtonContainer.gameObject.SetActive(state);
 
-            foreach (var item in Items.Where(i => i.Save.uid != Save.current.uid))
+            foreach (var item in Items.Where(i => i.Config.uid != CurrentConfig.uid))
             {
                 item.DisableFocus();
                 if (!state)
                     item.SetDeleteState(false);
             }
 
-            var curr = Items.FirstOrDefault(i => i.Save.uid == Save.current.uid);
+            var curr = Items.FirstOrDefault(i => i.Config.uid == CurrentConfig.uid);
             if (curr != null)
-                curr.SetDeleteState(true);
+                curr.SetDeleteState(false);
         }
 
         /// <summary>
@@ -133,7 +138,7 @@ namespace _3._Scripts.UI.Panels
 
             foreach (var sword in swordsToDelete)
             {
-                Save.Delete(sword.Save);
+                Save.Delete(sword.Config);
                 Items.Remove(sword);
             }
 
@@ -163,12 +168,12 @@ namespace _3._Scripts.UI.Panels
         {
             if (item == null) return;
 
-            Save.SetCurrent(item.Save);
-            currentItem.Initialize(item.Save);
+            Save.SetCurrent(item.Config);
+            currentItem.Initialize(item.Config);
 
             foreach (var i in Items)
             {
-                item.DisableFocus();
+                i.DisableFocus();
             }
 
             item.SetCurrentFocus();
@@ -181,9 +186,9 @@ namespace _3._Scripts.UI.Panels
         {
             if (SelectedItem == null) return;
 
-            Save.TryMergeObject(SelectedItem.Save);
+            Save.TryMergeObject(SelectedItem.Config);
             UpdateUIAfterMerge();
-            EquipItem(Items.FirstOrDefault(i => i.Save.uid == Save.current.uid));
+            EquipItem(Items.FirstOrDefault(i => i.Config.uid == CurrentConfig.uid));
         }
 
         /// <summary>
@@ -193,7 +198,7 @@ namespace _3._Scripts.UI.Panels
         {
             Save.MergeAll();
             UpdateUIAfterMerge();
-            EquipItem(Items.FirstOrDefault(i => i.Save.uid == Save.current.uid));
+            EquipItem(Items.FirstOrDefault(i => i.Config.uid == CurrentConfig.uid));
         }
 
         /// <summary>
@@ -241,7 +246,7 @@ namespace _3._Scripts.UI.Panels
         private void UpdateCraftingText()
         {
             craftingText.SetVariable("value",
-                $"({Save.GetMergeableCount(SelectedItem?.Save)}/{Save.requiredCountForMerge})");
+                $"({Save.GetMergeableCount(SelectedItem?.Config)}/{Save.requiredCountForMerge})");
         }
     }
 }
