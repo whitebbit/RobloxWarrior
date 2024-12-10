@@ -18,7 +18,7 @@ namespace _3._Scripts.Abilities.HeroesAbilities
         {
             return new Dictionary<string, object>
             {
-                { "value", waveNumber },
+                { "value", (float)waveNumber },
             };
         }
 

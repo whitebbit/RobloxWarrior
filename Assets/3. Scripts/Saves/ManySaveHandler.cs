@@ -8,7 +8,7 @@ namespace _3._Scripts.Saves
     {
         public int capacity = 1;
         
-        public List<T> selected;
+        public List<T> selected = new();
         public List<T> unlocked = new();
 
         public abstract bool IsSelected(T obj);

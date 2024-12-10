@@ -21,6 +21,22 @@ namespace _3._Scripts.UI.Panels
         private List<HeroConfig> Configs => Configuration.Instance.Config.Heroes;
         private HeroesSave Save => GBGames.saves.heroesSave;
 
+        public override void Initialize()
+        {
+            base.Initialize();
+            PopulateList();
+        }
+
+        protected override void OnOpen()
+        {
+            currentItem.Initialize(CurrentConfig);
+            UpdateCapacityText();
+            foreach (var item in Items)
+            {
+                item.UpdateItem();
+            }
+        }
+
         protected override void PopulateList()
         {
             foreach (var config in Configs)

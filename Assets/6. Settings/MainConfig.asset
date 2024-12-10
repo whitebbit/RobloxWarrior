@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worlds:
   - {fileID: 11400000, guid: 83f2d3994f397b24bb316c251c623c5a, type: 2}
+  heroes:
+  - {fileID: 11400000, guid: 8e226b75ed71d8946ac15955d1a5599a, type: 2}
   currencyData:
   - {fileID: 11400000, guid: 283ebc26f035478489d2b7dba6ddca0a, type: 2}
   - {fileID: 11400000, guid: 260de3df721b6dc44a53dd142a568481, type: 2}
@@ -40,6 +42,4 @@ MonoBehaviour:
     titleId: rarity_ancient
   playerConfig: {fileID: 11400000, guid: 071cf3b6b1c0e1843a27b4b67c7349f7, type: 2}
   swordCollectionConfig: {fileID: 11400000, guid: 0400797554daa6641bb6f99d757595be, type: 2}
-  worldsConfigs:
-  - {fileID: 11400000, guid: 83f2d3994f397b24bb316c251c623c5a, type: 2}
   uiConfig: {fileID: 11400000, guid: 7f0b37cec6afd0a4bbe02413ca9a40f3, type: 2}

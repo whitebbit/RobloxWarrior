@@ -258,21 +258,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 75226244794351616
-    m_Key: 'hero_ability_defense
-
-'
+    m_Key: hero_ability_defense
     m_Metadata:
       m_Items: []
   - m_Id: 75227489781219328
-    m_Key: 'hero_ability_expbooster
-
-'
+    m_Key: hero_ability_expbooster
     m_Metadata:
       m_Items: []
   - m_Id: 75228529721147392
-    m_Key: 'hero_ability_waveskip
-
-'
+    m_Key: hero_ability_waveskip
     m_Metadata:
       m_Items: []
   m_Metadata:
