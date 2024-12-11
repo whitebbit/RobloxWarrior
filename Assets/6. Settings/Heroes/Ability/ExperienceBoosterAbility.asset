@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ExperienceBoosterAbility
   m_EditorClassIdentifier: 
   descriptionID: hero_ability_expbooster
-  boosterPercentage: 10000
+  boosterPercentage: 40
