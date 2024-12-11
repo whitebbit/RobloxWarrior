@@ -15,9 +15,11 @@ namespace _3._Scripts.Player
         [SerializeField] private Transform hand;
         [SerializeField] private Vector3 localPosition;
         [SerializeField] private Vector3 localEulerAngles;
-        public Sword Sword { get; private set; }
+        [SerializeField] private PlayerAbility ability;
         
-        public PlayerAbility FirstPlayerAbility { get; private set; }
+        public Sword Sword { get; private set; }
+
+        public PlayerAbility FirstPlayerAbility => ability;
         public PlayerAbility SecondPlayerAbility { get; private set; }
         public PlayerAbility ThirdPlayerAbility { get; private set; }
 
@@ -29,6 +31,11 @@ namespace _3._Scripts.Player
             GBGames.saves.swordsSave.SetCurrent(GBGames.saves.swordsSave.unlocked.FirstOrDefault(s => s.uid == sword.uid));
 
             SetSword(GBGames.saves.swordsSave.current);
+        }
+
+        private void Start()
+        {
+            ability.ResetAbility();
         }
 
         private void SetSword(SwordSave save)

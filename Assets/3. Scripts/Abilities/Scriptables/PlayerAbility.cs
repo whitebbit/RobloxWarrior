@@ -28,18 +28,20 @@ namespace _3._Scripts.Abilities.Scriptables
         [Header("Unlock settings")] [SerializeField]
         private int rebornCountToUnlock;
 
-        [Space] [SerializeField] private int abilityLevelToUnlock;
-        [SerializeField] private List<PlayerAbility> abilitiesToUnlock;
+        [Space] [SerializeField] private List<PlayerAbility> abilitiesToUnlock;
+        [SerializeField] private int abilityLevelToUnlock;
 
+        private Player.Player Player => _Scripts.Player.Player.Instance;
         private AbilitySave Save => GBGames.saves.abilitiesSave.Get(ID);
 
         public float Cooldown => cooldown;
 
-        public float DamagePercent => baseDamagePercent *
-                                      (1 + damageBoosterRatio * Level + damageBoosterBonus * (int)Math.Pow(Level, 2));
+        private float DamagePercent => baseDamagePercent *
+                                       (1 + damageBoosterRatio * Level + damageBoosterBonus * (int)Math.Pow(Level, 2));
 
-        public int Level => Save.level;
+        protected float Damage => Player.GetTrueDamage(Player.Ammunition.Sword.GetTrueDamage()) * DamagePercent / 100f;
 
+        private int Level => Save.level;
         public override Sprite Icon => icon;
         public bool CanUse => Time.time >= _lastUsedTime + cooldown;
         private float _lastUsedTime;
@@ -52,7 +54,7 @@ namespace _3._Scripts.Abilities.Scriptables
         public void Upgrade()
         {
             Save.level += 1;
-            Player.Player.Instance.Stats.SkillPoints -= 1;
+            Player.Stats.SkillPoints -= 1;
         }
 
         public bool CanUpgrade()
@@ -94,14 +96,19 @@ namespace _3._Scripts.Abilities.Scriptables
             return GBGames.saves.stats.rebirthCounts >= rebornCountToUnlock;
         }
 
-        public void UseAbility()
+        public void UseAbility(IAbilityContext context)
         {
             if (!CanUse) return;
 
-            PerformAbility();
+            PerformAbility(context);
             _lastUsedTime = Time.time;
         }
 
-        protected abstract void PerformAbility();
+        public void ResetAbility()
+        {
+            _lastUsedTime = 0;
+        }
+
+        protected abstract void PerformAbility(IAbilityContext context);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _3._Scripts.Abilities;
 using _3._Scripts.Animations;
 using _3._Scripts.Animations.Structs;
 using _3._Scripts.Config;
@@ -25,12 +26,14 @@ namespace _3._Scripts.Player
 
         private PlayerMovement _playerMovement;
         private PlayerAmmunition _playerAmmunition;
+        private AbilityContext _abilityContext;
 
         private void Awake()
         {
             Animator = GetComponent<PlayerAnimator>();
             _playerMovement = GetComponent<PlayerMovement>();
             _playerAmmunition = GetComponent<PlayerAmmunition>();
+            _abilityContext = new AbilityContext(Player.Instance, Animator);
         }
 
         protected override bool CanAttack()
@@ -40,6 +43,7 @@ namespace _3._Scripts.Player
 
         public void UseFirstAbility()
         {
+            _playerAmmunition.FirstPlayerAbility.UseAbility(_abilityContext);
         }
 
         public void UseSecondAbility()

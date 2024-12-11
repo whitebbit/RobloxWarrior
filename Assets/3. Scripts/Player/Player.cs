@@ -47,6 +47,7 @@ namespace _3._Scripts.Player
         private PlayerMovement _movement;
         private UnitHealth _health;
         private PlayerDying _dying;
+        public PlayerController Controller { get; private set; }
 
         protected override void OnAwake()
         {
@@ -56,6 +57,7 @@ namespace _3._Scripts.Player
             _movement = GetComponent<PlayerMovement>();
             Stats = new PlayerStats();
             Ammunition = GetComponent<PlayerAmmunition>();
+            Controller = GetComponent<PlayerController>();
         }
 
         protected override void OnStart()

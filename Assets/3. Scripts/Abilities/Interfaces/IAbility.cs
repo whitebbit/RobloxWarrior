@@ -4,6 +4,7 @@
     {
         public string DescriptionID { get; }
         public bool CanUse { get; }
-        public void UseAbility();
+        public void UseAbility(IAbilityContext context = null);
+        public void ResetAbility();
     }
 }

@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using _3._Scripts.Animations.Structs;
 using _3._Scripts.Player.Scriptables;
 using Animancer;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _3._Scripts.Units
@@ -17,11 +18,13 @@ namespace _3._Scripts.Units
 
         private float _currentSpeed;
 
-        protected const float LerpSpeed = 7.5f;
+
+        private const float LerpSpeed = 7.5f;
         protected const float FadeDuration = .15f;
 
         private UnitAnimationConfig _config;
         private Animator _animator;
+
         protected virtual UnitAnimationConfig Config
         {
             get => _config;
@@ -43,6 +46,7 @@ namespace _3._Scripts.Units
 
         protected AnimancerLayer MainLayer => _animancer.Layers[0];
         private AnimancerLayer AttackLayer => _animancer.Layers[1];
+        private AnimancerLayer AdditionalLayer => _animancer.Layers[2];
 
         private LinearMixerTransition _movementAnimation;
 
@@ -50,6 +54,28 @@ namespace _3._Scripts.Units
         {
             _animator = GetComponent<Animator>();
             _animancer = GetComponent<AnimancerComponent>();
+        }
+
+        public void DoAnimation(AnimationClip clip, Action onComplete = null)
+        {
+            AdditionalLayer.DestroyStates();
+            
+            DOTween.To(() => MainLayer.Weight, x => MainLayer.Weight = x, 0, FadeDuration);
+            DOTween.To(() => AttackLayer.Weight, x => AttackLayer.Weight = x, 0, FadeDuration);
+            DOTween.To(() => AdditionalLayer.Weight, x => AttackLayer.Weight = x, 1, FadeDuration);
+            
+            var state = AdditionalLayer.Play(clip);
+            var events = state.Events;
+
+            events.Clear();
+            events.Add(0.9f, () =>
+            {
+                DOTween.To(() => MainLayer.Weight, x => MainLayer.Weight = x, 1, FadeDuration);
+                DOTween.To(() => AttackLayer.Weight, x => AttackLayer.Weight = x, 1, FadeDuration);
+                DOTween.To(() => AdditionalLayer.Weight, x => AdditionalLayer.Weight = x, 0, FadeDuration);
+
+                onComplete?.Invoke();
+            });
         }
 
         public void DoAttack(AttackAnimation attackAnimation, float attackSpeed, Action action)

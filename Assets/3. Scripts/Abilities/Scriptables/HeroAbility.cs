@@ -28,7 +28,7 @@ namespace _3._Scripts.Abilities.Scriptables
             return (T)DescriptionParameters().GetValueOrDefault(valueName, default(T));
         }
 
-        public void UseAbility()
+        public void UseAbility(IAbilityContext context = null)
         {
             if (!CanUse) return;
 

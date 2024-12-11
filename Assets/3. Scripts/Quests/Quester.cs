@@ -1,19 +1,16 @@
-﻿using System;
-using _3._Scripts.Config;
-using _3._Scripts.Extensions.Interfaces;
+﻿using _3._Scripts.Extensions.Interfaces;
 using _3._Scripts.Quests.ScriptableObjects;
-using _3._Scripts.Quests.ScriptableObjects.Quests;
 using _3._Scripts.Saves;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Panels;
 using _3._Scripts.UI.Transitions;
 using _3._Scripts.UI.Widgets;
+using _3._Scripts.Worlds;
 using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.UI;
-using VInspector;
 
-namespace _3._Scripts.Worlds
+namespace _3._Scripts.Quests
 {
     public class Quester : MonoBehaviour, IInteractive
     {

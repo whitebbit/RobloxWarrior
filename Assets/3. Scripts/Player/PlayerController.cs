@@ -13,6 +13,8 @@ namespace _3._Scripts.Player
 
         private IInput _input;
 
+        public bool Enabled { get; set; } = true;
+
         private void Awake()
         {
             _combat = GetComponent<PlayerCombat>();
@@ -27,9 +29,11 @@ namespace _3._Scripts.Player
 
         private void Update()
         {
-            Movement();
+            if (Enabled)
+                Movement();
             Camera();
-            Combat();
+            if (Enabled)
+                Combat();
         }
 
         private void Combat()
