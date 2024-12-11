@@ -8,24 +8,21 @@ namespace _3._Scripts.Units
 {
     public class UnitHealthBar : MonoBehaviour
     {
-        [SerializeField] private Unit unit;
-        [SerializeField] private Slider slider;
-        [SerializeField] private TMP_Text healthText;
+        [SerializeField] private Unit unit; // Ссылка на Unit должна быть настроена в инспекторе
+        [SerializeField] private Slider slider; // Ползунок для отображения здоровья
+        [SerializeField] private TMP_Text healthText; // Текстовое поле для отображения здоровья
 
         private void Start()
         {
-            unit.Health.OnHealthChanged += OnHealthChanged;
-            OnHealthChanged(unit.Health.Health, unit.Health.MaxHealth);
+            unit.Health.OnHealthChanged += OnHealthChanged; // Подписка на событие
+            OnHealthChanged(unit.Health.Health, unit.Health.MaxHealth); // Обн
         }
-
-        private void OnHealthChanged(float arg1, float arg2)
+        
+        private void OnHealthChanged(float currentHealth, float maxHealth)
         {
-            var value = arg1 / arg2;
-            slider.DOValue(value, 0.15f);
-            if (healthText)
-            {
-                healthText.text = $"{(int)arg1}/{(int)arg2}";
-            }
+            var value = currentHealth / maxHealth;
+            slider.DOValue(value, 0.15f); 
+            healthText.text = $"{(int)currentHealth}/{(int)maxHealth}";
         }
     }
 }

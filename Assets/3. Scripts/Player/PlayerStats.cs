@@ -57,7 +57,7 @@ namespace _3._Scripts.Player
         public int Level
         {
             get => Save.level;
-            set => Save.level = value;
+            private set => Save.level = value;
         }
 
         public event Action<int> OnUpgradePointsChanged;

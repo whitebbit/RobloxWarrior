@@ -32,7 +32,7 @@ namespace _3._Scripts.Inputs
 
         public float SensitivityX()
         {
-            return 5;
+            return 500;
         }
 
         public float SensitivityY()
@@ -47,7 +47,8 @@ namespace _3._Scripts.Inputs
         
         public Vector2 GetLookAxis()
         {
-            return new Vector3(touchField.AxisX, touchField.AxisY);
+            var axis = new Vector3(touchField.AxisX, touchField.AxisY);
+            return axis;
         }
 
         public bool GetAttack()

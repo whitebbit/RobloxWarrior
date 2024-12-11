@@ -31,6 +31,10 @@ namespace _3._Scripts.UI.Widgets
 
             InTransition = transition;
             OutTransition = transition;
+            
+            Player.Player.Instance.Stats.OnExperienceChanged += OnExperienceChanged;
+            Player.Player.Instance.Stats.OnLevelChange += OnLevelUp;
+            Player.Player.Instance.Health.OnHealthChanged += OnHealthChanged;
         }
 
         private void Start()
@@ -39,34 +43,27 @@ namespace _3._Scripts.UI.Widgets
             OnExperienceChanged(Player.Player.Instance.Stats.Experience);
             OnLevelUp(Player.Player.Instance.Stats.Level);
         }
-
-        private void OnEnable()
+        
+        private void OnHealthChanged(float currentHealth, float maxHealth)
         {
-            Player.Player.Instance.Stats.OnExperienceChanged += OnExperienceChanged;
-            Player.Player.Instance.Stats.OnLevelChange += OnLevelUp;
-            Player.Player.Instance.Health.OnHealthChanged += OnHealthChanged;
-        }
-
-        private void OnHealthChanged(float arg1, float arg2)
-        {
-            var value = arg1 / arg2;
+            var value = currentHealth / maxHealth;
 
             healthBar.DOValue(value, 0.15f);
-            healthText.text = $"{(int)arg1}/{(int)arg2}";
+            healthText.text = $"{(int)currentHealth}/{(int)maxHealth}";
         }
 
-        private void OnLevelUp(int obj)
+        private void OnLevelUp(int level)
         {
-            levelText.text = obj.ToString();
+            levelText.text = level.ToString();
         }
 
-        private void OnExperienceChanged(float obj)
+        private void OnExperienceChanged(float experience)
         {
             var toLevelUp = Player.Player.Instance.Stats.ExperienceToLevelUp();
-            var value = obj / toLevelUp;
+            var value = experience / toLevelUp;
 
             experienceBar.DOValue(value, 0.15f);
-            expText.text = $"{(int)obj}/{(int)toLevelUp}";
+            expText.text = $"{(int)experience}/{(int)toLevelUp}";
         }
 
         public override IUITransition InTransition { get; set; }

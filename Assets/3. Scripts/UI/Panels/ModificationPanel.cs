@@ -17,7 +17,6 @@ namespace _3._Scripts.UI.Panels
     public class ModificationPanel : UIPanel
     {
         [SerializeField] private SlideTransition transition;
-
         [SerializeField] private ModificationItem prefab;
         [SerializeField] private RectTransform container;
         [SerializeField] private LocalizeStringEvent scoreCountText;
@@ -28,7 +27,8 @@ namespace _3._Scripts.UI.Panels
         public override IUITransition InTransition { get; set; }
         public override IUITransition OutTransition { get; set; }
         
-        private List<ModificationItem> _modificationItems = new();
+        private readonly List<ModificationItem> _modificationItems = new();
+        
         private float ResetPrice()
         {
             return Player.Player.Instance.Stats.GetPointsSpent() * 50;
@@ -37,10 +37,10 @@ namespace _3._Scripts.UI.Panels
         public override void Initialize()
         {
             transition.SetStartPosition();
-            
+
             InTransition = transition;
             OutTransition = transition;
-            
+
             inputField.onValueChanged.AddListener(ValidateInput);
             resetButton.onClick.AddListener(ResetStats);
 
@@ -55,7 +55,10 @@ namespace _3._Scripts.UI.Panels
             base.OnOpen();
             foreach (var item in _modificationItems)
             {
-                item.UpdateStats();
+                if (item != null)
+                    item.UpdateStats();
+                else
+                    Debug.LogError("Modification item is null during OnOpen.");
             }
         }
 
@@ -69,15 +72,13 @@ namespace _3._Scripts.UI.Panels
         {
             if (input.Length > 4)
             {
-                inputField.text = input[..4];
+                inputField.text = input.Substring(0, 4);
             }
 
-            if (IsValidNumber(input))
+            if (!IsValidNumber(input))
             {
-                return;
+                inputField.text = RemoveInvalidCharacters(input);
             }
-
-            inputField.text = RemoveInvalidCharacters(input);
         }
 
         private bool IsValidNumber(string input)
@@ -92,9 +93,21 @@ namespace _3._Scripts.UI.Panels
 
         private void InitializeItems()
         {
+            if (Configuration.Instance?.Config?.UIConfig?.ModificationItems == null)
+            {
+                Debug.LogError("Modification items configuration is null.");
+                return;
+            }
+
             foreach (var item in Configuration.Instance.Config.UIConfig.ModificationItems)
             {
                 var obj = Instantiate(prefab, container);
+                if (obj == null)
+                {
+                    Debug.LogError("Prefab instantiation failed for ModificationItem.");
+                    continue;
+                }
+
                 obj.Initialize(item);
                 obj.SetInputField(inputField);
                 _modificationItems.Add(obj);

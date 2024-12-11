@@ -18,7 +18,7 @@ MonoBehaviour:
   autoGameReadyAPI: 0
   playerInfoSimulation:
     authorized: 1
-    isMobile: 0
+    isMobile: 1
     language: ru
     name: Deniz 300
     uniqueID: 000

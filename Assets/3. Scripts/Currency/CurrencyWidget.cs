@@ -16,6 +16,7 @@ namespace _3._Scripts.Currency
         [SerializeField] private Image table;
 
         public CurrencyType Type => type;
+
         private void Start()
         {
             Initialize();
@@ -73,7 +74,7 @@ namespace _3._Scripts.Currency
             }
         }
 
-        private void OnChange(float _, float newValue)
+        private void OnChange(float oldValue, float newValue)
         {
             text.text = newValue.ConvertToWallet(10_000);
         }

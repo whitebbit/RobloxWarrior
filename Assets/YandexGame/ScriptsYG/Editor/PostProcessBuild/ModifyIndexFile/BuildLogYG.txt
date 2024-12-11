@@ -1,2 +1,2 @@
-Build path: D:/Yang/RobloxTest
-Build number: 7
+Build path: D:/Yang/builds/Warrior
+Build number: 22

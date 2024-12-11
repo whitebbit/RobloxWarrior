@@ -16,7 +16,7 @@ namespace _3._Scripts.Player
         [SerializeField] private List<Transform> heroPoint;
 
         private HeroesSave Save => GBGames.saves.heroesSave;
-        private List<Hero> _heroes = new();
+        private readonly List<Hero> _heroes = new();
 
         private void OnEnable()
         {

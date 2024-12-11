@@ -10,19 +10,19 @@ namespace _3._Scripts.Heroes
 {
     public class Hero : Unit, IInitializable<HeroConfig>, IPoolable
     {
-        public override UnitHealth Health => _health;
+        public override UnitHealth Health => _health ??= new UnitHealth(10000, null);
+
         private UnitHealth _health;
         private HeroMovement _movement;
         private HeroAnimator _animator;
         private HeroAbilityManager _abilityManager;
 
         private Transform _target;
-        private List<PassiveEffect> _passiveEffects = new();
+        private readonly List<PassiveEffect> _passiveEffects = new();
         private HeroModel _model;
 
         protected override void OnAwake()
         {
-            _health = new UnitHealth(10000, null);
             _movement = GetComponent<HeroMovement>();
             _abilityManager = GetComponent<HeroAbilityManager>();
             _animator = GetComponent<HeroAnimator>();

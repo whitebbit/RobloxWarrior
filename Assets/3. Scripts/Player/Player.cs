@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Quests.ScriptableObjects;
+﻿using System;
+using _3._Scripts.Quests.ScriptableObjects;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Widgets;
@@ -40,9 +41,11 @@ namespace _3._Scripts.Player
 
         #endregion
 
-        public PlayerStats Stats { get; private set; }
+        private PlayerStats _stats;
+        public PlayerStats Stats => _stats ??= new PlayerStats();
         public PlayerAmmunition Ammunition { get; private set; }
-        public override UnitHealth Health => _health;
+        public override UnitHealth Health => _health ??= new UnitHealth(100, Dying);
+        private PlayerDying Dying => _dying ??= new PlayerDying();
 
         private PlayerMovement _movement;
         private UnitHealth _health;
@@ -52,10 +55,7 @@ namespace _3._Scripts.Player
         protected override void OnAwake()
         {
             base.OnAwake();
-            _dying = new PlayerDying();
-            _health = new UnitHealth(100, _dying);
             _movement = GetComponent<PlayerMovement>();
-            Stats = new PlayerStats();
             Ammunition = GetComponent<PlayerAmmunition>();
             Controller = GetComponent<PlayerController>();
         }
@@ -64,7 +64,7 @@ namespace _3._Scripts.Player
         {
             base.OnStart();
 
-            _dying.SetVFX(VFX);
+            Dying.SetVFX(VFX);
             Health.MaxHealth += Stats.HealthImprovement;
             SubscribeToEvents();
         }

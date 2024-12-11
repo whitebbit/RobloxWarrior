@@ -16,21 +16,19 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
     public class ModificationItem : MonoBehaviour, IInitializable<ModificationItemConfig>
     {
         [SerializeField] private Image iconImage;
-        [Space] [SerializeField] private LocalizeStringEvent titleText;
+        [SerializeField] private LocalizeStringEvent titleText;
         [SerializeField] private LocalizeStringEvent descriptionText;
         [SerializeField] private TMP_Text statsText;
-        [Space] [SerializeField] private Button upgradeButton;
+        [SerializeField] private Button upgradeButton;
         [SerializeField] private LocalizeStringEvent levelText;
-
 
         private ModificationItemConfig _config;
         private TMP_InputField _inputField;
-        private int ScoreAmount => string.IsNullOrEmpty(_inputField.text) ? 1 : int.Parse(_inputField.text);
-
+        private int ScoreAmount => int.TryParse(_inputField?.text, out var result) ? result : 1;
+        
         public void Initialize(ModificationItemConfig config)
         {
             _config = config;
-
             iconImage.sprite = _config.Icon;
             iconImage.ScaleImage();
 
@@ -44,37 +42,46 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
             Player.Player.Instance.Stats.OnStatsChanged += UpdateStats;
         }
 
-        public void SetInputField(TMP_InputField inputField) => _inputField = inputField;
+        public void SetInputField(TMP_InputField inputField)
+        {
+            _inputField = inputField;
+        }
 
         private string GetStats(ModificationType type)
         {
             var player = Player.Player.Instance;
-
+            
+            if (player == null) return "";
+            if (player.Stats == null) return "";
+            if (player.Ammunition == null) return "";
+            if (player.Ammunition.Sword == null) return "";
+            
             var baseStats = type switch
             {
                 ModificationType.Health => "100",
                 ModificationType.Attack =>
                     $"{player.GetTrueDamage(player.Ammunition.Sword.GetTrueDamage()).ConvertToWallet(10_000)}",
-                ModificationType.Speed =>
-                    $"{Configuration.Instance.Config.PlayerConfig.MovementConfig.BaseSpeed}",
+                ModificationType.Speed => $"{Configuration.Instance.Config.PlayerConfig.MovementConfig.BaseSpeed}",
                 ModificationType.Crit => "0",
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
 
             var stats = type switch
             {
-                ModificationType.Health => $"+({player.Stats.HealthImprovement.ConvertToWallet()})",
-                ModificationType.Attack => $"+({player.Stats.AttackImprovement.ConvertToWallet()})",
-                ModificationType.Speed => $"+({player.Stats.SpeedImprovement.ConvertToWallet()})",
-                ModificationType.Crit => $"+({player.Stats.CritImprovement})",
+                ModificationType.Health => $"{player.Stats.HealthImprovement.ConvertToWallet()}" ,
+                ModificationType.Attack => $"{player.Stats.AttackImprovement.ConvertToWallet()}",
+                ModificationType.Speed => $"{player.Stats.SpeedImprovement.ConvertToWallet()}",
+                ModificationType.Crit => $"{player.Stats.CritImprovement}",
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
 
-            return $"{baseStats} {stats}";
+            return $"{baseStats} (+{stats})";
         }
 
         public void UpdateStats()
         {
+            if (_config == null) return;
+
             statsText.text = GetStats(_config.Type);
             levelText.SetVariable("value", Player.Player.Instance.Stats.GetLevel(_config.Type));
         }

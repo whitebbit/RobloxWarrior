@@ -13,8 +13,7 @@ namespace _3._Scripts.Bots
     {
         [SerializeField] private BotAmmunition ammunition;
 
-        public override UnitHealth Health => _health;
-        public BotDying Dying { get; private set; }
+        public override UnitHealth Health => _health ??= new UnitHealth(0, Dying);
 
         private BotConfig _config;
         private BotMovement _movement;
@@ -24,13 +23,14 @@ namespace _3._Scripts.Bots
 
         private OverlapDetector<Player.Player> _playerDetector;
         private Transform _target;
+        public BotDying Dying => _dying ??= new BotDying(this, VFX);
+        
+        private BotDying _dying;
         private UnitHealth _health;
 
         protected override void OnAwake()
         {
             _playerDetector = GetComponent<OverlapDetector<Player.Player>>();
-            Dying = new BotDying(this, VFX);
-            _health = new UnitHealth(0, Dying);
 
             _combat = GetComponent<BotCombat>();
             _animator = GetComponent<BotAnimator>();
@@ -85,7 +85,7 @@ namespace _3._Scripts.Bots
             _view.Initialize(_config);
 
             _health.UpdateValues(_config.Health);
-            
+
             ammunition.gameObject.SetActive(true);
             ammunition.Initialize(_config);
         }

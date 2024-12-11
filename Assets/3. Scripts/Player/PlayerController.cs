@@ -1,5 +1,6 @@
 ﻿using _3._Scripts.Inputs;
 using _3._Scripts.Inputs.Interfaces;
+using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -38,8 +39,11 @@ namespace _3._Scripts.Player
 
         private void Combat()
         {
-            if (_input.GetAttack() && !EventSystem.current.IsPointerOverGameObject())
+            if (_input.GetAttack() && (GBGames.deviceType == "mobile" || !EventSystem.current.IsPointerOverGameObject()))
+            {
                 _combat.Attack();
+            }
+
 
             if (_input.GetFirstAbility())
                 _combat.UseFirstAbility();
