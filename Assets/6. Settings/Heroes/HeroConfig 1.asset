@@ -18,9 +18,9 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: db8c5b2a97e939f4995ad4af770be86b, type: 2}
   passiveEffects:
   - type: 1
-    points: 2
-  - type: 3
-    points: 3
+    points: 6
+  - type: 0
+    points: 10
   movementConfig:
     baseSpeed: 7
     jumpHeight: 2

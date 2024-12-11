@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ad738f1b784ddb95debfa87e157201, type: 3}
-  m_Name: DefenseAbility
+  m_Script: {fileID: 11500000, guid: 7cbf2ae38f5a4ce7b5de3ec6023e674f, type: 3}
+  m_Name: WaveSkipAbility
   m_EditorClassIdentifier: 
-  descriptionID: hero_ability_defense
-  duration: 3
+  descriptionID: hero_ability_waveskip
+  waveNumber: 20

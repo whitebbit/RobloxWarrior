@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 3530230110781162470, guid: d302bd66e3f1d5c4b96a7e7c4941b379, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7459261b01355d943b4b483caca42946, type: 2}
+      objectReference: {fileID: 2100000, guid: 1eeadf9a797c28b428fb6d4a894d9146, type: 2}
     - target: {fileID: 4908917914426934528, guid: d302bd66e3f1d5c4b96a7e7c4941b379, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -59,14 +59,14 @@ PrefabInstance:
     - target: {fileID: 6388298286902971342, guid: d302bd66e3f1d5c4b96a7e7c4941b379, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7459261b01355d943b4b483caca42946, type: 2}
+      objectReference: {fileID: 2100000, guid: 1eeadf9a797c28b428fb6d4a894d9146, type: 2}
     - target: {fileID: 8621969435857656335, guid: d302bd66e3f1d5c4b96a7e7c4941b379, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9187577782282976774, guid: d302bd66e3f1d5c4b96a7e7c4941b379, type: 3}
       propertyPath: m_Name
-      value: ModelTest
+      value: ModelTest 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
