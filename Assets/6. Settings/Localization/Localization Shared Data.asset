@@ -281,6 +281,30 @@ MonoBehaviour:
     m_Key: unlock
     m_Metadata:
       m_Items: []
+  - m_Id: 75649292567642112
+    m_Key: sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75712375663165440
+    m_Key: improvement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75713367444094976
+    m_Key: skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75713527410655232
+    m_Key: Reborn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75713947503755264
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75898838832971776
+    m_Key: hero_points
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

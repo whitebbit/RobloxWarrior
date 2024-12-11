@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _3._Scripts.Config;
+using _3._Scripts.Currency;
 using _3._Scripts.Heroes;
 using _3._Scripts.Heroes.Scriptables;
+using _3._Scripts.Localization;
 using _3._Scripts.Saves;
 using _3._Scripts.Saves.Handlers;
 using _3._Scripts.UI.Elements.HeroPanel;
@@ -9,6 +12,7 @@ using _3._Scripts.UI.Elements.SwordsPanel;
 using _3._Scripts.UI.Panels.Base;
 using GBGamesPlugin;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 using VInspector;
 
@@ -19,16 +23,22 @@ namespace _3._Scripts.UI.Panels
         [SerializeField] private HeroItem prefab;
         [Tab("Buttons")] [SerializeField] private Button unlockButton;
         [SerializeField] private Button unequipButton;
+        [SerializeField] private LocalizeStringEvent heroPointsText;
 
         protected override HeroConfig CurrentConfig =>
             Save.selected.Count <= 0 ? null : Configuration.Instance.GetHero(Save.selected[0].id);
 
         private List<HeroConfig> Configs => Configuration.Instance.Config.Heroes;
         private HeroesSave Save => GBGames.saves.heroesSave;
+
         public override void Initialize()
         {
             base.Initialize();
             PopulateList();
+            
+            heroPointsText.SetVariable("value", WalletManager.HeroPoints.ConvertToWallet());
+            WalletManager.OnHeroPointsChange += (_, newValue) =>
+                heroPointsText.SetVariable("value", newValue.ConvertToWallet());
         }
 
         protected override void OnOpen()
@@ -68,7 +78,7 @@ namespace _3._Scripts.UI.Panels
                 Items.Add(swordItem);
             }
         }
-
+        
         protected override void ConfigureButtons()
         {
             base.ConfigureButtons();
@@ -115,6 +125,8 @@ namespace _3._Scripts.UI.Panels
 
         private void Unlock()
         {
+            if (WalletManager.HeroPoints <= 0) return;
+
             var save = new HeroSave
             {
                 id = SelectedItem.Config.ID,

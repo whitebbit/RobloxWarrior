@@ -304,10 +304,35 @@ MonoBehaviour:
     m_Localized: unlock
     m_Metadata:
       m_Items: []
+  - m_Id: 75649292567642112
+    m_Localized: Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75712375663165440
+    m_Localized: Improvement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75713367444094976
+    m_Localized: Skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75713527410655232
+    m_Localized: Reborn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75713947503755264
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75898838832971776
+    m_Localized: 'Hero points: {value}'
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
   references:
     version: 2
     RefIds:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b01
+        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b010000817f97a50d01

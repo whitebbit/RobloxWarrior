@@ -58,7 +58,7 @@ namespace _3._Scripts.Debugger
 
         //public void UnlockPet() => GBGames.saves.petSaves.Unlock(petInputField.text);
         public void Add1000FirstCurrency() => WalletManager.Crystals += 100000000;
-        public void Add1000SecondCurrency() => WalletManager.SecondCurrency += 100000000;
+        public void Add1000SecondCurrency() => WalletManager.HeroPoints += 100000000;
         public void ChangePostProcessing() => volume.enabled = !volume.enabled;
 
         public void ChangeShadow()

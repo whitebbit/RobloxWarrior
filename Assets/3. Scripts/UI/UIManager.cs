@@ -59,6 +59,24 @@ namespace _3._Scripts.UI
             return widget;
         }
 
+
+        private UIElement _currentPanel;
+
+        public void OnPanelOpen(UIElement element)
+        {
+            if (element == _currentPanel) return;
+
+            if (_currentPanel)
+                _currentPanel.Enabled = false;
+
+            _currentPanel = element;
+        }
+
+        public void OnPanelClose(UIElement element)
+        {
+            _currentPanel = null;
+        }
+
         public T GetPanel<T>() where T : UIPanel
         {
             var panel = currentScreen.GetPanel<T>();

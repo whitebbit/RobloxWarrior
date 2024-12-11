@@ -18,15 +18,15 @@ namespace _3._Scripts.Currency
             }
         }
 
-        public static event Action<float, float> OnSecondCurrencyChange;
+        public static event Action<float, float> OnHeroPointsChange;
 
-        public static float SecondCurrency
+        public static float HeroPoints
         {
-            get => GBGames.saves.walletSave.secondCurrency;
+            get => GBGames.saves.walletSave.heroPoints;
             set
             {
-                GBGames.saves.walletSave.secondCurrency = value;
-                OnSecondCurrencyChange?.Invoke(SecondCurrency, value);
+                GBGames.saves.walletSave.heroPoints = value;
+                OnHeroPointsChange?.Invoke(HeroPoints, value);
             }
         }
 
@@ -37,8 +37,8 @@ namespace _3._Scripts.Currency
                 case CurrencyType.Crystal:
                     Crystals -= count;
                     break;
-                case CurrencyType.Second:
-                    SecondCurrency -= count;
+                case CurrencyType.HeroPoints:
+                    HeroPoints -= count;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(currencyType), currencyType, null);
@@ -52,8 +52,8 @@ namespace _3._Scripts.Currency
                 case CurrencyType.Crystal:
                     Crystals += count;
                     break;
-                case CurrencyType.Second:
-                    SecondCurrency += count;
+                case CurrencyType.HeroPoints:
+                    HeroPoints += count;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(currencyType), currencyType, null);
@@ -75,7 +75,7 @@ namespace _3._Scripts.Currency
             return type switch
             {
                 CurrencyType.Crystal => Crystals,
-                CurrencyType.Second => SecondCurrency,
+                CurrencyType.HeroPoints => HeroPoints,
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
         }

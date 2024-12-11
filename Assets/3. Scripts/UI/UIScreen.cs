@@ -30,6 +30,8 @@ namespace _3._Scripts.UI
             {
                 panel.Initialize();
                 panel.ForceClose();
+                panel.OnOpenEvent += UIManager.Instance.OnPanelOpen;
+                panel.OnCloseEvent += UIManager.Instance.OnPanelClose;
             }
             Opened = false;
             canvasGroup.alpha = 0;

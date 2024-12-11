@@ -3,6 +3,6 @@
     public enum CurrencyType
     {
         Crystal,
-        Second,
+        HeroPoints,
     }
 }

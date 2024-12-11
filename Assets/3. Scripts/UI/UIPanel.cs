@@ -10,13 +10,13 @@ namespace _3._Scripts.UI
         protected override void OnOpen()
         {
             base.OnOpen();
-            transform.SetAsLastSibling();
+            //transform.SetAsLastSibling();
         }
 
         protected override void OnClose()
         {
             base.OnClose();
-            transform.SetAsFirstSibling();
+            //transform.SetAsFirstSibling();
         }
     }
 }

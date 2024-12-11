@@ -1,3 +1,4 @@
+using System;
 using _3._Scripts.UI.Interfaces;
 using DG.Tweening;
 using UnityEngine;
@@ -11,11 +12,13 @@ namespace _3._Scripts.UI
         private bool onTransition;
         public abstract IUITransition InTransition { get; set; }
         public abstract IUITransition OutTransition { get; set; }
+
         [Button]
         private void SwitchState()
         {
             Enabled = !Enabled;
         }
+
         public bool Enabled
         {
             get => _enabled;
@@ -55,6 +58,8 @@ namespace _3._Scripts.UI
             gameObject.SetActive(false);
         }
 
+        public event Action<UIElement> OnOpenEvent;
+
         private void Open()
         {
             if (onTransition)
@@ -66,6 +71,8 @@ namespace _3._Scripts.UI
 
             onTransition = true;
             gameObject.SetActive(true);
+            transform.SetAsLastSibling();
+            OnOpenEvent?.Invoke(this);
             currentTween = InTransition.AnimateIn().OnComplete(() =>
             {
                 _enabled = true;
@@ -73,6 +80,8 @@ namespace _3._Scripts.UI
             });
             OnOpen();
         }
+
+        public event Action<UIElement> OnCloseEvent;
 
         private void Close()
         {
@@ -84,11 +93,13 @@ namespace _3._Scripts.UI
             }
 
             onTransition = true;
+            OnCloseEvent?.Invoke(this);
             currentTween = OutTransition.AnimateOut().OnComplete(() =>
             {
                 OnClose();
                 _enabled = false;
                 onTransition = false;
+                transform.SetAsFirstSibling();
                 gameObject.SetActive(false);
             });
         }

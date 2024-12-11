@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine.Serialization;
 
 namespace _3._Scripts.Saves
 {
@@ -6,6 +7,6 @@ namespace _3._Scripts.Saves
     public class WalletSave
     {
         public float crystals = 5;
-        public float secondCurrency;
+        public float heroPoints;
     }
 }

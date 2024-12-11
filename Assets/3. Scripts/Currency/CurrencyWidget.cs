@@ -33,8 +33,8 @@ namespace _3._Scripts.Currency
                 case CurrencyType.Crystal:
                     OnChange(0, WalletManager.Crystals);
                     break;
-                case CurrencyType.Second:
-                    OnChange(0, WalletManager.SecondCurrency);
+                case CurrencyType.HeroPoints:
+                    OnChange(0, WalletManager.HeroPoints);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -49,9 +49,9 @@ namespace _3._Scripts.Currency
                     WalletManager.OnCrystalsChange += OnChange;
                     OnChange(0, WalletManager.Crystals);
                     break;
-                case CurrencyType.Second:
-                    WalletManager.OnSecondCurrencyChange += OnChange;
-                    OnChange(0, WalletManager.SecondCurrency);
+                case CurrencyType.HeroPoints:
+                    WalletManager.OnHeroPointsChange += OnChange;
+                    OnChange(0, WalletManager.HeroPoints);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -65,8 +65,8 @@ namespace _3._Scripts.Currency
                 case CurrencyType.Crystal:
                     WalletManager.OnCrystalsChange -= OnChange;
                     break;
-                case CurrencyType.Second:
-                    WalletManager.OnSecondCurrencyChange -= OnChange;
+                case CurrencyType.HeroPoints:
+                    WalletManager.OnHeroPointsChange -= OnChange;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
