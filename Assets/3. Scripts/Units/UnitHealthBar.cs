@@ -11,7 +11,7 @@ namespace _3._Scripts.Units
         [SerializeField] private Unit unit;
         [SerializeField] private Slider slider;
         [SerializeField] private TMP_Text healthText;
-        
+
         private void Start()
         {
             unit.Health.OnHealthChanged += OnHealthChanged;
@@ -24,7 +24,7 @@ namespace _3._Scripts.Units
             slider.DOValue(value, 0.15f);
             if (healthText)
             {
-                healthText.text = $"{arg1}/{arg2}";
+                healthText.text = $"{(int)arg1}/{(int)arg2}";
             }
         }
     }

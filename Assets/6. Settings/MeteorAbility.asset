@@ -17,7 +17,7 @@ MonoBehaviour:
   descriptionID: 
   icon: {fileID: 0}
   cooldown: 1
-  baseDamagePercent: 20
+  baseDamagePercent: 200
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades: []

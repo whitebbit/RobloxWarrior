@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Player.Scriptables;
+﻿using _3._Scripts.Bots.Enums;
+using _3._Scripts.Player.Scriptables;
 using UnityEngine;
 using VInspector;
 
@@ -7,18 +8,15 @@ namespace _3._Scripts.Bots.Sciptables
     [CreateAssetMenu(fileName = "BotConfig", menuName = "Configs/Bots/Bot Config", order = 0)]
     public class BotConfig : ScriptableObject
     {
-        [Tab("Base")] 
-        [SerializeField] private float health;
-        [Space] 
-        [SerializeField] private float damage;
+        [Tab("Base")] [SerializeField] private float health;
+        [Space] [SerializeField] private float damage;
         [SerializeField] private float attackSpeed;
-
-        [Space] 
-        [SerializeField] private MovementConfig movementConfig = new();
         [Space] [SerializeField] private float experience;
-        
-        [Tab("Model")]
-        [SerializeField] private float size;
+        [Header("Weapons")] [SerializeField] private BotWeaponType weaponType;
+        [SerializeField] private bool useShield;
+        [Header("Movement")] [SerializeField] private MovementConfig movementConfig = new();
+
+        [Tab("Model")] [SerializeField] private float size;
         [SerializeField] private Material skin;
 
         [Tab("Animation")] [SerializeField] private UnitAnimationConfig animationConfig = new();
@@ -34,6 +32,9 @@ namespace _3._Scripts.Bots.Sciptables
         public float Damage => damage;
         public float AttackSpeed => attackSpeed;
 
+        public BotWeaponType WeaponType => weaponType;
+
+        public bool UseShield => useShield;
         public float Experience => experience;
     }
 }

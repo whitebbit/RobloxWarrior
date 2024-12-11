@@ -106,6 +106,7 @@ namespace _3._Scripts.UI.Panels
             if (!WalletManager.TrySpend(CurrencyType.Crystal, ResetPrice())) return;
 
             Player.Player.Instance.Stats.ResetStats();
+            StatsOnUpgradePointsChanged(Player.Player.Instance.Stats.UpgradePoints);
         }
     }
 }

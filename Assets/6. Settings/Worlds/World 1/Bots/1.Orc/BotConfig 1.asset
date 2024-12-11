@@ -15,6 +15,7 @@ MonoBehaviour:
   health: 44
   damage: 7
   attackSpeed: 1
+  weaponType: 1
   movementConfig:
     baseSpeed: 5
     jumpHeight: 0

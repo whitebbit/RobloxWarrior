@@ -420,7 +420,7 @@ ModelImporter:
       name: Dash
       takeName: Take 001
       internalID: 0
-      firstFrame: 0
+      firstFrame: 5.9
       lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0

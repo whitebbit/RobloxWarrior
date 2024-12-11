@@ -10,7 +10,8 @@ namespace _3._Scripts.Abilities.PlayerAbilities
         order = 0)]
     public class MeteorAbility : PlayerAbility
     {
-        [Tab("Meteor")] [SerializeField] private ParticleSystem meteorParticle;
+        [Tab("Meteor")] 
+        [SerializeField] private ParticleSystem meteorParticle;
         [SerializeField] private AbilityProjectile projectilePrefab;
         [SerializeField] private float distanceBetweenPlayer;
 
@@ -30,8 +31,8 @@ namespace _3._Scripts.Abilities.PlayerAbilities
 
             var projectile = Instantiate(projectilePrefab);
             projectile.transform.position = position;
-            projectile.Initialize(Vector3.zero, Damage, 0, meteorParticle.main.duration*0.75f);
-            Destroy(particle.gameObject,0.25f);
+            projectile.Initialize(Vector3.zero, Damage, 0, 0.25f);
+            Destroy(particle.gameObject, meteorParticle.main.duration * 0.75f);
         }
     }
 }

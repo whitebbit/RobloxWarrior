@@ -52,7 +52,7 @@ namespace _3._Scripts.UI.Widgets
             var value = arg1 / arg2;
 
             healthBar.DOValue(value, 0.15f);
-            healthText.text = $"{arg1}/{arg2}";
+            healthText.text = $"{(int)arg1}/{(int)arg2}";
         }
 
         private void OnLevelUp(int obj)
@@ -66,7 +66,7 @@ namespace _3._Scripts.UI.Widgets
             var value = obj / toLevelUp;
 
             experienceBar.DOValue(value, 0.15f);
-            expText.text = $"{(int)(value * 100)}% - {obj}/{toLevelUp}";
+            expText.text = $"{(int)obj}/{(int)toLevelUp}";
         }
 
         public override IUITransition InTransition { get; set; }

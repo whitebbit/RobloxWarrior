@@ -91,6 +91,7 @@ namespace _3._Scripts.Player
         public event Action OnCritImproving;
 
         private int _additionalHealthPoint;
+
         public int HealthPoints
         {
             private get => Save.healthPoints;
@@ -249,6 +250,7 @@ namespace _3._Scripts.Player
             var temp = UpgradePoints + GetPointsSpent();
             Save.ResetStats();
             UpgradePoints = temp;
+            OnStatsChanged?.Invoke();
         }
 
         #endregion
@@ -308,13 +310,14 @@ namespace _3._Scripts.Player
             RebirthCount += 1;
             SkillPoints += 1;
 
-            Experience = 0;
             Level = 1;
+            Experience = 0;
 
             Save.ResetStats();
             UpdateLevelToNextRebirth();
 
             OnLevelChange?.Invoke(Level);
+            OnStatsChanged?.Invoke();
         }
 
         public int LevelForRebirth

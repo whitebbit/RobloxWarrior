@@ -1,8 +1,12 @@
 ﻿using System;
 using _3._Scripts.Bots;
+using _3._Scripts.Extensions;
+using _3._Scripts.Pool;
 using _3._Scripts.Units;
 using _3._Scripts.Units.HitBoxes;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _3._Scripts.Abilities
 {
@@ -36,6 +40,20 @@ namespace _3._Scripts.Abilities
             if (!bot.TryGetComponent(out HitBox hitBox)) return;
 
             hitBox.Visit(_damage);
+
+            var floatingText = ObjectsPoolManager.Instance.Get<FloatingText>();
+
+            var textPosition = transform.position + new Vector3(Random.Range(-3f, 3f), Random.Range(2f, 3f), 0) -
+                               transform.forward * Random.Range(0.5f, 1f);
+
+            var gradient = new VertexGradient(
+                new Color(0.9056604f, 0.1485433f, 0.1409754f),
+                new Color(0.9056604f, 0.1485433f, 0.1409754f),
+                new Color(0.972549f, 0.6722908f, 0.2431373f),
+                new Color(0.972549f, 0.6722908f, 0.2431373f));
+
+            floatingText.Initialize($"{(int)_damage}", textPosition);
+            floatingText.SetGradient(gradient);
         }
     }
 }

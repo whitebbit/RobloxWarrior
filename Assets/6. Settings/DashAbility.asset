@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ead7da06e6b47d98995b9bc39503c44, type: 3}
+  m_Name: DashAbility
+  m_EditorClassIdentifier: 
+  id: 
+  titleID: 
+  descriptionID: 
+  icon: {fileID: 0}
+  cooldown: 1
+  baseDamagePercent: 5000
+  damageBoosterRatio: 0.1
+  damageBoosterBonus: 0.01
+  abilityUpgrades: []
+  rebornCountToUnlock: 0
+  abilitiesToUnlock: []
+  abilityLevelToUnlock: 0
+  projectile: {fileID: 4212711870944428695, guid: 49c31370063d69a4fa1abe7434d78bfd, type: 3}
+  animation: {fileID: 7400000, guid: b3f61125394226745aed1918cc271828, type: 3}
+  distance: 15
+  speed: 50
+  lifeTime: 0.5

@@ -54,7 +54,7 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
             {
                 ModificationType.Health => "100",
                 ModificationType.Attack =>
-                    $"{player.GetTrueDamage(player.Ammunition.Sword.GetTrueDamage())}",
+                    $"{player.GetTrueDamage(player.Ammunition.Sword.GetTrueDamage()).ConvertToWallet(10_000)}",
                 ModificationType.Speed =>
                     $"{Configuration.Instance.Config.PlayerConfig.MovementConfig.BaseSpeed}",
                 ModificationType.Crit => "0",
@@ -66,7 +66,7 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
                 ModificationType.Health => $"+({player.Stats.HealthImprovement.ConvertToWallet()})",
                 ModificationType.Attack => $"+({player.Stats.AttackImprovement.ConvertToWallet()})",
                 ModificationType.Speed => $"+({player.Stats.SpeedImprovement.ConvertToWallet()})",
-                ModificationType.Crit => $"+({player.Stats.CritImprovement.ConvertToWallet()})",
+                ModificationType.Crit => $"+({player.Stats.CritImprovement})",
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
 

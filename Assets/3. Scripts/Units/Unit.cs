@@ -6,10 +6,10 @@ namespace _3._Scripts.Units
 {
     public abstract class Unit : MonoBehaviour
     {
-
         public abstract UnitHealth Health { get; }
         public UnitDamageable Damageable { get; private set; }
         protected UnitVFX VFX;
+
         private void Awake()
         {
             OnAwake();

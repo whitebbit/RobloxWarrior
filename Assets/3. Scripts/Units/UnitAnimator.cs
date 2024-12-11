@@ -81,6 +81,13 @@ namespace _3._Scripts.Units
         public void DoAttack(AttackAnimation attackAnimation, float attackSpeed, Action action)
         {
             if (!CanPlay()) return;
+
+            // Проверяем, играет ли анимация и сбрасываем её
+            if (AttackLayer.CurrentState != null && AttackLayer.CurrentState.Clip == attackAnimation.clip)
+            {
+                AttackLayer.Stop(); // Остановка текущей анимации
+            }
+
             var state = AttackLayer.Play(attackAnimation.clip, FadeDuration);
             var events = state.Events;
 

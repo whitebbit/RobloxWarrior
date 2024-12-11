@@ -11,6 +11,8 @@ namespace _3._Scripts.Bots
 {
     public class Bot : Unit, IInitializable<BotConfig>, IPoolable
     {
+        [SerializeField] private BotAmmunition ammunition;
+
         public override UnitHealth Health => _health;
         public BotDying Dying { get; private set; }
 
@@ -83,6 +85,9 @@ namespace _3._Scripts.Bots
             _view.Initialize(_config);
 
             _health.UpdateValues(_config.Health);
+            
+            ammunition.gameObject.SetActive(true);
+            ammunition.Initialize(_config);
         }
 
         public void Upgrade(float damageIncrease, float healthIncrease)

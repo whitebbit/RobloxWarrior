@@ -17,6 +17,12 @@ MonoBehaviour:
   - bots:
     - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}
       count: 3
+    - config: {fileID: 11400000, guid: 50303b11703d1b54e835549a8381100c, type: 2}
+      count: 1
+    - config: {fileID: 11400000, guid: 13bb09d6cbc7c7c4a999080be1cedf90, type: 2}
+      count: 1
+    - config: {fileID: 11400000, guid: b829614acbf4c5b40aefd6c6fad76401, type: 2}
+      count: 1
     crystalAmount: 10
   - bots:
     - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}

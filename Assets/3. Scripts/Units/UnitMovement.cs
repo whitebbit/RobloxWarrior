@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using _3._Scripts.Config;
 using UnityEngine;
 
@@ -67,7 +68,35 @@ namespace _3._Scripts.Units
             transform.rotation = Quaternion.Euler(0, angle, 0);
             _characterController.Move(moveDirection * Speed * velocity * Time.deltaTime);
         }
+        
+        public void MoveInDirection(Vector3 direction, float distance, float speed)
+        {
+            StartCoroutine(MoveRoutine(direction, distance, speed));
+        }
 
+        private IEnumerator MoveRoutine(Vector3 direction, float distance, float speed)
+        {
+            var traveled = 0f; 
+
+            var normalizedDirection = direction.normalized;
+
+            while (traveled < distance)
+            {
+                var step = speed * Time.deltaTime;
+
+                if (traveled + step > distance)
+                {
+                    step = distance - traveled;
+                }
+
+                _characterController.Move(normalizedDirection * step);
+
+                traveled += step;
+
+                yield return null;
+            }
+        }
+        
         protected virtual float GetTargetAngle(Vector2 direction)
         {
             return Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
