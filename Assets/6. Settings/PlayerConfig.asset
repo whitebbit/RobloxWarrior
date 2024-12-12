@@ -30,7 +30,7 @@ MonoBehaviour:
     baseExperiencePercentIncrease: 5
     rebirthStartLevelRequired: 5
     rebirthIncreaseAmount: 5
-    rebirthIncreaseInterval: 10
+    rebirthIncreaseInterval: 6
   animationConfig:
     attackAnimations:
     - clip: {fileID: 7400000, guid: 14e87e8f1f055cd419847302a41a4275, type: 3}
