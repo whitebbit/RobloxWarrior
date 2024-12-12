@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b84d1fee5b474e9a43d60237eb636e, type: 3}
-  m_Name: DefenseAbility
+  m_Script: {fileID: 11500000, guid: f35bb04a7b084fb4a1fbb8c3a454119f, type: 3}
+  m_Name: SpinAbility
   m_EditorClassIdentifier: 
   id: 
   titleID: 
   descriptionID: 
   icon: {fileID: 0}
-  cooldown: 1
+  cooldown: 5
   baseDamagePercent: 20
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades: []
-  rebornCountToUnlock: 1
+  rebornCountToUnlock: 0
   abilitiesToUnlock: []
   abilityLevelToUnlock: 0
-  animation: {fileID: 7400036, guid: 65acf69a7215cde43be506252926df00, type: 3}
-  projectilePrefab: {fileID: 6895245516295441933, guid: 5a99288aee1102348afb40d0db48d534, type: 3}
-  speed: 15
-  lifetime: 1
+  projectilePrefab: {fileID: 672802322284079030, guid: b0ecf7b6ba26f2348870d022b63db3bf, type: 3}
+  duration: 2
+  interval: 0.1
+  radius: 5

@@ -16,6 +16,11 @@ namespace _3._Scripts.Detectors.OverlapSystem.Base
             return Physics.OverlapSphereNonAlloc(position, radius, OverlapResults, searchLayer.value);
         }
 
+        public void SetRadius(float r)
+        {
+            this.radius = r;
+        }
+        
         protected override void DrawGizmos()
         {
             gizmos.DrawGizmos(offset, radius, startPoint);

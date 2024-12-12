@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using _3._Scripts.Bots;
+using _3._Scripts.Detectors;
+using _3._Scripts.Detectors.OverlapSystem.Base;
 using _3._Scripts.Extensions;
 using _3._Scripts.Pool;
 using _3._Scripts.Units;
 using _3._Scripts.Units.HitBoxes;
+using _3._Scripts.Units.Interfaces;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,32 +17,60 @@ namespace _3._Scripts.Abilities
 {
     public class AbilityProjectile : MonoBehaviour
     {
-        private float _speed;
+        [SerializeField] private List<ParticleSystem> particles = new();
+        [SerializeField] private SphereOverlapDetector<IWeaponVisitor> detector;
 
+        public List<ParticleSystem> Particles => particles;
+
+        private float _speed;
         private Vector3 _direction;
         private float _damage;
+
+        private bool _isMoving;
+        private bool _periodicAttacks;
+        private bool _canAttack;
 
         public void Initialize(Vector3 direction, float damage, float speed, float lifetime)
         {
             _direction = direction;
             _damage = damage;
             _speed = speed;
+            _isMoving = true;
 
             Destroy(gameObject, lifetime);
         }
 
+        public void Initialize(float damage, float attackInterval, float radius, float lifetime)
+        {
+            _damage = damage;
+            _periodicAttacks = true;
+
+            detector.OnFound += Attack;
+            detector.SetRadius(radius);
+
+            StartCoroutine(PerformPeriodicAttacks(lifetime, attackInterval));
+        }
+
         private void Update()
         {
-            var moveDirection = _direction.normalized;
+            if (!_isMoving) return;
 
+            var moveDirection = _direction.normalized;
             transform.position += moveDirection * _speed * Time.deltaTime;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.TryGetComponent(out Bot bot)) return;
+            if (_periodicAttacks) return;
 
-            if (!bot.TryGetComponent(out HitBox hitBox)) return;
+            if (ItsBot(other, out var hitBox)) return;
+
+            Attack(hitBox);
+        }
+
+        private void Attack(IWeaponVisitor hitBox)
+        {
+            if (hitBox == null) return;
 
             hitBox.Visit(_damage);
 
@@ -54,6 +87,27 @@ namespace _3._Scripts.Abilities
 
             floatingText.Initialize($"{(int)_damage}", textPosition);
             floatingText.SetGradient(gradient);
+        }
+
+        private static bool ItsBot(Collider other, out IWeaponVisitor hitBox)
+        {
+            if (other.gameObject.TryGetComponent(out Bot bot)) return !bot.TryGetComponent(out hitBox);
+            hitBox = null;
+            return true;
+        }
+
+        private IEnumerator PerformPeriodicAttacks(float duration, float interval)
+        {
+            var elapsed = 0f;
+            while (elapsed < duration)
+            {
+                detector.FindTargets();
+                yield return new WaitForSeconds(interval);
+                elapsed += interval;
+            }
+
+            yield return new WaitForSeconds(0.15f);
+            Destroy(gameObject);
         }
     }
 }

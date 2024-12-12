@@ -43,5 +43,14 @@ namespace _3._Scripts.Extensions
                 main.startColor = color;
             }
         }
+        
+        public static void SetDuration(this List<ParticleSystem> particleSystems, float duration)
+        {
+            foreach (var particleSystem in particleSystems)
+            {
+                var main = particleSystem.main;
+                main.duration = duration;
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7827248764659432209}
   - component: {fileID: 5497422408782874143}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4108184994135783797}
   m_Layer: 7
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 5627330266755932075}
   - component: {fileID: 1224555504621781984}
   - component: {fileID: 6374707475011824078}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,6 +503,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2556458556923036045}
     m_Modifications:
+    - target: {fileID: 2236940305374526393, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777639892433942287, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777639892479933145, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6777639892704172128, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -607,6 +619,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slider_Border_EdgeDeco_01_Demo
       objectReference: {fileID: 0}
+    - target: {fileID: 6777639892704172143, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777639893142416395, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6777639893142416396, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.704
@@ -614,6 +634,14 @@ PrefabInstance:
     - target: {fileID: 6777639893142416396, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777639893210067046, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777639893801763520, guid: 71e2fee2a57804bcbbd496f4cfa480b6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
