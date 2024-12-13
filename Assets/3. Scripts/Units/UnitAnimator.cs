@@ -56,7 +56,7 @@ namespace _3._Scripts.Units
             _animancer = GetComponent<AnimancerComponent>();
         }
 
-        public void DoAnimation(AnimationClip clip, Action onComplete = null)
+        public void DoAnimation(AnimationClip clip, Action onComplete = null, float speed = 1)
         {
             AdditionalLayer.DestroyStates();
             
@@ -66,7 +66,9 @@ namespace _3._Scripts.Units
             
             var state = AdditionalLayer.Play(clip);
             var events = state.Events;
-
+            state.Speed = speed;
+            
+            
             events.Clear();
             events.Add(0.9f, () =>
             {

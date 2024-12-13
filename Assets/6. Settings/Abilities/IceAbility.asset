@@ -9,23 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35bb04a7b084fb4a1fbb8c3a454119f, type: 3}
-  m_Name: SpinAbility
+  m_Script: {fileID: 11500000, guid: 9dcac6bd803b41f5aa815c183e6ef0bd, type: 3}
+  m_Name: IceAbility
   m_EditorClassIdentifier: 
   id: 
   titleID: 
   descriptionID: 
   icon: {fileID: 0}
-  cooldown: 5
-  baseDamagePercent: 20
+  cooldown: 1
+  baseDamagePercent: 100
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades: []
   rebornCountToUnlock: 0
   abilitiesToUnlock: []
   abilityLevelToUnlock: 0
-  projectilePrefab: {fileID: 672802322284079030, guid: b0ecf7b6ba26f2348870d022b63db3bf, type: 3}
-  animation: {fileID: 7400000, guid: bb6bc8a9d8dc512438abbd5122856bd2, type: 3}
-  duration: 2.5
-  interval: 0.25
-  radius: 5
+  projectilePrefab: {fileID: 5373148592121763067, guid: dac9f7d0316a06b41a110178f0843cdf, type: 3}

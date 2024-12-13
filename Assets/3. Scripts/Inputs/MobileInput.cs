@@ -17,6 +17,8 @@ namespace _3._Scripts.Inputs
         [SerializeField] private FixedTouchField touchField;
         [SerializeField] private FixedButton jumpButton;
         [SerializeField] private FixedButton actionButton;
+        [Tab("Abilities")] 
+        [SerializeField] private FixedButton firstAbilityButton;
 
         private CanvasGroup _canvas;
 
@@ -50,7 +52,7 @@ namespace _3._Scripts.Inputs
             var axis = new Vector3(touchField.AxisX, touchField.AxisY);
             return axis;
         }
-
+        
         public bool GetAttack()
         {
             return actionButton.ButtonDown;
@@ -58,7 +60,7 @@ namespace _3._Scripts.Inputs
 
         public bool GetFirstAbility()
         {
-            return false;
+            return firstAbilityButton.ButtonDown;
         }
 
         public bool GetSecondAbility()

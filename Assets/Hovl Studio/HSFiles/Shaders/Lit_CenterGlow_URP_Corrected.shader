@@ -1,5 +1,5 @@
 
-Shader "Hovl/Particles/Lit_CenterGlow"
+Shader "URP/Particles/Lit_CenterGlow"
 {
     Properties
     {
