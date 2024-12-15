@@ -21,7 +21,12 @@ namespace _3._Scripts.Abilities.PlayerAbilities
             projectile.transform.forward = context.Unit.transform.forward;
             projectile.Initialize(context.Unit.transform.forward, Damage, speed, lifetime);
 
-            context.Animator.DoAnimation(animation, () => Player.Player.Instance.Controller.Enabled = true);
+            Completed = false;
+            context.Animator.DoAnimation(animation, () =>
+            {
+                Completed = true;
+                Player.Player.Instance.Controller.Enabled = true;
+            });
 
             Player.Player.Instance.Controller.Enabled = false;
         }

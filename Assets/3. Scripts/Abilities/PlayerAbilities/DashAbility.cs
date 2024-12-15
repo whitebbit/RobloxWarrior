@@ -10,11 +10,10 @@ namespace _3._Scripts.Abilities.PlayerAbilities
         order = 0)]
     public class DashAbility : PlayerAbility
     {
-        [Tab("Dash")] 
-        [SerializeField] private AbilityProjectile projectile;
+        [Tab("Dash")] [SerializeField] private AbilityProjectile projectile;
 
         [SerializeField] private AnimationClip animation;
-        
+
         [SerializeField] private float distance;
         [SerializeField] private float speed;
         [SerializeField] private float lifeTime;
@@ -24,10 +23,11 @@ namespace _3._Scripts.Abilities.PlayerAbilities
             if (!context.Unit.TryGetComponent(out PlayerMovement movement)) return;
             var p = Instantiate(projectile, context.Unit.transform, true);
             
+            Completed = false;
             context.Animator.DoAnimation(animation, () =>
             {
                 Player.Player.Instance.Controller.Enabled = true;
-
+                Completed = true;
             });
             Player.Player.Instance.Controller.Enabled = false;
 

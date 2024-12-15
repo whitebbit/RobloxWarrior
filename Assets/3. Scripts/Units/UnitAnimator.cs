@@ -59,24 +59,23 @@ namespace _3._Scripts.Units
         public void DoAnimation(AnimationClip clip, Action onComplete = null, float speed = 1)
         {
             AdditionalLayer.DestroyStates();
-            
+
             DOTween.To(() => MainLayer.Weight, x => MainLayer.Weight = x, 0, FadeDuration);
             DOTween.To(() => AttackLayer.Weight, x => AttackLayer.Weight = x, 0, FadeDuration);
             DOTween.To(() => AdditionalLayer.Weight, x => AttackLayer.Weight = x, 1, FadeDuration);
-            
+
             var state = AdditionalLayer.Play(clip);
             var events = state.Events;
             state.Speed = speed;
-            
-            
+
+
             events.Clear();
             events.Add(0.9f, () =>
             {
                 DOTween.To(() => MainLayer.Weight, x => MainLayer.Weight = x, 1, FadeDuration);
                 DOTween.To(() => AttackLayer.Weight, x => AttackLayer.Weight = x, 1, FadeDuration);
-                DOTween.To(() => AdditionalLayer.Weight, x => AdditionalLayer.Weight = x, 0, FadeDuration);
-
-                onComplete?.Invoke();
+                DOTween.To(() => AdditionalLayer.Weight, x => AdditionalLayer.Weight = x, 0, FadeDuration)
+                    .OnComplete(() => onComplete?.Invoke());
             });
         }
 

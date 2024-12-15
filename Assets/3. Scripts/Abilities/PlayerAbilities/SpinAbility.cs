@@ -36,12 +36,15 @@ namespace _3._Scripts.Abilities.PlayerAbilities
             if (particle.Count <= 0) return;
 
             var speed = animation.length / duration;
+
+            Completed = false;
+
             particle.SetDuration(duration + 0.5f);
             particle.SetState(true);
 
             projectile.Initialize(Damage, interval, radius, duration);
             context.Unit.Damageable.SetInvulnerability(duration);
-            context.Animator.DoAnimation(animation, speed: speed);
+            context.Animator.DoAnimation(animation, speed: speed, onComplete: () => { Completed = true; });
         }
     }
 }

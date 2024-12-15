@@ -27,9 +27,8 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
 
         public bool Unlocked => GBGames.saves.abilitiesSave.Unlocked(Config.ID);
 
-        protected override void OnStart()
+        protected override void OnAwake()
         {
-            base.OnStart();
             Initialize(currentConfig);
         }
 
@@ -121,6 +120,7 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
             UnlockItemsState(state);
 
             rebirthCountText?.gameObject.SetActive(state);
+            levelText.gameObject.SetActive(state);
         }
     }
 }

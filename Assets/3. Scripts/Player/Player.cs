@@ -59,7 +59,7 @@ namespace _3._Scripts.Player
             Ammunition = GetComponent<PlayerAmmunition>();
             Controller = GetComponent<PlayerController>();
         }
-
+        
         protected override void OnStart()
         {
             base.OnStart();

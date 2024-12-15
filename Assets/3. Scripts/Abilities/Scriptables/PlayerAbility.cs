@@ -100,14 +100,18 @@ namespace _3._Scripts.Abilities.Scriptables
             return Level != currentUpgrade.maxLevel;
         }
 
+        public AbilityUpgrade CurrentUpgrade => abilityUpgrades.FirstOrDefault(a => a.maxLevel == Save.maxLevel);
+
+        public bool MaxUpgraded => abilityUpgrades.IndexOf(CurrentUpgrade) >= abilityUpgrades.Count - 1 &&
+                                   Level == CurrentUpgrade.maxLevel;
+
         public bool NeedToBreak()
         {
-            var currentUpgrade = abilityUpgrades.FirstOrDefault(a => a.maxLevel == Save.maxLevel);
+            if (MaxUpgraded) return false;
 
-            if (abilityUpgrades.IndexOf(currentUpgrade) >= abilityUpgrades.Count - 1) return false;
-
-            return Level == currentUpgrade.maxLevel;
+            return Level == CurrentUpgrade.maxLevel;
         }
+
 
         public bool CanUnlock()
         {
@@ -122,17 +126,23 @@ namespace _3._Scripts.Abilities.Scriptables
             return GBGames.saves.stats.rebirthCounts >= rebornCountToUnlock;
         }
 
+        public event Action<float> OnUseAbility;
+
+        public bool Completed { get; set; } = true;
+        public void ResetOnUseAbility() => OnUseAbility = null;
+
         public void UseAbility(IAbilityContext context)
         {
             if (!CanUse) return;
 
             PerformAbility(context);
             _lastUsedTime = Time.time;
+            OnUseAbility?.Invoke(_lastUsedTime);
         }
 
         public void ResetAbility()
         {
-            _lastUsedTime = 0;
+            _lastUsedTime = Time.time;
         }
 
         protected abstract void PerformAbility(IAbilityContext context);

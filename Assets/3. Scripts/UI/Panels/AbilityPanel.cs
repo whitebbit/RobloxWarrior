@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
@@ -21,13 +22,14 @@ namespace _3._Scripts.UI.Panels
     {
         [SerializeField] private List<AbilityItem> items = new();
         [SerializeField] private LocalizeStringEvent skillPointsText;
+        [SerializeField] private LocalizeStringEvent evolutePriceText;
         [Tab("Buttons")] [SerializeField] private Button unlockButton;
         [SerializeField] private Button upgradeButton;
         [SerializeField] private Button unequipButton;
         [SerializeField] private Button evoluteButton;
 
         private AbilitiesSave Save => GBGames.saves.abilitiesSave;
-        private string CurrentId => Save.unlocked.Count > 0 ? Save.unlocked[0].id : "";
+        private string CurrentId => Save.selected.Count > 0 ? Save.selected[0].id : "";
         protected override PlayerAbility CurrentConfig => Configuration.Instance.GetAbility(CurrentId);
 
         public override void Initialize()
@@ -56,8 +58,22 @@ namespace _3._Scripts.UI.Panels
         protected override void OnOpen()
         {
             currentItem.Initialize(CurrentConfig);
-
+            
+            UpdateButtonsState(CurrentConfig == null ? null : currentItem);
             UpdateCapacityText();
+
+            foreach (var item in Items)
+            {
+                if (Save.IsSelected(item.Config.ID))
+                {
+                    item.SetCurrentFocus();
+                }
+                else
+                    item.DisableFocus();
+            }
+
+            if (CurrentConfig != null)
+                SelectedItem = Items.FirstOrDefault(a => a.Config.ID == CurrentConfig.ID);
         }
 
         protected override void PopulateList()
@@ -86,11 +102,17 @@ namespace _3._Scripts.UI.Panels
 
         private void UpdateButtonsState(AbilityItem item)
         {
-            unlockButton.gameObject.SetActive(item.Config.CanUnlock());
-            upgradeButton.gameObject.SetActive(item.Unlocked && item.Config.CanUpgrade());
-            equipSelectedButton.gameObject.SetActive(item.Unlocked && !Save.IsSelected(item.Config.ID));
-            unequipButton.gameObject.SetActive(item.Unlocked && Save.IsSelected(item.Config.ID));
-            evoluteButton.gameObject.SetActive(item.Unlocked && item.Config.NeedToBreak());
+            var itemNotNull = item != null;
+
+            unlockButton.gameObject.SetActive(itemNotNull && item.Config.CanUnlock());
+            upgradeButton.gameObject.SetActive(itemNotNull && item.Unlocked && !item.Config.NeedToBreak() &&
+                                               !item.Config.MaxUpgraded);
+            equipSelectedButton.gameObject.SetActive(itemNotNull && item.Unlocked && !Save.IsSelected(item.Config.ID));
+            unequipButton.gameObject.SetActive(itemNotNull && item.Unlocked && Save.IsSelected(item.Config.ID));
+            evoluteButton.gameObject.SetActive(itemNotNull && item.Unlocked && item.Config.NeedToBreak());
+
+            if (itemNotNull)
+                evolutePriceText.SetVariable("value", (int)item.Config.CurrentUpgrade.priceToBreak);
         }
 
         private void Unlock()
@@ -98,7 +120,7 @@ namespace _3._Scripts.UI.Panels
             SelectedItem.Config.Unlock();
 
             UpdateButtonsState(SelectedItem);
-            
+
             currentItem.UpdateItem();
             SelectedItem.UpdateItem();
         }
@@ -108,7 +130,7 @@ namespace _3._Scripts.UI.Panels
             SelectedItem.Config.Upgrade();
 
             UpdateButtonsState(SelectedItem);
-            
+
             currentItem.UpdateItem();
             SelectedItem.UpdateItem();
         }
@@ -118,19 +140,22 @@ namespace _3._Scripts.UI.Panels
             SelectedItem.Config.Evolute();
 
             UpdateButtonsState(SelectedItem);
+
+            currentItem.UpdateItem();
+            SelectedItem.UpdateItem();
         }
 
         private void Unequip()
         {
             Save.Unselect(SelectedItem.Config.ID);
-
+            SelectedItem.DisableFocus();
             UpdateButtonsState(SelectedItem);
         }
 
         protected override void EquipItem(AbilityItem item)
         {
             Save.Select(item.Config.ID);
-
+            SelectedItem.SetCurrentFocus();
             UpdateButtonsState(SelectedItem);
         }
     }

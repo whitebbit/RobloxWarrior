@@ -63,54 +63,6 @@ Transform:
   - {fileID: 3196921199840746408}
   m_Father: {fileID: 8112823353071851216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &520912501317152422
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3690739108173513308}
-  - component: {fileID: 5729393712074786545}
-  m_Layer: 7
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3690739108173513308
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520912501317152422}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4793125362634866367}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5729393712074786545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520912501317152422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 785c382a764f4fa6a737f13adef6e0fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundDistance: 0.1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &837500295749721877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,7 +1307,6 @@ Transform:
   - {fileID: 7019389772169807140}
   - {fileID: 4248629564202708030}
   - {fileID: 2580167577644146590}
-  - {fileID: 3690739108173513308}
   - {fileID: 8871003985861269182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1423,7 +1374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550a325f43f745368db80a0c029d36d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundChecker: {fileID: 5729393712074786545}
 --- !u!95 &948126192852172886
 Animator:
   serializedVersion: 5

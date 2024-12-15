@@ -46,4 +46,7 @@ MonoBehaviour:
     titleId: rarity_ancient
   playerConfig: {fileID: 11400000, guid: 071cf3b6b1c0e1843a27b4b67c7349f7, type: 2}
   swordCollectionConfig: {fileID: 11400000, guid: 0400797554daa6641bb6f99d757595be, type: 2}
+  abilities:
+  - {fileID: 11400000, guid: 7e23be13c14eeb045975c21495019819, type: 2}
+  - {fileID: 11400000, guid: d4429b65c287ca34c9c51c4d91ef13d9, type: 2}
   uiConfig: {fileID: 11400000, guid: 7f0b37cec6afd0a4bbe02413ca9a40f3, type: 2}

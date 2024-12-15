@@ -12,19 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ead7da06e6b47d98995b9bc39503c44, type: 3}
   m_Name: DashAbility
   m_EditorClassIdentifier: 
-  id: 
+  id: dash_ability
   titleID: 
   descriptionID: 
   icon: {fileID: 21300000, guid: 80de762f5c56c6244acc6ec5660007d8, type: 3}
-  cooldown: 1
+  cooldown: 10
   baseDamagePercent: 5000
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades:
-  - priceToBreak: 0
+  - priceToBreak: 500
     maxLevel: 1
-  - priceToBreak: 100
+  - priceToBreak: 500
     maxLevel: 6
+  - priceToBreak: 1000
+    maxLevel: 11
   rebornCountToUnlock: 0
   abilitiesToUnlock: []
   abilityLevelToUnlock: 0

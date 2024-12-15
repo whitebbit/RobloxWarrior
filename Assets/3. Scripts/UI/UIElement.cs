@@ -13,8 +13,8 @@ namespace _3._Scripts.UI
         public abstract IUITransition InTransition { get; set; }
         public abstract IUITransition OutTransition { get; set; }
 
-        [Button]
-        private void SwitchState()
+        
+        public void SwitchState()
         {
             Enabled = !Enabled;
         }

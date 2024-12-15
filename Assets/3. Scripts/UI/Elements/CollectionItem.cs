@@ -23,8 +23,12 @@ namespace _3._Scripts.UI.Elements
         private void Awake()
         {
             _button = GetComponent<Button>();
+            OnAwake();
         }
-
+        protected virtual void OnAwake()
+        {
+            
+        }
         private void Start()
         {
             _button.onClick.AddListener(OnClick);

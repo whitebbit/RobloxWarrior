@@ -43,15 +43,17 @@ namespace _3._Scripts.Player
 
         public void UseFirstAbility()
         {
-            _playerAmmunition.FirstPlayerAbility.UseAbility(_abilityContext);
+            _playerAmmunition.GetPlayerAbility(0)?.UseAbility(_abilityContext);
         }
 
         public void UseSecondAbility()
         {
+            _playerAmmunition.GetPlayerAbility(1)?.UseAbility(_abilityContext);
         }
 
         public void UseThirdAbility()
         {
+            _playerAmmunition.GetPlayerAbility(2)?.UseAbility(_abilityContext);
         }
     }
 }
