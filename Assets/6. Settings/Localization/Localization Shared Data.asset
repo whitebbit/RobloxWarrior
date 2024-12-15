@@ -305,6 +305,30 @@ MonoBehaviour:
     m_Key: hero_points
     m_Metadata:
       m_Items: []
+  - m_Id: 76646412217024512
+    m_Key: skill_points
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76668688299786240
+    m_Key: level_
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76669619603046400
+    m_Key: rebirth_amount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76671086112079872
+    m_Key: New Entry 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76671165271179264
+    m_Key: improve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76675657186213888
+    m_Key: evolute
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

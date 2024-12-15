@@ -1,16 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using _3._Scripts.Localization;
 using _3._Scripts.Pool;
 using _3._Scripts.Saves;
 using _3._Scripts.Saves.Handlers;
-using _3._Scripts.UI.Elements;
 using _3._Scripts.UI.Elements.SwordsPanel;
-using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Panels.Base;
-using _3._Scripts.UI.Transitions;
 using GBGamesPlugin;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
@@ -21,7 +16,7 @@ namespace _3._Scripts.UI.Panels
     /// <summary>
     /// Панель управления мечами, позволяющая экипировать, создавать, сортировать и удалять мечи.
     /// </summary>
-    public class SwordsPanel : CollectionPanel<SwordItem, SwordSave>
+    public class SwordsPanel : CollectionPanel<SwordItem, SwordSave, RawImage>
     {
         [Tab("Selected Sword Actions")] [SerializeField]
         private Button craftSelectedButton;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Bots;
 using _3._Scripts.Bots.Sciptables;
 using _3._Scripts.Config.Scriptables;
@@ -26,6 +27,7 @@ namespace _3._Scripts.Config
 
         public MainConfig Config => config;
 
+        public PlayerAbility GetAbility(string id) => config.Abilities.FirstOrDefault(a => a.ID == id);
         public CurrencyConfig GetCurrency(CurrencyType type) => config.CurrencyData.FirstOrDefault(c => c.Type == type);
         public RarityTable GetRarityTable(Rarity rarity) => config.RarityTables.FirstOrDefault(r => r.Rarity == rarity);
 

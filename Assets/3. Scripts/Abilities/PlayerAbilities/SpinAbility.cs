@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Abilities.Interfaces;
+﻿using System.Collections.Generic;
+using _3._Scripts.Abilities.Interfaces;
 using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Extensions;
 using UnityEngine;
@@ -17,6 +18,14 @@ namespace _3._Scripts.Abilities.PlayerAbilities
         [SerializeField] private float duration;
         [SerializeField] private float interval;
         [SerializeField] private float radius;
+
+        protected override Dictionary<string, object> DescriptionParameters()
+        {
+            var b = base.DescriptionParameters();
+            b.Add("interval", interval);
+            b.Add("duration", duration);
+            return b;
+        }
 
         protected override void PerformAbility(IAbilityContext context)
         {

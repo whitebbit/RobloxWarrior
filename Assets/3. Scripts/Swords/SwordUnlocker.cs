@@ -82,7 +82,7 @@ namespace _3._Scripts.Swords
 
         private void Open(int count)
         {
-            if (!WalletManager.TrySpend(CurrencyType.Crystal, _price * count))
+            if (!WalletManager.GetCurrency(CurrencyType.Crystal).TrySpend(_price * count))
             {
                 var widget = UIManager.Instance.GetWidget<NotificationWidget>();
                 widget.Enabled = true;

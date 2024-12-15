@@ -9,7 +9,8 @@ using VInspector;
 
 namespace _3._Scripts.UI.Panels.Base
 {
-    public abstract class CollectionPanel<TItem, TConfig> : UIPanel where TItem : CollectionItem<TConfig, TItem>
+    public abstract class CollectionPanel<TItem, TConfig, TIcon> : UIPanel
+        where TItem : CollectionItem<TConfig, TItem, TIcon> where TIcon : MonoBehaviour
     {
         [SerializeField] private ScaleTransition transition;
 

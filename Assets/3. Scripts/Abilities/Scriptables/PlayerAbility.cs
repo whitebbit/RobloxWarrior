@@ -31,10 +31,29 @@ namespace _3._Scripts.Abilities.Scriptables
         [Space] [SerializeField] private List<PlayerAbility> abilitiesToUnlock;
         [SerializeField] private int abilityLevelToUnlock;
 
+        public int RebornCountToUnlock => rebornCountToUnlock;
         private Player.Player Player => _Scripts.Player.Player.Instance;
-        private AbilitySave Save => GBGames.saves.abilitiesSave.Get(ID);
+        public AbilitySave Save => GBGames.saves.abilitiesSave.Get(ID);
 
         public float Cooldown => cooldown;
+
+        public List<PlayerAbility> AbilitiesToUnlock => abilitiesToUnlock;
+
+        public int AbilityLevelToUnlock => abilityLevelToUnlock;
+
+        protected virtual Dictionary<string, object> DescriptionParameters()
+        {
+            return new Dictionary<string, object>
+            {
+                { "cooldown", cooldown },
+                { "value", baseDamagePercent },
+            };
+        }
+
+        public T GetDescriptionParameters<T>(string valueName)
+        {
+            return (T)DescriptionParameters().GetValueOrDefault(valueName, default(T));
+        }
 
         private float DamagePercent => baseDamagePercent *
                                        (1 + damageBoosterRatio * Level + damageBoosterBonus * (int)Math.Pow(Level, 2));
@@ -48,17 +67,32 @@ namespace _3._Scripts.Abilities.Scriptables
 
         public void Unlock()
         {
+            if (!WalletManager.GetCurrency(CurrencyType.SkillPoints).TrySpend(1)) return;
+
             GBGames.saves.abilitiesSave.Unlock(this);
         }
 
         public void Upgrade()
         {
-            Save.level += 1;
-            Player.Stats.SkillPoints -= 1;
+            if (!WalletManager.GetCurrency(CurrencyType.SkillPoints).TrySpend(1)) return;
+
+            GBGames.saves.abilitiesSave.Upgrade(this);
+        }
+
+        public void Evolute()
+        {
+            var currentUpgrade = abilityUpgrades.FirstOrDefault(a => a.maxLevel == Save.maxLevel);
+            var nextUpgrade = abilityUpgrades[abilityUpgrades.IndexOf(currentUpgrade) + 1];
+
+            if (!WalletManager.GetCurrency(CurrencyType.Crystal).TrySpend(nextUpgrade.priceToBreak)) return;
+
+            Save.maxLevel = nextUpgrade.maxLevel;
         }
 
         public bool CanUpgrade()
         {
+            if (!GBGames.saves.abilitiesSave.Unlocked(ID)) return false;
+
             var currentUpgrade = abilityUpgrades.FirstOrDefault(a => a.maxLevel == Save.maxLevel);
 
             if (abilityUpgrades.IndexOf(currentUpgrade) >= abilityUpgrades.Count - 1) return false;
@@ -75,18 +109,10 @@ namespace _3._Scripts.Abilities.Scriptables
             return Level == currentUpgrade.maxLevel;
         }
 
-        public void Break()
-        {
-            var currentUpgrade = abilityUpgrades.FirstOrDefault(a => a.maxLevel == Save.maxLevel);
-            var nextUpgrade = abilityUpgrades[abilityUpgrades.IndexOf(currentUpgrade) + 1];
-
-            if (!WalletManager.TrySpend(CurrencyType.Crystal, nextUpgrade.priceToBreak)) return;
-
-            Save.maxLevel = nextUpgrade.maxLevel;
-        }
-
         public bool CanUnlock()
         {
+            if (GBGames.saves.abilitiesSave.Unlocked(ID)) return false;
+
             if (abilitiesToUnlock.Count > 0)
             {
                 return abilitiesToUnlock.All(a => a.Level >= abilityLevelToUnlock) &&

@@ -2,6 +2,7 @@
 using System.Linq;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
+using _3._Scripts.Currency.Enums;
 using DG.Tweening;
 using GBGamesPlugin;
 using TMPro;
@@ -56,9 +57,8 @@ namespace _3._Scripts.Debugger
 
         public void DeleteSaves() => GBGames.Delete();
 
-        //public void UnlockPet() => GBGames.saves.petSaves.Unlock(petInputField.text);
-        public void Add1000FirstCurrency() => WalletManager.Crystals += 100000000;
-        public void Add1000SecondCurrency() => WalletManager.HeroPoints += 100000000;
+        public void Add1000FirstCurrency() => WalletManager.GetCurrency(CurrencyType.Crystal).Value += 100000000;
+        public void Add1000SecondCurrency() => WalletManager.GetCurrency(CurrencyType.SkillPoints).Value += 100000000;
         public void ChangePostProcessing() => volume.enabled = !volume.enabled;
 
         public void ChangeShadow()

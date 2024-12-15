@@ -16,7 +16,7 @@ namespace _3._Scripts.Currency
         [SerializeField] private Image table;
 
         public CurrencyType Type => type;
-
+        private CurrencyObject CurrencyObject => WalletManager.GetCurrency(Type);
         private void Start()
         {
             Initialize();
@@ -26,52 +26,20 @@ namespace _3._Scripts.Currency
         {
             var currency = Configuration.Instance.GetCurrency(type);
             icon.sprite = currency.Icon;
-            //table.color = currency.DarkColor;
-            //icon.ScaleImage();
 
-            switch (type)
-            {
-                case CurrencyType.Crystal:
-                    OnChange(0, WalletManager.Crystals);
-                    break;
-                case CurrencyType.HeroPoints:
-                    OnChange(0, WalletManager.HeroPoints);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            OnChange(0, CurrencyObject.Value);
         }
 
         private void OnEnable()
         {
-            switch (type)
-            {
-                case CurrencyType.Crystal:
-                    WalletManager.OnCrystalsChange += OnChange;
-                    OnChange(0, WalletManager.Crystals);
-                    break;
-                case CurrencyType.HeroPoints:
-                    WalletManager.OnHeroPointsChange += OnChange;
-                    OnChange(0, WalletManager.HeroPoints);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            CurrencyObject.OnValueChanged += OnChange;
+            OnChange(0, CurrencyObject.Value);
         }
 
         private void OnDisable()
         {
-            switch (type)
-            {
-                case CurrencyType.Crystal:
-                    WalletManager.OnCrystalsChange -= OnChange;
-                    break;
-                case CurrencyType.HeroPoints:
-                    WalletManager.OnHeroPointsChange -= OnChange;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            CurrencyObject.OnValueChanged -= OnChange;
+
         }
 
         private void OnChange(float oldValue, float newValue)

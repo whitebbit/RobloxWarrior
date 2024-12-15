@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Config;
+using _3._Scripts.Currency;
+using _3._Scripts.Currency.Enums;
 using _3._Scripts.Player.Scriptables;
 using _3._Scripts.Saves;
 using _3._Scripts.UI.Enums;
@@ -298,17 +300,12 @@ namespace _3._Scripts.Player
             return Config.BaseExperiencePercentIncrease * Mathf.Pow(2, rebirthCounts - 1) +
                    AdditionalExperienceIncrease;
         }
-
-        public int SkillPoints
-        {
-            get => Save.skillPoints;
-            set => Save.skillPoints = value;
-        }
+        
 
         public void Rebirth()
         {
             RebirthCount += 1;
-            SkillPoints += 1;
+            WalletManager.GetCurrency(CurrencyType.SkillPoints).Value += 1;
 
             Level = 1;
             Experience = 0;

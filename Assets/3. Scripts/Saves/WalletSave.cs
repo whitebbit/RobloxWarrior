@@ -8,5 +8,6 @@ namespace _3._Scripts.Saves
     {
         public float crystals = 5;
         public float heroPoints;
+        public float skillPoints;
     }
 }

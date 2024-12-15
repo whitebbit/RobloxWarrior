@@ -301,7 +301,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 75607099773616128
-    m_Localized: unlock
+    m_Localized: Unlock
     m_Metadata:
       m_Items: []
   - m_Id: 75649292567642112
@@ -329,10 +329,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
+  - m_Id: 76646412217024512
+    m_Localized: 'Skill points: {value}'
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 76669619603046400
+    m_Localized: x{value} Rebirths
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 76671165271179264
+    m_Localized: Improve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 76675657186213888
+    m_Localized: Evolute {value}<sprite index=1>
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
   references:
     version: 2
     RefIds:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b010000817f97a50d01
+        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b010000817f97a50d010000817d814d1001000081e19c6210010000819d1a681001

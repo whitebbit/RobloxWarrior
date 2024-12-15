@@ -16,7 +16,7 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
     /// <summary>
     /// Элемент меча, представляющий информацию о мечах в панели.
     /// </summary>
-    public class SwordItem : CollectionItem<SwordSave, SwordItem>, IPoolable
+    public class SwordItem : CollectionItem<SwordSave, SwordItem, RawImage>, IPoolable
     {
         [SerializeField] private TMP_Text damageText;
         [SerializeField] private Image table;

@@ -26,9 +26,9 @@ namespace _3._Scripts.UI.Panels
 
         public override IUITransition InTransition { get; set; }
         public override IUITransition OutTransition { get; set; }
-        
+
         private readonly List<ModificationItem> _modificationItems = new();
-        
+
         private float ResetPrice()
         {
             return Player.Player.Instance.Stats.GetPointsSpent() * 50;
@@ -116,7 +116,7 @@ namespace _3._Scripts.UI.Panels
 
         private void ResetStats()
         {
-            if (!WalletManager.TrySpend(CurrencyType.Crystal, ResetPrice())) return;
+            if (!WalletManager.GetCurrency(CurrencyType.Crystal).TrySpend(ResetPrice())) return;
 
             Player.Player.Instance.Stats.ResetStats();
             StatsOnUpgradePointsChanged(Player.Player.Instance.Stats.UpgradePoints);

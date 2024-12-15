@@ -6,10 +6,8 @@ using _3._Scripts.Abilities.Scriptables;
 namespace _3._Scripts.Saves
 {
     [Serializable]
-    public class AbilitiesSave
+    public class AbilitiesSave : ManySaveHandler<AbilitySave>
     {
-        public List<AbilitySave> abilities = new();
-
         public void Unlock(PlayerAbility playerAbility)
         {
             if (Unlocked(playerAbility.ID)) return;
@@ -21,14 +19,24 @@ namespace _3._Scripts.Saves
                 maxLevel = 1
             };
 
-            abilities.Add(data);
+            unlocked.Add(data);
+            InvokeOnSelect(data);
         }
 
+        public void Upgrade(PlayerAbility playerAbility)
+        {
+            if (!Unlocked(playerAbility.ID)) return;
+            
+            var item = unlocked.FirstOrDefault(x => x.id == playerAbility.ID);
+           
+            if (item != null) 
+                item.level++;
+        }
+        
         public AbilitySave Get(string id)
         {
-            return !Unlocked(id) ? new AbilitySave { id = id } : abilities.FirstOrDefault(a => a.id == id);
+            return !Unlocked(id) ? new AbilitySave { id = id } : unlocked.FirstOrDefault(a => a.id == id);
         }
-
-        public bool Unlocked(string id) => abilities.Exists(a => a.id == id);
+        
     }
 }

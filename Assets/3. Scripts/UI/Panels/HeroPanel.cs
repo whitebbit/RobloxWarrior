@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
+using _3._Scripts.Currency.Enums;
 using _3._Scripts.Heroes;
 using _3._Scripts.Heroes.Scriptables;
 using _3._Scripts.Localization;
@@ -18,7 +19,7 @@ using VInspector;
 
 namespace _3._Scripts.UI.Panels
 {
-    public class HeroPanel : CollectionPanel<HeroItem, HeroConfig>
+    public class HeroPanel : CollectionPanel<HeroItem, HeroConfig, RawImage>
     {
         [SerializeField] private HeroItem prefab;
         [Tab("Buttons")] [SerializeField] private Button unlockButton;
@@ -35,9 +36,10 @@ namespace _3._Scripts.UI.Panels
         {
             base.Initialize();
             PopulateList();
-            
-            heroPointsText.SetVariable("value", WalletManager.HeroPoints.ConvertToWallet());
-            WalletManager.OnHeroPointsChange += (_, newValue) =>
+
+            heroPointsText.SetVariable("value",
+                WalletManager.GetCurrency(CurrencyType.HeroPoints).Value.ConvertToWallet());
+            WalletManager.GetCurrency(CurrencyType.HeroPoints).OnValueChanged += (_, newValue) =>
                 heroPointsText.SetVariable("value", newValue.ConvertToWallet());
         }
 
@@ -78,7 +80,7 @@ namespace _3._Scripts.UI.Panels
                 Items.Add(swordItem);
             }
         }
-        
+
         protected override void ConfigureButtons()
         {
             base.ConfigureButtons();
@@ -125,7 +127,7 @@ namespace _3._Scripts.UI.Panels
 
         private void Unlock()
         {
-            if (WalletManager.HeroPoints <= 0) return;
+            if (!WalletManager.GetCurrency(CurrencyType.HeroPoints).TrySpend(1)) return;
 
             var save = new HeroSave
             {

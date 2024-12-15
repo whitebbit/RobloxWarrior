@@ -3,13 +3,15 @@ using _3._Scripts.Config.Interfaces;
 using _3._Scripts.UI.Elements.SwordsPanel;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 namespace _3._Scripts.UI.Elements
 {
-    public abstract class CollectionItem<T, TSelf> : MonoBehaviour, IInitializable<T>
-        where TSelf : CollectionItem<T, TSelf>
+    public abstract class CollectionItem<T, TSelf, TIcon> : MonoBehaviour, IInitializable<T>
+        where TSelf : CollectionItem<T, TSelf, TIcon> where TIcon : MonoBehaviour
     {
-        [SerializeField] protected RawImage icon;
+        [Tab("Collection Item")]
+        [SerializeField] protected TIcon icon;
         [SerializeField] protected Image focusImage;
 
         private Button _button;
@@ -26,8 +28,13 @@ namespace _3._Scripts.UI.Elements
         private void Start()
         {
             _button.onClick.AddListener(OnClick);
+            OnStart();
         }
 
+        protected virtual void OnStart()
+        {
+            
+        }
         private void OnClick()
         {
             OnSelect?.Invoke(Self);
