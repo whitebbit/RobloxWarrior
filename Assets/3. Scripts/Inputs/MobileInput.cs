@@ -19,6 +19,8 @@ namespace _3._Scripts.Inputs
         [SerializeField] private FixedButton actionButton;
         [Tab("Abilities")] 
         [SerializeField] private FixedButton firstAbilityButton;
+        [SerializeField] private FixedButton secondAbilityButton;
+        [SerializeField] private FixedButton thirdAbilityButton;
 
         private CanvasGroup _canvas;
 
@@ -65,12 +67,12 @@ namespace _3._Scripts.Inputs
 
         public bool GetSecondAbility()
         {
-            return false;
+            return secondAbilityButton.ButtonDown;
         }
 
         public bool GetThirdAbility()
         {
-            return false;
+            return thirdAbilityButton.ButtonDown;
         }
 
         public bool GetJump()

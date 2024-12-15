@@ -128,7 +128,7 @@ namespace _3._Scripts.Abilities.Scriptables
 
         public event Action<float> OnUseAbility;
 
-        public bool Completed { get; set; } = true;
+        public bool Completed { get; protected set; } = true;
         public void ResetOnUseAbility() => OnUseAbility = null;
 
         public void UseAbility(IAbilityContext context)

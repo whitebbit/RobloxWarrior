@@ -21,8 +21,7 @@ namespace _3._Scripts.Player
         public Sword Sword { get; private set; }
 
         private readonly List<PlayerAbility> _playerAbilities = new();
-
-
+        
         private void Awake()
         {
             OnPlayerAbilitiesChanged = new LazyAction<List<PlayerAbility>>(_playerAbilities);

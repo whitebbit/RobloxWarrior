@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using _3._Scripts.Abilities;
 using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Config.Interfaces;
 using TMPro;
@@ -16,6 +18,18 @@ namespace _3._Scripts.UI.Elements
 
         private PlayerAbility _config;
         public bool Locked { get; set; }
+
+        private void Awake()
+        {
+            var b = GetComponent<Button>();
+            b?.onClick.AddListener(() =>
+            {
+                if (Locked)
+                {
+                    //TODO: покупка слота для способности
+                }
+            });
+        }
 
         public void Initialize(PlayerAbility config)
         {

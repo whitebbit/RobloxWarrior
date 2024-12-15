@@ -46,6 +46,7 @@ namespace _3._Scripts.Player
         public PlayerAmmunition Ammunition { get; private set; }
         public override UnitHealth Health => _health ??= new UnitHealth(100, Dying);
         private PlayerDying Dying => _dying ??= new PlayerDying();
+        public UnitAnimator Animator { get; set; }
 
         private PlayerMovement _movement;
         private UnitHealth _health;
@@ -55,6 +56,7 @@ namespace _3._Scripts.Player
         protected override void OnAwake()
         {
             base.OnAwake();
+            Animator = GetComponent<PlayerAnimator>();
             _movement = GetComponent<PlayerMovement>();
             Ammunition = GetComponent<PlayerAmmunition>();
             Controller = GetComponent<PlayerController>();

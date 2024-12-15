@@ -11,10 +11,19 @@ namespace _3._Scripts.UI.Widgets
 {
     public class AbilitiesWidget : MonoBehaviour
     {
+        [SerializeField] private string deviceType;
         [SerializeField] private List<AbilityWidget> widgets = new();
+
+        private void Awake()
+        {
+            if (GBGames.deviceType != deviceType)
+                gameObject.SetActive(false);
+        }
 
         private void Start()
         {
+            if (GBGames.deviceType != deviceType) return;
+
             Player.Player.Instance.Ammunition.OnPlayerAbilitiesChanged.Subscribe(OnAbilitiesChanged);
         }
 
