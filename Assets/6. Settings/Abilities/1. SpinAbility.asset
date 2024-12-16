@@ -16,8 +16,8 @@ MonoBehaviour:
   titleID: spin_ability_title
   descriptionID: spin_ability_description
   icon: {fileID: 21300000, guid: f0984e2b4ca67a54ea6b60d712821439, type: 3}
-  cooldown: 5
-  baseDamagePercent: 20
+  cooldown: 30
+  baseDamagePercent: 35
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades:
