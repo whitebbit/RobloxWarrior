@@ -20,7 +20,6 @@ namespace _3._Scripts.UI.Panels
 {
     public class AbilityPanel : CollectionPanel<AbilityItem, PlayerAbility, Image>
     {
-        [SerializeField] private List<AbilityItem> items = new();
         [SerializeField] private LocalizeStringEvent skillPointsText;
         [SerializeField] private LocalizeStringEvent evolutePriceText;
         [Tab("Buttons")] [SerializeField] private Button unlockButton;
@@ -35,7 +34,7 @@ namespace _3._Scripts.UI.Panels
         public override void Initialize()
         {
             base.Initialize();
-            Items.AddRange(items);
+
 
             skillPointsText.SetVariable("value",
                 WalletManager.GetCurrency(CurrencyType.SkillPoints).Value.ConvertToWallet());
@@ -58,7 +57,6 @@ namespace _3._Scripts.UI.Panels
         protected override void OnOpen()
         {
             currentItem.Initialize(CurrentConfig);
-            
             UpdateButtonsState(CurrentConfig == null ? null : currentItem);
             UpdateCapacityText();
 
@@ -78,8 +76,10 @@ namespace _3._Scripts.UI.Panels
 
         protected override void PopulateList()
         {
+            Items = container.GetComponentsInChildren<AbilityItem>().ToList();
             foreach (var item in Items)
             {
+                item.DefaultInitialize();
                 item.OnSelect += OnItemSelected;
             }
         }
@@ -147,6 +147,8 @@ namespace _3._Scripts.UI.Panels
 
         private void Unequip()
         {
+            if (!Save.IsSelected(SelectedItem.Config.ID)) return;
+            
             Save.Unselect(SelectedItem.Config.ID);
             SelectedItem.DisableFocus();
             UpdateButtonsState(SelectedItem);
@@ -154,6 +156,8 @@ namespace _3._Scripts.UI.Panels
 
         protected override void EquipItem(AbilityItem item)
         {
+            if (!Save.CanSelect) return;
+
             Save.Select(item.Config.ID);
             SelectedItem.SetCurrentFocus();
             UpdateButtonsState(SelectedItem);

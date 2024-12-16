@@ -82,7 +82,7 @@ namespace _3._Scripts.Abilities.Scriptables
         public void Evolute()
         {
             var currentUpgrade = abilityUpgrades.FirstOrDefault(a => a.maxLevel == Save.maxLevel);
-            var nextUpgrade = abilityUpgrades[abilityUpgrades.IndexOf(currentUpgrade) + 1];
+            var nextUpgrade = abilityUpgrades[abilityUpgrades.IndexOf(CurrentUpgrade) + 1];
 
             if (!WalletManager.GetCurrency(CurrencyType.Crystal).TrySpend(nextUpgrade.priceToBreak)) return;
 
@@ -101,6 +101,7 @@ namespace _3._Scripts.Abilities.Scriptables
         }
 
         public AbilityUpgrade CurrentUpgrade => abilityUpgrades.FirstOrDefault(a => a.maxLevel == Save.maxLevel);
+        public AbilityUpgrade NextUpgrade => abilityUpgrades[abilityUpgrades.IndexOf(CurrentUpgrade) + 1];
 
         public bool MaxUpgraded => abilityUpgrades.IndexOf(CurrentUpgrade) >= abilityUpgrades.Count - 1 &&
                                    Level == CurrentUpgrade.maxLevel;

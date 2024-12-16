@@ -335,7 +335,7 @@ MonoBehaviour:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 76669619603046400
-    m_Localized: x{value} Rebirths
+    m_Localized: Unlock x{value}<sprite index=8>
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
@@ -362,12 +362,52 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 77713819723431936
     m_Localized: 'Attack your opponents {duration:plural: 1 second|{} seconfs}, dealing
-      {value}% damage with cooldown of  {cooldown:plural: 1 second|{} seconds}.'
+      {value}% damage with cooldown of  {cooldown:plural:1 second|{} seconds}.'
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
   - m_Id: 77714619975663616
     m_Localized: Whirlwind of rage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77747566443298816
+    m_Localized: Spurt of destruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77747593437839360
+    m_Localized: Make a dash, dealing enemies {value}% damage, with cooldown {cooldown:plural:1
+      second|{} seconds}.
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 77751101989912576
+    m_Localized: Dragon Strike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77751136433537024
+    m_Localized: Attack opponents by dealing {value}% damage with cooldown {cooldown:plural:1
+      second|{} seconds}.
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 77753327873490944
+    m_Localized: Attack opponents around you, dealing {value}% damage with cooldown
+      {cooldown:plural:1 second|{} seconds}.
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 77753296978247680
+    m_Localized: Ice Spikes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77753804983959552
+    m_Localized: Attack opponents by dealing {value}% damage with cooldown {cooldown:plural:1
+      second|{} seconds}.
+    m_Metadata:
+      m_Items:
+      - rid: 3203987063427825692
+  - m_Id: 77753756124512256
+    m_Localized: Meteor Summoning
     m_Metadata:
       m_Items: []
   references:
@@ -376,4 +416,4 @@ MonoBehaviour:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b010000817f97a50d010000817d814d1001000081e19c6210010000819d1a6810010000c1aa4e181401
+        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b010000817f97a50d010000817d814d1001000081e19c6210010000819d1a6810010000c1aa4e1814010000013906371401000001243f3a1401000001603d3c140100000176ac3c1401

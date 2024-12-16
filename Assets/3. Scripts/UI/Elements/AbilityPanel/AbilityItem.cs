@@ -13,12 +13,16 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
 {
     public class AbilityItem : CollectionItem<PlayerAbility, AbilityItem, Image>
     {
-        [Tab("Main")] [SerializeField] private PlayerAbility currentConfig;
+        [Tab("Main")] [SerializeField] private bool viewEvolution;
+
+
+        [SerializeField] private PlayerAbility currentConfig;
+        [SerializeField] private LocalizeStringEvent title;
+        [SerializeField] private LocalizeStringEvent description;
 
         [Tab("Unlock Parameters")] [SerializeField]
-        private LocalizeStringEvent description;
+        private LocalizeStringEvent rebirthCountText;
 
-        [SerializeField] private LocalizeStringEvent rebirthCountText;
         [SerializeField] private List<AbilityToUnlockItem> abilityToUnlockItems = new();
         [Tab("Components")] [SerializeField] private TMP_Text levelText;
         [SerializeField] private Transform lockedTransform;
@@ -27,8 +31,10 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
 
         public bool Unlocked => GBGames.saves.abilitiesSave.Unlocked(Config.ID);
 
-        protected override void OnAwake()
+
+        public void DefaultInitialize()
         {
+            if (currentConfig == null) return;
             Initialize(currentConfig);
         }
 
@@ -42,7 +48,6 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
 
             SetItemState(true);
             Config = config;
-
             UpdateItem();
         }
 
@@ -52,22 +57,32 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
 
             UpdateLockedState();
             UpdateDescription();
+            UpdateTitle();
+            UpdateLevel();
+        }
 
-            if (levelText)
-                levelText.text = $"{Config.Save.level}/{Config.Save.maxLevel}";
+        private void UpdateLevel()
+        {
+            if (!levelText) return;
+            var text = Config.NeedToBreak() && !Config.MaxUpgraded && viewEvolution
+                ? $"{Config.Save.level}/{Config.Save.maxLevel} > {Config.Save.level}/{Config.NextUpgrade.maxLevel}"
+                : $"{Config.Save.level}/{Config.Save.maxLevel}";
+            levelText.text = text;
         }
 
         private void UpdateUnlockParameters()
         {
             levelText?.gameObject.SetActive(Unlocked);
             UnlockItemsState(false);
+            rebirthCountText?.gameObject.SetActive(!Config.CanUnlock());
+            UnlockItemsState(false);
             rebirthCountText?.gameObject.SetActive(false);
 
-            if (Unlocked) return;
-
-            UpdateUnlockItems();
+            if (Unlocked || Config.CanUnlock()) return;
+            
             rebirthCountText?.gameObject.SetActive(true);
             rebirthCountText?.SetVariable("value", Config.RebornCountToUnlock);
+            UpdateUnlockItems();
         }
 
         private void UnlockItemsState(bool state)
@@ -82,13 +97,18 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
         {
             var unlockItemCount = abilityToUnlockItems.Count;
             var i = 0;
-
             foreach (var ability in Config.AbilitiesToUnlock.TakeWhile(_ => i < unlockItemCount))
             {
                 abilityToUnlockItems[i].gameObject.SetActive(true);
                 abilityToUnlockItems[i].Initialize(ability.Icon, ability.TitleID, Config.AbilityLevelToUnlock);
                 i++;
             }
+        }
+
+        private void UpdateTitle()
+        {
+            if (!title) return;
+            title.SetReference(Config.TitleID);
         }
 
         private void UpdateDescription()
@@ -116,6 +136,9 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
 
             if (description)
                 description.gameObject.SetActive(state);
+
+            if (title)
+                title.gameObject.SetActive(state);
 
             UnlockItemsState(state);
 

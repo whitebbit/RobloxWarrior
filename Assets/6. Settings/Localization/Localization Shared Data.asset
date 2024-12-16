@@ -349,6 +349,38 @@ MonoBehaviour:
     m_Key: spin_ability_title
     m_Metadata:
       m_Items: []
+  - m_Id: 77747566443298816
+    m_Key: dash_ability_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77747593437839360
+    m_Key: dash_ability_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77751101989912576
+    m_Key: dragon_ability_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77751136433537024
+    m_Key: dragon_ability_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77753296978247680
+    m_Key: ice_ability_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77753327873490944
+    m_Key: ice_ability_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77753756124512256
+    m_Key: meteor_ability_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77753804983959552
+    m_Key: meteor_ability_description
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

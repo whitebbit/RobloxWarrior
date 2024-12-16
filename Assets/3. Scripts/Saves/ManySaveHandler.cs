@@ -13,6 +13,8 @@ namespace _3._Scripts.Saves
         public List<T> selected = new();
         public List<T> unlocked = new();
 
+        public bool CanSelect => selected.Count != capacity;
+        
         public bool IsSelected(string id)
         {
             return selected.Exists(s => s.ID == id);
@@ -25,7 +27,7 @@ namespace _3._Scripts.Saves
 
         public void Select(T obj)
         {
-            if (selected.Count == capacity) return;
+            if (!CanSelect) return;
 
             selected.Add(obj);
             OnSelect?.Invoke(obj);
@@ -34,7 +36,7 @@ namespace _3._Scripts.Saves
         public void Select(string obj)
         {
             if (!Unlocked(obj)) return;
-            if (selected.Count == capacity) return;
+            if (!CanSelect) return;
 
             var item = unlocked.FirstOrDefault(s => s.ID == obj);
             selected.Add(item);

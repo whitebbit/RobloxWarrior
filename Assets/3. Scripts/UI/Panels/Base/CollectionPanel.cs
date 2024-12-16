@@ -27,7 +27,7 @@ namespace _3._Scripts.UI.Panels.Base
 
         protected TItem SelectedItem;
         protected abstract TConfig CurrentConfig { get; }
-        protected readonly List<TItem> Items = new();
+        protected List<TItem> Items = new();
 
         public override void Initialize()
         {
