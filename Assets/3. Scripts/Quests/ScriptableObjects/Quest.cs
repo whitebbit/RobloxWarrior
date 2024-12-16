@@ -25,6 +25,7 @@ namespace _3._Scripts.Quests.ScriptableObjects
 
         public void Deactivate()
         {
+            OnProgressUpdate = null;
             QuestEventManager.Instance.UnregisterListener(Type, this);
         }
 

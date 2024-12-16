@@ -393,6 +393,22 @@ MonoBehaviour:
     m_Key: start_battle
     m_Metadata:
       m_Items: []
+  - m_Id: 77839354621394944
+    m_Key: equip_best
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77840449586397184
+    m_Key: delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77840801853407232
+    m_Key: combine_all
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77841427630981120
+    m_Key: rebirth
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

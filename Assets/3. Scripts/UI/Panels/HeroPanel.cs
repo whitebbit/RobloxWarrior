@@ -19,7 +19,7 @@ using VInspector;
 
 namespace _3._Scripts.UI.Panels
 {
-    public class HeroPanel : CollectionPanel<HeroItem, HeroConfig, RawImage>
+    public class HeroPanel : CollectionPanel<HeroItem, HeroConfig, Image>
     {
         [SerializeField] private HeroItem prefab;
         [Tab("Buttons")] [SerializeField] private Button unlockButton;

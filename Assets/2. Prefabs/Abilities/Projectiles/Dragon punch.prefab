@@ -44132,6 +44132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615aeda92ec84d29a99af967749c77f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particles: []
+  detector: {fileID: 0}
 --- !u!136 &6602662986154641293
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -44151,7 +44153,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
   m_Height: 5
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 2.17}

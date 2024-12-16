@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace _3._Scripts.UI.Elements.HeroPanel
 {
-    public class HeroItem : CollectionItem<HeroConfig, HeroItem, RawImage>
+    public class HeroItem : CollectionItem<HeroConfig, HeroItem, Image>
     {
         [SerializeField] private LocalizeStringEvent description;
         [SerializeField] private List<PassiveEffectItem> passiveEffects = new();
@@ -37,7 +37,7 @@ namespace _3._Scripts.UI.Elements.HeroPanel
 
         public void UpdateItem()
         {
-            icon.texture = Config.Icon;
+            icon.sprite = Config.Icon;
             var i = 0;
 
             foreach (var passiveEffect in passiveEffects)

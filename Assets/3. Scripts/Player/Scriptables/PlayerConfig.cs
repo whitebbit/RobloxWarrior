@@ -50,7 +50,8 @@ namespace _3._Scripts.Player.Scriptables
     [Serializable]
     public class PlayerStatsConfig
     {
-        [Header("Experience")] [SerializeField, Tooltip("Базовое количество опыта, необходимое для следующего уровня.")]
+        [Header("Experience")] 
+        [SerializeField, Tooltip("Базовое количество опыта, необходимое для следующего уровня.")]
         private float baseExperience = 25f;
 
         [SerializeField, Tooltip("Множитель, который увеличивает базовый опыт.")]

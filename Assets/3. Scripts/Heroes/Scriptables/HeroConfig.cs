@@ -8,9 +8,13 @@ using VInspector;
 namespace _3._Scripts.Heroes.Scriptables
 {
     [CreateAssetMenu(fileName = "HeroConfig", menuName = "Configs/Heroes/Hero Config", order = 0)]
-    public class HeroConfig : ConfigObject<Texture2D>
+    public class HeroConfig : ConfigObject<Sprite>
     {
-        [Tab("Base")] [SerializeField] private HeroAbility ability;
+        [Tab("Base")] [SerializeField]
+        private Sprite icon;
+
+        
+        [SerializeField] private HeroAbility ability;
         [SerializeField] private List<PassiveEffect> passiveEffects = new(2);
 
         [SerializeField] private MovementConfig movementConfig = new();
@@ -25,6 +29,6 @@ namespace _3._Scripts.Heroes.Scriptables
         public UnitAnimationConfig AnimationConfig => animationConfig;
 
         public HeroAbility Ability => ability;
-        public override Texture2D Icon => RuntimeHeroIconRenderer.Instance.GetTexture(ID);
+        public override Sprite Icon => icon;
     }
 }

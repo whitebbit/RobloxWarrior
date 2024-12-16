@@ -15,6 +15,7 @@ MonoBehaviour:
   id: hero_test1
   titleID: 
   descriptionID: 
+  icon: {fileID: 21300000, guid: 2295ad6ea3c4da143b469e7257c96325, type: 3}
   ability: {fileID: 11400000, guid: db8c5b2a97e939f4995ad4af770be86b, type: 2}
   passiveEffects:
   - type: 1

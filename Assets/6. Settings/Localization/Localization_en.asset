@@ -422,6 +422,22 @@ MonoBehaviour:
     m_Localized: Start the battle!
     m_Metadata:
       m_Items: []
+  - m_Id: 77839354621394944
+    m_Localized: Equip Best
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77840449586397184
+    m_Localized: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77840801853407232
+    m_Localized: Combine all
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77841427630981120
+    m_Localized: Rebirth
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
