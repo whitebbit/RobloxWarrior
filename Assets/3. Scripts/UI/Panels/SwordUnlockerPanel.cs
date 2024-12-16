@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _3._Scripts.Config;
 using _3._Scripts.Extensions;
 using _3._Scripts.Localization;
+using _3._Scripts.Sounds;
 using _3._Scripts.Swords.Scriptables;
 using _3._Scripts.UI.Elements.SwordUnlocker;
 using _3._Scripts.UI.Extensions;
@@ -29,6 +30,7 @@ namespace _3._Scripts.UI.Panels
         private int _eggsCount;
         private Sequence _sequenceTutorial;
         private bool _autoOpen;
+
         protected override void OnOpen()
         {
             base.OnOpen();
@@ -65,16 +67,16 @@ namespace _3._Scripts.UI.Panels
         public void EnableAutoOpen(Action onDisable)
         {
             _autoOpen = true;
-            
+
             disableAutoOpen.gameObject.SetActive(true);
-            
+
             disableAutoOpen.onClick.RemoveAllListeners();
             disableAutoOpen.onClick.AddListener(() =>
             {
                 onDisable?.Invoke();
                 DisableAutoOpen();
             });
-            
+
             StartCoroutine(AutoOpen());
         }
 
@@ -83,13 +85,14 @@ namespace _3._Scripts.UI.Panels
             _autoOpen = false;
             disableAutoOpen.gameObject.SetActive(false);
         }
-        
+
         private void Update()
         {
             if (!_started) return;
 
             if (!Input.GetMouseButtonDown(0)) return;
 
+            AudioManager.Instance.PlaySound("get_damage");
             DamageEgg();
         }
 
@@ -118,7 +121,7 @@ namespace _3._Scripts.UI.Panels
 
         private IEnumerator AutoOpen()
         {
-            if(!_autoOpen) yield break;
+            if (!_autoOpen) yield break;
 
             while (true)
             {

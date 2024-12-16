@@ -1,4 +1,5 @@
 ﻿using _3._Scripts.Game;
+using _3._Scripts.Sounds;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Widgets;
 using _3._Scripts.Units;
@@ -21,6 +22,7 @@ namespace _3._Scripts.Player
         public void Die()
         {
             _unitVFX?.OnDeath();
+            AudioManager.Instance.PlaySound("lose");
             UIManager.Instance.GetWidget<LoseWidget>().Enabled = true;
             WorldsManager.Instance.World.StopBattle();
             GameEvents.WaveFailed();

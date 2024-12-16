@@ -1,6 +1,7 @@
 ﻿using _3._Scripts.Localization;
 using _3._Scripts.Quests;
 using _3._Scripts.Quests.ScriptableObjects;
+using _3._Scripts.Sounds;
 using _3._Scripts.UI.Extensions;
 using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Transitions;
@@ -53,6 +54,7 @@ namespace _3._Scripts.UI.Widgets
 
         private void Complete()
         {
+            AudioManager.Instance.PlaySound("quest_complete");
             particle.gameObject.SetActive(true);
             completedImage.DOFade(1, 0.25f);
         }

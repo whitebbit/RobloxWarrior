@@ -1,4 +1,5 @@
 ﻿using System;
+using _3._Scripts.Sounds;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -49,6 +50,7 @@ namespace _3._Scripts.UI.Extensions
         private void UpdateTimerText()
         {
             timerText.text = _countdownValue.ToString();
+            AudioManager.Instance.PlaySound("timer");
         }
 
         private void OnCountdownComplete()

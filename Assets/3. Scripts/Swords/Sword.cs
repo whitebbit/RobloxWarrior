@@ -3,6 +3,7 @@ using _3._Scripts.Config;
 using _3._Scripts.Extensions;
 using _3._Scripts.Pool;
 using _3._Scripts.Saves;
+using _3._Scripts.Sounds;
 using _3._Scripts.Swords.Scriptables;
 using _3._Scripts.UI.Extensions;
 using _3._Scripts.Weapons.Base;
@@ -65,6 +66,7 @@ namespace _3._Scripts.Swords
         public override void Attack()
         {
             Detector.FindTargets();
+            AudioManager.Instance.PlaySound("sword_attack");
         }
 
         protected override float GetDamage()

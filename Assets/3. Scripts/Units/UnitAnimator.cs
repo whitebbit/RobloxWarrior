@@ -70,11 +70,11 @@ namespace _3._Scripts.Units
 
 
             events.Clear();
-            events.Add(0.9f, () =>
+            events.Add(1, () =>
             {
-                DOTween.To(() => MainLayer.Weight, x => MainLayer.Weight = x, 1, FadeDuration);
-                DOTween.To(() => AttackLayer.Weight, x => AttackLayer.Weight = x, 1, FadeDuration);
-                DOTween.To(() => AdditionalLayer.Weight, x => AdditionalLayer.Weight = x, 0, FadeDuration)
+                DOTween.To(() => MainLayer.Weight, x => MainLayer.Weight = x, 1, FadeDuration * 0.5f);
+                DOTween.To(() => AttackLayer.Weight, x => AttackLayer.Weight = x, 1, FadeDuration * 0.5f);
+                DOTween.To(() => AdditionalLayer.Weight, x => AdditionalLayer.Weight = x, 0, FadeDuration * 0.5f)
                     .OnComplete(() => onComplete?.Invoke());
             });
         }

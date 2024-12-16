@@ -2,6 +2,7 @@
 using _3._Scripts.Config;
 using _3._Scripts.Extensions;
 using _3._Scripts.Localization;
+using _3._Scripts.Sounds;
 using _3._Scripts.Swords.Scriptables;
 using _3._Scripts.UI.Extensions;
 using DG.Tweening;
@@ -84,7 +85,11 @@ namespace _3._Scripts.UI.Elements.SwordUnlocker
             if (_eggHealth > 0) return;
 
             egg.transform.DOScale(0, eggShrinkDuration)
-                .OnComplete(() => SwordAnimation(_currentSword))
+                .OnComplete(() =>
+                {
+                    AudioManager.Instance.PlaySound("open_egg");
+                    SwordAnimation(_currentSword);
+                })
                 .SetDelay(1)
                 .SetEase(Ease.InBack);
 

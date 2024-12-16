@@ -1,5 +1,6 @@
 ﻿using _3._Scripts.Abilities.Interfaces;
 using _3._Scripts.Abilities.Scriptables;
+using _3._Scripts.Sounds;
 using UnityEngine;
 using VInspector;
 
@@ -22,6 +23,8 @@ namespace _3._Scripts.Abilities.PlayerAbilities
             projectile.Initialize(context.Unit.transform.forward, Damage, speed, lifetime);
 
             Completed = false;
+            AudioManager.Instance.PlaySound(ID);
+
             context.Animator.DoAnimation(animation, () =>
             {
                 Completed = true;

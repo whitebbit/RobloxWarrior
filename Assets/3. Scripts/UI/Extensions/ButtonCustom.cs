@@ -1,26 +1,32 @@
-﻿using DG.Tweening;
+﻿using _3._Scripts.Sounds;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace _3._Scripts.UI.Extensions
 {
-    public class ButtonCustom: Button
+    public class ButtonCustom : Button
     {
-        private RectTransform _rectTransform; 
-        private Vector3 _originalScale;        
-        public float scaleFactor = 1.05f;     
+        private RectTransform _rectTransform;
+        private Vector3 _originalScale;
+        public float scaleFactor = 1.05f;
 
         protected override void Start()
         {
-            base.Start();  
+            base.Start();
             _rectTransform = GetComponent<RectTransform>();
             _originalScale = _rectTransform.localScale;
         }
 
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            base.OnPointerClick(eventData);
+            AudioManager.Instance.PlaySound("button_click");
+        }
+
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            
             base.OnPointerEnter(eventData);
             _rectTransform.DOScale(_originalScale * scaleFactor, 0.15f);
         }

@@ -12,8 +12,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0fdb951c3943f5bf3473d767f87f77, type: 3}
   m_Name: SoundDatabase
   m_EditorClassIdentifier: 
-  _sounds:
-  - id: 
+  sounds:
+  - id: dash_ability
     audioClips:
-    - {fileID: 0}
-    volume: 0
+    - {fileID: 8300000, guid: 8789f6a119f0d413b9ac7d94542888d8, type: 3}
+    - {fileID: 8300000, guid: 5a37f4965c1c34af594dd64bb5632b65, type: 3}
+    - {fileID: 8300000, guid: 27c26498491df4b3186cdf3570643c59, type: 3}
+    volume: 0.5
+  - id: meteor_ability
+    audioClips:
+    - {fileID: 8300000, guid: e7851e594610c49fe913d560cc05f950, type: 3}
+    - {fileID: 8300000, guid: b7c481ef80bcd42b5b8714a65d218fc8, type: 3}
+    - {fileID: 8300000, guid: 94acdfee8caca495d97bd13fac748563, type: 3}
+    volume: 0.5
+  - id: spin_ability
+    audioClips:
+    - {fileID: 8300000, guid: 5bac6f4cec8a04855a6c7c3e891ab2cb, type: 3}
+    - {fileID: 8300000, guid: fb1d96794b83d41adacae97e27b1e70c, type: 3}
+    - {fileID: 8300000, guid: 5b6d71bfb957c4322970b3f1f13aa31c, type: 3}
+    volume: 0.5
+  - id: dragon_ability
+    audioClips:
+    - {fileID: 8300000, guid: e7851e594610c49fe913d560cc05f950, type: 3}
+    - {fileID: 8300000, guid: b7c481ef80bcd42b5b8714a65d218fc8, type: 3}
+    - {fileID: 8300000, guid: 94acdfee8caca495d97bd13fac748563, type: 3}
+    volume: 0.5
+  - id: get_damage
+    audioClips:
+    - {fileID: 8300000, guid: c8ffa2f1b3f724813888410f84ac35a5, type: 3}
+    - {fileID: 8300000, guid: 08d976f6c01624fc2a87f39da2af3cfb, type: 3}
+    - {fileID: 8300000, guid: eab8e344fff1f46caa15966d23ee1a6c, type: 3}
+    - {fileID: 8300000, guid: 721d4d8f4f8774171829a07f2fb3e11b, type: 3}
+    - {fileID: 8300000, guid: 256675968a4544e058f7eedcaaa095b2, type: 3}
+    - {fileID: 8300000, guid: a55108afa8fb5447fbcbad029e0992bc, type: 3}
+    volume: 0.2
+  - id: sword_attack
+    audioClips:
+    - {fileID: 8300000, guid: abf4caad1f5a24e49a317937ebf12163, type: 3}
+    volume: 0.15
+  - id: button_click
+    audioClips:
+    - {fileID: 8300000, guid: 3a87b8113979818499a7e9d8a15109a2, type: 3}
+    volume: 1
+  - id: level_up
+    audioClips:
+    - {fileID: 8300000, guid: 9a79e0f31e6611e49bbaa9c1b6cc6627, type: 3}
+    volume: 0.2
+  - id: open_egg
+    audioClips:
+    - {fileID: 8300000, guid: 82eeabc7374620a48a3306d8e86e5842, type: 3}
+    volume: 0.5
+  - id: lose
+    audioClips:
+    - {fileID: 8300000, guid: 5ab27d4d9a0c7a342a2c5fab98edb778, type: 3}
+    volume: 0.5
+  - id: get_reward
+    audioClips:
+    - {fileID: 8300000, guid: ba8b12c3f3f4349428eee660d70fa13d, type: 3}
+    volume: 0.5
+  - id: wave_passed
+    audioClips:
+    - {fileID: 8300000, guid: dd3cda4baf377a745b8e7bce2340dec8, type: 3}
+    volume: 0.5
+  - id: quest_complete
+    audioClips:
+    - {fileID: 8300000, guid: 3530db11952401a458b9edcc7b9aed56, type: 3}
+    volume: 0.5
+  - id: timer
+    audioClips:
+    - {fileID: 8300000, guid: d894a5fb97d1604489f0acf18185cc39, type: 3}
+    volume: 0.5
+  - id: ice_ability
+    audioClips:
+    - {fileID: 8300000, guid: 3ccffbd25be8a42ee9e76df2c73b9c4b, type: 3}
+    - {fileID: 8300000, guid: 224365ba7abf74598a324fcbe7632a6d, type: 3}
+    - {fileID: 8300000, guid: 58e5ce12f16fa4a8a878524ef40494ec, type: 3}
+    volume: 0.5

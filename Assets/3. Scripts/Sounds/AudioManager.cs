@@ -23,19 +23,16 @@ namespace _3._Scripts.Sounds
             var clip = sound.AudioClips[Random.Range(0, sound.AudioClips.Count)];
             var finalVolume = volume > 0 ? volume : sound.Volume;
 
-            for (var i = 0; i < repeatCount; i++)
-            {
-                var obj = ObjectsPoolManager.Instance.Get<AudioObject>();
-                obj.Initialize(clip, finalVolume, loop);
-                if (loop)
-                    _activeLoops[id] = obj;
-            }
+            var obj = ObjectsPoolManager.Instance.Get<AudioObject>();
+            obj.Initialize(clip, finalVolume, repeatCount, loop);
+            if (loop)
+                _activeLoops[id] = obj;
         }
 
         public void StopLoop(string id)
         {
             if (!_activeLoops.TryGetValue(id, out var source)) return;
-            
+
             ObjectsPoolManager.Instance.Return(source);
             _activeLoops.Remove(id);
         }

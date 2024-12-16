@@ -1,6 +1,7 @@
 ﻿using _3._Scripts.Abilities.Interfaces;
 using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Player;
+using _3._Scripts.Sounds;
 using UnityEngine;
 using VInspector;
 
@@ -35,6 +36,8 @@ namespace _3._Scripts.Abilities.PlayerAbilities
             p.transform.localEulerAngles = Vector3.zero;
             p.Initialize(Vector3.zero, Damage, 0, lifeTime);
             movement.MoveInDirection(context.Unit.transform.forward, distance, speed);
+            AudioManager.Instance.PlaySound(ID);
+
         }
     }
 }

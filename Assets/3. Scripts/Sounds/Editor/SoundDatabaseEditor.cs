@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Sounds.Scriptables;
+﻿using System;
+using _3._Scripts.Sounds.Scriptables;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,10 +9,12 @@ namespace _3._Scripts.Sounds.Editor
     public class SoundDatabaseEditor : UnityEditor.Editor
     {
         private SerializedProperty soundsProperty;
+        private bool[] foldouts; // Массив для хранения состояния сворачивания для каждого элемента
 
         private void OnEnable()
         {
-            soundsProperty = serializedObject.FindProperty("_sounds");
+            soundsProperty = serializedObject.FindProperty("sounds");
+            foldouts = new bool[soundsProperty.arraySize]; // Инициализация массива сворачивания
         }
 
         public override void OnInspectorGUI()
@@ -25,13 +28,19 @@ namespace _3._Scripts.Sounds.Editor
             {
                 EditorGUILayout.HelpBox("No sounds in the database. Add some sounds.", MessageType.Info);
             }
-// Add new sound button
+
+            // Add new sound button (new element is added at the start)
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Add Sound"))
             {
-                soundsProperty.arraySize++;
+                soundsProperty.InsertArrayElementAtIndex(0); // Add new element at the start
+                Array.Resize(ref foldouts, soundsProperty.arraySize); // Resize foldouts array
+                foldouts[0] = true; // Set the new element to be expanded by default
             }
+
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginVertical("box");
             for (int i = 0; i < soundsProperty.arraySize; i++)
             {
                 var sound = soundsProperty.GetArrayElementAtIndex(i);
@@ -39,59 +48,69 @@ namespace _3._Scripts.Sounds.Editor
                 var clipsProperty = sound.FindPropertyRelative("audioClips");
                 var volumeProperty = sound.FindPropertyRelative("volume");
 
-                // Start a vertical group for each sound
-                EditorGUILayout.BeginVertical(GUI.skin.box);
-                EditorGUILayout.PropertyField(idProperty, new GUIContent("Sound ID"));
-                EditorGUILayout.PropertyField(volumeProperty, new GUIContent("Volume"));
-                
+                // Add Foldout for each item
                 EditorGUILayout.BeginHorizontal();
-
-                EditorGUILayout.LabelField("Audio Clips", EditorStyles.boldLabel);
-                if (GUILayout.Button("Add Clip"))
+                foldouts[i] = EditorGUILayout.Foldout(foldouts[i], $"Sound: {idProperty.stringValue}");
+                if (GUILayout.Button("Remove"))
                 {
-                    clipsProperty.arraySize++;
+                    soundsProperty.DeleteArrayElementAtIndex(i);
+                    soundsProperty.DeleteArrayElementAtIndex(i); // Ensure that the element is fully removed
+                    Array.Resize(ref foldouts, soundsProperty.arraySize); // Re-resize foldouts array after deletion
+                    break; // Break out of the loop to avoid errors in array resizing
                 }
+
                 EditorGUILayout.EndHorizontal();
 
-                EditorGUI.indentLevel++;
-
-                if (clipsProperty.arraySize == 0)
+                if (foldouts[i])
                 {
-                    EditorGUILayout.HelpBox("No clips added. Click 'Add Clip' to add a new clip.", MessageType.Info);
-                }
-
-                for (int j = 0; j < clipsProperty.arraySize; j++)
-                {
-                    var clipElement = clipsProperty.GetArrayElementAtIndex(j);
+                    // Show sound properties
+                    EditorGUILayout.BeginVertical(GUI.skin.box);
+                    EditorGUILayout.PropertyField(idProperty, new GUIContent("Sound ID"));
+                    EditorGUILayout.PropertyField(volumeProperty, new GUIContent("Volume"));
 
                     EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.PropertyField(clipElement, GUIContent.none);
-
-                    // Remove clip button
-                    if (GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(18)))
+                    GUILayout.Label("Clips", EditorStyles.boldLabel);
+                    if (GUILayout.Button("Add Clip"))
                     {
-                        clipsProperty.DeleteArrayElementAtIndex(j);
-                        break; // Exit the loop early to prevent issues with index shifting
+                        clipsProperty.arraySize++;
                     }
 
                     EditorGUILayout.EndHorizontal();
+
+                    EditorGUI.indentLevel++;
+
+                    if (clipsProperty.arraySize == 0)
+                    {
+                        EditorGUILayout.HelpBox("No clips added. Click 'Add Clip' to add a new clip.",
+                            MessageType.Info);
+                    }
+
+                    for (int j = 0; j < clipsProperty.arraySize; j++)
+                    {
+                        var clipElement = clipsProperty.GetArrayElementAtIndex(j);
+
+                        EditorGUILayout.BeginHorizontal();
+                        EditorGUILayout.PropertyField(clipElement, GUIContent.none);
+
+                        // Remove clip button
+                        if (GUILayout.Button("X", GUILayout.Width(20), GUILayout.Height(18)))
+                        {
+                            clipsProperty.DeleteArrayElementAtIndex(j);
+                            break; // Break out of the loop to avoid errors due to index change
+                        }
+
+                        EditorGUILayout.EndHorizontal();
+                    }
+
+                    EditorGUI.indentLevel--;
+
+                    EditorGUILayout.EndVertical();
                 }
 
-                EditorGUI.indentLevel--;
-                EditorGUILayout.BeginHorizontal();
-               
-                if (GUILayout.Button("Remove Sound"))
-                {
-                    soundsProperty.DeleteArrayElementAtIndex(i);
-                    break; // Exit early to avoid changing index during iteration
-                }
-                EditorGUILayout.EndHorizontal();
-
-                EditorGUILayout.EndVertical();
                 EditorGUILayout.Space();
             }
 
-            
+            EditorGUILayout.EndVertical();
 
             serializedObject.ApplyModifiedProperties();
         }

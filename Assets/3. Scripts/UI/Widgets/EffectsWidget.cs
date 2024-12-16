@@ -3,6 +3,7 @@ using System.Linq;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Pool;
+using _3._Scripts.Sounds;
 using _3._Scripts.UI.Elements.EffectsWidget;
 using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Transitions;
@@ -58,6 +59,7 @@ namespace _3._Scripts.UI.Widgets
                         .OnComplete(() => widget.transform.DOScale(1f, 0.15f));
                     
                     WalletManager.GetCurrency(type).Value += amount;
+                    AudioManager.Instance.PlaySound("get_reward");
                     ObjectsPoolManager.Instance.Return(item);
                     Enabled = false;
                 });

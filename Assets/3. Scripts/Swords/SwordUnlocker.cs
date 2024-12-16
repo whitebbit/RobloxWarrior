@@ -76,7 +76,9 @@ namespace _3._Scripts.Swords
 
         private void AutoOpen()
         {
-            _autoOpen = true;
+            if (WalletManager.GetCurrency(CurrencyType.Crystal).Value >= _price)
+                _autoOpen = true;
+
             Open(1);
         }
 

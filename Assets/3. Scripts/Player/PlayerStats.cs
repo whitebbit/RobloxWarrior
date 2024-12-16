@@ -6,6 +6,7 @@ using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Player.Scriptables;
 using _3._Scripts.Saves;
+using _3._Scripts.Sounds;
 using _3._Scripts.UI.Enums;
 using GBGamesPlugin;
 using UnityEngine;
@@ -50,7 +51,7 @@ namespace _3._Scripts.Player
                 Save.experience -= ExperienceToLevelUp();
                 Level += 1;
                 UpgradePoints += 1;
-
+                AudioManager.Instance.PlaySound("level_up");
                 OnLevelChange?.Invoke(Level);
                 OnExperienceChanged?.Invoke(Save.experience);
             }

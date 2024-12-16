@@ -1,4 +1,5 @@
 ﻿using System;
+using _3._Scripts.Sounds;
 using UnityEngine;
 
 namespace _3._Scripts.Units
@@ -30,8 +31,8 @@ namespace _3._Scripts.Units
                 throw new ArgumentOutOfRangeException(nameof(totalDamage), "Damage cannot be negative.");
 
             _health.Health -= totalDamage;
-
             _vfx?.OnHit();
+            AudioManager.Instance.PlaySound("get_damage");
         }
 
         private float ProcessDamage(float damage)

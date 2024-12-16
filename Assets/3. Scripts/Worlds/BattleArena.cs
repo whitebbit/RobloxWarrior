@@ -7,6 +7,7 @@ using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Game;
 using _3._Scripts.Pool;
+using _3._Scripts.Sounds;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements.EffectsWidget;
 using _3._Scripts.UI.Widgets;
@@ -65,10 +66,10 @@ namespace _3._Scripts.Worlds
         {
             GameEvents.WavePassed();
             GameEvents.WaveCompleted(_waveIndex + 1);
-            Reward();
 
             if (_waveIndex >= _waves.Count - 1)
             {
+                WorldsManager.Instance.World.StopBattle();
             }
             else
             {
@@ -78,6 +79,7 @@ namespace _3._Scripts.Worlds
 
         private void Reward()
         {
+            AudioManager.Instance.PlaySound("wave_passed");
             UIManager.Instance.GetWidget<EffectsWidget>().Enabled = true;
             UIManager.Instance.GetWidget<EffectsWidget>()
                 .ShowCurrency(CurrencyType.Crystal, _waves[_waveIndex].CrystalAmount);
@@ -92,6 +94,7 @@ namespace _3._Scripts.Worlds
         private IEnumerator CheckWaveEnd()
         {
             yield return new WaitUntil(() => _bots.All(b => b.Dying.IsDead));
+            Reward();
             yield return new WaitForSeconds(2f);
             WavePassed();
         }
