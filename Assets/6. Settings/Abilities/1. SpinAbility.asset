@@ -21,27 +21,27 @@ MonoBehaviour:
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades:
-  - priceToBreak: 500
+  - priceToBreak: 200
     maxLevel: 1
-  - priceToBreak: 1000
+  - priceToBreak: 440
     maxLevel: 6
   - priceToBreak: 1500
     maxLevel: 11
-  - priceToBreak: 2000
+  - priceToBreak: 3400
     maxLevel: 17
-  - priceToBreak: 2500
+  - priceToBreak: 7700
     maxLevel: 22
-  - priceToBreak: 3000
+  - priceToBreak: 15000
     maxLevel: 27
-  - priceToBreak: 3500
+  - priceToBreak: 22500
     maxLevel: 32
-  - priceToBreak: 4000
+  - priceToBreak: 34000
     maxLevel: 37
   rebornCountToUnlock: 1
   abilitiesToUnlock: []
   abilityLevelToUnlock: 0
   projectilePrefab: {fileID: 672802322284079030, guid: b0ecf7b6ba26f2348870d022b63db3bf, type: 3}
   animation: {fileID: 7400000, guid: bb6bc8a9d8dc512438abbd5122856bd2, type: 3}
-  duration: 2.5
+  duration: 4
   interval: 0.25
   radius: 5

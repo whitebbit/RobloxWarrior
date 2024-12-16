@@ -21,21 +21,21 @@ MonoBehaviour:
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades:
-  - priceToBreak: 500
-    maxLevel: 1
   - priceToBreak: 1000
-    maxLevel: 6
-  - priceToBreak: 1500
-    maxLevel: 11
-  - priceToBreak: 2000
-    maxLevel: 17
-  - priceToBreak: 2500
-    maxLevel: 22
-  - priceToBreak: 3000
-    maxLevel: 27
+    maxLevel: 1
   - priceToBreak: 3500
+    maxLevel: 6
+  - priceToBreak: 9000
+    maxLevel: 11
+  - priceToBreak: 17500
+    maxLevel: 17
+  - priceToBreak: 26700
+    maxLevel: 22
+  - priceToBreak: 32000
+    maxLevel: 27
+  - priceToBreak: 40000
     maxLevel: 32
-  - priceToBreak: 4000
+  - priceToBreak: 51000
     maxLevel: 37
   rebornCountToUnlock: 7
   abilitiesToUnlock:
