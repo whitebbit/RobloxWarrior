@@ -16,26 +16,26 @@ MonoBehaviour:
   titleID: meteor_ability_title
   descriptionID: meteor_ability_description
   icon: {fileID: 21300000, guid: daf757900d9272441a33cf727728c65a, type: 3}
-  cooldown: 1
-  baseDamagePercent: 200
+  cooldown: 20
+  baseDamagePercent: 265
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades:
-  - priceToBreak: 500
+  - priceToBreak: 2100
     maxLevel: 1
-  - priceToBreak: 1000
+  - priceToBreak: 5300
     maxLevel: 6
-  - priceToBreak: 1500
+  - priceToBreak: 12000
     maxLevel: 11
-  - priceToBreak: 2000
+  - priceToBreak: 21000
     maxLevel: 17
-  - priceToBreak: 2500
+  - priceToBreak: 33000
     maxLevel: 22
-  - priceToBreak: 3000
+  - priceToBreak: 45000
     maxLevel: 27
-  - priceToBreak: 3500
+  - priceToBreak: 59000
     maxLevel: 32
-  - priceToBreak: 4000
+  - priceToBreak: 68300
     maxLevel: 37
   rebornCountToUnlock: 7
   abilitiesToUnlock:

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Y. Imported Assets/JMO Assets/Cartoon FX 3 (old legacy effects).unitypackage.meta
 guid: ce7fa7ff8df2f1746a2065d3e3afa0a3
+========
+guid: 12bedc43a7025aa4982b8ba856228f81
+>>>>>>>> ddc9f16a2a542856e81d293ba4c73bcc8a5976f3:Assets/ARPG Effects/Upgrades/ARPGFX URP Upgrade (2019.3.10f1).unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

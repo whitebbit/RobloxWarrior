@@ -17,25 +17,25 @@ MonoBehaviour:
   descriptionID: dash_ability_description
   icon: {fileID: 21300000, guid: d812e352f3874aa4d80868c6f4b39a7e, type: 3}
   cooldown: 10
-  baseDamagePercent: 5000
+  baseDamagePercent: 110
   damageBoosterRatio: 0.1
   damageBoosterBonus: 0.01
   abilityUpgrades:
-  - priceToBreak: 500
+  - priceToBreak: 5000
     maxLevel: 1
-  - priceToBreak: 1000
+  - priceToBreak: 16000
     maxLevel: 6
-  - priceToBreak: 1500
+  - priceToBreak: 31000
     maxLevel: 11
-  - priceToBreak: 2000
+  - priceToBreak: 53400
     maxLevel: 17
-  - priceToBreak: 2500
+  - priceToBreak: 67900
     maxLevel: 22
-  - priceToBreak: 3000
+  - priceToBreak: 75900
     maxLevel: 27
-  - priceToBreak: 3500
+  - priceToBreak: 88400
     maxLevel: 32
-  - priceToBreak: 4000
+  - priceToBreak: 99000
     maxLevel: 37
   rebornCountToUnlock: 10
   abilitiesToUnlock:
