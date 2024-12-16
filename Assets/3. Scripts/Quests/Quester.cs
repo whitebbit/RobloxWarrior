@@ -9,9 +9,9 @@ using _3._Scripts.UI.Panels;
 using _3._Scripts.UI.Transitions;
 using _3._Scripts.UI.Widgets;
 using _3._Scripts.Worlds;
-using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace _3._Scripts.Quests
 {
@@ -22,7 +22,7 @@ namespace _3._Scripts.Quests
         [SerializeField] private List<QuestMark> marks = new();
 
 
-        private WorldSave Save => GBGames.saves.worldSave;
+        private WorldSave Save => YG2.saves.worldSave;
 
         private Quest CurrentQuest =>
             Save.questSave.GetCurrentQuest(Save.worldName) >= WorldsManager.Instance.World.Quests.Count

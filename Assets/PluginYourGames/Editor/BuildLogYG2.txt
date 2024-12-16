@@ -1,0 +1,3 @@
+Build path: D:/Yang/builds/Warrior
+Build number: 1
+PluginYG version: 2.002

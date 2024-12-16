@@ -4,7 +4,6 @@ using _3._Scripts.Config;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
 using DG.Tweening;
-using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -53,9 +52,7 @@ namespace _3._Scripts.Debugger
             enableArrow.transform.eulerAngles = rotation;
         }
 
-        public void Save() => GBGames.Save();
 
-        public void DeleteSaves() => GBGames.Delete();
 
         public void Add1000FirstCurrency() => WalletManager.GetCurrency(CurrencyType.Crystal).Value += 1000;
         public void Add1000SecondCurrency() => WalletManager.GetCurrency(CurrencyType.SkillPoints).Value += 1000;

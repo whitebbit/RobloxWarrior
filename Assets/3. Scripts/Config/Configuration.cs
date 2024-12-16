@@ -15,9 +15,9 @@ using _3._Scripts.Swords.Scriptables;
 using _3._Scripts.UI.Enums;
 using _3._Scripts.UI.Structs;
 using _3._Scripts.Worlds.Scriptables;
-using GBGamesPlugin;
 using UnityEngine;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.Config
 {
@@ -38,7 +38,7 @@ namespace _3._Scripts.Config
 
         private void Start()
         {
-            GBGames.GameReady();
+            YG2.GameReadyAPI();
             ResetContext();
         }
 

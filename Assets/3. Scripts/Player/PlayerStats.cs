@@ -8,15 +8,15 @@ using _3._Scripts.Player.Scriptables;
 using _3._Scripts.Saves;
 using _3._Scripts.Sounds;
 using _3._Scripts.UI.Enums;
-using GBGamesPlugin;
 using UnityEngine;
+using YG;
 
 namespace _3._Scripts.Player
 {
     public class PlayerStats
     {
         private static PlayerStatsConfig Config => Configuration.Instance.Config.PlayerConfig.StatsConfig;
-        private static PlayerStatsSave Save => GBGames.saves.stats;
+        private static PlayerStatsSave Save => YG2.saves.stats;
 
         #region Experience
 

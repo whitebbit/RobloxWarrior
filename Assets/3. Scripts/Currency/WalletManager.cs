@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Currency.Enums;
-using GBGamesPlugin;
 
 namespace _3._Scripts.Currency
 {
     public static class WalletManager
     {
-        private static List<CurrencyObject> _currencyObjects = new()
+        private static readonly List<CurrencyObject> CurrencyObjects = new()
         {
             new CurrencyObject(CurrencyType.Crystal),
             new CurrencyObject(CurrencyType.HeroPoints),
@@ -17,7 +15,7 @@ namespace _3._Scripts.Currency
 
 
         public static CurrencyObject GetCurrency(CurrencyType currencyType) =>
-            _currencyObjects.FirstOrDefault(c => c.Type == currencyType);
+            CurrencyObjects.FirstOrDefault(c => c.Type == currencyType);
 
         private static string ConvertToWallet(this decimal number, decimal threshold = 1_000)
         {

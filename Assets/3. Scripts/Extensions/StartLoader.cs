@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
@@ -14,12 +13,13 @@ namespace _3._Scripts.Extensions
         {
             LoadingScreen.Instance.ShowLoadingScreen(InitializeLocalization());
         }
-        
+
         private IEnumerator InitializeLocalization()
         {
-            yield return new WaitUntil(() => YandexGame.SDKEnabled);
+            yield return new WaitUntil(() => YG2.isSDKEnabled);
             yield return LocalizationSettings.InitializationOperation;
-            var locale = LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == GBGames.language);
+            var locale =
+                LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == YG2.envir.language);
 
             if (locale != null)
             {

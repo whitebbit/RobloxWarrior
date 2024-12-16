@@ -6,8 +6,8 @@ using _3._Scripts.Heroes;
 using _3._Scripts.Pool;
 using _3._Scripts.Saves;
 using _3._Scripts.Saves.Handlers;
-using GBGamesPlugin;
 using UnityEngine;
+using YG;
 
 namespace _3._Scripts.Player
 {
@@ -15,7 +15,7 @@ namespace _3._Scripts.Player
     {
         [SerializeField] private List<Transform> heroPoint;
 
-        private HeroesSave Save => GBGames.saves.heroesSave;
+        private HeroesSave Save => YG2.saves.heroesSave;
         private readonly List<Hero> _heroes = new();
 
         private void OnEnable()

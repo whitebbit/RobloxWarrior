@@ -1,15 +1,14 @@
 ﻿using System;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Saves;
-using GBGamesPlugin;
 using UnityEngine;
-using UnityEngine.Localization.Tables;
+using YG;
 
 namespace _3._Scripts.Currency
 {
     public class CurrencyObject
     {
-        private WalletSave Save => GBGames.saves.walletSave;
+        private WalletSave Save => YG2.saves.walletSave;
         public event Action<float, float> OnValueChanged;
         public readonly CurrencyType Type;
 

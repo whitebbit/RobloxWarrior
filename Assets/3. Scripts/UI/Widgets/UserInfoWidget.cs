@@ -1,11 +1,11 @@
 ﻿using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Transitions;
 using DG.Tweening;
-using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.UI.Widgets
 {
@@ -47,7 +47,7 @@ namespace _3._Scripts.UI.Widgets
 
         private void Start()
         {
-            playerNameText.text = GBGames.playerName;
+            playerNameText.text = YG2.player.name;
             OnExperienceChanged(Player.Player.Instance.Stats.Experience);
             OnLevelUp(Player.Player.Instance.Stats.Level);
         }

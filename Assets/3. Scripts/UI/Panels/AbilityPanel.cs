@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
@@ -8,13 +7,11 @@ using _3._Scripts.Localization;
 using _3._Scripts.Saves;
 using _3._Scripts.UI.Elements.AbilityPanel;
 using _3._Scripts.UI.Panels.Base;
-using GBGamesPlugin;
-using TMPro;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.UI.Panels
 {
@@ -27,7 +24,7 @@ namespace _3._Scripts.UI.Panels
         [SerializeField] private Button unequipButton;
         [SerializeField] private Button evoluteButton;
 
-        private AbilitiesSave Save => GBGames.saves.abilitiesSave;
+        private AbilitiesSave Save => YG2.saves.abilitiesSave;
         private string CurrentId => Save.selected.Count > 0 ? Save.selected[0].id : "";
         protected override PlayerAbility CurrentConfig => Configuration.Instance.GetAbility(CurrentId);
 

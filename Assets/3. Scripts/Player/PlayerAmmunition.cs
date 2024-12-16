@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Config;
 using _3._Scripts.Extensions;
 using _3._Scripts.Saves;
 using _3._Scripts.Swords;
-using _3._Scripts.Swords.Scriptables;
-using GBGamesPlugin;
 using UnityEngine;
+using YG;
 
 namespace _3._Scripts.Player
 {
@@ -27,15 +25,15 @@ namespace _3._Scripts.Player
             OnPlayerAbilitiesChanged = new LazyAction<List<PlayerAbility>>(_playerAbilities);
             var sword = new SwordSave(Configuration.Instance.Config.SwordCollectionConfig.Swords[0].ID);
 
-            GBGames.saves.swordsSave.Unlock(sword);
-            GBGames.saves.swordsSave.SetCurrent(
-                GBGames.saves.swordsSave.unlocked.FirstOrDefault(s => s.uid == sword.uid));
-            GBGames.saves.abilitiesSave.capacity = 2;
+            YG2.saves.swordsSave.Unlock(sword);
+            YG2.saves.swordsSave.SetCurrent(
+                YG2.saves.swordsSave.unlocked.FirstOrDefault(s => s.uid == sword.uid));
+            YG2.saves.abilitiesSave.capacity = 2;
         }
 
         private void Start()
         {
-            SetSword(GBGames.saves.swordsSave.current);
+            SetSword(YG2.saves.swordsSave.current);
             SetAbilities(null);
         }
 
@@ -66,7 +64,7 @@ namespace _3._Scripts.Player
         private void SetAbilities(AbilitySave obj)
         {
             _playerAbilities.Clear();
-            foreach (var config in GBGames.saves.abilitiesSave.selected.Select(ability =>
+            foreach (var config in YG2.saves.abilitiesSave.selected.Select(ability =>
                          Configuration.Instance.GetAbility(ability.id)))
             {
                 _playerAbilities.Add(config);
@@ -79,13 +77,13 @@ namespace _3._Scripts.Player
 
         private void OnEnable()
         {
-            GBGames.saves.swordsSave.OnSetCurrent += SetSword;
-            GBGames.saves.abilitiesSave.OnSelect += SetAbilities;
+            YG2.saves.swordsSave.OnSetCurrent += SetSword;
+            YG2.saves.abilitiesSave.OnSelect += SetAbilities;
         }
 
         private void OnDisable()
         {
-            GBGames.saves.swordsSave.OnSetCurrent += SetSword;
+            YG2.saves.swordsSave.OnSetCurrent += SetSword;
         }
     }
 }

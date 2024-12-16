@@ -7,9 +7,9 @@ using _3._Scripts.Config.Scriptables;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.Saves;
-using GBGamesPlugin;
 using UnityEngine;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.Abilities.Scriptables
 {
@@ -33,7 +33,7 @@ namespace _3._Scripts.Abilities.Scriptables
 
         public int RebornCountToUnlock => rebornCountToUnlock;
         private Player.Player Player => _Scripts.Player.Player.Instance;
-        public AbilitySave Save => GBGames.saves.abilitiesSave.Get(ID);
+        public AbilitySave Save => YG2.saves.abilitiesSave.Get(ID);
 
         public float Cooldown => cooldown;
 
@@ -69,14 +69,14 @@ namespace _3._Scripts.Abilities.Scriptables
         {
             if (!WalletManager.GetCurrency(CurrencyType.SkillPoints).TrySpend(1)) return;
 
-            GBGames.saves.abilitiesSave.Unlock(this);
+            YG2.saves.abilitiesSave.Unlock(this);
         }
 
         public void Upgrade()
         {
             if (!WalletManager.GetCurrency(CurrencyType.SkillPoints).TrySpend(1)) return;
 
-            GBGames.saves.abilitiesSave.Upgrade(this);
+            YG2.saves.abilitiesSave.Upgrade(this);
         }
 
         public void Evolute()
@@ -91,7 +91,7 @@ namespace _3._Scripts.Abilities.Scriptables
 
         public bool CanUpgrade()
         {
-            if (!GBGames.saves.abilitiesSave.Unlocked(ID)) return false;
+            if (!YG2.saves.abilitiesSave.Unlocked(ID)) return false;
 
             var currentUpgrade = abilityUpgrades.FirstOrDefault(a => a.maxLevel == Save.maxLevel);
 
@@ -116,15 +116,15 @@ namespace _3._Scripts.Abilities.Scriptables
 
         public bool CanUnlock()
         {
-            if (GBGames.saves.abilitiesSave.Unlocked(ID)) return false;
+            if (YG2.saves.abilitiesSave.Unlocked(ID)) return false;
 
             if (abilitiesToUnlock.Count > 0)
             {
                 return abilitiesToUnlock.All(a => a.Level >= abilityLevelToUnlock) &&
-                       GBGames.saves.stats.rebirthCounts >= rebornCountToUnlock;
+                       YG2.saves.stats.rebirthCounts >= rebornCountToUnlock;
             }
 
-            return GBGames.saves.stats.rebirthCounts >= rebornCountToUnlock;
+            return YG2.saves.stats.rebirthCounts >= rebornCountToUnlock;
         }
 
         public event Action<float> OnUseAbility;

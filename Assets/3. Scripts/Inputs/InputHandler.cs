@@ -1,8 +1,8 @@
 ﻿using System;
 using _3._Scripts.Inputs.Interfaces;
 using _3._Scripts.Singleton;
-using GBGamesPlugin;
 using UnityEngine;
+using YG;
 
 namespace _3._Scripts.Inputs
 {
@@ -15,36 +15,27 @@ namespace _3._Scripts.Inputs
         {
             get
             {
-                switch (GBGames.deviceType)
+                switch (YG2.envir.device)
                 {
-                    case "mobile":
-                        if(!mobileInput.gameObject.activeSelf)
+                    case YG2.Device.Desktop:
+                        if (mobileInput.gameObject.activeSelf)
+                            mobileInput.gameObject.SetActive(false);
+                        return _desktopInput ??= new DesktopInput();
+                    case YG2.Device.Mobile:
+                        if (!mobileInput.gameObject.activeSelf)
                             mobileInput.gameObject.SetActive(true);
                         UnityEngine.Input.multiTouchEnabled = true;
                         return mobileInput;
-                    case "desktop":
-                        if(mobileInput.gameObject.activeSelf)
-                            mobileInput.gameObject.SetActive(false);
-                        return _desktopInput ??= new DesktopInput();
-                    default: 
-                        return default;
+                    case YG2.Device.Tablet:
+                        break;
+                    case YG2.Device.TV:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
+
+                return default;
             }
         }
-
-        public void SetState(bool state)
-        {
-            switch (GBGames.deviceType)
-            {
-                case "mobile":
-                    mobileInput.SetState(state);
-                    break;
-                case "desktop":
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
     }
 }

@@ -1,9 +1,10 @@
+using System;
 using System.Linq;
-using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using VInspector;
+using YG;
 
 namespace _3._Scripts
 {
@@ -13,31 +14,39 @@ namespace _3._Scripts
         [SerializeField] private UniversalRenderPipelineAsset mobile;
         [Tab("Components")] [SerializeField] private Light mainLight;
         [SerializeField] private Volume postProcessing;
-        
+
         private void Start()
         {
-            GraphicsSettings.renderPipelineAsset = GBGames.deviceType switch
+            GraphicsSettings.renderPipelineAsset = YG2.envir.device switch
             {
-                "mobile" => mobile,
-                "desktop" => pc,
+                YG2.Device.Desktop => pc,
+                YG2.Device.Mobile => mobile,
+                YG2.Device.Tablet => mobile,
+                YG2.Device.TV => mobile,
                 _ => mobile
             };
-            mainLight.shadows = GBGames.deviceType switch
+            mainLight.shadows = YG2.envir.device switch
             {
-                "mobile" => LightShadows.None,
-                "desktop" => LightShadows.Soft,
+                YG2.Device.Desktop => LightShadows.Soft,
+                YG2.Device.Mobile => LightShadows.None,
+                YG2.Device.Tablet => LightShadows.None,
+                YG2.Device.TV => LightShadows.None,
                 _ => LightShadows.None
             };
-            postProcessing.enabled = GBGames.deviceType switch
+            postProcessing.enabled = YG2.envir.device switch
             {
-                "mobile" => false,
-                "desktop" => true,
+                YG2.Device.Desktop => true,
+                YG2.Device.Mobile => false,
+                YG2.Device.Tablet => false,
+                YG2.Device.TV => false,
                 _ => false
             };
-            QualitySettings.SetQualityLevel(QualitySettings.names.ToList().IndexOf(GBGames.deviceType switch
+            QualitySettings.SetQualityLevel(QualitySettings.names.ToList().IndexOf(YG2.envir.device switch
             {
-                "mobile" => "Mobile",
-                "desktop" => "PC",
+                YG2.Device.Desktop => "PC",
+                YG2.Device.Mobile => "Mobile",
+                YG2.Device.Tablet => "Mobile",
+                YG2.Device.TV => "Mobile",
                 _ => "Mobile"
             }));
         }

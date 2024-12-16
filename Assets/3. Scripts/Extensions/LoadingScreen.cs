@@ -1,14 +1,9 @@
-using System;
 using System.Collections;
 using _3._Scripts.Singleton;
 using _3._Scripts.UI.Transitions;
 using DG.Tweening;
-using GBGamesPlugin;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using YG;
 
 namespace _3._Scripts.Extensions
 {

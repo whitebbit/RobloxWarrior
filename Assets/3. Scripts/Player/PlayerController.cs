@@ -1,8 +1,8 @@
 ﻿using _3._Scripts.Inputs;
 using _3._Scripts.Inputs.Interfaces;
-using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using YG;
 
 namespace _3._Scripts.Player
 {
@@ -39,7 +39,8 @@ namespace _3._Scripts.Player
 
         private void Combat()
         {
-            if (_input.GetAttack() && (GBGames.deviceType == "mobile" || !EventSystem.current.IsPointerOverGameObject()))
+            if (_input.GetAttack() &&
+                (YG2.envir.device == YG2.Device.Mobile || !EventSystem.current.IsPointerOverGameObject()))
             {
                 _combat.Attack();
             }
