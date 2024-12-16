@@ -46,7 +46,7 @@ namespace _3._Scripts.Abilities.Scriptables
             return new Dictionary<string, object>
             {
                 { "cooldown", cooldown },
-                { "value", baseDamagePercent },
+                { "value", DamagePercent },
             };
         }
 

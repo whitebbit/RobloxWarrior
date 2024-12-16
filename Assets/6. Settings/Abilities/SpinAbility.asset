@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35bb04a7b084fb4a1fbb8c3a454119f, type: 3}
   m_Name: SpinAbility
   m_EditorClassIdentifier: 
-  id: 
-  titleID: 
-  descriptionID: 
+  id: spin_ability
+  titleID: spin_ability_title
+  descriptionID: spin_ability_description
   icon: {fileID: 0}
   cooldown: 5
   baseDamagePercent: 20
