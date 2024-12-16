@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sounds:
   - id: 
-    audioClips: []
+    audioClips:
+    - {fileID: 0}
     volume: 0
