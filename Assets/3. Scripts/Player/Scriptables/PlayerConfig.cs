@@ -13,12 +13,12 @@ namespace _3._Scripts.Player.Scriptables
     {
         [Tab("Base")] [SerializeField] private MovementConfig movementConfig = new();
         [SerializeField] private PlayerStatsConfig statsConfig = new();
-
         [Tab("Animations")] [SerializeField] private UnitAnimationConfig animationConfig = new();
 
         public MovementConfig MovementConfig => movementConfig;
         public UnitAnimationConfig AnimationConfig => animationConfig;
         public PlayerStatsConfig StatsConfig => statsConfig;
+        
     }
 
     [Serializable]
@@ -50,8 +50,7 @@ namespace _3._Scripts.Player.Scriptables
     [Serializable]
     public class PlayerStatsConfig
     {
-        [Header("Experience")] 
-        [SerializeField, Tooltip("Базовое количество опыта, необходимое для следующего уровня.")]
+        [Header("Experience")] [SerializeField, Tooltip("Базовое количество опыта, необходимое для следующего уровня.")]
         private float baseExperience = 25f;
 
         [SerializeField, Tooltip("Множитель, который увеличивает базовый опыт.")]

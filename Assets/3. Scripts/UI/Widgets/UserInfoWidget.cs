@@ -5,6 +5,7 @@ using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 namespace _3._Scripts.UI.Widgets
 {
@@ -25,13 +26,20 @@ namespace _3._Scripts.UI.Widgets
 
         [SerializeField] private TMP_Text expText;
 
+
+        [Button]
+        private void AddExperience()
+        {
+            Player.Player.Instance.Stats.Experience += (float)Player.Player.Instance.Stats.ExperienceToLevelUp();
+        }
+
         public override void Initialize()
         {
             transition.SetStartPosition();
 
             InTransition = transition;
             OutTransition = transition;
-            
+
             Player.Player.Instance.Stats.OnExperienceChanged += OnExperienceChanged;
             Player.Player.Instance.Stats.OnLevelChange += OnLevelUp;
             Player.Player.Instance.Health.OnHealthChanged += OnHealthChanged;
@@ -43,7 +51,7 @@ namespace _3._Scripts.UI.Widgets
             OnExperienceChanged(Player.Player.Instance.Stats.Experience);
             OnLevelUp(Player.Player.Instance.Stats.Level);
         }
-        
+
         private void OnHealthChanged(float currentHealth, float maxHealth)
         {
             var value = currentHealth / maxHealth;
@@ -62,7 +70,7 @@ namespace _3._Scripts.UI.Widgets
             var toLevelUp = Player.Player.Instance.Stats.ExperienceToLevelUp();
             var value = experience / toLevelUp;
 
-            experienceBar.DOValue(value, 0.15f);
+            experienceBar.DOValue((float)value, 0.15f);
             expText.text = $"{(int)experience}/{(int)toLevelUp}";
         }
 

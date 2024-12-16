@@ -75,11 +75,49 @@ namespace _3._Scripts.Player
             }
         }
 
+        private readonly int[] _levels =
+        {
+            1, 2, 3, 4, 5, 6, 7, 9, 10, 13, 15, 16, 17, 18, 20, 23, 27, 29, 30, 31, 32, 36, 37, 38, 40, 41, 42, 45, 46,
+            50, 52, 55, 56, 61, 63, 78, 80, 85, 86, 89, 90, 91, 93, 98, 99, 100, 101, 102
+        };
+
+        private readonly float[] _experience =
+        {
+            25, 29, 32, 36, 41, 46, 51, 63, 70, 96, 118, 130, 144, 159, 194, 261, 386, 468, 516, 568, 626, 920, 1010,
+            1110, 1350, 1480, 1630, 2170, 2390, 3510, 4250, 5660, 6230, 10040, 12150, 50770, 61440, 98960, 108850,
+            144890, 159380, 175320, 212140, 341660, 375820, 413410, 454750, 500220
+        };
+
         public float ExperienceToLevelUp()
         {
-            var additionalOffset = Level / Config.OffsetIncrementFrequency * Config.OffsetIncrementValue;
-            return Mathf.RoundToInt(Config.BaseExperience *
-                                    (Config.ExperienceMultiplier + (Config.LevelOffset + additionalOffset) * Level));
+            var level = Level;
+            if (level <= _levels[0])
+                return ExtrapolateExperience(_levels[0], _experience[0], _levels[1], _experience[1], level);
+            if (level >= _levels[^1])
+                return ExtrapolateExperience(_levels[^2], _experience[^2], _levels[^1], _experience[^1], level);
+
+            for (var i = 0; i < _levels.Length - 1; i++)
+            {
+                if (level >= _levels[i] && level <= _levels[i + 1])
+                {
+                    return CubicInterpolation(_levels[i], _experience[i], _levels[i + 1], _experience[i + 1], level);
+                }
+            }
+
+            return 0;
+        }
+
+        private float CubicInterpolation(int x0, float y0, int x1, float y1, int x)
+        {
+            var t = (float)(x - x0) / (x1 - x0);
+
+            return y0 + t * (y1 - y0);
+        }
+
+        private float ExtrapolateExperience(int x0, float y0, int x1, float y1, int x)
+        {
+            var t = (float)(x - x0) / (x1 - x0);
+            return y0 + t * (y1 - y0);
         }
 
         #endregion
@@ -301,7 +339,7 @@ namespace _3._Scripts.Player
             return Config.BaseExperiencePercentIncrease * Mathf.Pow(2, rebirthCounts - 1) +
                    AdditionalExperienceIncrease;
         }
-        
+
 
         public void Rebirth()
         {
