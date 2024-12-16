@@ -410,6 +410,18 @@ MonoBehaviour:
     m_Localized: Meteor Summoning
     m_Metadata:
       m_Items: []
+  - m_Id: 77819877812928512
+    m_Localized: Monument to the hero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77820647543209984
+    m_Localized: Portal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77821146204012544
+    m_Localized: Start the battle!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

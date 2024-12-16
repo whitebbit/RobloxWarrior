@@ -381,6 +381,18 @@ MonoBehaviour:
     m_Key: meteor_ability_description
     m_Metadata:
       m_Items: []
+  - m_Id: 77819877812928512
+    m_Key: hero_statue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77820647543209984
+    m_Key: portal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77821146204012544
+    m_Key: start_battle
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
