@@ -15,11 +15,11 @@ using _3._Scripts.UI.Panels;
 using _3._Scripts.UI.Transitions;
 using _3._Scripts.UI.Widgets;
 using DG.Tweening;
-using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.Swords
 {
@@ -92,7 +92,7 @@ namespace _3._Scripts.Swords
                 return;
             }
 
-            if (GBGames.saves.swordsSave.unlocked.Count + count > GBGames.saves.swordsSave.maxSwordsCount)
+            if (YG2.saves.swordsSave.unlocked.Count + count > YG2.saves.swordsSave.maxSwordsCount)
             {
                 ShowNotification();
                 return;
@@ -126,7 +126,7 @@ namespace _3._Scripts.Swords
                      where uiItem != null && !uiItem.DestroyOnGet
                      select item)
             {
-                GBGames.saves.swordsSave.Unlock(new SwordSave(item.ID));
+                YG2.saves.swordsSave.Unlock(new SwordSave(item.ID));
             }
 
             return items;

@@ -5,11 +5,11 @@ using _3._Scripts.Saves;
 using _3._Scripts.Saves.Handlers;
 using _3._Scripts.UI.Elements.SwordsPanel;
 using _3._Scripts.UI.Panels.Base;
-using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.UI.Panels
 {
@@ -32,7 +32,7 @@ namespace _3._Scripts.UI.Panels
         [Space] [SerializeField] private Button equipBestButton;
         [SerializeField] private Button craftAllButton;
 
-        private SwordsSave Save => GBGames.saves.swordsSave;
+        private SwordsSave Save => YG2.saves.swordsSave;
         private bool _deleteMode;
 
         protected override SwordSave CurrentConfig => Save.current;

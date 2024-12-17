@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
-using _3._Scripts.Heroes;
 using _3._Scripts.Heroes.Scriptables;
 using _3._Scripts.Localization;
 using _3._Scripts.Saves;
 using _3._Scripts.Saves.Handlers;
 using _3._Scripts.UI.Elements.HeroPanel;
-using _3._Scripts.UI.Elements.SwordsPanel;
 using _3._Scripts.UI.Panels.Base;
-using GBGamesPlugin;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.UI.Panels
 {
@@ -30,7 +27,7 @@ namespace _3._Scripts.UI.Panels
             Save.selected.Count <= 0 ? null : Configuration.Instance.GetHero(Save.selected[0].id);
 
         private List<HeroConfig> Configs => Configuration.Instance.Config.Heroes;
-        private HeroesSave Save => GBGames.saves.heroesSave;
+        private HeroesSave Save => YG2.saves.heroesSave;
 
         public override void Initialize()
         {

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _3._Scripts.Config;
-using _3._Scripts.Config.Interfaces;
 using _3._Scripts.Pool;
 using _3._Scripts.Pool.Interfaces;
 using _3._Scripts.Saves;
 using _3._Scripts.Swords.Scriptables;
-using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace _3._Scripts.UI.Elements.SwordsPanel
 {
@@ -77,7 +75,7 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
         public void OnSpawn()
         {
             ResetOnSelect();
-            GBGames.saves.swordsSave.OnDelete += SwordsSaveOnDelete;
+            YG2.saves.swordsSave.OnDelete += SwordsSaveOnDelete;
         }
 
         private void SwordsSaveOnDelete(SwordSave obj)
@@ -89,7 +87,7 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
 
         public void OnDespawn()
         {
-            GBGames.saves.swordsSave.OnDelete -= SwordsSaveOnDelete;
+            YG2.saves.swordsSave.OnDelete -= SwordsSaveOnDelete;
             DisableFocus();
             deleteItem.gameObject.SetActive(false);
         }

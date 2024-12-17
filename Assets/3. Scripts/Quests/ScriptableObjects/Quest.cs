@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using _3._Scripts.Quests.Enums;
 using _3._Scripts.Quests.Interfaces;
-using GBGamesPlugin;
 using UnityEngine;
 
 namespace _3._Scripts.Quests.ScriptableObjects

@@ -2,13 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using _3._Scripts.Config;
-using _3._Scripts.Saves;
 using _3._Scripts.Singleton;
-using _3._Scripts.UI.Panels;
 using _3._Scripts.UI.Widgets;
 using DG.Tweening;
-using GBGamesPlugin;
 using UnityEngine;
 
 

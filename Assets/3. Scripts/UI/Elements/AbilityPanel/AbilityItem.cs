@@ -2,12 +2,12 @@
 using System.Linq;
 using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Localization;
-using GBGamesPlugin;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.UI.Elements.AbilityPanel
 {
@@ -29,7 +29,7 @@ namespace _3._Scripts.UI.Elements.AbilityPanel
 
         protected override AbilityItem Self => this;
 
-        public bool Unlocked => GBGames.saves.abilitiesSave.Unlocked(Config.ID);
+        public bool Unlocked => YG2.saves.abilitiesSave.Unlocked(Config.ID);
 
 
         public void DefaultInitialize()

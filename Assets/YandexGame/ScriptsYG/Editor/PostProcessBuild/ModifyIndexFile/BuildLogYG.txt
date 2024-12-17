@@ -1,2 +1,0 @@
-Build path: D:/Yang/builds/Warrior
-Build number: 25

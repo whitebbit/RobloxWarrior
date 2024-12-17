@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _3._Scripts.Heroes.Scriptables;
 using _3._Scripts.Localization;
-using _3._Scripts.Swords.Scriptables;
-using GBGamesPlugin;
 using UnityEngine;
-using UnityEngine.Experimental.XR.Interaction;
 using UnityEngine.Localization.Components;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+using YG;
 
 namespace _3._Scripts.UI.Elements.HeroPanel
 {
@@ -19,7 +15,7 @@ namespace _3._Scripts.UI.Elements.HeroPanel
         [SerializeField] private Transform lockedTransform;
 
         protected override HeroItem Self => this;
-        public bool Unlocked => GBGames.saves.heroesSave.Unlocked(Config.ID);
+        public bool Unlocked => YG2.saves.heroesSave.Unlocked(Config.ID);
 
         public override void Initialize(HeroConfig config)
         {
