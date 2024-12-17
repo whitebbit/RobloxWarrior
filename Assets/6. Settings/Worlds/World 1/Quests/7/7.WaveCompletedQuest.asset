@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723bd6558d394afba2e341c09291293b, type: 3}
   m_Name: 7.WaveCompletedQuest
   m_EditorClassIdentifier: 
-  rewards: []
+  rewards:
+  - {fileID: 11400000, guid: 7319c2a86e5c2ba4e92dfb1ad4223ebe, type: 2}
   waveNumber: 20
