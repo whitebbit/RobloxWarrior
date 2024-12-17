@@ -16,6 +16,7 @@ namespace YG
         {
             public Text rank, name, score;
         }
+
         public TextLegasy textLegasy;
 
 #if TMP_YG2
@@ -24,11 +25,13 @@ namespace YG
         {
             public TextMeshProUGUI rank, name, score;
         }
+
         public TextMP textMP;
 #endif
-        [Space(10)]
-        public MonoBehaviour[] topPlayerActivityComponents = new MonoBehaviour[0];
+        [Space(10)] public MonoBehaviour[] topPlayerActivityComponents = new MonoBehaviour[0];
         public MonoBehaviour[] currentPlayerActivityComponents = new MonoBehaviour[0];
+
+        public Image[] topPlayerImageComponents = new Image[3];
 
         public class Data
         {
@@ -41,8 +44,7 @@ namespace YG
             public Sprite photoSprite;
         }
 
-        [HideInInspector]
-        public Data data = new Data();
+        [HideInInspector] public Data data = new Data();
 
         public void UpdateEntries()
         {
@@ -55,6 +57,7 @@ namespace YG
             if (textMP.name && data.name != null) textMP.name.text = data.name;
             if (textMP.score && data.score != null) textMP.score.text = data.score.ToString();
 #endif
+
             if (imageLoad)
             {
                 if (data.photoSprite)
@@ -70,6 +73,24 @@ namespace YG
                     imageLoad.Load(data.photoUrl);
                 }
             }
+
+
+            if (topPlayerImageComponents.Length > 0)
+            {
+                if (data.inTop)
+                {
+                    ActivityImageObject(data.rank);
+                    if (textLegasy.rank && data.rank != null) textLegasy.rank.gameObject.SetActive(false);
+#if TMP_YG2
+                    if (textMP.rank && data.rank != null) textMP.rank.gameObject.SetActive(false);
+#endif
+                }
+                else
+                {
+                    ActivityImageObject("-1");
+                }
+            }
+
 
             if (topPlayerActivityComponents.Length > 0)
             {
@@ -87,11 +108,17 @@ namespace YG
             {
                 if (data.currentPlayer)
                 {
-                    ActivityMomoObjects(currentPlayerActivityComponents, true);
+                    foreach (var activity in currentPlayerActivityComponents)
+                    {
+                        activity.gameObject.SetActive(true);
+                    }
                 }
                 else
                 {
-                    ActivityMomoObjects(currentPlayerActivityComponents, false);
+                    foreach (var activity in currentPlayerActivityComponents)
+                    {
+                        activity.gameObject.SetActive(false);
+                    }
                 }
             }
 
@@ -100,6 +127,24 @@ namespace YG
                 for (int i = 0; i < objects.Length; i++)
                 {
                     objects[i].enabled = activity;
+                }
+            }
+
+            void ActivityImageObject(string rank)
+            {
+                if (rank == "-1")
+                {
+                    foreach (var item in topPlayerImageComponents)
+                    {
+                        item.gameObject.SetActive(false);
+                    }
+                }
+
+
+                var r = int.Parse(rank);
+                for (int i = 0; i < topPlayerImageComponents.Length; i++)
+                {
+                    topPlayerImageComponents[i].gameObject.SetActive(r - 1 == i);
                 }
             }
         }

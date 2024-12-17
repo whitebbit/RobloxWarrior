@@ -2,19 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _3._Scripts.Extensions;
 using _3._Scripts.Singleton;
 using _3._Scripts.UI.Widgets;
 using DG.Tweening;
 using UnityEngine;
+using VInspector;
 
 
 namespace _3._Scripts.UI
 {
     public class UIManager : Singleton<UIManager>
     {
-        [SerializeField] private UIScreen currentScreen;
-        [Header("Screens")] [SerializeField] private List<UIScreen> screens = new();
+        [Tab("Screens")] [SerializeField] private UIScreen currentScreen;
+        [SerializeField] private List<UIScreen> screens = new();
         private UIWidget[] _widgets = Array.Empty<UIWidget>();
+        private UINotification[] _notifications = Array.Empty<UINotification>();
 
         public UIScreen CurrentScreen => currentScreen;
         private bool _onTransition;
@@ -23,6 +26,7 @@ namespace _3._Scripts.UI
         {
             InitializeScreens();
             InitializeWidgets();
+            InitializeNotifications();
         }
 
         private void Start()
@@ -101,6 +105,20 @@ namespace _3._Scripts.UI
             }
         }
 
+        private void InitializeNotifications()
+        {
+            _notifications = gameObject.FindObjectsInChildren<UINotification>().ToArray();
+
+            foreach (var notification in _notifications)
+            {
+                notification.Initialize();
+                notification.ForceClose();
+            }
+
+            StartCoroutine(CheckNotifications());
+        }
+
+
         private void MoveWidgetsToScreen(UIScreen screen)
         {
             foreach (var widget in _widgets.Where(w => w.Enabled))
@@ -110,7 +128,24 @@ namespace _3._Scripts.UI
             }
         }
 
-
+        private IEnumerator CheckNotifications()
+        {
+            while (gameObject.activeSelf)
+            {
+                yield return new WaitForSeconds(0.2f);
+                foreach (var notification in _notifications)
+                {
+                    if (!notification.gameObject.activeSelf && notification.Condition)
+                    {
+                        notification.Enabled = true;
+                    }
+                    else if (notification.Enabled && !notification.Condition)
+                    {
+                        notification.Enabled = false;
+                    }
+                }
+            }
+        }
         private IEnumerator ChangeScreen(UIScreen screen, TweenCallback onCloseComplete = null,
             TweenCallback onOpenComplete = null)
         {

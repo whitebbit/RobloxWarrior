@@ -344,6 +344,7 @@ namespace _3._Scripts.Player
         public void Rebirth()
         {
             RebirthCount += 1;
+            YG2.SetLeaderboard("rebirth", RebirthCount);
             WalletManager.GetCurrency(CurrencyType.SkillPoints).Value += 1;
 
             Level = 1;

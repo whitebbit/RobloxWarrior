@@ -697,6 +697,7 @@ MonoBehaviour:
   currentPlayerActivityComponents:
   - {fileID: 6181532175526880946}
   - {fileID: 4243256717055428474}
+  topPlayerImageComponents: []
 --- !u!222 &666340334961111454
 CanvasRenderer:
   m_ObjectHideFlags: 0

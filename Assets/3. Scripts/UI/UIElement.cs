@@ -9,21 +9,24 @@ namespace _3._Scripts.UI
     public abstract class UIElement : MonoBehaviour, IUIElement
     {
         private bool _enabled;
-        private bool onTransition;
+        private bool _onTransition;
         public abstract IUITransition InTransition { get; set; }
         public abstract IUITransition OutTransition { get; set; }
 
-        
+
         public void SwitchState()
         {
             Enabled = !Enabled;
         }
+
 
         public bool Enabled
         {
             get => _enabled;
             set
             {
+                if (_onTransition || value == _enabled) return;
+
                 if (value)
                 {
                     Open();
@@ -38,7 +41,7 @@ namespace _3._Scripts.UI
             }
         }
 
-        private Tween currentTween;
+        private Tween _currentTween;
 
         public abstract void Initialize();
 
@@ -62,21 +65,21 @@ namespace _3._Scripts.UI
 
         private void Open()
         {
-            if (onTransition)
+            if (_onTransition)
             {
-                currentTween?.Pause();
-                currentTween?.Kill();
-                currentTween = null;
+                _currentTween?.Pause();
+                _currentTween?.Kill();
+                _currentTween = null;
             }
 
-            onTransition = true;
+            _onTransition = true;
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
             OnOpenEvent?.Invoke(this);
-            currentTween = InTransition.AnimateIn().OnComplete(() =>
+            _currentTween = InTransition.AnimateIn().OnComplete(() =>
             {
                 _enabled = true;
-                onTransition = false;
+                _onTransition = false;
             });
             OnOpen();
         }
@@ -85,20 +88,20 @@ namespace _3._Scripts.UI
 
         private void Close()
         {
-            if (onTransition)
+            if (_onTransition)
             {
-                currentTween?.Pause();
-                currentTween?.Kill();
-                currentTween = null;
+                _currentTween?.Pause();
+                _currentTween?.Kill();
+                _currentTween = null;
             }
 
-            onTransition = true;
+            _onTransition = true;
             OnCloseEvent?.Invoke(this);
-            currentTween = OutTransition.AnimateOut().OnComplete(() =>
+            _currentTween = OutTransition.AnimateOut().OnComplete(() =>
             {
                 OnClose();
                 _enabled = false;
-                onTransition = false;
+                _onTransition = false;
                 transform.SetAsFirstSibling();
                 gameObject.SetActive(false);
             });
