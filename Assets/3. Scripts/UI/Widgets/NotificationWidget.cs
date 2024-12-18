@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using _3._Scripts.Localization;
 using _3._Scripts.UI.Interfaces;
 using _3._Scripts.UI.Transitions;
@@ -25,6 +26,11 @@ namespace _3._Scripts.UI.Widgets
         {
             base.OnOpen();
             StartCoroutine(DelayDisable());
+        }
+
+        private void OnDisable()
+        {
+            Enabled = false;
         }
 
         public void SetText(string localizeID) => text.SetReference(localizeID);

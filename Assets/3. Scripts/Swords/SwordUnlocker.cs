@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
@@ -86,7 +85,9 @@ namespace _3._Scripts.Swords
         {
             if (count > YG2.saves.maxEggToOpen)
             {
-                //TODO : offer
+                var panel = UIManager.Instance.GetPanel<OfferPanel>();
+                panel.Enabled = true;
+                panel.UpdatePurchase("x3_open");
                 return;
             }
 

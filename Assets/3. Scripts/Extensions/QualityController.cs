@@ -19,8 +19,9 @@ namespace _3._Scripts.Extensions
         
         private void Start()
         {
+            var configName = YG2.envir.device == YG2.Device.Desktop ? YG2.saves.qualityName : "performance";
             var config =
-                Configuration.Instance.Config.QualityConfigs.FirstOrDefault(q => q.ID == YG2.saves.qualityName);
+                Configuration.Instance.Config.QualityConfigs.FirstOrDefault(q => q.ID == configName);
 
             SetQuality(config);
             if (constantControl)

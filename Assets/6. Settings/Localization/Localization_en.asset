@@ -497,6 +497,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3203987063427825692
+  - m_Id: 78555449472909312
+    m_Localized: Purchase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78558006291267584
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

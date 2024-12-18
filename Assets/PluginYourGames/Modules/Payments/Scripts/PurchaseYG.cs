@@ -33,6 +33,7 @@ namespace YG
         {
             public Text title, description, priceValue;
         }
+
         public TextLegasy textLegasy;
 
 #if TMP_YG2
@@ -41,10 +42,17 @@ namespace YG
         {
             public TextMeshProUGUI title, description, priceValue;
         }
+
         public TextMP textMP;
 #endif
 
         private void Start() => UpdateEntries(YG2.PurchaseByID(id));
+
+        public void UpdateEntries(string purchaseId)
+        {
+            id = purchaseId;
+            UpdateEntries(YG2.PurchaseByID(purchaseId));
+        }
 
         public void UpdateEntries(Purchase data)
         {

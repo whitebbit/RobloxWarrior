@@ -25,7 +25,7 @@ namespace _3._Scripts.Player
 
         [Header("Gender")] [SerializeField] private Texture2D male;
         [SerializeField] private Texture2D female;
-        [Tab("UI")] [SerializeField] private QualityPanel qualityPanel;
+        [Tab("UI")] 
         [SerializeField] private PlayerCreatorPanel creatorPanel;
 
         private void Start()
@@ -36,10 +36,8 @@ namespace _3._Scripts.Player
 
         private void InitializeUI()
         {
-            qualityPanel.Initialize();
             creatorPanel.Initialize();
             creatorPanel.Enabled = true;
-            qualityPanel.Enabled = true;
         }
 
         public void ChangeGender(PlayerGender gender)

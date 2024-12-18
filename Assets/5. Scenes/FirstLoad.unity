@@ -2235,7 +2235,6 @@ MonoBehaviour:
   characterMaterial: {fileID: 2100000, guid: c2c5c1c3b6fb4e242be57425a78e5077, type: 2}
   male: {fileID: 2800000, guid: c802b04514bba144aa55dd72e2b87cba, type: 3}
   female: {fileID: 2800000, guid: 1c65a25191985a54682c32d7f81cfbcd, type: 3}
-  qualityPanel: {fileID: 1998112210}
   creatorPanel: {fileID: 1931616427}
 --- !u!114 &259850371
 MonoBehaviour:
@@ -2249,7 +2248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8da0f79e140b3b43aaef22c94e39b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constantControl: 0
+  constantControl: 1
   mainLight: {fileID: 177757451}
   postProcessing: {fileID: 119675536}
 --- !u!1 &277459125

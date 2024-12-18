@@ -7,7 +7,7 @@
   "intValues": [],
   "defaultLoaded": true,
   "walletSave": {
-    "crystals": 365.0,
+    "crystals": 15.0,
     "heroPoints": 0.0,
     "skillPoints": 0.0
   },
@@ -60,6 +60,41 @@
         "uid": 1506866276,
         "id": "sword_1",
         "starCount": 0
+      },
+      {
+        "uid": 1488559011,
+        "id": "sword_2",
+        "starCount": 0
+      },
+      {
+        "uid": 1819709554,
+        "id": "sword_2",
+        "starCount": 0
+      },
+      {
+        "uid": -64309276,
+        "id": "sword_4",
+        "starCount": 0
+      },
+      {
+        "uid": -1806407702,
+        "id": "sword_2",
+        "starCount": 0
+      },
+      {
+        "uid": -124541876,
+        "id": "sword_3",
+        "starCount": 0
+      },
+      {
+        "uid": 1433568947,
+        "id": "sword_1",
+        "starCount": 0
+      },
+      {
+        "uid": -590330124,
+        "id": "sword_2",
+        "starCount": 0
       }
     ]
   },
@@ -81,6 +116,7 @@
     "classID": "class_warrior",
     "gender": 0
   },
-  "qualityName": "quality",
-  "idSave": 10
+  "qualityName": "performance",
+  "maxEggToOpen": 3,
+  "idSave": 14
 }

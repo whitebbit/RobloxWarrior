@@ -461,6 +461,14 @@ MonoBehaviour:
     m_Key: quest_get_hero
     m_Metadata:
       m_Items: []
+  - m_Id: 78555449472909312
+    m_Key: purchase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78558006291267584
+    m_Key: buy
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
