@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cebdce4d1cb4df89a113f1598f26318, type: 3}
   m_Name: 4.ClassicQuest
   m_EditorClassIdentifier: 
-  rewards: []
+  rewards:
+  - {fileID: 11400000, guid: 3f7febaf521a9934eb04edf7f5dee017, type: 2}
   type: 3
   requiredToComplete: 1

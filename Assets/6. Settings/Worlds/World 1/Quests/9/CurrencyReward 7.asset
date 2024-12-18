@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 723bd6558d394afba2e341c09291293b, type: 3}
-  m_Name: 3.WaveCompletedQuest 1
+  m_Script: {fileID: 11500000, guid: c85ec517d42b4dbb9cb0bd9e1439f5a5, type: 3}
+  m_Name: CurrencyReward 7
   m_EditorClassIdentifier: 
-  rewards:
-  - {fileID: 11400000, guid: 491fe1fb173ff134cb05041304b4a861, type: 2}
-  waveNumber: 5
+  type: 0
+  amount: 120
