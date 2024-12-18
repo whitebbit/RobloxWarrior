@@ -172,6 +172,7 @@ namespace _3._Scripts.UI.Panels
             }
 
             item.SetCurrentFocus();
+            YG2.SaveProgress();
         }
 
         /// <summary>

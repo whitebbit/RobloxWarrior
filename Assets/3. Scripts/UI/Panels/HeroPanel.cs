@@ -163,6 +163,8 @@ namespace _3._Scripts.UI.Panels
             UpdateButtonsState(item);
             UpdateList();
             UpdateCapacityText();
+            YG2.SaveProgress();
+
         }
     }
 }

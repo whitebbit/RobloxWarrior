@@ -6,6 +6,7 @@ using _3._Scripts.UI.Transitions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace _3._Scripts.UI.Panels
 {
@@ -56,6 +57,7 @@ namespace _3._Scripts.UI.Panels
             GameEvents.Rebirth();
             Stats.Rebirth();
             UpdateView();
+            YG2.SaveProgress();
         }
     }
 }

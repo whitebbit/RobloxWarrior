@@ -8,6 +8,7 @@ using _3._Scripts.UI.Widgets;
 using _3._Scripts.Worlds.Scriptables;
 using UnityEngine;
 using UnityEngine.Serialization;
+using YG;
 
 namespace _3._Scripts.Worlds
 {
@@ -50,6 +51,7 @@ namespace _3._Scripts.Worlds
             Widget.Enabled = false;
             
             GameEvents.StopBattle();
+            YG2.SaveProgress();
         }
     }
 }

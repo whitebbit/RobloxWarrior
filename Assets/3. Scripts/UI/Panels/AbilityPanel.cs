@@ -158,6 +158,8 @@ namespace _3._Scripts.UI.Panels
             Save.Select(item.Config.ID);
             SelectedItem.SetCurrentFocus();
             UpdateButtonsState(SelectedItem);
+            
+            YG2.SaveProgress();
         }
     }
 }

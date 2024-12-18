@@ -109,6 +109,7 @@ namespace _3._Scripts.Swords
             ShowPanel(items);
 
             GameEvents.OpenEgg(count);
+            YG2.SaveProgress();
         }
 
         private List<SwordConfig> UnlockSwords(int count)

@@ -6,6 +6,7 @@ using _3._Scripts.UI.Transitions;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using YG;
 
 namespace _3._Scripts.UI.Panels
 {
@@ -17,7 +18,7 @@ namespace _3._Scripts.UI.Panels
         [SerializeField] private QualityConfig performanceConfig;
         [SerializeField] private QualityController controller;
 
-
+    
         public override void Initialize()
         {
             base.Initialize();
