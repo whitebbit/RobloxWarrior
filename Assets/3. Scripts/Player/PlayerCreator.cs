@@ -4,6 +4,7 @@ using _3._Scripts.Config;
 using _3._Scripts.Player.Enums;
 using _3._Scripts.Player.Scriptables;
 using _3._Scripts.Saves;
+using _3._Scripts.Sounds;
 using _3._Scripts.UI.Panels;
 using Animancer;
 using UnityEngine;
@@ -32,6 +33,7 @@ namespace _3._Scripts.Player
         {
             animancer.Play(clip);
             InitializeUI();
+            AudioManager.Instance.PlaySound("lobby_music", loop: true);
         }
 
         private void InitializeUI()

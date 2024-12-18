@@ -13,6 +13,14 @@ MonoBehaviour:
   m_Name: SoundDatabase
   m_EditorClassIdentifier: 
   sounds:
+  - id: battle_music
+    audioClips:
+    - {fileID: 8300000, guid: 9bd10fc240b60844680ab7a0d1995e68, type: 3}
+    volume: 0.1
+  - id: lobby_music
+    audioClips:
+    - {fileID: 8300000, guid: 4a2a58d39b6ad964bac922d8c6bf2543, type: 3}
+    volume: 0.1
   - id: dash_ability
     audioClips:
     - {fileID: 8300000, guid: 8789f6a119f0d413b9ac7d94542888d8, type: 3}
@@ -81,7 +89,7 @@ MonoBehaviour:
   - id: timer
     audioClips:
     - {fileID: 8300000, guid: d894a5fb97d1604489f0acf18185cc39, type: 3}
-    volume: 0.5
+    volume: 0.25
   - id: ice_ability
     audioClips:
     - {fileID: 8300000, guid: 3ccffbd25be8a42ee9e76df2c73b9c4b, type: 3}

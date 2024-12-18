@@ -2,6 +2,7 @@
 using _3._Scripts.Config.Interfaces;
 using _3._Scripts.Game;
 using _3._Scripts.Quests.ScriptableObjects;
+using _3._Scripts.Sounds;
 using _3._Scripts.Swords;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Widgets;
@@ -37,6 +38,8 @@ namespace _3._Scripts.Worlds
             }
 
             Quests = config.Quests;
+
+            AudioManager.Instance.PlaySound("lobby_music", loop: true);
         }
 
         public void StopBattle()
@@ -49,10 +52,13 @@ namespace _3._Scripts.Worlds
             player.Health.Health = player.Health.MaxHealth;
 
             Widget.Enabled = false;
-            
+
             GameEvents.StopBattle();
             YG2.SaveProgress();
             YG2.InterstitialAdvShow();
+
+            AudioManager.Instance.StopLoop("battle_music");
+            AudioManager.Instance.PlaySound("lobby_music", loop: true);
         }
     }
 }

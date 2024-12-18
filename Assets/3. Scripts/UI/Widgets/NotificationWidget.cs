@@ -13,9 +13,10 @@ namespace _3._Scripts.UI.Widgets
     {
         [SerializeField] private FadeTransition transition;
         [Space] [SerializeField] private LocalizeStringEvent text;
-        
+
         public override IUITransition InTransition { get; set; }
         public override IUITransition OutTransition { get; set; }
+
         public override void Initialize()
         {
             InTransition = transition;
@@ -28,9 +29,10 @@ namespace _3._Scripts.UI.Widgets
             StartCoroutine(DelayDisable());
         }
 
-        private void OnDisable()
+        private void OnEnable()
         {
-            Enabled = false;
+            if (Enabled)
+                Enabled = false;
         }
 
         public void SetText(string localizeID) => text.SetReference(localizeID);

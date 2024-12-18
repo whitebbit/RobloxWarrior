@@ -10,6 +10,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using VInspector;
+using YG;
 using Random = UnityEngine.Random;
 
 namespace _3._Scripts.Debugger
@@ -52,38 +53,13 @@ namespace _3._Scripts.Debugger
             enableArrow.transform.eulerAngles = rotation;
         }
 
-
-
+        public void Delete() => YG2.SetDefaultSaves();
+        public void Save() => YG2.SaveProgress();
         public void Add1000FirstCurrency() => WalletManager.GetCurrency(CurrencyType.Crystal).Value += 1000;
-        public void Add1000SecondCurrency() => WalletManager.GetCurrency(CurrencyType.SkillPoints).Value += 1000;
-        public void ChangePostProcessing() => volume.enabled = !volume.enabled;
-
-        public void ChangeShadow()
-        {
-            mainLight.shadows = mainLight.shadows == LightShadows.None ? LightShadows.Soft : LightShadows.None;
-        }
-
-        public void ChangeQualityType()
-        {
-            var currentSettings = 
-                QualitySettings.GetQualityLevel() == QualitySettings.names.ToList().IndexOf("Mobile")
-                ? QualitySettings.names.ToList().IndexOf("PC")
-                : QualitySettings.names.ToList().IndexOf("Mobile");
-
-            var currentPipeline = GraphicsSettings.renderPipelineAsset == mobile ? pc : mobile;
-            
-            QualitySettings.SetQualityLevel(currentSettings);
-            GraphicsSettings.renderPipelineAsset = currentPipeline;
-        }
-
-        public void UnlockRandomPet()
-        {
-            //var pets = Configuration.Instance.AllPets.Where(t => !GBGames.saves.petSaves.Unlocked(t.ID)).ToList();
-            //if(pets.Count <= 0) return;
-
-            //var rand = Random.Range(0, pets.Count);
-            //GBGames.saves.petSaves.Unlock(pets[rand].ID);
-        }
+        public void Add1000SecondCurrency() => WalletManager.GetCurrency(CurrencyType.SkillPoints).Value += 1;
+        public void AddHeroPoints() => WalletManager.GetCurrency(CurrencyType.HeroPoints).Value += 1;
+        public void AddLevel() => Player.Player.Instance.Stats.Experience +=
+            Player.Player.Instance.Stats.ExperienceToLevelUp();
 
         private float _deltaTime;
 

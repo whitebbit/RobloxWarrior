@@ -7,28 +7,14 @@
   "intValues": [],
   "defaultLoaded": true,
   "walletSave": {
-    "crystals": 15.0,
+    "crystals": 5.0,
     "heroPoints": 0.0,
     "skillPoints": 0.0
   },
   "abilitiesSave": {
     "capacity": 2,
-    "selected": [
-      {
-        "id": "spin_ability",
-        "level": 0,
-        "maxLevel": 1,
-        "ID": "spin_ability"
-      }
-    ],
-    "unlocked": [
-      {
-        "id": "spin_ability",
-        "level": 1,
-        "maxLevel": 1,
-        "ID": "spin_ability"
-      }
-    ],
+    "selected": [],
+    "unlocked": [],
     "CanSelect": true
   },
   "stats": {
@@ -39,61 +25,21 @@
     "attackPoints": 0,
     "speedPoints": 0,
     "critPoints": 0,
-    "rebirthCounts": 2,
-    "levelForRebirth": 15
+    "rebirthCounts": 0,
+    "levelForRebirth": 0
   },
   "swordsSave": {
     "maxSwordsCount": 50,
     "requiredCountForMerge": 3,
     "current": {
-      "uid": -741004029,
+      "uid": -1134009601,
       "id": "sword_1",
       "starCount": 0
     },
     "unlocked": [
       {
-        "uid": -741004029,
+        "uid": -1134009601,
         "id": "sword_1",
-        "starCount": 0
-      },
-      {
-        "uid": 1506866276,
-        "id": "sword_1",
-        "starCount": 0
-      },
-      {
-        "uid": 1488559011,
-        "id": "sword_2",
-        "starCount": 0
-      },
-      {
-        "uid": 1819709554,
-        "id": "sword_2",
-        "starCount": 0
-      },
-      {
-        "uid": -64309276,
-        "id": "sword_4",
-        "starCount": 0
-      },
-      {
-        "uid": -1806407702,
-        "id": "sword_2",
-        "starCount": 0
-      },
-      {
-        "uid": -124541876,
-        "id": "sword_3",
-        "starCount": 0
-      },
-      {
-        "uid": 1433568947,
-        "id": "sword_1",
-        "starCount": 0
-      },
-      {
-        "uid": -590330124,
-        "id": "sword_2",
         "starCount": 0
       }
     ]
@@ -101,9 +47,7 @@
   "worldSave": {
     "worldName": "",
     "questSave": {
-      "Quests": {
-        "": 5
-      }
+      "Quests": {}
     }
   },
   "heroesSave": {
@@ -117,6 +61,6 @@
     "gender": 0
   },
   "qualityName": "performance",
-  "maxEggToOpen": 3,
-  "idSave": 14
+  "maxEggToOpen": 1,
+  "idSave": 3
 }

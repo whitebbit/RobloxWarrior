@@ -16,7 +16,7 @@ namespace _3._Scripts.Extensions
         [SerializeField] private bool constantControl;
         [SerializeField] private Light mainLight;
         [SerializeField] private Volume postProcessing;
-        
+
         private void Start()
         {
             var configName = YG2.envir.device == YG2.Device.Desktop ? YG2.saves.qualityName : "performance";
@@ -41,12 +41,12 @@ namespace _3._Scripts.Extensions
 
         private IEnumerator ControlQuality()
         {
-            for (int i = 0; i < 5; i++)
+            for (var i = 0; i < 5; i++)
             {
-                yield return new WaitForSeconds(2.5f);
+                yield return new WaitForSeconds(5f);
                 var fps = 1.0f / Time.deltaTime;
-                if (!(fps < 45)) continue;
-                
+                if (fps > 30) continue;
+
                 SetQuality(Configuration.Instance.Config.QualityConfigs.FirstOrDefault(q => q.ID == "performance"));
                 break;
             }

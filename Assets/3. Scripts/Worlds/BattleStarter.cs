@@ -1,5 +1,6 @@
 ﻿using System;
 using _3._Scripts.Game;
+using _3._Scripts.Sounds;
 using _3._Scripts.UI.Extensions;
 using UnityEngine;
 
@@ -36,6 +37,8 @@ namespace _3._Scripts.Worlds
             {
                 GameEvents.BeforeBattle();
                 _battleArena.StartBattle(GameContext.StartWaveNumber);
+                AudioManager.Instance.StopLoop("lobby_music");
+                AudioManager.Instance.PlaySound("battle_music", loop:true);
             }, 5);
         }
 

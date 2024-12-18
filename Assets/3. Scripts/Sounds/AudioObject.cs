@@ -2,6 +2,7 @@
 using System.Collections;
 using _3._Scripts.Pool;
 using _3._Scripts.Pool.Interfaces;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _3._Scripts.Sounds
@@ -28,6 +29,8 @@ namespace _3._Scripts.Sounds
 
             if (!loop)
                 StartCoroutine(DelayDisable());
+            else
+                _audioSource.Play();
         }
 
         private IEnumerator DelayDisable()
@@ -41,6 +44,10 @@ namespace _3._Scripts.Sounds
             ObjectsPoolManager.Instance.Return(this);
         }
 
+        public Tween FadeTransition(float volume, float duration)
+        {
+            return DOTween.To(() => _audioSource.volume, x => _audioSource.volume = x, volume, duration);
+        }
 
         public void OnSpawn()
         {
