@@ -15,7 +15,11 @@ public class JoystickEditor : Editor
     private SerializedProperty handle;
 
     protected Vector2 center = new Vector2(0.5f, 0.5f);
-
+    
+    private SerializedProperty leftUp;
+    private SerializedProperty leftDown;
+    private SerializedProperty rightUp;
+    private SerializedProperty rightDown;
     protected virtual void OnEnable()
     {
         handleRange = serializedObject.FindProperty("handleRange");
@@ -25,6 +29,11 @@ public class JoystickEditor : Editor
         snapY = serializedObject.FindProperty("snapY");
         background = serializedObject.FindProperty("background");
         handle = serializedObject.FindProperty("handle");
+        
+        leftUp = serializedObject.FindProperty("leftUp");
+        leftDown = serializedObject.FindProperty("leftDown");
+        rightUp = serializedObject.FindProperty("rightUp");
+        rightDown = serializedObject.FindProperty("rightDown");
     }
 
     public override void OnInspectorGUI()
@@ -34,7 +43,13 @@ public class JoystickEditor : Editor
         DrawValues();
         EditorGUILayout.Space();
         DrawComponents();
-
+        
+        EditorGUILayout.Space();
+        EditorGUILayout.ObjectField(leftUp, new GUIContent("Left Up"));
+        EditorGUILayout.ObjectField(leftDown, new GUIContent("Left Down"));
+        EditorGUILayout.ObjectField(rightUp, new GUIContent("Right Up"));
+        EditorGUILayout.ObjectField(rightDown, new GUIContent("Right Down"));
+        
         serializedObject.ApplyModifiedProperties();
 
         if(handle != null)
@@ -45,6 +60,7 @@ public class JoystickEditor : Editor
             handleRect.pivot = center;
             handleRect.anchoredPosition = Vector2.zero;
         }
+
     }
 
     protected virtual void DrawValues()
