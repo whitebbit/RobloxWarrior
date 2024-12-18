@@ -7,14 +7,28 @@
   "intValues": [],
   "defaultLoaded": true,
   "walletSave": {
-    "crystals": 5.0,
+    "crystals": 365.0,
     "heroPoints": 0.0,
     "skillPoints": 0.0
   },
   "abilitiesSave": {
     "capacity": 2,
-    "selected": [],
-    "unlocked": [],
+    "selected": [
+      {
+        "id": "spin_ability",
+        "level": 0,
+        "maxLevel": 1,
+        "ID": "spin_ability"
+      }
+    ],
+    "unlocked": [
+      {
+        "id": "spin_ability",
+        "level": 1,
+        "maxLevel": 1,
+        "ID": "spin_ability"
+      }
+    ],
     "CanSelect": true
   },
   "stats": {
@@ -25,8 +39,8 @@
     "attackPoints": 0,
     "speedPoints": 0,
     "critPoints": 0,
-    "rebirthCounts": 0,
-    "levelForRebirth": 0
+    "rebirthCounts": 2,
+    "levelForRebirth": 15
   },
   "swordsSave": {
     "maxSwordsCount": 50,
@@ -41,13 +55,20 @@
         "uid": -741004029,
         "id": "sword_1",
         "starCount": 0
+      },
+      {
+        "uid": 1506866276,
+        "id": "sword_1",
+        "starCount": 0
       }
     ]
   },
   "worldSave": {
     "worldName": "",
     "questSave": {
-      "Quests": {}
+      "Quests": {
+        "": 5
+      }
     }
   },
   "heroesSave": {
@@ -61,5 +82,5 @@
     "gender": 0
   },
   "qualityName": "quality",
-  "idSave": 1
+  "idSave": 10
 }

@@ -132,7 +132,6 @@ namespace _3._Scripts.UI.Panels
             currentItem.UpdateItem();
             SelectedItem.UpdateItem();
             
-            GameEvents.SkillUpgrade();
         }
 
         private void Evolute()

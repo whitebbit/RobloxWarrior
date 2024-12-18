@@ -16,5 +16,6 @@ namespace YG
         public PlayerCharacterSave characterSave = new();
 
         public string qualityName = "performance";
+        public int maxEggToOpen = 1;
     }
 }

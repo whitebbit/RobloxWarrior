@@ -84,6 +84,7 @@ namespace _3._Scripts.Quests
             
             SetMarkState(QuestMarkType.NewQuest, CurrentQuest != null);
             Panel.OpenQuest(CurrentQuest, CompleteQuest, ActivateQuest);
+            YG2.SaveProgress();
         }
 
         public void Interact()

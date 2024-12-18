@@ -84,6 +84,12 @@ namespace _3._Scripts.Swords
 
         private void Open(int count)
         {
+            if (count > YG2.saves.maxEggToOpen)
+            {
+                //TODO : offer
+                return;
+            }
+
             if (!WalletManager.GetCurrency(CurrencyType.Crystal).TrySpend(_price * count))
             {
                 var widget = UIManager.Instance.GetWidget<NotificationWidget>();

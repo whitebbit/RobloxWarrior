@@ -89,7 +89,7 @@ namespace _3._Scripts.Game
         public static void SkillUpgrade()
         {
             OnSkillUpgrade?.Invoke();
-            QuestEventManager.Instance.RaiseEvent(QuestType.SkillUpgrade, null);
+            QuestEventManager.Instance.RaiseEvent(QuestType.SkillUpgrade, 1);
         }
         
         public static event Action OnGetHero;
@@ -97,7 +97,7 @@ namespace _3._Scripts.Game
         public static void GetHero()
         {
             OnGetHero?.Invoke();
-            QuestEventManager.Instance.RaiseEvent(QuestType.GetHero, null);
+            QuestEventManager.Instance.RaiseEvent(QuestType.GetHero, 1);
         }
     }
 }

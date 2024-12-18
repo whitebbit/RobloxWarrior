@@ -6,6 +6,7 @@ using _3._Scripts.Abilities.Structs;
 using _3._Scripts.Config.Scriptables;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
+using _3._Scripts.Game;
 using _3._Scripts.Saves;
 using UnityEngine;
 using VInspector;
@@ -70,6 +71,7 @@ namespace _3._Scripts.Abilities.Scriptables
             if (!WalletManager.GetCurrency(CurrencyType.SkillPoints).TrySpend(1)) return;
 
             YG2.saves.abilitiesSave.Unlock(this);
+            GameEvents.SkillUpgrade();
         }
 
         public void Upgrade()
@@ -77,6 +79,7 @@ namespace _3._Scripts.Abilities.Scriptables
             if (!WalletManager.GetCurrency(CurrencyType.SkillPoints).TrySpend(1)) return;
 
             YG2.saves.abilitiesSave.Upgrade(this);
+            GameEvents.SkillUpgrade();
         }
 
         public void Evolute()

@@ -26,8 +26,12 @@ namespace _3._Scripts.Units
                 hitParticle.Play();
         }
 
+        private float _lastLevelUpTime;
+
         public void OnLevelUp()
         {
+            if (!(Time.time >= _lastLevelUpTime + 1)) return;
+
             if (levelUpParticle)
                 levelUpParticle.Play();
         }
