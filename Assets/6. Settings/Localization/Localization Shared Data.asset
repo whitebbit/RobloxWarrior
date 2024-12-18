@@ -409,6 +409,50 @@ MonoBehaviour:
     m_Key: rebirth
     m_Metadata:
       m_Items: []
+  - m_Id: 78469150002970624
+    m_Key: select_quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78469924837720064
+    m_Key: quality_performance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78470520877678592
+    m_Key: quality_quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78492400686792704
+    m_Key: male
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78492561194418176
+    m_Key: female
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78505894140248064
+    m_Key: class_berserk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78506047584665600
+    m_Key: class_knight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78506127221915648
+    m_Key: class_rogue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78506220167692288
+    m_Key: class_samurai
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78506277424136192
+    m_Key: class_warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78510973010378752
+    m_Key: play
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

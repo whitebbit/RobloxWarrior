@@ -11,7 +11,7 @@ namespace _3._Scripts.Extensions
     {
         private void Start()
         {
-            LoadingScreen.Instance.ShowLoadingScreen(InitializeLocalization());
+            LoadingScreen.Instance.ShowLoadingScreen(InitializeLocalization(), YG2.GameReadyAPI);
         }
 
         private IEnumerator InitializeLocalization()
@@ -35,7 +35,7 @@ namespace _3._Scripts.Extensions
 
         private IEnumerator LoadGameSceneAsync()
         {
-            var asyncOperation = SceneManager.LoadSceneAsync("MainScene");
+            var asyncOperation = SceneManager.LoadSceneAsync(YG2.saves.defaultLoaded ? "MainScene" : "FirstLoad");
             if (asyncOperation == null) yield break;
             asyncOperation.allowSceneActivation = false;
             while (!asyncOperation.isDone)

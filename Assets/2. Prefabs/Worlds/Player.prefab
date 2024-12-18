@@ -218,7 +218,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 471ffc616a12f6b428136402d704b485, type: 2}
+  - {fileID: 2100000, guid: c2c5c1c3b6fb4e242be57425a78e5077, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -328,7 +328,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 471ffc616a12f6b428136402d704b485, type: 2}
+  - {fileID: 2100000, guid: c2c5c1c3b6fb4e242be57425a78e5077, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1229,6 +1229,7 @@ GameObject:
   - component: {fileID: 175107497648865701}
   - component: {fileID: 3825863703174286546}
   - component: {fileID: 7449764269348107806}
+  - component: {fileID: 5205090500949738715}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1308,7 +1309,6 @@ MonoBehaviour:
   hand: {fileID: 1595001133801039220}
   localPosition: {x: -0.000627, y: 0.000497, z: -0.000059}
   localEulerAngles: {x: 270, y: 90, z: 0}
-  ability: {fileID: 0}
 --- !u!114 &3339503246896848536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,6 +1451,21 @@ MonoBehaviour:
   heroPoint:
   - {fileID: 4601377017720049064}
   - {fileID: 6347868545088117417}
+--- !u!114 &5205090500949738715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962200750916725592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb8e043500349cbbce9a963e06f4922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterMaterial: {fileID: 2100000, guid: c2c5c1c3b6fb4e242be57425a78e5077, type: 2}
+  male: {fileID: 2800000, guid: c802b04514bba144aa55dd72e2b87cba, type: 3}
+  female: {fileID: 2800000, guid: 1c65a25191985a54682c32d7f81cfbcd, type: 3}
 --- !u!1 &8059407882505276426
 GameObject:
   m_ObjectHideFlags: 0

@@ -106,21 +106,25 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 65487060215070720
-    m_Localized: Health
+    m_Localized: Health {value}
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 3203987063427825692
   - m_Id: 65487147917967360
-    m_Localized: Attack
+    m_Localized: Attack {value}
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 3203987063427825692
   - m_Id: 65487364889313280
-    m_Localized: Speed
+    m_Localized: Speed {value}
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 3203987063427825692
   - m_Id: 65487400335376384
-    m_Localized: Crit
+    m_Localized: Crit {value}
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 3203987063427825692
   - m_Id: 65487493318901760
     m_Localized: Increases the health
     m_Metadata:
@@ -438,10 +442,54 @@ MonoBehaviour:
     m_Localized: Rebirth
     m_Metadata:
       m_Items: []
+  - m_Id: 78469150002970624
+    m_Localized: Before starting the game, select Graphics settings.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78469924837720064
+    m_Localized: Performance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78470520877678592
+    m_Localized: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78492400686792704
+    m_Localized: Boy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78492561194418176
+    m_Localized: Girl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78505894140248064
+    m_Localized: Berserk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78506047584665600
+    m_Localized: Knight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78506127221915648
+    m_Localized: Rogue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78506220167692288
+    m_Localized: Samurai
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78506277424136192
+    m_Localized: Warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78510973010378752
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3203987063427825692
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b010000817f97a50d010000817d814d1001000081e19c6210010000819d1a6810010000c1aa4e1814010000013906371401000001243f3a1401000001603d3c140100000176ac3c1401
+        m_Entries: 0020828f238c280000200236780736000000c1dcf529e700000041b66e3fe7000000812cde3df400000001e51640f4000000c1adba40f4000000c1aeaa08fc0000000140b876ff000000413b1d6202010000817640620201000001ca5d6202010000c18cad620201000081e06b65020100000162c7400b010000c1fede410b010000c1dd00430b01000001fff2430b010000817f97a50d010000817d814d1001000081e19c6210010000819d1a6810010000c1aa4e1814010000013906371401000001243f3a1401000001603d3c140100000176ac3c14010000816122a8e800000001cd36a8e8000000815169a8e8000000419271a8e800

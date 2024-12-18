@@ -8,21 +8,22 @@ namespace _3._Scripts.UI.Extensions
     {
         public static void ScaleImage(this Image image)
         {
-            var rectTransform = image.transform as RectTransform;
-            var originalWidth = image.sprite.rect.width;
-            var originalHeight = image.sprite.rect.height;
+            float originalWidth = image.sprite.rect.width;
+            float originalHeight = image.sprite.rect.height;
 
-            if (rectTransform == null) return;
+            // Получаем текущие размеры RectTransform
+            RectTransform rectTransform = image.transform as RectTransform;
+            float currentWidth = rectTransform.rect.width;
+            float currentHeight = rectTransform.rect.height;
 
-            var sizeDelta = rectTransform.sizeDelta;
-            var currentWidth = sizeDelta.x;
-            var currentHeight = sizeDelta.y;
+            // Сохраняем исходное соотношение сторон спрайта
+            float originalAspectRatio = originalWidth / originalHeight;
 
-            var aspectRatio = originalWidth / originalHeight;
+            // Чтобы сохранить пропорции, мы подбираем новый размер для RectTransform
+            float newWidth = currentHeight * originalAspectRatio;
 
-            rectTransform.sizeDelta = currentWidth > currentHeight * aspectRatio
-                ? new Vector2(currentHeight * aspectRatio, currentHeight)
-                : new Vector2(currentWidth, currentWidth / aspectRatio);
+            // Устанавливаем новый размер RectTransform с сохранением пропорций
+            rectTransform.sizeDelta = new Vector2(newWidth, currentHeight);
         }
 
         public static void Fade(this Image image, float value)

@@ -33,7 +33,7 @@ namespace _3._Scripts.Singleton
                     }
 
                     for (var i = 1; i < instances.Length; i++)
-                        Destroy(instances[i]);
+                        Destroy(instances[i].gameObject);
 
                     return _instance = instances[0];
 

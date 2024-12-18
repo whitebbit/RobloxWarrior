@@ -23,12 +23,6 @@ namespace _3._Scripts.Player
         private void Awake()
         {
             OnPlayerAbilitiesChanged = new LazyAction<List<PlayerAbility>>(_playerAbilities);
-            var sword = new SwordSave(Configuration.Instance.Config.SwordCollectionConfig.Swords[0].ID);
-
-            YG2.saves.swordsSave.Unlock(sword);
-            YG2.saves.swordsSave.SetCurrent(
-                YG2.saves.swordsSave.unlocked.FirstOrDefault(s => s.uid == sword.uid));
-            YG2.saves.abilitiesSave.capacity = 2;
         }
 
         private void Start()

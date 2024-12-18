@@ -1,54 +1,54 @@
 using System;
+using System.Collections;
 using System.Linq;
+using _3._Scripts.Config;
+using _3._Scripts.Extensions.Scriptables;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using VInspector;
 using YG;
 
-namespace _3._Scripts
+namespace _3._Scripts.Extensions
 {
     public class QualityController : MonoBehaviour
     {
-        [Tab("Assets")] [SerializeField] private UniversalRenderPipelineAsset pc;
-        [SerializeField] private UniversalRenderPipelineAsset mobile;
-        [Tab("Components")] [SerializeField] private Light mainLight;
+        [SerializeField] private bool constantControl;
+        [SerializeField] private Light mainLight;
         [SerializeField] private Volume postProcessing;
-
+        
         private void Start()
         {
-            GraphicsSettings.renderPipelineAsset = YG2.envir.device switch
+            var config =
+                Configuration.Instance.Config.QualityConfigs.FirstOrDefault(q => q.ID == YG2.saves.qualityName);
+
+            SetQuality(config);
+            if (constantControl)
+                StartCoroutine(ControlQuality());
+        }
+
+        public void SetQuality(QualityConfig config)
+        {
+            GraphicsSettings.renderPipelineAsset = config.Asset;
+            if (mainLight)
+                mainLight.shadows = config.ShadowsType;
+            if (postProcessing)
+                postProcessing.enabled = config.UsePostProcessing;
+            QualitySettings.SetQualityLevel(QualitySettings.names.ToList().IndexOf(config.QualitySettingsName));
+            YG2.saves.qualityName = config.ID;
+        }
+
+        private IEnumerator ControlQuality()
+        {
+            for (int i = 0; i < 5; i++)
             {
-                YG2.Device.Desktop => pc,
-                YG2.Device.Mobile => mobile,
-                YG2.Device.Tablet => mobile,
-                YG2.Device.TV => mobile,
-                _ => mobile
-            };
-            mainLight.shadows = YG2.envir.device switch
-            {
-                YG2.Device.Desktop => LightShadows.Soft,
-                YG2.Device.Mobile => LightShadows.None,
-                YG2.Device.Tablet => LightShadows.None,
-                YG2.Device.TV => LightShadows.None,
-                _ => LightShadows.None
-            };
-            postProcessing.enabled = YG2.envir.device switch
-            {
-                YG2.Device.Desktop => true,
-                YG2.Device.Mobile => false,
-                YG2.Device.Tablet => false,
-                YG2.Device.TV => false,
-                _ => false
-            };
-            QualitySettings.SetQualityLevel(QualitySettings.names.ToList().IndexOf(YG2.envir.device switch
-            {
-                YG2.Device.Desktop => "PC",
-                YG2.Device.Mobile => "Mobile",
-                YG2.Device.Tablet => "Mobile",
-                YG2.Device.TV => "Mobile",
-                _ => "Mobile"
-            }));
+                yield return new WaitForSeconds(2.5f);
+                var fps = 1.0f / Time.deltaTime;
+                if (!(fps < 45)) continue;
+                
+                SetQuality(Configuration.Instance.Config.QualityConfigs.FirstOrDefault(q => q.ID == "performance"));
+                break;
+            }
         }
     }
 }

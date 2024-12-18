@@ -155,7 +155,10 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-    m_LocalVariables: []
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 1177424537988366487
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
@@ -174,7 +177,11 @@ MonoBehaviour:
         m_CallState: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 1177424537988366487
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 
 --- !u!1 &2784042949099025043
 GameObject:
   m_ObjectHideFlags: 0

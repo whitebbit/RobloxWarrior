@@ -13,5 +13,8 @@ namespace YG
         public SwordsSave swordsSave = new();
         public WorldSave worldSave = new();
         public HeroesSave heroesSave = new();
+        public PlayerCharacterSave characterSave = new();
+
+        public string qualityName = "performance";
     }
 }

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using _3._Scripts.Singleton;
 using _3._Scripts.UI.Transitions;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace _3._Scripts.Extensions
 {
@@ -27,14 +29,14 @@ namespace _3._Scripts.Extensions
                 progressBar.value = 0;
         }
 
-        public void ShowLoadingScreen(IEnumerator coroutine)
+        public void ShowLoadingScreen(IEnumerator coroutine, Action onFinish = null)
         {
-            StartCoroutine(ExecuteWithLoadingScreen(coroutine));
+            StartCoroutine(ExecuteWithLoadingScreen(coroutine, onFinish));
         }
 
         private Tween _progressTween;
 
-        private IEnumerator ExecuteWithLoadingScreen(IEnumerator coroutine)
+        private IEnumerator ExecuteWithLoadingScreen(IEnumerator coroutine, Action onFinish = null)
         {
             transition.AnimateIn();
 
@@ -46,7 +48,7 @@ namespace _3._Scripts.Extensions
             _progressTween.Kill();
             progressBar.value = 1.0f;
 
-            transition.AnimateOut();
+            transition.AnimateOut().OnComplete(() => onFinish?.Invoke());
         }
     }
 }
