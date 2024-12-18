@@ -26,6 +26,7 @@ namespace _3._Scripts.UI.Panels
         [Tab("Control Buttons")] [SerializeField]
         private Transform deleteControlsButtonContainer;
 
+        [SerializeField] private Button offerButton;
         [SerializeField] private Button deleteButton;
         [SerializeField] private Button cancelDeleteButton;
         [SerializeField] private Button acceptDeleteButton;
@@ -57,6 +58,13 @@ namespace _3._Scripts.UI.Panels
                 EquipItem(Items.OrderByDescending(i => i.SwordDamage).FirstOrDefault()));
             craftSelectedButton.onClick.AddListener(MergeSelectedSword);
             craftAllButton.onClick.AddListener(MergeAllSwords);
+            
+            offerButton.onClick.AddListener(() =>
+            {
+                var panel = UIManager.Instance.GetPanel<OfferPanel>();
+                panel.Enabled = true;
+                panel.UpdatePurchase("easy_craft");
+            });
         }
 
         protected override void PopulateList()

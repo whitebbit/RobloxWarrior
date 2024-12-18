@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using _3._Scripts.Config.Interfaces;
 using _3._Scripts.Game;
+using _3._Scripts.Quests;
 using _3._Scripts.Quests.ScriptableObjects;
 using _3._Scripts.Sounds;
 using _3._Scripts.Swords;
+using _3._Scripts.Tutorial;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Widgets;
 using _3._Scripts.Worlds.Scriptables;
@@ -59,6 +61,9 @@ namespace _3._Scripts.Worlds
 
             AudioManager.Instance.StopLoop("battle_music");
             AudioManager.Instance.PlaySound("lobby_music", loop: true);
+
+            if (Quester.CurrentQuest.IsCompleted)
+                TutorialManager.Instance.StartStep("after_battle");
         }
     }
 }

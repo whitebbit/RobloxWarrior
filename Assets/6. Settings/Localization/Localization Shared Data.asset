@@ -469,6 +469,26 @@ MonoBehaviour:
     m_Key: buy
     m_Metadata:
       m_Items: []
+  - m_Id: 78605275136851968
+    m_Key: boosters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78606428960522240
+    m_Key: game_passes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78606878623465472
+    m_Key: crystals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78610320259612672
+    m_Key: shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78617775370731520
+    m_Key: craft_booster
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

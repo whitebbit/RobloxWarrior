@@ -1,4 +1,5 @@
 ﻿using System;
+using _3._Scripts.Tutorial;
 using _3._Scripts.UI.Panels;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace _3._Scripts.UI.Extensions
             if (other.TryGetComponent(out Player.Player _))
             {
                 UIManager.Instance.GetPanel<HeroPanel>().Enabled = true;
+                TutorialManager.Instance.DisableStep("hero");
             }
         }
     }

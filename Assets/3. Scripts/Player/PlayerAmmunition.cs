@@ -55,7 +55,7 @@ namespace _3._Scripts.Player
 
         public LazyAction<List<PlayerAbility>> OnPlayerAbilitiesChanged;
 
-        private void SetAbilities(AbilitySave obj)
+        public void SetAbilities(AbilitySave obj)
         {
             _playerAbilities.Clear();
             foreach (var config in YG2.saves.abilitiesSave.selected.Select(ability =>

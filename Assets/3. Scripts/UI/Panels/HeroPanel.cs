@@ -20,7 +20,10 @@ namespace _3._Scripts.UI.Panels
     public class HeroPanel : CollectionPanel<HeroItem, HeroConfig, Image>
     {
         [SerializeField] private HeroItem prefab;
-        [Tab("Buttons")] [SerializeField] private Button unlockButton;
+        [Tab("Buttons")] [SerializeField]
+        private Button offerButton;
+        
+        [SerializeField] private Button unlockButton;
         [SerializeField] private Button unequipButton;
         [SerializeField] private LocalizeStringEvent heroPointsText;
 
@@ -39,6 +42,13 @@ namespace _3._Scripts.UI.Panels
                 WalletManager.GetCurrency(CurrencyType.HeroPoints).Value.ConvertToWallet());
             WalletManager.GetCurrency(CurrencyType.HeroPoints).OnValueChanged += (_, newValue) =>
                 heroPointsText.SetVariable("value", newValue.ConvertToWallet());
+            
+            offerButton.onClick.AddListener(() =>
+            {
+                var panel = UIManager.Instance.GetPanel<OfferPanel>();
+                panel.Enabled = true;
+                panel.UpdatePurchase("extra_hero");
+            });
         }
 
         protected override void OnOpen()

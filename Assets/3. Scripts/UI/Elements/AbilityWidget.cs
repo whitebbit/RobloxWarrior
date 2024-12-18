@@ -3,6 +3,7 @@ using System.Collections;
 using _3._Scripts.Abilities;
 using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Config.Interfaces;
+using _3._Scripts.UI.Panels;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,10 +25,10 @@ namespace _3._Scripts.UI.Elements
             var b = GetComponent<Button>();
             b?.onClick.AddListener(() =>
             {
-                if (Locked)
-                {
-                    //TODO: покупка слота для способности
-                }
+                if (!Locked) return;
+                var panel = UIManager.Instance.GetPanel<OfferPanel>();
+                panel.Enabled = true;
+                panel.UpdatePurchase("extra_skill");
             });
         }
 

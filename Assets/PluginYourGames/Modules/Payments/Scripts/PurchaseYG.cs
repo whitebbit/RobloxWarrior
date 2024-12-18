@@ -46,13 +46,30 @@ namespace YG
         public TextMP textMP;
 #endif
 
-        private void Start() => UpdateEntries(YG2.PurchaseByID(id));
+        private void OnEnable()
+        {
+            //if (_data is { consumed: true }) gameObject.SetActive(false);
+        }
+
+        private void OnPurchaseSuccess(string obj)
+        {
+            if (obj != id) return;
+            //gameObject.SetActive(false);
+        }
+
+        private void Start()
+        {
+            //YG2.onPurchaseSuccess += OnPurchaseSuccess;
+            UpdateEntries(YG2.PurchaseByID(id));
+        }
 
         public void UpdateEntries(string purchaseId)
         {
             id = purchaseId;
             UpdateEntries(YG2.PurchaseByID(purchaseId));
         }
+
+        private Purchase _data;
 
         public void UpdateEntries(Purchase data)
         {
@@ -61,6 +78,12 @@ namespace YG
                 Debug.LogError($"No product with ID found: {id}");
                 return;
             }
+
+            /*
+            _data = data;
+            if (data.consumed)
+                gameObject.SetActive(false);
+                */
 
             if (textLegasy.title) textLegasy.title.text = data.title;
             if (textLegasy.description) textLegasy.description.text = data.description;

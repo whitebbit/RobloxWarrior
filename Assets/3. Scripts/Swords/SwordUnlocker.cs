@@ -8,6 +8,7 @@ using _3._Scripts.Extensions.Interfaces;
 using _3._Scripts.Game;
 using _3._Scripts.Saves;
 using _3._Scripts.Swords.Scriptables;
+using _3._Scripts.Tutorial;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Elements.SwordUnlocker;
 using _3._Scripts.UI.Panels;
@@ -178,6 +179,7 @@ namespace _3._Scripts.Swords
         {
             eggTransform.DOScale(0, 0.25f);
             uiTransition.AnimateIn();
+            TutorialManager.Instance.DisableStep("eggs");
         }
 
         public void StopInteracting()

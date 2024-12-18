@@ -26,6 +26,8 @@ namespace _3._Scripts.Purchases
             {
                 YG2.saves.abilitiesSave.capacity = 3;
                 YG2.SaveProgress();
+
+                Player.Player.Instance.Ammunition.SetAbilities(null);
             }),
             new Purchase("extra_hero", () =>
             {
@@ -38,6 +40,7 @@ namespace _3._Scripts.Purchases
                 {
                     Player.Player.Instance.Stats.Rebirth();
                 }
+
                 YG2.SaveProgress();
             }),
             new Purchase("100_rebirth", () =>
@@ -46,6 +49,7 @@ namespace _3._Scripts.Purchases
                 {
                     Player.Player.Instance.Stats.Rebirth();
                 }
+
                 YG2.SaveProgress();
             }),
             new Purchase("100_gems", () =>

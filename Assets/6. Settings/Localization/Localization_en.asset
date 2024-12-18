@@ -505,6 +505,26 @@ MonoBehaviour:
     m_Localized: Buy
     m_Metadata:
       m_Items: []
+  - m_Id: 78605275136851968
+    m_Localized: Boosters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78606428960522240
+    m_Localized: Game passes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78606878623465472
+    m_Localized: "\u0421rystals"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78610320259612672
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78617775370731520
+    m_Localized: Improved combine!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

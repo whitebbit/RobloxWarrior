@@ -1,4 +1,5 @@
-﻿using _3._Scripts.Saves;
+﻿using System.Collections.Generic;
+using _3._Scripts.Saves;
 using _3._Scripts.Saves.Handlers;
 
 namespace YG
@@ -14,7 +15,8 @@ namespace YG
         public WorldSave worldSave = new();
         public HeroesSave heroesSave = new();
         public PlayerCharacterSave characterSave = new();
-
+        public Dictionary<string, bool> Tutorials = new();
+        
         public string qualityName = "performance";
         public int maxEggToOpen = 1;
     }

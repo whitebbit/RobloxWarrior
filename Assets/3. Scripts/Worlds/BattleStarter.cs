@@ -1,6 +1,7 @@
 ﻿using System;
 using _3._Scripts.Game;
 using _3._Scripts.Sounds;
+using _3._Scripts.Tutorial;
 using _3._Scripts.UI.Extensions;
 using UnityEngine;
 
@@ -40,6 +41,8 @@ namespace _3._Scripts.Worlds
                 AudioManager.Instance.StopLoop("lobby_music");
                 AudioManager.Instance.PlaySound("battle_music", loop:true);
             }, 5);
+            
+            TutorialManager.Instance.DisableStep("battle");
         }
 
         private void OnTriggerExit(Collider other)
