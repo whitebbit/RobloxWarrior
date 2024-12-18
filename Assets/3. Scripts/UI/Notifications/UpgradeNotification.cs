@@ -1,6 +1,4 @@
-﻿using System;
-using _3._Scripts.UI.Interfaces;
-using _3._Scripts.UI.Transitions;
+﻿using _3._Scripts.UI.Transitions;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +6,7 @@ namespace _3._Scripts.UI.Notifications
 {
     public class UpgradeNotification : UINotification
     {
+        
         [SerializeField] private ScaleTransition transition;
         [SerializeField] private TMP_Text text;
 
