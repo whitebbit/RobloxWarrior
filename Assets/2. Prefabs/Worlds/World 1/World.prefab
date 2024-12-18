@@ -24098,6 +24098,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1304956318495937074}
     m_Modifications:
+    - target: {fileID: 1756617869172643516, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756617869188058524, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: simulationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417889287674926604, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417889287694038910, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: simulationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417889287694038910, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417889287694038910, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: RotationModule.x.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417889287694038910, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: RotationModule.y.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417889287694038910, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: InitialModule.randomizeRotationDirection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3299732339915022706, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.4
@@ -24145,6 +24177,10 @@ PrefabInstance:
     - target: {fileID: 3875401180783269208, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
       propertyPath: m_fontSize
       value: 130.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394504552871002847, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
+      propertyPath: simulationSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6994570499013016755, guid: 2021fef2482454c478d97c3ca1227f09, type: 3}
       propertyPath: m_Name
