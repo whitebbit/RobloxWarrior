@@ -52,6 +52,7 @@ namespace _3._Scripts.Worlds
             
             GameEvents.StopBattle();
             YG2.SaveProgress();
+            YG2.InterstitialAdvShow();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace _3._Scripts.Quests
                 QuestType.OpeningEgg => "quest_opening_egg",
                 QuestType.Rebirth => "quest_rebirth",
                 QuestType.CompleteWave => "quest_complete_wave",
+                QuestType.SkillUpgrade => "quest_skill_upgrade",
+                QuestType.GetHero => "quest_get_hero",
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
         }

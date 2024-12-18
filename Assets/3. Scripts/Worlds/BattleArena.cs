@@ -13,6 +13,7 @@ using _3._Scripts.UI.Elements.EffectsWidget;
 using _3._Scripts.UI.Widgets;
 using _3._Scripts.Worlds.Scriptables;
 using UnityEngine;
+using YG;
 
 namespace _3._Scripts.Worlds
 {
@@ -96,6 +97,7 @@ namespace _3._Scripts.Worlds
             yield return new WaitUntil(() => _bots.All(b => b.Dying.IsDead));
             Reward();
             yield return new WaitForSeconds(2f);
+            YG2.InterstitialAdvShow();
             WavePassed();
         }
     }

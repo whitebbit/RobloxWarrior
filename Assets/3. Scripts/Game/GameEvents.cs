@@ -83,5 +83,21 @@ namespace _3._Scripts.Game
             OnOpenEgg?.Invoke(count);
             QuestEventManager.Instance.RaiseEvent(QuestType.OpeningEgg, count);
         }
+
+        public static event Action OnSkillUpgrade;
+
+        public static void SkillUpgrade()
+        {
+            OnSkillUpgrade?.Invoke();
+            QuestEventManager.Instance.RaiseEvent(QuestType.SkillUpgrade, null);
+        }
+        
+        public static event Action OnGetHero;
+
+        public static void GetHero()
+        {
+            OnGetHero?.Invoke();
+            QuestEventManager.Instance.RaiseEvent(QuestType.GetHero, null);
+        }
     }
 }

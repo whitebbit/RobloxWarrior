@@ -3,6 +3,7 @@ using _3._Scripts.Abilities.Scriptables;
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
+using _3._Scripts.Game;
 using _3._Scripts.Localization;
 using _3._Scripts.Saves;
 using _3._Scripts.UI.Elements.AbilityPanel;
@@ -130,6 +131,8 @@ namespace _3._Scripts.UI.Panels
 
             currentItem.UpdateItem();
             SelectedItem.UpdateItem();
+            
+            GameEvents.SkillUpgrade();
         }
 
         private void Evolute()

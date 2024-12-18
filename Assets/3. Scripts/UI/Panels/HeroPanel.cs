@@ -2,6 +2,7 @@
 using _3._Scripts.Config;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
+using _3._Scripts.Game;
 using _3._Scripts.Heroes.Scriptables;
 using _3._Scripts.Localization;
 using _3._Scripts.Saves;
@@ -135,6 +136,7 @@ namespace _3._Scripts.UI.Panels
             Save.Unlock(save);
             UpdateList();
             UpdateButtonsState(SelectedItem);
+            GameEvents.GetHero();
         }
 
         private void UpdateList()
@@ -163,6 +165,7 @@ namespace _3._Scripts.UI.Panels
             UpdateButtonsState(item);
             UpdateList();
             UpdateCapacityText();
+            
             YG2.SaveProgress();
 
         }

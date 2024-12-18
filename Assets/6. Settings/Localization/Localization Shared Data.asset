@@ -453,6 +453,14 @@ MonoBehaviour:
     m_Key: play
     m_Metadata:
       m_Items: []
+  - m_Id: 78531345030119424
+    m_Key: quest_skill_upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78532459007901696
+    m_Key: quest_get_hero
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

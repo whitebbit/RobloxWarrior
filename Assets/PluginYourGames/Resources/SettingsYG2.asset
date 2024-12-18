@@ -23,7 +23,7 @@ MonoBehaviour:
   Flags:
     flags: []
   InterstitialAdv:
-    showFirstAdv: 1
+    showFirstAdv: 0
     interAdvInterval: 60
     postponeCallByFail: 0
     postponeCallTimer: 10
@@ -269,7 +269,7 @@ MonoBehaviour:
     autoApplySettings: 1
     autoPauseGame: 1
     editEventSystem: 1
-    autoGRA: 1
+    autoGRA: 0
     logInEditor: 1
     archivingBuild: 1
     syncInitSDK: 0
