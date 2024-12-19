@@ -53,7 +53,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 721d4d8f4f8774171829a07f2fb3e11b, type: 3}
     - {fileID: 8300000, guid: 256675968a4544e058f7eedcaaa095b2, type: 3}
     - {fileID: 8300000, guid: a55108afa8fb5447fbcbad029e0992bc, type: 3}
-    volume: 0.2
+    volume: 0.1
   - id: sword_attack
     audioClips:
     - {fileID: 8300000, guid: abf4caad1f5a24e49a317937ebf12163, type: 3}

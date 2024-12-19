@@ -60,6 +60,7 @@ namespace _3._Scripts.Quests
             Panel.OpenQuest(CurrentQuest, CompleteQuest, ActivateQuest);
             TutorialManager.Instance.DisableStep("start");
             TutorialManager.Instance.DisableStep("after_battle");
+            TutorialManager.Instance.DisableStep("after_eggs");
         }
 
         private void ActivateQuest()
@@ -115,11 +116,13 @@ namespace _3._Scripts.Quests
                     TutorialManager.Instance.StartStep("eggs");
                     break;
                 case QuestType.Rebirth:
+                    TutorialManager.Instance.StartStep("rebirth");
                     break;
                 case QuestType.CompleteWave:
                     TutorialManager.Instance.StartStep("battle");
                     break;
                 case QuestType.SkillUpgrade:
+                    TutorialManager.Instance.StartStep("skills");
                     break;
                 case QuestType.GetHero:
                     TutorialManager.Instance.StartStep("hero");

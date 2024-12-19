@@ -15,6 +15,7 @@ namespace _3._Scripts.Tutorial
         private Player.Player Player => _Scripts.Player.Player.Instance;
         private TutorialStep _currentStep;
 
+
         private void Start()
         {
             StartStep("start");
@@ -27,7 +28,17 @@ namespace _3._Scripts.Tutorial
             var step = steps.FirstOrDefault(s => s.ID == id);
             if (step == null) return;
 
-            arrow.Enable(Player.transform, step.Target);
+            if (step.Target)
+                arrow.Enable(Player.transform, step.Target);
+
+            if (step.TutorialObjects.Count > 0)
+            {
+                foreach (var item in step.TutorialObjects)
+                {
+                    item.Object.gameObject.SetActive(true);
+                }
+            }
+
             _currentStep = step;
         }
 
@@ -39,6 +50,15 @@ namespace _3._Scripts.Tutorial
             if (step == null || _currentStep != step) return;
 
             YG2.saves.Tutorials.Add(id, true);
+
+            if (step.TutorialObjects.Count > 0)
+            {
+                foreach (var item in step.TutorialObjects.Where(item => item.DisableOnComplete))
+                {
+                    item.Object.gameObject.SetActive(false);
+                }
+            }
+
             arrow.Disable();
         }
     }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b184efe38eb4d9399cd1b6973cd2e95, type: 3}
   m_Name: HeroConfig
   m_EditorClassIdentifier: 
-  id: hero_test
+  id: hero_1
   titleID: 
   descriptionID: 
   icon: {fileID: 21300000, guid: 0707254dbd3973a4094d74bcf91fa0c3, type: 3}

@@ -1,8 +1,10 @@
 ﻿using System;
+using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
 using _3._Scripts.UI;
 using _3._Scripts.UI.Widgets;
 using UnityEngine;
+using VInspector;
 using YG;
 
 namespace _3._Scripts.Quests.ScriptableObjects.Rewards
@@ -13,6 +15,7 @@ namespace _3._Scripts.Quests.ScriptableObjects.Rewards
         [SerializeField] private CurrencyType type;
         [SerializeField] private int amount;
 
+        [Button]
         public override void GetReward()
         {
             float value;
@@ -34,9 +37,16 @@ namespace _3._Scripts.Quests.ScriptableObjects.Rewards
                     throw new ArgumentOutOfRangeException();
             }
 
-            UIManager.Instance.GetWidget<EffectsWidget>().Enabled = true;
-            UIManager.Instance.GetWidget<EffectsWidget>()
-                .ShowCurrency(type, value);
+            if (type == CurrencyType.Crystal)
+            {
+                UIManager.Instance.GetWidget<EffectsWidget>().Enabled = true;
+                UIManager.Instance.GetWidget<EffectsWidget>()
+                    .ShowCurrency(type, value);
+            }
+            else
+            {
+                WalletManager.GetCurrency(CurrencyType.HeroPoints).Value += value;
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95b1745c29c4f4d885211329c55ffbc, type: 3}
   m_Name: World 0
   m_EditorClassIdentifier: 
-  worldName: 
+  worldName: world_1
   waves:
   - bots:
     - config: {fileID: 11400000, guid: e0d0eedc8576c354ebf817a8caa280ed, type: 2}

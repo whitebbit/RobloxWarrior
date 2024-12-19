@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _3._Scripts.Quests.Enums;
 using _3._Scripts.Quests.Interfaces;
+using _3._Scripts.Quests.ScriptableObjects;
 
 namespace _3._Scripts.Quests
 {
@@ -17,6 +19,7 @@ namespace _3._Scripts.Quests
             {
                 _listeners[eventType] = new List<IQuestEvent>();
             }
+
             _listeners[eventType].Add(listener);
         }
 
@@ -28,15 +31,15 @@ namespace _3._Scripts.Quests
             }
         }
 
+
         public void RaiseEvent(QuestType eventType, object eventData)
         {
             if (!_listeners.TryGetValue(eventType, out var listener1)) return;
-            
+
             foreach (var listener in listener1)
             {
                 listener.OnEventRaised(this, new QuestEventArgs(eventType, eventData));
             }
         }
     }
-
 }

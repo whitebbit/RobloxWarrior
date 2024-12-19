@@ -1311,6 +1311,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4313192235668537016, guid: 87f0c6aa9b85045efb55b6f6ad1df416, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8098435459610677936}
+    - targetCorrespondingSourceObject: {fileID: 4313192235668537016, guid: 87f0c6aa9b85045efb55b6f6ad1df416, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1806281291955137692}
   m_SourcePrefab: {fileID: 100100000, guid: 87f0c6aa9b85045efb55b6f6ad1df416, type: 3}
 --- !u!1 &2661170026762600886 stripped
 GameObject:
@@ -1362,6 +1365,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   scaleFactor: 1.05
+--- !u!114 &1806281291955137692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661170026762600886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1160112f48b44748b1e9ee2f6eee8f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: eggs
 --- !u!224 &2661170026762600887 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4313192235668537017, guid: 87f0c6aa9b85045efb55b6f6ad1df416, type: 3}
@@ -1575,6 +1591,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 998979758130152391, guid: 2978e0b049d1847c3bc49a9eb29545ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8774551499518432607}
+    - targetCorrespondingSourceObject: {fileID: 998979758130152391, guid: 2978e0b049d1847c3bc49a9eb29545ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7592848900954497727}
   m_SourcePrefab: {fileID: 100100000, guid: 2978e0b049d1847c3bc49a9eb29545ef, type: 3}
 --- !u!1 &3968413080522158968 stripped
 GameObject:
@@ -1626,6 +1645,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   scaleFactor: 1.05
+--- !u!114 &7592848900954497727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968413080522158968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1160112f48b44748b1e9ee2f6eee8f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: eggs
 --- !u!224 &3968413080522158969 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 998979758130152390, guid: 2978e0b049d1847c3bc49a9eb29545ef, type: 3}

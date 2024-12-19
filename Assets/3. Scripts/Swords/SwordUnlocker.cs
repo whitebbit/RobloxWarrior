@@ -84,6 +84,9 @@ namespace _3._Scripts.Swords
 
         private void Open(int count)
         {
+            if (_inProgress)
+                return;
+            
             if (count > YG2.saves.maxEggToOpen)
             {
                 var panel = UIManager.Instance.GetPanel<OfferPanel>();
@@ -105,11 +108,7 @@ namespace _3._Scripts.Swords
                 ShowNotification();
                 return;
             }
-
-            if (_inProgress)
-                return;
-
-
+            
             _inProgress = true;
 
             var items = UnlockSwords(count);
@@ -155,6 +154,7 @@ namespace _3._Scripts.Swords
                     UIManager.Instance.SetScreen("main", onOpenComplete: () =>
                     {
                         _inProgress = false;
+                        TutorialManager.Instance.StartStep("get_sword");
                         if (_autoOpen)
                             Open(1);
                     });
