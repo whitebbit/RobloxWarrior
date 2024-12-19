@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ShaderInfoData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TargetShaderName>Mobile/Unlit (Supports Lightmap) (Atlas)</TargetShaderName>
+  <AttributeTransferInstructions>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MainTex</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MainTex</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+  </AttributeTransferInstructions>
+  <KeywordTransferInstructions />
+  <RenderTypeMapping />
+  <RenderQueueMapping />
+  <NamingRule />
+</ShaderInfoData>

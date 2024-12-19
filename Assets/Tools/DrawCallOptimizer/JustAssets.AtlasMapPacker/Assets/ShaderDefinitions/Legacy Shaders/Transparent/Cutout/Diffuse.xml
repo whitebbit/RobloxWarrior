@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<ShaderInfoData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TargetShaderName>Legacy Shaders/Transparent/Cutout/Diffuse (Atlas)</TargetShaderName>
+  <AttributeTransferInstructions>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MainTex</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MainTex</Name>
+        <UseTiling>true</UseTiling>
+      </Target>
+    </AttributePointerPair>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>FloatAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_Cutoff</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>X</Component>
+        <Name>_Cutoff</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>VectorAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_Color</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_ColorMap</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+  </AttributeTransferInstructions>
+  <KeywordTransferInstructions />
+  <RenderTypeMapping />
+  <RenderQueueMapping />
+  <NamingRule />
+</ShaderInfoData>

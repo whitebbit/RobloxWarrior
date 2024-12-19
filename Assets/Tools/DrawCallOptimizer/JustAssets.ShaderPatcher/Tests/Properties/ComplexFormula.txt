@@ -1,0 +1,1 @@
+BlendNormals( UnpackScaleNormal( tex2D( _WaterNormal, rotator272_g47 ), temp_output_130_0_g47 ) , UnpackScaleNormal( tex2D( _WaterNormal, panner16_g47 ), ( temp_output_130_0_g47 - 0.001 ) ) );
