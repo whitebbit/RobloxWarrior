@@ -25,5 +25,5 @@ MonoBehaviour:
   SupportNotObstacles: 1
   ProgressiveResponseQuality: 1000
   ProgAutoDelay: 1
-  ProgCullDelay: 1.5
+  ProgCullDelay: 2
   AutoDetectFOVAndScreenChange: 0
