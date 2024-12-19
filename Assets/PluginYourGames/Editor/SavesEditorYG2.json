@@ -7,75 +7,39 @@
   "intValues": [],
   "defaultLoaded": true,
   "walletSave": {
-    "crystals": 1431.0,
+    "crystals": 5.0,
     "heroPoints": 0.0,
     "skillPoints": 0.0
   },
   "abilitiesSave": {
     "capacity": 2,
-    "selected": [
-      {
-        "id": "spin_ability",
-        "level": 0,
-        "maxLevel": 1,
-        "ID": "spin_ability"
-      },
-      {
-        "id": "dragon_ability",
-        "level": 0,
-        "maxLevel": 1,
-        "ID": "dragon_ability"
-      }
-    ],
-    "unlocked": [
-      {
-        "id": "spin_ability",
-        "level": 0,
-        "maxLevel": 1,
-        "ID": "spin_ability"
-      },
-      {
-        "id": "dragon_ability",
-        "level": 0,
-        "maxLevel": 1,
-        "ID": "dragon_ability"
-      }
-    ],
-    "CanSelect": false
+    "selected": [],
+    "unlocked": [],
+    "CanSelect": true
   },
   "stats": {
-    "experience": 921.068848,
-    "level": 97,
-    "upgradePoints": 1,
-    "healthPoints": 67,
-    "attackPoints": 22,
-    "speedPoints": 5,
-    "critPoints": 1,
-    "rebirthCounts": 2,
-    "levelForRebirth": 15
+    "experience": 0.0,
+    "level": 1,
+    "upgradePoints": 0,
+    "healthPoints": 0,
+    "attackPoints": 0,
+    "speedPoints": 0,
+    "critPoints": 0,
+    "rebirthCounts": 0,
+    "levelForRebirth": 0
   },
   "swordsSave": {
     "maxSwordsCount": 50,
     "requiredCountForMerge": 3,
     "current": {
-      "uid": 572185331,
-      "id": "sword_2",
+      "uid": -2032174163,
+      "id": "sword_1",
       "starCount": 0
     },
     "unlocked": [
       {
-        "uid": 1933795922,
+        "uid": -2032174163,
         "id": "sword_1",
-        "starCount": 0
-      },
-      {
-        "uid": -1420814773,
-        "id": "sword_1",
-        "starCount": 0
-      },
-      {
-        "uid": 572185331,
-        "id": "sword_2",
         "starCount": 0
       }
     ]
@@ -83,9 +47,7 @@
   "worldSave": {
     "worldName": "world_1",
     "questSave": {
-      "Quests": {
-        "world_1": 7
-      }
+      "Quests": {}
     }
   },
   "heroesSave": {
@@ -98,17 +60,8 @@
     "classID": "class_warrior",
     "gender": 0
   },
-  "Tutorials": {
-    "start": true,
-    "battle": true,
-    "after_battle": true,
-    "eggs": true,
-    "get_sword": true,
-    "after_eggs": true,
-    "rebirth": true,
-    "skills": true
-  },
-  "qualityName": "performance",
+  "Tutorials": {},
+  "qualityName": "quality",
   "maxEggToOpen": 1,
-  "idSave": 24
+  "idSave": 1
 }

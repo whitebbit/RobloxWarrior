@@ -17,7 +17,7 @@ namespace YG
         public PlayerCharacterSave characterSave = new();
         public Dictionary<string, bool> Tutorials = new();
         
-        public string qualityName = "performance";
+        public string qualityName = "";
         public int maxEggToOpen = 1;
     }
 }

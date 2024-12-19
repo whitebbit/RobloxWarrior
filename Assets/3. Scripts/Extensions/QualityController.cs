@@ -19,7 +19,16 @@ namespace _3._Scripts.Extensions
 
         private void Start()
         {
-            var configName = YG2.envir.device == YG2.Device.Desktop ? YG2.saves.qualityName : "performance";
+            var configName = "";
+            if (string.IsNullOrEmpty(YG2.saves.qualityName))
+            {
+                configName = YG2.envir.device == YG2.Device.Desktop ? "quality" : "performance";
+            }
+            else
+            {
+                configName = YG2.saves.qualityName;
+            }
+
             var config =
                 Configuration.Instance.Config.QualityConfigs.FirstOrDefault(q => q.ID == configName);
 
@@ -41,9 +50,10 @@ namespace _3._Scripts.Extensions
 
         private IEnumerator ControlQuality()
         {
+            yield return new WaitForSeconds(1f);
             for (var i = 0; i < 5; i++)
             {
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(1f);
                 var fps = 1.0f / Time.deltaTime;
                 if (fps > 30) continue;
 

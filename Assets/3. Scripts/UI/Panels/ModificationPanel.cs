@@ -60,6 +60,7 @@ namespace _3._Scripts.UI.Panels
                 else
                     Debug.LogError("Modification item is null during OnOpen.");
             }
+
         }
 
         private void StatsOnUpgradePointsChanged(int obj)

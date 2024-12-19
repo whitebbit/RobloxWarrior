@@ -1378,6 +1378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialName: eggs
+  updateOnEnable: 1
 --- !u!224 &2661170026762600887 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4313192235668537017, guid: 87f0c6aa9b85045efb55b6f6ad1df416, type: 3}
@@ -1658,6 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialName: eggs
+  updateOnEnable: 1
 --- !u!224 &3968413080522158969 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 998979758130152390, guid: 2978e0b049d1847c3bc49a9eb29545ef, type: 3}

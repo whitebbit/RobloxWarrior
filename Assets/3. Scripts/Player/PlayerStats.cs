@@ -349,7 +349,7 @@ namespace _3._Scripts.Player
 
             Level = 1;
             Experience = 0;
-
+            UpgradePoints = 0;
             Save.ResetStats();
             UpdateLevelToNextRebirth();
 

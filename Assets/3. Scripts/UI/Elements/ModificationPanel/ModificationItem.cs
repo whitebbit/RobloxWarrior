@@ -70,7 +70,7 @@ namespace _3._Scripts.UI.Elements.ModificationPanel
             {
                 ModificationType.Health => $"{player.Stats.HealthImprovement.ConvertToWallet()}" ,
                 ModificationType.Attack => $"{player.Stats.AttackImprovement.ConvertToWallet()}",
-                ModificationType.Speed => $"{player.Stats.SpeedImprovement.ConvertToWallet()}",
+                ModificationType.Speed => $"{player.Stats.SpeedImprovement}",
                 ModificationType.Crit => $"{player.Stats.CritImprovement}",
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };

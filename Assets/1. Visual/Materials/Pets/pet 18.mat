@@ -10,7 +10,7 @@ Material:
   m_Name: pet 18
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
   m_Parent: {fileID: 2100000, guid: f49f6e4f9a477ca46afca364c48c3802, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 4
   m_ValidKeywords:
   - DR_RIM_ON
   - _CELPRIMARYMODE_SINGLE
@@ -18,7 +18,7 @@ Material:
   m_InvalidKeywords:
   - _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
