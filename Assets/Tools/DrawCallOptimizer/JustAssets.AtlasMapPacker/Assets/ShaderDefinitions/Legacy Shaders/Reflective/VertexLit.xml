@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<ShaderInfoData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TargetShaderName>Legacy Shaders/Reflective/VertexLit (Atlas)</TargetShaderName>
+  <AttributeTransferInstructions>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MainTex</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MainTex</Name>
+        <UseTiling>true</UseTiling>
+      </Target>
+    </AttributePointerPair>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_Cube</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_Cube</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>VectorAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_Color</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_ColorMap</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>VectorAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_ReflectColor</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_ReflectColorMap</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+  </AttributeTransferInstructions>
+  <KeywordTransferInstructions />
+  <RenderTypeMapping />
+  <RenderQueueMapping />
+  <NamingRule />
+</ShaderInfoData>

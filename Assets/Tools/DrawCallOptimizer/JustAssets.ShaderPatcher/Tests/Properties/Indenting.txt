@@ -1,0 +1,12 @@
+void surf(Input IN, inout SurfaceOutputStandard o)
+		{
+			half4 splat_control;
+			fixed4 mixedDiffuse;
+			half weight;
+			half4 defaultSmoothness = half4(_Smoothness0, _Smoothness1, _Smoothness2, _Smoothness3);
+			MTE_SplatmapMix(IN, defaultSmoothness, splat_control, weight, mixedDiffuse, o.Normal);
+			o.Albedo = mixedDiffuse.rgb;
+			o.Alpha = weight;
+			o.Smoothness = mixedDiffuse.a;
+			o.Metallic = dot(splat_control, half4(_Metallic0, _Metallic1, _Metallic2, _Metallic3));
+		}

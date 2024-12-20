@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<ShaderInfoData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AttributeTransferInstructions>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MainTex</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MainTex</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>FloatAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MaxMipLevel</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_MaxMipLevel</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>FloatAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_AtlasHeight</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_AtlasHeight</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+    <AttributePointerPair>
+      <Source>
+        <DataSource>FloatAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_AtlasWidth</Name>
+      </Source>
+      <Target>
+        <DataSource>TextureAttribute</DataSource>
+        <Component>All</Component>
+        <Name>_AtlasWidth</Name>
+        <UseTiling>false</UseTiling>
+      </Target>
+    </AttributePointerPair>
+  </AttributeTransferInstructions>
+  <KeywordTransferInstructions />
+  <RenderTypeMapping />
+  <RenderQueueMapping />
+  <NamingRule />
+</ShaderInfoData>

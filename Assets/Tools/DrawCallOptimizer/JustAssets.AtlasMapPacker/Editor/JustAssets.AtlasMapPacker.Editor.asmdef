@@ -1,0 +1,21 @@
+{
+    "name": "JustAssets.AtlasMapPacker.Editor",
+    "rootNamespace": "JustAssets.AtlasMapPacker",
+    "references": [
+        "JustAssets.AtlasMapPacker",
+        "JustAssets.ShaderPatcher.Editor",
+        "JustAssets.ColliderUtilityRuntime",
+        "JustAssets.ColliderUtilityEditor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

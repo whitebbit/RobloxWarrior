@@ -1,5 +1,5 @@
-﻿using ToonyColorsPro.ShaderGenerator;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace _3._Scripts.UI.Extensions

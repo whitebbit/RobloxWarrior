@@ -1,0 +1,47 @@
+Mega atlasser
+
+- Supports textures using repeat
+- Supports mipmap levels
+- Supports standard shader
+
+- Adds texture girder to prevent weird borders when repeating tiles
+- Supports color tinting of textures
+- Correctly merges geometry of complex hierarchies
+
+- Transfers baked lightmap UVs for a quick merge process
+  - Considers mesh surface size and scale in scene
+  - You still need to bake lightmaps afterwards
+- Supports simplified standard shader with Diffuse, Normals, Occlusion, Metallic/Specular, Color-Tint (also on mobile)
+  - no support for Emission and Detail-maps
+- Respects shader texture default colors
+- Collider creation support
+	- Merges simple colliders with mesh colliders
+	- Supports: Box, Sphere, Capsule, Wheel and Terrain colliders
+- BETA: Shader Patcher to create your alpha shader from a giben shader automatically!
+	
+	
+	
+
+3D Collider Utility
+
+Simply create a merged collider of a single gamebject or the entire hierachy with a single click.
+
+Developed in 2020.1 compatible down to 2017.3
+
+- Supports runtime and editor
+
+- Support all kinds of collider types.
+  - box collider
+  - sphere collider
+  - capsule collider
+  - wheel collider
+  - terrain collider (creates simplified version of your terrain through vertex decimation algorithm while preserving edges)
+  - mesh collider (support for convex mesh colliders due to convex hull algorithm)
+  
+- Simple API 
+  void ColliderUtility.ToCollider(gameObject) 
+  void ColliderUtility.ToMesh(gameObject)
+  Mesh ColliderUtility.Create(gameObject) 
+  
+Asset uses MeshSimplifier under MIT license (unrestricted commercial use); see Third-Party Notices.txt file in package for details.
+Asset uses MIComplexHull under MIT license (unrestricted commercial use); see Third-Party Notices.txt file in package for details.
