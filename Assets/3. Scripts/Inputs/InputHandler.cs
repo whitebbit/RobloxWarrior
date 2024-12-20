@@ -10,7 +10,6 @@ namespace _3._Scripts.Inputs
     {
         [SerializeField] private MobileInput mobileInput;
         private DesktopInput _desktopInput;
-
         public IInput Input
         {
             get
@@ -18,13 +17,12 @@ namespace _3._Scripts.Inputs
                 switch (YG2.envir.device)
                 {
                     case YG2.Device.Desktop:
-                        if (mobileInput.gameObject.activeSelf)
-                            mobileInput.gameObject.SetActive(false);
+                        mobileInput.gameObject.SetActive(false);
                         return _desktopInput ??= new DesktopInput();
                     case YG2.Device.Mobile:
-                        if (!mobileInput.gameObject.activeSelf)
-                            mobileInput.gameObject.SetActive(true);
+                        mobileInput.gameObject.SetActive(true);
                         UnityEngine.Input.multiTouchEnabled = true;
+
                         return mobileInput;
                     case YG2.Device.Tablet:
                         break;

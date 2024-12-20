@@ -9,7 +9,12 @@ namespace _3._Scripts.Extensions
 {
     public class StartLoader : MonoBehaviour
     {
-        private void Start()
+        private void Awake()
+        {
+            Load();
+        }
+
+        private void Load()
         {
             LoadingScreen.Instance.ShowLoadingScreen(InitializeLocalization(), YG2.GameReadyAPI);
         }
@@ -60,7 +65,7 @@ namespace _3._Scripts.Extensions
             return allocatedMemory < memoryThreshold;
         }
 
-        private static IEnumerator FreeUpMemory()
+        private IEnumerator FreeUpMemory()
         {
             yield return Resources.UnloadUnusedAssets();
 

@@ -23,19 +23,14 @@
             {
                 get
                 {
-                    switch (deviceType)
+                    return deviceType switch
                     {
-                        case "desktop":
-                            return Device.Desktop;
-                        case "mobile":
-                            return Device.Mobile;
-                        case "tablet":
-                            return Device.Tablet;
-                        case "tv":
-                            return Device.TV;
-                        default:
-                            return Device.Desktop;
-                    }
+                        "desktop" => Device.Desktop,
+                        "mobile" => Device.Mobile,
+                        "tablet" => Device.Tablet,
+                        "tv" => Device.TV,
+                        _ => Device.Desktop
+                    };
                 }
             }
         }
