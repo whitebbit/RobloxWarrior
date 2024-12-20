@@ -22,6 +22,7 @@ namespace _3._Scripts.Extensions
         private IEnumerator InitializeLocalization()
         {
             yield return new WaitUntil(() => YG2.isSDKEnabled);
+     
             yield return LocalizationSettings.InitializationOperation;
             var locale =
                 LocalizationSettings.AvailableLocales.Locales.Find(l => l.Identifier.Code == YG2.envir.language);

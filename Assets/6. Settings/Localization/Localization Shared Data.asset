@@ -489,6 +489,10 @@ MonoBehaviour:
     m_Key: craft_booster
     m_Metadata:
       m_Items: []
+  - m_Id: 79022638688698368
+    m_Key: get
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
