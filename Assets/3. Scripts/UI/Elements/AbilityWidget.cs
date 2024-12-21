@@ -32,6 +32,13 @@ namespace _3._Scripts.UI.Elements
             });
         }
 
+        private void OnEnable()
+        {
+            if (_coroutine != null)
+                StartCoroutine(_coroutine);
+        }
+
+
         public void Initialize(PlayerAbility config)
         {
             StopAllCoroutines();
@@ -68,9 +75,13 @@ namespace _3._Scripts.UI.Elements
             cooldownText.gameObject.SetActive(state);
         }
 
+
+        private IEnumerator _coroutine;
+
         private void OnUseAbility(float obj)
         {
-            StartCoroutine(CooldownRoutine(obj));
+            _coroutine = CooldownRoutine(obj);
+            StartCoroutine(_coroutine);
         }
 
         private IEnumerator CooldownRoutine(float lastUsedTime)
@@ -95,6 +106,7 @@ namespace _3._Scripts.UI.Elements
 
             cooldownSlider.gameObject.SetActive(false);
             cooldownText.gameObject.SetActive(false);
+            _coroutine = null;
         }
     }
 }

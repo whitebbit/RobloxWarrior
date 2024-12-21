@@ -57,7 +57,8 @@ namespace _3._Scripts.Worlds
 
             GameEvents.StopBattle();
             YG2.SaveProgress();
-            YG2.InterstitialAdvShow();
+            if (YG2.TryGetFlagAsBool("use_inter", out var useInter) && useInter)
+                YG2.InterstitialAdvShow();
 
             AudioManager.Instance.StopLoop("battle_music");
             AudioManager.Instance.PlaySound("lobby_music", loop: true);

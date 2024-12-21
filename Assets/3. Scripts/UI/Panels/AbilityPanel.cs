@@ -109,7 +109,7 @@ namespace _3._Scripts.UI.Panels
             unequipButton.gameObject.SetActive(itemNotNull && item.Unlocked && Save.IsSelected(item.Config.ID));
             evoluteButton.gameObject.SetActive(itemNotNull && item.Unlocked && item.Config.NeedToBreak());
 
-            if (itemNotNull)
+            if (itemNotNull && item.Config.CurrentUpgrade != null)
                 evolutePriceText.SetVariable("value", (int)item.Config.CurrentUpgrade.priceToBreak);
         }
 

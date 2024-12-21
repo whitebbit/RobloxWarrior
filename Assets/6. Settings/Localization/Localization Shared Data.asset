@@ -493,6 +493,10 @@ MonoBehaviour:
     m_Key: get
     m_Metadata:
       m_Items: []
+  - m_Id: 79401463620632576
+    m_Key: sword_damage
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

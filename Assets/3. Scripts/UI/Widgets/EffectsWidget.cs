@@ -10,16 +10,18 @@ using _3._Scripts.UI.Transitions;
 using DG.Tweening;
 using UnityEngine;
 using VInspector;
+using YG;
 
 namespace _3._Scripts.UI.Widgets
 {
     public class EffectsWidget : UIWidget
     {
         [SerializeField] private FadeTransition transition;
-        [Tab("Currency Effect")]
-        [SerializeField] private List<CurrencyWidget> widgets = new();
-        [Space] 
-        [SerializeField] private float duration;
+
+        [Tab("Currency Effect")] [SerializeField]
+        private List<CurrencyWidget> widgets = new();
+
+        [Space] [SerializeField] private float duration;
         [SerializeField] private Ease inEase;
         [SerializeField] private Ease outEase;
 
@@ -38,6 +40,14 @@ namespace _3._Scripts.UI.Widgets
             var widget = widgets.FirstOrDefault(i => i.Type == type);
             var itemRect = item.transform as RectTransform;
 
+            if (type == CurrencyType.Crystal)
+            {
+                if (YG2.TryGetFlagAsFloat("crystal_booster", out var floatType))
+                {
+                    amount *= floatType;
+                }
+            }
+
             item.transform.SetParent(transform);
             item.Initialize(type, amount);
 
@@ -46,7 +56,7 @@ namespace _3._Scripts.UI.Widgets
             itemRect.anchoredPosition = Vector3.zero + new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0);
 
             if (widget == null) return;
-            
+
             var widgetRect = widget.transform as RectTransform;
 
             if (widgetRect == null) return;
@@ -57,7 +67,7 @@ namespace _3._Scripts.UI.Widgets
                 {
                     widget.transform.DOScale(1.1f, 0.15f)
                         .OnComplete(() => widget.transform.DOScale(1f, 0.15f));
-                    
+
                     WalletManager.GetCurrency(type).Value += amount;
                     AudioManager.Instance.PlaySound("get_reward");
                     ObjectsPoolManager.Instance.Return(item);

@@ -11,12 +11,14 @@ namespace _3._Scripts.Currency
         private WalletSave Save => YG2.saves.walletSave;
         public event Action<float, float> OnValueChanged;
         public readonly CurrencyType Type;
-
+        
+        
         public CurrencyObject(CurrencyType type)
         {
             Type = type;
         }
-
+        
+        
         public float Value
         {
             get => GetSaved(Type);

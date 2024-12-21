@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using _3._Scripts.Config;
 using _3._Scripts.Pool;
 using _3._Scripts.Pool.Interfaces;
@@ -35,17 +36,30 @@ namespace _3._Scripts.UI.Elements.SwordsPanel
             var rarity = Configuration.Instance.GetRarityTable(config.Rarity);
 
             Config = save;
-            SwordConfig = config;
+
+            if (SwordConfig != config)
+            {
+                SwordConfig = config;
+                StartCoroutine(UpdateIcon());
+            }
 
             // Установка визуальных характеристик
             table.color = rarity.MainColor;
             damageText.text = $"{SwordDamage}";
-            icon.texture = config.Icon;
 
-            // Обновление звезд
             for (var i = 0; i < stars.Count; i++)
             {
                 stars[i].gameObject.SetActive(i < save.starCount);
+            }
+        }
+
+        private IEnumerator UpdateIcon()
+        {
+            icon.texture = SwordConfig.Icon;
+            while (icon.texture == null)
+            {
+                icon.texture = SwordConfig.Icon;
+                yield return null;
             }
         }
 

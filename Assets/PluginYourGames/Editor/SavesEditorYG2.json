@@ -7,39 +7,111 @@
   "intValues": [],
   "defaultLoaded": true,
   "walletSave": {
-    "crystals": 5.0,
+    "crystals": 49805.0,
     "heroPoints": 0.0,
-    "skillPoints": 0.0
+    "skillPoints": 4.0
   },
   "abilitiesSave": {
     "capacity": 2,
     "selected": [],
-    "unlocked": [],
+    "unlocked": [
+      {
+        "id": "spin_ability",
+        "level": 1,
+        "maxLevel": 6,
+        "ID": "spin_ability"
+      }
+    ],
     "CanSelect": true
   },
   "stats": {
-    "experience": 0.0,
-    "level": 1,
-    "upgradePoints": 0,
+    "experience": 10.4499969,
+    "level": 7,
+    "upgradePoints": 6,
     "healthPoints": 0,
     "attackPoints": 0,
     "speedPoints": 0,
     "critPoints": 0,
-    "rebirthCounts": 0,
-    "levelForRebirth": 0
+    "rebirthCounts": 1,
+    "levelForRebirth": 10
   },
   "swordsSave": {
     "maxSwordsCount": 50,
     "requiredCountForMerge": 3,
     "current": {
-      "uid": -2032174163,
+      "uid": 404273269,
       "id": "sword_1",
       "starCount": 0
     },
     "unlocked": [
       {
-        "uid": -2032174163,
+        "uid": 404273269,
         "id": "sword_1",
+        "starCount": 0
+      },
+      {
+        "uid": -429624144,
+        "id": "sword_22",
+        "starCount": 0
+      },
+      {
+        "uid": 1970033223,
+        "id": "sword_12",
+        "starCount": 0
+      },
+      {
+        "uid": 1908987282,
+        "id": "sword_12",
+        "starCount": 0
+      },
+      {
+        "uid": 962514587,
+        "id": "sword_11",
+        "starCount": 0
+      },
+      {
+        "uid": 1989442982,
+        "id": "sword_11",
+        "starCount": 0
+      },
+      {
+        "uid": 1867964575,
+        "id": "sword_11",
+        "starCount": 0
+      },
+      {
+        "uid": 761310592,
+        "id": "sword_11",
+        "starCount": 0
+      },
+      {
+        "uid": -1841123039,
+        "id": "sword_12",
+        "starCount": 0
+      },
+      {
+        "uid": 1206984052,
+        "id": "sword_13",
+        "starCount": 0
+      },
+      {
+        "uid": -735736369,
+        "id": "sword_11",
+        "starCount": 0
+      },
+      {
+        "uid": -1709975315,
+        "id": "sword_11",
+        "starCount": 0
+      },
+      {
+        "uid": -252253360,
+        "id": "sword_13",
+        "starCount": 0
+      },
+      {
+        "uid": -501191134,
+        "id": "sword_11",
         "starCount": 0
       }
     ]
@@ -47,7 +119,9 @@
   "worldSave": {
     "worldName": "world_1",
     "questSave": {
-      "Quests": {}
+      "Quests": {
+        "world_1": 0
+      }
     }
   },
   "heroesSave": {
@@ -57,11 +131,13 @@
     "CanSelect": true
   },
   "characterSave": {
-    "classID": "class_warrior",
+    "classID": "class_samurai",
     "gender": 0
   },
-  "Tutorials": {},
+  "Tutorials": {
+    "get_sword": true
+  },
   "qualityName": "quality",
-  "maxEggToOpen": 1,
-  "idSave": 1
+  "maxEggToOpen": 3,
+  "idSave": 8
 }

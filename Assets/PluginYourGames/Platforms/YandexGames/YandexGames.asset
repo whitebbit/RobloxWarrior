@@ -20,7 +20,7 @@ MonoBehaviour:
     skipInterAdvAfterReward: 0
     selectWebGLTemplate: 1
     runInBackground: 0
-    enableExceptions: 2
+    enableExceptions: 0
     compressionFormat: 0
     decompressionFallback: 1
     autoGraphicsAPI: 1

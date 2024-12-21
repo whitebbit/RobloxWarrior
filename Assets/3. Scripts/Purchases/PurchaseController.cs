@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _3._Scripts.Currency;
 using _3._Scripts.Currency.Enums;
+using _3._Scripts.Saves;
 using _3._Scripts.Singleton;
 using UnityEngine;
 using YG;
@@ -80,6 +81,13 @@ namespace _3._Scripts.Purchases
             new Purchase("100000_gems", () =>
             {
                 WalletManager.GetCurrency(CurrencyType.Crystal).Value += 100000;
+                YG2.SaveProgress();
+            }),
+            new Purchase("extra_sword", () =>
+            {
+                var sword = new SwordSave("sword_22");
+                YG2.saves.swordsSave.Unlock(sword);
+                //YG2.saves.swordsSave.SetCurrent(sword);
                 YG2.SaveProgress();
             }),
         };

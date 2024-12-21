@@ -157,7 +157,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 2.37611
@@ -650,7 +650,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 35.35534
@@ -1658,7 +1658,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 1.8874704
@@ -1908,7 +1908,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 67.55077
@@ -2181,7 +2181,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.071068
@@ -2833,7 +2833,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 14.038242
@@ -4627,6 +4627,238 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &3027619616883647735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4048161498007388055}
+  - component: {fileID: 4217860294871068461}
+  - component: {fileID: 2004855339150569893}
+  - component: {fileID: 3438656120259822478}
+  - component: {fileID: 418005686354216288}
+  m_Layer: 9
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4048161498007388055
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027619616883647735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.36}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4034461796345019099}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.03, y: 5.58}
+  m_SizeDelta: {x: 4.63, y: 1.1575}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!23 &4217860294871068461
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027619616883647735}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ea3470926be68c142817d86eeebc732d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2004855339150569893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027619616883647735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "165 \u0443\u0440\u043E\u043D\u0430"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 6987aa1b46d21454ca465753216c0983, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: ea3470926be68c142817d86eeebc732d, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 8.45
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 1
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 4217860294871068461}
+  m_maskType: 0
+--- !u!114 &3438656120259822478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027619616883647735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf02ef524865430aa538a29e2570360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &418005686354216288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027619616883647735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:0756e557c271c0845b906afbadbbd927
+    m_TableEntryReference:
+      m_KeyId: 79401463620632576
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: value
+      variable:
+        rid: 1177424597025816576
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2004855339150569893}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 1177424597025816576
+      type: {class: FloatVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 165
 --- !u!1 &3035472598429248169
 GameObject:
   m_ObjectHideFlags: 0
@@ -5150,7 +5382,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 47.87189
@@ -7658,7 +7890,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 36.67064
@@ -9174,7 +9406,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 67.55077
@@ -9584,7 +9816,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 35.35534
@@ -10469,7 +10701,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 0.85017097
@@ -10970,7 +11202,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 67.55077
@@ -12502,7 +12734,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 67.55077
@@ -12904,7 +13136,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 0.92992985
@@ -13182,7 +13414,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 6.3384337
@@ -13460,7 +13692,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -13731,7 +13963,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 11.781623
@@ -14021,7 +14253,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.328699
@@ -14282,7 +14514,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.061914
@@ -14550,7 +14782,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.00781
@@ -14837,7 +15069,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.802966
@@ -15117,7 +15349,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.154562
@@ -15377,7 +15609,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.252526
@@ -15689,7 +15921,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.172299
@@ -16228,7 +16460,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.651033
@@ -16489,7 +16721,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611205
@@ -17061,7 +17293,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.3219004
@@ -17338,7 +17570,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.297001
@@ -17616,7 +17848,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -17889,7 +18121,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -18142,7 +18374,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.4004865
@@ -18415,7 +18647,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -18758,7 +18990,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -19043,7 +19275,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 2.4891038
@@ -19438,7 +19670,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611205
@@ -19776,7 +20008,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 0.2922462
@@ -20087,7 +20319,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 9.136522
@@ -20600,7 +20832,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611204
@@ -20894,7 +21126,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 6.338805
@@ -21553,7 +21785,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 0.9985155
@@ -21814,7 +22046,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.061914
@@ -22091,7 +22323,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.844344
@@ -22531,7 +22763,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 14.072183
@@ -22816,7 +23048,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 0.8291587
@@ -23101,7 +23333,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 2.4891038
@@ -23374,7 +23606,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.00781
@@ -23663,7 +23895,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 9.468202
@@ -24120,7 +24352,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -24511,7 +24743,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611205
@@ -24815,7 +25047,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.083393
@@ -25438,7 +25670,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.061914
@@ -25709,6 +25941,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3147639832083578166, guid: 3af2848a60143eb4190d9446bc7ec6d2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3034091254912494816}
+    - targetCorrespondingSourceObject: {fileID: 3147639832083578166, guid: 3af2848a60143eb4190d9446bc7ec6d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4048161498007388055}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 404326716611615824, guid: 3af2848a60143eb4190d9446bc7ec6d2, type: 3}
       insertIndex: -1
@@ -25956,7 +26191,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.172299
@@ -26491,7 +26726,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -26774,7 +27009,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 5.0622926
@@ -27319,7 +27554,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -27580,7 +27815,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611204
@@ -27853,7 +28088,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -28135,7 +28370,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.844344
@@ -28420,7 +28655,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 25.331062
@@ -28692,7 +28927,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.484656
@@ -28977,7 +29212,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 2.9307709
@@ -29377,7 +29612,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -29644,7 +29879,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 14.846531
@@ -29929,7 +30164,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 0
   CullIfNotSee: 1
   DetectionRadius: 16.651033
@@ -30215,7 +30450,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 19.502012
@@ -30483,7 +30718,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.00781
@@ -30869,7 +31104,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -31375,7 +31610,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.419456
@@ -31741,7 +31976,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.844346
@@ -32021,7 +32256,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 2.4891038
@@ -32285,7 +32520,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 9.6227045
@@ -32868,7 +33103,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.443305
@@ -33143,7 +33378,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.154562
@@ -34272,7 +34507,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.373314
@@ -34558,7 +34793,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 19.502012
@@ -34811,7 +35046,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.4004865
@@ -35072,7 +35307,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611205
@@ -35462,7 +35697,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 25.331062
@@ -35735,7 +35970,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 6.3384337
@@ -36001,7 +36236,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.4433036
@@ -36279,7 +36514,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -36552,7 +36787,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.00781
@@ -36841,7 +37076,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.651031
@@ -37203,7 +37438,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 25.331062
@@ -37459,7 +37694,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.4433036
@@ -37725,7 +37960,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.110939
@@ -38119,7 +38354,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -38487,7 +38722,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.00781
@@ -38760,7 +38995,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -39217,7 +39452,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 1.1173893
@@ -39473,7 +39708,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611205
@@ -39750,7 +39985,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.844344
@@ -40114,7 +40349,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.328699
@@ -40425,7 +40660,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 9.136522
@@ -40938,7 +41173,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.877367
@@ -41211,7 +41446,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 3.7549171
@@ -41484,7 +41719,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -41752,7 +41987,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897602
@@ -42030,7 +42265,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 14.419277
@@ -42308,7 +42543,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -42564,7 +42799,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 4.1338735
@@ -42850,7 +43085,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 19.502012
@@ -43094,7 +43329,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.6966286
@@ -43820,7 +44055,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611205
@@ -44096,7 +44331,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.604539
@@ -44357,7 +44592,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.061914
@@ -44635,7 +44870,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 14.344497
@@ -45054,7 +45289,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 9.136521
@@ -45578,7 +45813,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 14.887554
@@ -45930,7 +46165,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.4592776
@@ -46207,7 +46442,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.844344
@@ -46480,7 +46715,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -46739,7 +46974,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.6919174
@@ -47099,7 +47334,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.765483
@@ -47376,7 +47611,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.735176
@@ -47653,7 +47888,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.844344
@@ -47921,7 +48156,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -48206,7 +48441,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.373314
@@ -48760,7 +48995,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.458233
@@ -49117,7 +49352,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -49389,7 +49624,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.484656
@@ -49662,7 +49897,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 11.932018
@@ -51269,7 +51504,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.512804
@@ -51547,7 +51782,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -51819,7 +52054,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.484656
@@ -52097,7 +52332,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -52408,7 +52643,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 9.136522
@@ -52932,7 +53167,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 14.185169
@@ -54634,7 +54869,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 3.5613685
@@ -55114,7 +55349,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.877367
@@ -55383,7 +55618,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 9.6227045
@@ -55880,7 +56115,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 15.24699
@@ -56388,7 +56623,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611205
@@ -56700,7 +56935,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 5.0622926
@@ -57242,7 +57477,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 2.4891038
@@ -57527,7 +57762,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 1.058313
@@ -57778,7 +58013,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611205
@@ -58040,7 +58275,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.3219004
@@ -58381,7 +58616,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611204
@@ -58659,7 +58894,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 23.90905
@@ -58920,7 +59155,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 7.443305
@@ -59181,7 +59416,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 0.2922462
@@ -59506,7 +59741,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.083393
@@ -60142,7 +60377,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 1.1171014
@@ -60427,7 +60662,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 1.0444025
@@ -60703,7 +60938,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.604539
@@ -61055,7 +61290,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.897603
@@ -61481,7 +61716,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.863963
@@ -61952,7 +62187,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 10.713001
@@ -62473,7 +62708,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.263936
@@ -62838,7 +63073,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 6.1554494
@@ -63231,8 +63466,8 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
-  OptimizingMethod: 2
+  MaxDistance: 100
+  OptimizingMethod: 0
   CullIfNotSee: 1
   DetectionRadius: 6.338433
   DetectionBounds: {x: 0.8330216, y: 6.2031255, z: 22.048147}
@@ -63639,7 +63874,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.802966
@@ -63910,7 +64145,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 19.502012
@@ -64176,7 +64411,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 8.611204
@@ -64613,7 +64848,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 12.252526
@@ -64902,7 +65137,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.651031
@@ -65168,7 +65403,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 4.1338735
@@ -65674,7 +65909,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 13.844344
@@ -65952,7 +66187,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 16.00781
@@ -66234,7 +66469,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 6.338433
@@ -66514,7 +66749,7 @@ MonoBehaviour:
     m_Bits: 0
   LODLevels: 3
   preLODLevels: 3
-  MaxDistance: 75
+  MaxDistance: 100
   OptimizingMethod: 2
   CullIfNotSee: 1
   DetectionRadius: 0.9905124

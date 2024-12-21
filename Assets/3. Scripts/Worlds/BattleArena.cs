@@ -96,8 +96,9 @@ namespace _3._Scripts.Worlds
         {
             yield return new WaitUntil(() => _bots.All(b => b.Dying.IsDead));
             Reward();
-            yield return new WaitForSeconds(2f);
-            YG2.InterstitialAdvShow();
+            yield return new WaitForSeconds(3f);
+            if (YG2.TryGetFlagAsBool("use_inter", out var useInter) && useInter)
+                YG2.InterstitialAdvShow();
             WavePassed();
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace _3._Scripts.Abilities.Structs
 {
     [Serializable]
-    public struct AbilityUpgrade : IEquatable<AbilityUpgrade>
+    public class AbilityUpgrade : IEquatable<AbilityUpgrade>
     {
         public float priceToBreak;
         [Min(1)] public int maxLevel;
